@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import Metadata from "../layout/metadata"
+import "./Home.css"
 
 const Home = () => {
   return (
-    <h1>Home</h1>
+    <Fragment>
+        <Metadata title="Ecommerce"/>
+        <div className='homeCarousel'>
+        </div>
+    </Fragment>
   )
 }
 
