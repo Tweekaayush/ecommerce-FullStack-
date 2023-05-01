@@ -13,14 +13,18 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-icons": "^4.8.0",
     "react-material-ui-carousel": "^3.4.2",
+    "react-multi-carousel": "^2.8.3",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.0",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.9",
+    "react-slick": "^0.29.0",
     "redux": "^4.2.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.2",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4",
     "webfontloader": "^1.6.28"
   },
@@ -47,5 +51,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:4000"
 }

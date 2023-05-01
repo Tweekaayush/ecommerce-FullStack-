@@ -1,4 +1,97 @@
+.homeContainer{
+    padding-top:calc(5rem + 1rem) ;
+    background:rgb(75,1,224);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Raleway;
+}
+
 .homeCarousel{
-    height:100vh;
-    background:rgb(20,18,26);
+    width: 100%;
+    padding-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.homeCarouselHeading{
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.homeCarouselHeading h1{
+    font-size:calc(16px + 8 * (100vw - 320px) / 1080);
+    color: white;
+    padding-left: 17.5%;
+}
+
+.slider{
+    width: 65%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+}
+
+.multi-carousel div{
+    color: white;
+}
+
+.homeBrowseByCategory{
+    width: 100%;
+    padding: 5% 0;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background:rgb(48, 0, 143);
+}
+
+.homeBrowseCarousel{
+    width: 80%;
+}
+
+.homeBrowseHeading{
+    width: 100%;
+}
+
+.homeBrowseHeading h1{
+    padding-left: 10.5%;
+    font-size:calc(16px + 8 * (100vw - 320px) / 1080);
+}
+
+.homeRecommendationSection{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1% 0;
+    color: white;
+    background-color: black;
+}
+
+.homeRecommendationSection h1{
+    margin: 10px 0;
+    font-size:calc(16px + 13 * (100vw - 320px) / 1080);
+}
+
+.homeRecommendationSection p{
+    margin: 10px 0;
+    color: rgb(173, 173, 173);
+    font-size:calc(16px (100vw - 320px) / 1080);
+}
+.homeRecommendationSection button{
+    margin: 10px 0;
+    padding: 10px;
+    font-size:calc(16px (100vw - 320px) / 1080);
+}
+
+.homeRecommendationSection p a{
+    text-decoration: none;
+    color: white;
+    font-size:calc(16px (100vw - 320px) / 1080);
 }

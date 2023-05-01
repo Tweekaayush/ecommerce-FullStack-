@@ -13,7 +13,7 @@ function App() {
   React.useEffect(()=>{
     WebFont.load({
       google:{
-        families:["Raleway "]
+        families:["Raleway ","Kaushan Script","Sigmar One", "Phudu"]
       }
     })
   })

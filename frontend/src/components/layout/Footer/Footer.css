@@ -9,7 +9,11 @@ footer{
     display: flex;
     align-items: center;
     flex-direction: column;
-    font-family: Raleway;
+    font-family: Phudu;
+}
+
+footer p{
+    font-size: calc(16px + 3 * (100vw - 320px) / 1080);
 }
 
 .upper-footer{
@@ -21,7 +25,7 @@ footer{
 
 .upper-footer div{
     flex: 1;
-
+    padding: 0 10px;
 }
 
 .footer-links{
@@ -29,12 +33,10 @@ footer{
     align-items: center;
 }
 
-.upper-footer{
-    font-size: 20px;
-}
 .upper-footer h1{
     padding: 15px 0;
-    font-size: 40px;
+    font-size: calc(25px + 23 * (100vw - 320px) / 1080);
+    font-family: Phudu;
 }
 
 .lower-footer{
@@ -51,7 +53,6 @@ footer{
     }
     .upper-footer h1{
         padding: 15px 0;
-        font-size: 30px;
     }
     
 }
