@@ -38,7 +38,6 @@ const productSchema = new mongoose.Schema({
     genre:{
         type:String,
         required:[true, "Please enter product category"]
-
     },
     numOfReviews:{
         type:Number,
@@ -88,6 +87,16 @@ const productSchema = new mongoose.Schema({
     createdAt:{
         type:Date,
         default:Date.now
+    },
+    system_requirements:{
+        minimum:{
+            type:String,
+            required:true
+        },
+        recommended:{
+            type:String,
+            required:true
+        }
     }
 })
 

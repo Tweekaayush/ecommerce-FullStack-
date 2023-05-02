@@ -7,7 +7,6 @@ import 'react-multi-carousel/lib/styles.css';
 import Slide from "./Slide/Slide"
 import GenreCard from "./GenreCard/GenreCard"
 import Slider from "react-slick"
-
 const Home = () => {
 
   const {loading, error, products,productCount} = useSelector((state)=>state.products);
@@ -22,7 +21,9 @@ const Home = () => {
       infinite: true,
       speed: 500,
       slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      autoplay:true,
+      autoplaySpeed:4000
     };
     const multisettings = { 
       speed: 500,
