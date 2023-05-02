@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faEnvelope, faLockOpen} from "@fortawesome/free-solid-svg-icons"
 import {useDispatch, useSelector} from "react-redux"
-import {clearErrors, login} from "../../actions/userAction"
+import {clearErrors, login, register} from "../../actions/userAction"
 import { useNavigate } from "react-router-dom";
 
 const Login = ({history}) => {
 
   const dispatch = useDispatch();
-  // let navigate = useNavigate()
+  const {error, loading, isAuthenticated} = useSelector((state) => state.user)
+  let navigate = useNavigate()
   const loginTab = useRef(null);
   const registerTab = useRef(null);
   const switcherTab = useRef(null);
@@ -20,12 +21,12 @@ const Login = ({history}) => {
     email:"",
     password:""
   })
-  const {loading, error, isAuthenticated} = useSelector((state) => state.user)
+
   const {name, email, password}= user;
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [avatar, setAvatar] = useState();
-  const [avatarPreview, setAvatarPreview] = useState("")
+  const [avatarPreview, setAvatarPreview] = useState("/Profile.png")
 
 
   const loginSubmit = (e)=>{
@@ -40,19 +41,19 @@ const Login = ({history}) => {
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("avatar", avatar);
-    console.log("Sign up form submitted")
+    dispatch(register(myForm))
   }
 
   const registerDataChange = (e)=>{
     if(e.target.name === "avatar"){
         const reader = new FileReader();
         reader.onload = () =>{
-          if(reader.reaadyState === 2){            
+          if(reader.readyState === 2){            
             setAvatarPreview(reader.result);
             setAvatar(reader.result)
           }
         };
-        reader.readAsDataUrl(e.target.files[0]);
+        reader.readAsDataURL(e.target.files[0]);
     }
     else{
       setUser({...user, [e.target.name]: e.target.value});
@@ -61,8 +62,8 @@ const Login = ({history}) => {
 
   useEffect(()=>{
     if(isAuthenticated)
-      history.push("/account") 
-  }, [history, isAuthenticated, loading, dispatch])
+      navigate("/account") 
+  }, [dispatch, history, isAuthenticated,])
 
   const switchTabs = (e, tab)=>{
     if(tab === "login"){
@@ -116,14 +117,14 @@ const Login = ({history}) => {
             </div>
             <div className="signUpEmail">
             <FontAwesomeIcon icon={faEnvelope} />
-              <input type="email" value={email} onChange={registerDataChange} placeholder="123@gmail.com" required/>
+              <input type="email" name="email" value={email} onChange={registerDataChange} placeholder="123@gmail.com" required/>
             </div>
             <div className="signUpPassword">
             <FontAwesomeIcon icon={faLockOpen} />
-              <input type="password" value={password} onChange={registerDataChange} placeholder="********" required/>
+              <input type="password" name="password" value={password} onChange={registerDataChange} placeholder="********" required/>
             </div>
             <div id="registerImage">
-              <img src={avatarPreview} alt="" />
+            <img src={avatarPreview} alt="Avatar Preview" />
               <input type="file" name="avatar" accept='image/' onChange={registerDataChange} />
             </div>
             <input type="submit" value="Register" className='signUpBtn'/>

@@ -7,15 +7,20 @@ import Home from "./components/Home/Home"
 import Login from "./components/User/Login"
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Product from "./components/Product/Product.js";
+import { useSelector } from "react-redux";
+import store from "./store";
+import { loadUser } from "./actions/userAction";
 
 function App() {
+  const { isAuthenticated, user } = useSelector((state) => state.user);
   React.useEffect(()=>{
     WebFont.load({
       google:{
         families:["Raleway ","Kaushan Script","Sigmar One", "Phudu"]
       }
     })
-  })
+    store.dispatch(loadUser());
+  },[])
 
   return (
     <Router>

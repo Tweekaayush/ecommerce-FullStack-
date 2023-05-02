@@ -63,6 +63,12 @@
 #registerImage input::file-selector-button:hover{
     background:rgb(219, 219, 219);
 }
+
+#registerImage > img {
+    width: 3vmax;
+    border-radius: 100%;
+  }
+
 .loginForm, .signUpForm{
     height: 70%;
     margin: auto;
@@ -179,4 +185,8 @@
         font: 300 1.9vmax "Roboto";
         padding: 1.8vmax;
     }
+    #registerImage > img {
+        width: 8vmax;
+        border-radius: 100%;
+      }
 }
