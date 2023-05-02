@@ -3,9 +3,7 @@
     padding-bottom: 3rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color:purple
+    background:rgb(75,1,224);
 }
 
 .productBox-1{
@@ -14,6 +12,7 @@
     justify-content: center;
     width: 100%;
     gap: 2rem;
+    margin-bottom: 2rem;
 }
 
 .productBox-1-1{
@@ -25,6 +24,7 @@
 .productCarousel-1{
     width: 100%;
     height: 100%;
+    padding: 5px;
 }
 
 .productCarousel-1 img, .productCarousel-2 img{
@@ -49,12 +49,13 @@
 
 .productCarousel-1 .slick-arrow.slick-prev,
 .productCarousel-1 .slick-arrow.slick-next {
-  width: 30px;
+  width: calc(16px + 8 * (100vw - 320px) / 1080);;
   height: 99%;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1;
+  padding: 5px;
 }
 .productCarousel-1 .slick-prev {
   left: 0;
@@ -74,4 +75,77 @@
 .slick-prev::before,
 .slick-next::before {
   display: none;
+}
+
+.productBox-2{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center;
+}
+
+.productBox-2-1{
+    margin: 2rem, 0;
+    width: 78%;
+}
+
+.productBox-2-1 p{
+    margin: 1rem 0;
+    color: white;
+}
+.productBox-2-1 h1{
+    padding: 1vmax 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.886);
+}
+
+.productBox-2-2{
+    margin: 2rem, 0;
+    width: 78%;
+}
+
+.productBox-2-2 h1{
+    padding: 1vmax 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.886);
+}
+
+.productBox-2-3{
+    margin: 2rem, 0;
+    width: 78%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.productBox-2-3-1{
+    width: 30%;
+    border-right: 1px solid rgb(35, 0, 105);
+}
+.productBox-2-3-2{
+    width: 70%;
+}
+
+.productBox-2-2-1{
+    margin: 1rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.productBox-2-2-1-1, .productBox-2-2-1-2{
+    width: 50%;
+}
+
+.reviewsHeading{
+    width: 78%;
+    padding: 1vmax 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.886);
+    margin-bottom: 4vmax;
+}
+
+.noReviews{
+    font: 400 1.3vmax "Gill Sans";
+    text-align: center;
+    color: rgb(255,255,255,0.548);
 }

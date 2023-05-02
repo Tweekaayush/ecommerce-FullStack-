@@ -6,6 +6,8 @@ import { getProductDetails } from '../../actions/productAction';
 import "./Product.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons' 
+import ReviewCard from "./ReviewCard.js"
+import {Rating} from "@mui/material"
 
 const Product = () => {
     const {id} = useParams();
@@ -64,8 +66,16 @@ const Product = () => {
       focusOnSelect:true,
     }
 
+    const options = {
+      value: product.ratings,
+      precision:0.5,
+      max:5,
+      readOnly:true
+  }
+
   return (
-    <div className='productContainer'>
+    <Fragment>
+      {loading? "loading": (<div className='productContainer'>
         <div className='productBox-1'>
           <div className="productBox-1-1">
             <h1>{product.name}</h1>
@@ -88,6 +98,7 @@ const Product = () => {
           </div>
             <div className="productBox-1-2">
                 <img src={product.background_image} alt="" />
+                <Rating {...options}/>
                 <h1 className="price">₹ {product.price}</h1>
                 <button>Add to Cart</button>
                 <button>Add to Wishlist</button>
@@ -97,7 +108,45 @@ const Product = () => {
                 </ul>
             </div>
         </div>
-    </div>
+        <div className="productBox-2">
+            <div className="productBox-2-1">
+              <h1>Description</h1>
+              <p>{product.description}</p>
+            </div>
+            <div className="productBox-2-2">
+              <h1>System Requirements</h1>
+              <div className="productBox-2-2-1">
+                  <div className="productBox-2-2-1-1">
+                    <h3>Minimum:</h3>
+                    {/* <p>{product.system_requirements.minimum}</p> */}
+                  </div>
+                  <div className="productBox-2-2-1-2">
+                    <h3>Recommended:</h3>
+                    {/* <p>{product.system_requirements.recommended}</p> */}
+                  </div>
+              </div>
+            </div>
+            <h1 className="reviewsHeading">REVIEWS</h1>
+            <div className="productBox-2-3">
+              <div className="productBox-2-3-1">
+                  <h1>Overall Reviews</h1>
+                  <Rating {...options}/>
+                  <p>{product.numOfReviews}</p>
+                  <button>Write a Review</button>
+              </div>
+              <div className="productBox-2-3-2">
+                {product.reviews && product.reviews[0] ?(
+                  <div className="reviews">
+                    {product.reviews && product.reviews.map((review)=> <ReviewCard review={review}/>)}
+                  </div>
+                ): (
+                  <p className="noReviews">No Reviews Yet</p>
+                )}
+              </div>
+            </div>
+        </div>
+    </div>)}
+    </Fragment>
   )
 }
 

@@ -58,45 +58,49 @@ const Home = () => {
     };
 
   return (
-    <div className='homeContainer'>
-      <div className='homeCarousel'>
-        <div className='homeCarouselHeading'>
-          <h1>
-            Featured and Recommended
-          </h1>
+    <Fragment>
+      {loading? "loading":(
+        <div className='homeContainer'>
+        <div className='homeCarousel'>
+          <div className='homeCarouselHeading'>
+            <h1>
+              Featured and Recommended
+            </h1>
+          </div>
+          <Slider className='slider' {...settings}>
+            {products && products.map(product=>(
+                <Slide id={product._id} img = {product.background_image} title ={product.name} avail={product.description}/>
+            ))}
+          </Slider>
         </div>
-        <Slider className='slider' {...settings}>
-          {products && products.map(product=>(
-              <Slide id={product._id} img = {product.background_image} title ={product.name} avail={product.description}/>
-          ))}
-        </Slider>
-      </div>
-      <div className="homeBrowseByCategory">
-        <div className='homeBrowseHeading'>
-          <h1>
-            Browse by Category
-          </h1>
+        <div className="homeBrowseByCategory">
+          <div className='homeBrowseHeading'>
+            <h1>
+              Browse by Category
+            </h1>
+          </div>
+          <div className='homeBrowseCarousel'>
+          <Slider {...multisettings}>
+              <GenreCard/>
+              <GenreCard/>
+              <GenreCard/>
+              <GenreCard/>
+              <GenreCard/>
+              <GenreCard/>
+              <GenreCard/>
+              <GenreCard/>
+          </Slider>
+          </div>
         </div>
-        <div className='homeBrowseCarousel'>
-        <Slider {...multisettings}>
-            <GenreCard/>
-            <GenreCard/>
-            <GenreCard/>
-            <GenreCard/>
-            <GenreCard/>
-            <GenreCard/>
-            <GenreCard/>
-            <GenreCard/>
-        </Slider>
+        <div className='homeRecommendationSection'>
+              <h1>Looking for recommendations</h1>
+              <p>Sign in to view personalized recommendations</p>
+              <button>Sign In</button>
+              <p>Or <a href='/'>Sign Up</a> and join Ecommerce for free</p>
         </div>
       </div>
-      <div className='homeRecommendationSection'>
-            <h1>Looking for recommendations</h1>
-            <p>Sign in to view personalized recommendations</p>
-            <button>Sign In</button>
-            <p>Or <a href='/'>Sign Up</a> and join Ecommerce for free</p>
-      </div>
-    </div>
+      )}
+    </Fragment>
   )
 }
 
