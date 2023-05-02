@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect} from 'react'
 import Metadata from "../layout/metadata"
 import "./Home.css"
-import {getProduct} from "../../actions/productAction"
+import {getProducts} from "../../actions/productAction"
 import {useSelector, useDispatch} from "react-redux"
 import 'react-multi-carousel/lib/styles.css';
 import Slide from "./Slide/Slide"
@@ -10,11 +10,11 @@ import Slider from "react-slick"
 
 const Home = () => {
 
-  const {loading, error,products,productCount} = useSelector((state)=>state.products);
+  const {loading, error, products,productCount} = useSelector((state)=>state.products);
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    dispatch(getProduct());
+    dispatch(getProducts());
   },[dispatch]);
 
     const settings = {
