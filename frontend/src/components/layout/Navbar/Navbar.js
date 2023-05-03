@@ -1,17 +1,21 @@
 import React, {useState} from 'react';
 import {FaFacebook, FaTwitter, FaInstagram} from "react-icons/fa"
 import "./Navbar.css"
+import UserOptions from './UserOptions';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../../actions/userAction';
 
 const Navbar = () =>{
     const [toggle, setToggle] = useState(false);
     const [scroll, setScroll] = useState(false);
+    const {isAuthenticated, user} = useSelector((state)=>state.user);
+    const dispatch = useDispatch()
 
     function navToggle(){
         if(toggle === false)
-            setScroll(false)
+            document.body.style.overflow = 'hidden';
         else{
-            if(window.scrollY > 60)
-                setScroll(true);
+            document.body.style.overflow = 'unset';
         }
         setToggle(!toggle);
     }
@@ -44,7 +48,16 @@ const Navbar = () =>{
             <div className={scroll?"upper-nav scrolled":"upper-nav"}>
                 <a href="/" className="nav-brand">
                     Ecommerce
-                </a>           
+                </a>      
+                    {isAuthenticated?(
+                        <div className="navProfile">
+                            <UserOptions user={user}/>
+                        </div>
+                    ):(
+                    <div className="nav-items">
+                        <a className="nav-item" href='/login'>Sign In</a>
+                    </div>                   
+                    )}
                 <div className={toggle ? "nav-toggler toggle":"nav-toggler"} onClick={navToggle}>
                     <div className='lines'>
                         <div className="line1"></div>
@@ -62,7 +75,8 @@ const Navbar = () =>{
                             <LeftLink href ="/">Home</LeftLink>
                             <LeftLink href ="/browse">Browse</LeftLink>
                             <LeftLink href ="/news">News</LeftLink>
-                            <LeftLink href ="/login">Login</LeftLink>
+                            <LeftLink href ="/login">{isAuthenticated? "Profile" : "Sign In"}</LeftLink>
+                            {isAuthenticated && <LeftLink href="/" onClick={()=>{dispatch(logout())}}>Logout</LeftLink>}
                         </ul>
                     </div> 
                     <div className={toggle?"right-nav nav-active":"right-nav"}>

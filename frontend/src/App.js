@@ -12,7 +12,7 @@ import store from "./store";
 import { loadUser } from "./actions/userAction";
 
 function App() {
-  const { isAuthenticated, user } = useSelector((state) => state.user);
+  const {isAuthenticated, user} = useSelector((state) => state.user)
   React.useEffect(()=>{
     WebFont.load({
       google:{

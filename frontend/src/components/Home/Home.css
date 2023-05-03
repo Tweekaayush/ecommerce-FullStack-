@@ -9,35 +9,77 @@
     font-family: Raleway;
 }
 
-.homeCarousel{
-    width: 100%;
-    padding-bottom: 5%;
+.homeCarouselBox{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    width: 70%;
+    padding: 3vmax 0;
 }
 
 .homeCarouselHeading{
     width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 1vmax;
 }
-
 .homeCarouselHeading h1{
-    font-size:calc(16px + 8 * (100vw - 320px) / 1080);
     color: white;
-    padding-left: 17.5%;
+    font-size:calc(16px + 8 * (100vw - 320px) / 1080);
 }
 
-.slider{
-    width: 65%;
+.homeCarousel{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+}
+
+
+.homeCarouselSlider-1{
+    width: 80%;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
+}
+
+.homeCarouselSlider-2{
+    width: 20%;
+    margin: auto;
+}
+
+.homeCarouselSlider-1 .slick-arrow.slick-prev,
+.homeCarouselSlider-1 .slick-arrow.slick-next {
+  width: calc(16px + 8 * (100vw - 320px) / 1080);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  padding: 0 5px;
+  transition: all 0.5s;
+}
+.homeCarouselSlider-1 .slick-prev {
+  left: 0;
+  transition: all 0.5s;
+  opacity: 0;
+}
+.homeCarouselSlider-1 .slick-next {
+    opacity: 0;
+  right: 0;
+  transition: all 0.5s;
+}
+
+.homeCarouselSlider-1:hover .slick-prev{
+    opacity: 1;
+    background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    transition: all 0.5s;
+}
+.homeCarouselSlider-1:hover .slick-next{
+    opacity: 1;
+    background: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    transition: all 0.5s;
 }
 
 .multi-carousel div{
     color: white;
 }
+
 
 .homeBrowseByCategory{
     width: 100%;
@@ -94,4 +136,8 @@
     text-decoration: none;
     color: white;
     font-size:calc(16px (100vw - 320px) / 1080);
+}
+
+.homeRecommendationSection-active{
+    display: none;
 }

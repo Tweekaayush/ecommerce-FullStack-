@@ -1,63 +1,17 @@
 .slide{
     width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius:10px
+}
+.slide2{
+    width: 92%;
+    padding: 2% 0;
+    border-radius:10px;
 }
 
 .slide-img{
     height: 100%;
     width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
+    border-radius:10px
 }
-
-.slide-content{
-    position: absolute;
-    color: white;
-    bottom: 0;
-    left: 0;
-    height: 50vh;
-    width: 50vw;
-    padding: 0 0 0 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 1;
-}
-
-.title{
-    font-size: 35px;
-}
-
-.desc{
-    margin: 35px 0;
-    letter-spacing: 3px;
-    font-size:18px;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.83);
-}
-
-.slide-btn{
-    padding: 10px 15px;
-    font-size: 20px;
-    background-color: transparent;
-    cursor: pointer;
-    background-color: white;
-    border-radius: 50px;
-    width: 150px;
-}
-
-/* --------------Animation--------------------- */
-
-@-webkit-keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
- }
- 
- @keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
- }
- 
- .fadeIn {
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
- }
