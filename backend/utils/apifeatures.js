@@ -10,7 +10,6 @@ class ApiFeatures {
                 $options: "i",
             }
         }:{};
-        console.log(keyword);
         this.query = this.query.find({...keyword});
         return this;
     }
@@ -26,7 +25,9 @@ class ApiFeatures {
         let queryStr = JSON.stringify(queryCopy);
         queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g,(key) => `$${key}`);
 
-        this.query = this.query.find(JSON.parse(queryStr));
+        const Data = JSON.parse(queryStr)
+
+        this.query = this.query.find(Data);
 
         return this;
     }
@@ -40,6 +41,20 @@ class ApiFeatures {
 
         return this;
     }
+    // filterTags(){
+    //     const queryCopy = {...this.queryStr};
+
+    //     // Removing some fields for genre
+    //     const removeFields = ["keyword", "page", "limit"];
+    //     removeFields.forEach((key) => delete queryCopy[key])
+
+    //     //Filter for Price and Rating
+
+    //     let queryStr = JSON.stringify(queryCopy);
+    //     queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g,(key) => `$${key}`);
+
+    //     const Data = JSON.parse(queryStr)
+    // }
 }
 
 module.exports = ApiFeatures;

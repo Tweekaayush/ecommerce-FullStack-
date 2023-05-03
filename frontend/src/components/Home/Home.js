@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons' 
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import Header from "./Header"
 
 
 const Home = () => {
@@ -21,9 +22,21 @@ const Home = () => {
   const [nav2, setNav2] = useState();
   const dispatch = useDispatch();
 
+  const [scroll, setScroll] = useState(false);
+  const [keyword, setKeyword] = useState("");
+
+    window.addEventListener("scroll", ()=>{
+        if(window.scrollY > 64) 
+            setScroll(true);
+        else{
+            setScroll(false)
+        } 
+    });
+
   useEffect(()=>{
     dispatch(getProducts());
   },[dispatch]);
+
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -68,16 +81,21 @@ const Home = () => {
     }
     const multisettings = { 
       speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 3,
+      arrows:true,
       responsive: [
+        {
+          breakpoint:5000,
+          settings: {
+            arrows:true,
+            slidesToShow:4,
+            slidesToScroll:4 
+          }
+        },
         {
           breakpoint: 1024,
           settings: {
             slidesToShow: 3,
             slidesToScroll: 3,
-            infinite: true,
-            dots: true
           }
         },
         {
@@ -102,7 +120,8 @@ const Home = () => {
     <Fragment>
       {loading? "loading":(
         <div className='homeContainer'>
-          <div className="homeCarouselBox">
+          <Header/>
+          <div className={scroll?"homeCarouselBox homeCarouselBox-active":"homeCarouselBox"}>
             <div className='homeCarouselHeading'>
               <h1>
                 Featured and Recommended
@@ -139,8 +158,8 @@ const Home = () => {
         <div className={isAuthenticated?"homeRecommendationSection homeRecommendationSection-active":"homeRecommendationSection"}>
               <h1>Looking for recommendations</h1>
               <p>Sign in to view personalized recommendations</p>
-              <button>Sign In</button>
-              <p>Or <a href='/'>Sign Up</a> and join Ecommerce for free</p>
+              <a href="/login" className='btn'>Sign In</a>
+              <p>Or <a href='/login'>Sign Up</a> and join Ecommerce for free</p>
         </div>
       </div>
       )}

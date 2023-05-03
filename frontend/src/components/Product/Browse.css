@@ -1,0 +1,72 @@
+.browseContainer{
+    background:rgb(75,1,224);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Raleway;
+}
+
+.browseContent{
+    padding: 1rem 0;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+.browseContent-active{
+    padding-top: 6rem;
+}
+
+.searchResultBox{
+    width: 100%;
+}
+
+.searchResults{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:center;
+}
+
+.filterBox{
+    width: 20%;
+}
+
+.paginationBox{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.page-item{
+    background-color: rgb(230, 230, 230);
+    list-style: none;
+    border: 1px solid rgba(0,0,0,0.178);
+    padding: 1vmax 1.5vmax;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.page-link{
+    text-decoration: none;
+    font: 300 0.7vmax "Roboto";
+    color: rgb(80, 80, 80);
+    transition: all 0.3s;
+}
+
+
+.pageItemActive{
+    background-color:rgb(13, 1, 126);
+}
+
+.pageLinkActive{
+    color: rgb(255, 255, 255);
+}

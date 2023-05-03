@@ -10,6 +10,7 @@ import Product from "./components/Product/Product.js";
 import { useSelector } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/userAction";
+import Browse from "./components/Product/Browse.js"
 
 function App() {
   const {isAuthenticated, user} = useSelector((state) => state.user)
@@ -29,6 +30,8 @@ function App() {
         <Route exact path ="/" element={<Home/>} />
         <Route exact path ="/login" element={<Login/>} />
         <Route exact path ="/product/:id" element={<Product/>}/>
+        <Route exact path ="/browse" element={<Browse/>}/>
+        <Route exact path ="/browse/:keyword" element={<Browse/>}/>
       </Routes>
       <Footer/>
     </Router>

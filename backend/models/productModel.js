@@ -91,11 +91,11 @@ const productSchema = new mongoose.Schema({
     system_requirements:{
         minimum:{
             type:String,
-            required:true
+            default: "TBA"
         },
         recommended:{
             type:String,
-            required:true
+            default: "TBA"
         }
     }
 })

@@ -7,7 +7,6 @@ import { logout } from '../../../actions/userAction';
 
 const Navbar = () =>{
     const [toggle, setToggle] = useState(false);
-    const [scroll, setScroll] = useState(false);
     const {isAuthenticated, user} = useSelector((state)=>state.user);
     const dispatch = useDispatch()
 
@@ -19,14 +18,6 @@ const Navbar = () =>{
         }
         setToggle(!toggle);
     }
-
-    window.addEventListener("scroll", ()=>{
-        if(window.scrollY > 0) 
-            setScroll(true);
-        else if(window.scrollY <= 0){
-            setScroll(false)
-        } 
-    });
 
     function LeftLink({href, children, ...props}){
         return(
@@ -45,7 +36,7 @@ const Navbar = () =>{
 
     return (
         <nav className="navbar">
-            <div className={scroll?"upper-nav scrolled":"upper-nav"}>
+            <div className="upper-nav">
                 <a href="/" className="nav-brand">
                     Ecommerce
                 </a>      
