@@ -10,7 +10,7 @@
 }
 
 .loginSignUpContent{
-    width: 70%;
+    width: 60%;
     display: flex;
 }
 
@@ -176,6 +176,26 @@
     transform: translateX(100%);
 }
 
+@media screen and (max-width:1145px){
+    .loginSignUpContent{
+        width: 70%;
+        transition: all 0.5s;
+    }
+}
+
+
+@media screen and (max-width:870px) {
+
+    .loginSignUpContent{
+        width: 80%;
+        transition: all 0.5s;
+    }
+    .loginSignUpBox{
+        height: 60vh;
+        transition: all 0.5s;
+    }
+}
+
 @media screen and (max-width:600px) {
     .loginSignUpContent{
         width: 100%;
@@ -199,14 +219,14 @@
         height: 5vmax;
     }
     .loginSignUpToggle p{
-        font: 300 2vmax "Roboto";
+        font: 300 1rem "Roboto";
     }
     .loginForm, .signUpForm{
         padding: 5vmax;
     }
     .loginForm div input, .signUpForm div input{
-        padding: 2.5vmax 5vmax;
-        font: 300 1.7vmax cursive;
+        padding: 1rem 5vmax;
+        font: 300 0.8rem cursive;
     }
     .loginForm div svg, .signUpForm div svg{
         font-size: 2.8vmax;

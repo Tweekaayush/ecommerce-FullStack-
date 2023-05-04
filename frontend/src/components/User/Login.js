@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux"
 import {clearErrors, login, register} from "../../actions/userAction"
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-toastify"
+import Metadata from '../layout/Metadata'
 
 const Login = ({history}) => {
 
@@ -70,7 +71,7 @@ const Login = ({history}) => {
     if(isAuthenticated)
       navigate("/account") 
 
-  }, [dispatch, history, isAuthenticated,])
+  }, [dispatch, history, isAuthenticated, alert])
 
   const switchTabs = (e, tab)=>{
     if(tab === "login"){
@@ -92,6 +93,7 @@ const Login = ({history}) => {
   return (
     <Fragment>
       {loading? "loading" : (<Fragment>
+        <Metadata title="Login"></Metadata>
       <div className="loginSignUpContainer">
         <div className='loginSignUpContent'>
           <div className="loginSignUpContent-1">

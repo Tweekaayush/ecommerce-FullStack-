@@ -104,6 +104,7 @@
 }
 
 .homeBrowseHeading h1{
+    color:white;
     padding-left: 10.5%;
     font-size:calc(16px + 8 * (100vw - 320px) / 1080);
 }

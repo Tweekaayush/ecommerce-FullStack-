@@ -20,6 +20,9 @@
 
 .searchResultBox{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .searchResults{
@@ -79,9 +82,14 @@
 
 .genreItem{
     list-style: none;
-    color:rgb(230, 230, 230);
-    font: 400 0.8vmax "Roboto";
+    color:rgba(230, 230, 230, 0.795);
+    font: 400 0.9rem "Roboto";
     margin: 0.5vmax;
     cursor:pointer;
     transition: all 0.5s;
+}
+.noProducts{
+    font: 400 1.3vmax "Gill Sans";
+    text-align: center;
+    color: rgb(255,255,255,0.548);
 }

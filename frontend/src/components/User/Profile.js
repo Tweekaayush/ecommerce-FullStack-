@@ -110,7 +110,7 @@ const Profile = () => {
                 </div>
                 <div>
                   <h1>Joined</h1>
-                  <p>{String(user.createdAt)}</p>
+                  <p>{String(user.createdAt).substring(0, 10)}</p>
                 </div>
               </div>
               <UpdateProfile clsname={editComponent} />

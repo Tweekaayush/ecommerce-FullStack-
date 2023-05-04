@@ -4,14 +4,16 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getProducts } from '../../actions/productAction'
 import Header from '../Home/Header'
 import ProductCard from './ProductCard'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import Pagination from "react-js-pagination"
 import { Slider, Typography } from '@mui/material'
 import { genres } from '../../genrelist'
 import Loader from '../layout/Loader/Loader'
+import Metadata from '../layout/Metadata'
 
 const Browse = () => {
-    
+
+    const location = useLocation();
     const [genre, setGenre] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [price, setPrice] = useState([0, 10000])
@@ -43,11 +45,13 @@ const Browse = () => {
   return (
     <Fragment>
         {loading? "loading": (
-            <div className='browseContainer'>
+            <Fragment>
+                <Metadata title={"Browse"}></Metadata>
+                <div className='browseContainer'>
                 <Header/>
                 <div className={scroll?"browseContent browseContent-active":"browseContent"}>
                     <div className="filterBox">
-                        <Typography> Price </Typography>
+                        <Typography style={{color:"white", padding:"5px 0",fontSize:"1.5rem"}}> Price </Typography>
                         <Slider
                         value={price}
                         onChange={priceHandler}
@@ -57,7 +61,7 @@ const Browse = () => {
                         max={10000}
                         >
                         </Slider>
-                        <Typography> Genres </Typography>
+                        <Typography style={{color:"white", padding:"5px 0",fontSize:"1.5rem"}}> Genres </Typography>
                         <ul className="genreBox">
                             {genres.map((genre)=>(
                                 <li className='genreItem' key = {genre.id} onClick={()=>setGenre(genre.name)}>{genre.name}</li>
@@ -66,9 +70,9 @@ const Browse = () => {
                     </div>
                     <div className='searchResultBox'>
                         <div className="searchResults">
-                            {products && products.map((product)=>(
+                            {count? products.map((product)=>(
                                 <ProductCard key={product._id} product={product}/>
-                            ))}
+                            )):<p className='noProducts'>No Results Found</p>}
                         </div>
 
                         {resultPerPage < count && (
@@ -94,6 +98,7 @@ const Browse = () => {
                     </div>
                 </div>
             </div>
+            </Fragment>
         )}
     </Fragment>
   )

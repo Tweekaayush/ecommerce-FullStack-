@@ -45,7 +45,7 @@ const UpdatePassword = ({clsname}) => {
                     type: UPDATE_PASSWORD_RESET
                 })
             }
-          },[dispatch, passIsUpdated])
+          },[dispatch, passIsUpdated, alert, navigate])
 
   return (
     <Fragment>
@@ -53,18 +53,17 @@ const UpdatePassword = ({clsname}) => {
         <h1>Update Details</h1>
         <form
         className='updatePasswordForm'
-        encType='multipart/form-data'
         onSubmit={updatePasswordSubmit}
         >
-        <div className="signUpPassword">
+        <div className="oldUpdatePassword">
             <FontAwesomeIcon icon={faKey} />
             <input type="password" value={oldPassword} onChange={(e)=>setOldPassword(e.target.value)} placeholder="Old Password" required/>
         </div>
-        <div className="signUpPassword">
+        <div className="newUpdatePassword">
             <FontAwesomeIcon icon={faLock} />
             <input type="password" name="password" value={newPassword} onChange={(e)=>setNewPassword(e.target.value)} placeholder="New Password" required/>
         </div>
-        <div className="signUpPassword">
+        <div className="confirmPassword">
             <FontAwesomeIcon icon={faLockOpen} />
             <input type="password" name="password" value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="Confirm Passowrd" required/>
         </div>

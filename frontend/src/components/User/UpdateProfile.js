@@ -66,7 +66,7 @@ const UpdateProfile = ({clsname, boolVal}) => {
                 type: UPDATE_PROFILE_RESET
             })
         }
-      },[dispatch, user, isUpdated])
+      },[dispatch, user, isUpdated, navigate, alert])
 
   return (
     <Fragment>

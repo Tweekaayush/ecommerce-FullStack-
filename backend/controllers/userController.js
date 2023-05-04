@@ -84,8 +84,8 @@ exports.forgotPassword = catchAsyncErrors(async(req,res,next)=>{
     await user.save({
         validateBeforeSave:false
     })
-
-    const resetPasswordUrl = `${req.protocol}://${req.get("host")}/api/v1/password/reset/${resetToken}`
+    // req.protocol}://${req.get("host")/api/v1
+    const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`
     const message = `Your password reset token is:- \n\n ${resetPasswordUrl} \n\n If you have not requested this Email then, please ignore it`
     try{
         await sendEmail({
@@ -107,32 +107,40 @@ exports.forgotPassword = catchAsyncErrors(async(req,res,next)=>{
 
 //reset password
 
-exports.resetPassword = catchAsyncErrors(async(req, res, next)=>{
-    //creating hash token
-   const resetPasswordToken = crypto.createHash("sha256").update(req.params.token).digest("hex");
 
-   const user = await User.findOne({
-    resetPasswordToken,
-    resetPasswordExpire:{$gt: Date.now()},
-   });
-
-   if(!user){
-    return next(new ErrorHandler("Reset Password Token is invalid or has expired", 400));
-   }
-
-   if(req.body.password !== req.body.confirmPassword){
-    return next(new ErrorHandler("Password doesn't match", 400));
-   }
-
-   user.password = req.body.password;
-   user.resetPasswordToken = undefined;
-   user.resetPasswordExpire = undefined;
-
-   await user.save();
-   sendToken(user, 200, res);
-
-});
-
+exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
+    // creating token hash
+    const resetPasswordToken = crypto
+      .createHash("sha256")
+      .update(req.params.token)
+      .digest("hex");
+  
+    const user = await User.findOne({
+      resetPasswordToken,
+      resetPasswordExpire: { $gt: Date.now() },
+    });
+  
+    if (!user) {
+      return next(
+        new ErrorHandler(
+          "Reset Password Token is invalid or has been expired",
+          400
+        )
+      );
+    }
+  
+    if (req.body.password !== req.body.confirmPassword) {
+      return next(new ErrorHandler("Password does not password", 400));
+    }
+  
+    user.password = req.body.password;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpire = undefined;
+  
+    await user.save();
+  
+    sendToken(user, 200, res);
+  });
 
 // get user details
 

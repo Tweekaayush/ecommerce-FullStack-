@@ -14,14 +14,19 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Header from "./Header"
 import Loader from '../layout/Loader/Loader'
+import { genres } from '../../genrelist'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 const Home = () => {
+
   const {isAuthenticated, user} = useSelector((state)=>state.user)
   const {loading, error, products,productCount} = useSelector((state)=>state.products);
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
+  const [genre, setGenre] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate
 
   const [scroll, setScroll] = useState(false);
   const [keyword, setKeyword] = useState("");
@@ -120,6 +125,7 @@ const Home = () => {
         }
       ]
     };
+    
 
   return (
     <Fragment>
@@ -154,10 +160,9 @@ const Home = () => {
           </div>
           <div className='homeBrowseCarousel'>
           <Slider {...multisettings}>
-              <GenreCard/>
-              <GenreCard/>
-              <GenreCard/>
-              <GenreCard/>
+                {genres.map((genre)=>(
+                    <GenreCard id={genre.id} img={genre.image_background} name={genre.name}/>
+                ))}
           </Slider>
           </div>
         </div>

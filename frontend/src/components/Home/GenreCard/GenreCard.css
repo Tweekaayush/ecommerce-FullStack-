@@ -1,9 +1,8 @@
 .card-container{
     flex:1;
-    background-color: black;
     position: relative;
     margin: 0.5rem;
-    height: calc(14rem + 1rem);
+    height: 10rem
 }
 
 .card-img{

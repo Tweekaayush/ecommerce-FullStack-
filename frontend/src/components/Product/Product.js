@@ -9,6 +9,8 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import ReviewCard from "./ReviewCard.js"
 import {Rating} from "@mui/material"
 import Loader from '../layout/Loader/Loader';
+import Metadata from '../layout/Metadata';
+import Header from '../Home/Header';
 
 const Product = () => {
     const {id} = useParams();
@@ -76,7 +78,11 @@ const Product = () => {
 
   return (
     <Fragment>
-      {loading? "loading": (<div className='productContainer'>
+      {loading? "loading": (
+      <Fragment>
+        <Metadata title={product.name}></Metadata>
+        <div className='productContainer'>
+          <Header/>
         <div className='productBox-1'>
           <div className="productBox-1-1">
             <h1>{product.name}</h1>
@@ -146,7 +152,8 @@ const Product = () => {
               </div>
             </div>
         </div>
-    </div>)}
+    </div>
+      </Fragment>)}
     </Fragment>
   )
 }
