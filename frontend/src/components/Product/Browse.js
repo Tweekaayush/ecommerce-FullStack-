@@ -7,15 +7,18 @@ import ProductCard from './ProductCard'
 import { useParams } from 'react-router-dom'
 import Pagination from "react-js-pagination"
 import { Slider, Typography } from '@mui/material'
+import { genres } from '../../genrelist'
 
 const Browse = () => {
-
+    
+    const [genre, setGenre] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [price, setPrice] = useState([0, 10000])
     const dispatch = useDispatch();
-    const {products ,loading, error, productCount, resultPerPage}  = useSelector((state)=>state.products);
+    const {products ,loading, error, productCount, resultPerPage, filteredProductsCount}  = useSelector((state)=>state.products);
     const {keyword} = useParams();
     const [scroll, setScroll] = useState(false);
+    let count = filteredProductsCount
 
     window.addEventListener("scroll", ()=>{
         if(window.scrollY > 64) 
@@ -26,8 +29,8 @@ const Browse = () => {
     });
 
     useEffect(()=>{
-        dispatch(getProducts(keyword, currentPage, price));
-    }, [dispatch, keyword, currentPage, price])
+        dispatch(getProducts(keyword, currentPage, price, genre));
+    }, [dispatch, keyword, currentPage, price, genre])
 
     const setCurrentPageNo = (e) =>{
         setCurrentPage(e)
@@ -43,7 +46,7 @@ const Browse = () => {
                 <Header/>
                 <div className={scroll?"browseContent browseContent-active":"browseContent"}>
                     <div className="filterBox">
-                        <Typography>Price</Typography>
+                        <Typography> Price </Typography>
                         <Slider
                         value={price}
                         onChange={priceHandler}
@@ -52,8 +55,13 @@ const Browse = () => {
                         min={0}
                         max={10000}
                         >
-
                         </Slider>
+                        <Typography> Genres </Typography>
+                        <ul className="genreBox">
+                            {genres.map((genre)=>(
+                                <li className='genreItem' key = {genre.id} onClick={()=>setGenre(genre.name)}>{genre.name}</li>
+                            ))}
+                        </ul>
                     </div>
                     <div className='searchResultBox'>
                         <div className="searchResults">
@@ -61,23 +69,27 @@ const Browse = () => {
                                 <ProductCard key={product._id} product={product}/>
                             ))}
                         </div>
-                        <div className="paginationBox">
-                            <Pagination
-                                activePage={currentPage}
-                                itemsCountPerPage={resultPerPage}
-                                totalItemsCount={productCount}
-                                onChange={setCurrentPageNo}
-                                nextPageText="Next"
-                                prevPageText="Prev"
-                                firstPageText="1st"
-                                lastPageText="Last"
-                                itemClass='page-item'
-                                linkClass='page-link'
-                                activeClass='pageItemActive'
-                                activeLinkClass='pageLinkActive'
-                            />
 
+                        {resultPerPage < count && (
+                        <div className="paginationBox">
+                        <Pagination
+                            activePage={currentPage}
+                            itemsCountPerPage={resultPerPage}
+                            totalItemsCount={productCount}
+                            onChange={setCurrentPageNo}
+                            nextPageText="Next"
+                            prevPageText="Prev"
+                            firstPageText="1st"
+                            lastPageText="Last"
+                            itemClass='page-item'
+                            linkClass='page-link'
+                            activeClass='pageItemActive'
+                            activeLinkClass='pageLinkActive'
+                        />
                         </div>
+                        )}
+
+
                     </div>
                 </div>
             </div>

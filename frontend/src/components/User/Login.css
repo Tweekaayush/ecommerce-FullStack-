@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     align-items:center;
-    background: rgb(76, 0, 144);
+    background: rgb(75, 1, 224);
     position: fixed;
     top: 0;
     left: 0;
@@ -40,7 +40,7 @@
     width: 50%;
     border:none;
     transition: all 0.5s;
-    background-color:rgb(76, 0, 144);
+    background-color:rgb(112, 11, 201);
 }
 
 #registerImage input {
@@ -81,7 +81,7 @@
 }
 
 .signUpForm{
-    transform: translateY(-100%) translateX(-100vmax); 
+    transform: translateY(-100%) translateX(100vmax); 
 }
 
 .loginForm div, .signUpForm div{

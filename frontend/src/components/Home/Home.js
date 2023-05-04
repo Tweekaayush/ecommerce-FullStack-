@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState} from 'react'
-import Metadata from "../layout/metadata"
+import Metadata from "../layout/Metadata"
 import "./Home.css"
 import {getProducts} from "../../actions/productAction"
 import {useSelector, useDispatch} from "react-redux"
@@ -118,7 +118,8 @@ const Home = () => {
 
   return (
     <Fragment>
-      {loading? "loading":(
+      {loading? "loading":(<Fragment>
+        <Metadata title="Ecommerce"></Metadata>
         <div className='homeContainer'>
           <Header/>
           <div className={scroll?"homeCarouselBox homeCarouselBox-active":"homeCarouselBox"}>
@@ -162,6 +163,7 @@ const Home = () => {
               <p>Or <a href='/login'>Sign Up</a> and join Ecommerce for free</p>
         </div>
       </div>
+      </Fragment>
       )}
     </Fragment>
   )

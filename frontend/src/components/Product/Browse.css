@@ -70,3 +70,18 @@
 .pageLinkActive{
     color: rgb(255, 255, 255);
 }
+
+.genreBox{
+    padding: 0;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.genreItem{
+    list-style: none;
+    color:rgb(230, 230, 230);
+    font: 400 0.8vmax "Roboto";
+    margin: 0.5vmax;
+    cursor:pointer;
+    transition: all 0.5s;
+}

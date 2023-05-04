@@ -5,12 +5,13 @@ import Navbar from "./components/layout/Navbar/Navbar"
 import Footer from "./components/layout/Footer/Footer"
 import Home from "./components/Home/Home"
 import Login from "./components/User/Login"
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom"
 import Product from "./components/Product/Product.js";
 import { useSelector } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/userAction";
 import Browse from "./components/Product/Browse.js"
+import Profile from "./components/User/Profile.js"
 
 function App() {
   const {isAuthenticated, user} = useSelector((state) => state.user)
@@ -32,6 +33,7 @@ function App() {
         <Route exact path ="/product/:id" element={<Product/>}/>
         <Route exact path ="/browse" element={<Browse/>}/>
         <Route exact path ="/browse/:keyword" element={<Browse/>}/>
+        <Route exact path = "/account" element={isAuthenticated ? <Profile/> : <Navigate to="/login"/>}></Route>
       </Routes>
       <Footer/>
     </Router>

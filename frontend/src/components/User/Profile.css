@@ -1,0 +1,163 @@
+.profileContainer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(75, 1, 244);
+}
+
+.upperProfile{
+    width: 100%;
+    display: flex;
+    height: 100%;
+    padding: 2vmax;
+}
+
+.lowerProfile{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
+    height: 80vh;
+}
+
+.upperProfile h1{
+    color: rgba(255, 255, 255, 0.726);
+    font:500 2.2vmax "Roboto";
+}
+
+.upperProfile img{
+    width: 5vmax;
+    border-radius: 100%;
+    transition: all 0.5s;
+}
+
+.upperProfile a{
+    border:none;
+    background-color:rgb(36, 0, 119);
+    font: 400 1vmax "Roboto";
+    color: white;
+    text-decoration: none;
+    padding: 0.5vmax;
+    width: 30%;
+    margin: 4vmax;
+    text-align: center;
+    transition: all 0.5s;
+}
+
+.upperProfile a:hover{
+    background-color: rgb(76, 0, 255);
+}
+
+.leftProfileContainer{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 20%;
+}
+
+.leftProfileContainer p{
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font: 400 1.2vmax "Roboto";
+    border-bottom: 1px solid rgb(126, 71, 255);
+    padding: 3vmax;
+}
+
+.leftProfileContainer p:hover{
+    background:rgb(54, 0, 180);
+    transition: all 0.3s;
+}
+
+.leftProfileContainer-active{
+    background:rgb(54, 0, 180);
+}
+
+
+.rightProfileContainer{
+    overflow: hidden;
+    width: 80%;
+}
+
+.detailsContainer{
+    display:flex;
+    flex-direction: column;
+    gap: 2vmax;
+    align-items:flex-start;
+    border-left: 1px solid rgb(49, 12, 122);
+    height: 100%;
+    width: 100%;
+    padding: 2vmax 5vmax;
+    box-sizing: border-box;
+    overflow: scroll;
+}
+
+.rightProfileContainer div h1{
+    color: white;
+    font: 400 2vmax "Roboto";
+    border-bottom: 1px solid rgb(126, 71, 255);
+}
+
+.rightProfileContainer div p{
+    color: rgba(255, 255, 255, 0.808);
+    font: 400 1.5vmax cursive;
+    margin: 0.2vmax;
+}
+
+.rightProfileButtons{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.rightProfileButtons a{
+    border:none;
+    background-color:rgb(49, 12, 122);
+    font: 400 1vmax "Roboto";
+    color: white;
+    text-decoration: none;
+    padding: 0.5vmax;
+    text-align: center;
+    transform: all 0.5s;
+    margin: 1vmax 0;
+}
+
+.rightContent-inactive{
+    display: none;
+}
+
+.rightContent-active{
+    display: block;
+}
+
+@media screen and (max-width: 600px){
+    .profileContainer{
+        flex-direction: column;
+    }
+
+    .rightProfileContainer{
+        border-left:none;
+        border-top: 1px solid rgb(49, 12, 122);
+        overflow: scroll;
+    }
+
+    .upperProfile a{
+        font: 400 1.7vmax "Roboto";
+        padding: 1vmax;
+    }
+
+    .rightProfileContainer div h1{
+        font:400 2.5vmax "Roboto";
+    }
+
+    .rightProfileContainer div p{
+        font: 400 2vmax cursive;
+        margin: 0.5vmax 0;
+
+    }
+}
