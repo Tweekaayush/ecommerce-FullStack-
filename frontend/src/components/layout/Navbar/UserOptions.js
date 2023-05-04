@@ -34,7 +34,6 @@ const UserOptions = ({user}) => {
         func: dashboard
     })
   }
-  console.log(user.role)
   function dashboard(){
     navigate("/dashboard");
   }

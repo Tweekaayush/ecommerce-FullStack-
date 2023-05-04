@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom'
 import Pagination from "react-js-pagination"
 import { Slider, Typography } from '@mui/material'
 import { genres } from '../../genrelist'
+import Loader from '../layout/Loader/Loader'
 
 const Browse = () => {
     

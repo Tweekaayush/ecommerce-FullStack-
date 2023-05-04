@@ -80,8 +80,9 @@
 
 
 .rightProfileContainer{
-    overflow: hidden;
+    background:rgb(54, 0, 180);
     width: 80%;
+    height: 100%;
 }
 
 .detailsContainer{
@@ -89,12 +90,10 @@
     flex-direction: column;
     gap: 2vmax;
     align-items:flex-start;
-    border-left: 1px solid rgb(49, 12, 122);
     height: 100%;
     width: 100%;
     padding: 2vmax 5vmax;
     box-sizing: border-box;
-    overflow: scroll;
 }
 
 .rightProfileContainer div h1{

@@ -2,12 +2,12 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { UPDATE_PROFILE_RESET } from '../../constants/userConstants';
-import { loadUser, updateProfile } from '../../actions/userAction';
+import { clearErrors,loadUser, updateProfile } from '../../actions/userAction';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faEnvelope, faLockOpen} from "@fortawesome/free-solid-svg-icons"
 import "./UpdateProfile.css"
 
-const UpdateProfile = ({clsname}) => {
+const UpdateProfile = ({clsname, boolVal}) => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -15,7 +15,7 @@ const UpdateProfile = ({clsname}) => {
     const {error, isUpdated, loading} = useSelector((state)=>state.profile)
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
-    const [avatar, setAvatar] = useState()
+    const [avatar, setAvatar] = useState("")
     const [avatarPreview, setAvatarPreview] = useState()
 
     const updateProfileSubmit = (e) =>{
@@ -51,19 +51,27 @@ const UpdateProfile = ({clsname}) => {
             setEmail(user.email)
             setAvatarPreview(user.avatar.url)
         }
+        if (error) {
+            alert(error);
+            dispatch(clearErrors());
+          }
 
         if(isUpdated){
+            alert("Profile updated")
             dispatch(loadUser());
-        }
-        dispatch({
-            type: UPDATE_PROFILE_RESET
-        })
-      },[dispatch, user, isUpdated])
 
+            navigate("/account")
+    
+            dispatch({
+                type: UPDATE_PROFILE_RESET
+            })
+        }
+      },[dispatch, user, isUpdated])
 
   return (
     <Fragment>
             <div className={`updateProfileBox ${clsname}`}>
+                <h1>Update Details</h1>
                 <form
                 className='updateProfileForm'
                 encType='multipart/form-data'
@@ -80,7 +88,7 @@ const UpdateProfile = ({clsname}) => {
                 <img src={avatarPreview} alt="Avatar Preview" />
                 <input type="file" name="avatar" accept='image/' onChange={updateProfileDataChange} />
                 </div>
-                <input type="submit" value="Update Profile" className='signUpBtn'/>
+                <input type="submit" value="Update Profile" className='updateProfileBtn'/>
             </form>
         </div>
     </Fragment>

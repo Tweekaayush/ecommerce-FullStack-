@@ -1,5 +1,5 @@
 .loginSignUpContainer{
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     max-width: 100%;
     display: flex;
@@ -7,13 +7,37 @@
     align-items:center;
     background: rgb(75, 1, 224);
     position: fixed;
-    top: 0;
-    left: 0;
+}
+
+.loginSignUpContent{
+    width: 70%;
+    display: flex;
+}
+
+.loginSignUpContent-1{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.loginSignUpContent-1-1{
+    width: 100%;
+    height: 90%;
+    background-color:rgb(38, 0, 114);
+}
+
+.loginSignUpContent-2{
+    width: 60%;
+    background-color:white;
+    display: flex;
+    justify-content: center;
+    align-items:center;
 }
 
 .loginSignUpBox{
     background-color:#fff;
-    width: 25vw;
+    width: 70%;
     height: 70vh;
     box-sizing:border-box;
     overflow: hidden;
@@ -21,12 +45,13 @@
 
 .loginSignUpToggle{
     display: flex;
+    margin-top: 3vmax;
     height: 3vmax;
 }
 
 .loginSignUpToggle p{
     color:rgba(0,0,0,0.678);
-    font:300 1vmax "Roboto";
+    font:300 1.3rem "Roboto";
     transition: all 0.5s;
     cursor:pointer;
     display: flex;
@@ -54,7 +79,7 @@
     height: 5vh;
     border: none;
     margin: 0%;
-    font: 400 0.8vmax cursive;
+    font: 400 1rem cursive;
     transition: all 0.5s;
     padding: 0 1vmax;
     color:rgba(0,0,0,0.623);
@@ -97,7 +122,7 @@
     box-sizing:border-box;
     border: 1px solid rgba(0,0,0,0.267);
     border-radius: 4px;
-    font: 300 0.9vmax cursive;
+    font: 300 0.9rem cursive;
     outline: none;
 }
 
@@ -113,7 +138,7 @@
     text-decoration: none;
     align-self:flex-end;
     transition: all 0.5s;
-    font: 500 0.8vmax "Gill Sans";
+    font: 500 0.9rem "Gill Sans";
 }
 
 .loginForm a:hover{
@@ -124,7 +149,7 @@
     border: none;
     background-color:rgb(76, 0, 144);
     color: white;
-    font: 300 0.9vmax "Roboto";
+    font: 300 1rem "Roboto";
     width: 100%;
     padding: 0.8vmax;
     cursor: pointer;
@@ -152,6 +177,20 @@
 }
 
 @media screen and (max-width:600px) {
+    .loginSignUpContent{
+        width: 100%;
+    }
+    
+    .loginSignUpContent-1{
+        display: none;
+    }
+
+    .loginSignUpContent-2{
+        width: 100%;
+        background-color:rgb(75, 1, 224);
+        padding: 10px 0;
+    }
+
     .loginSignUpBox{
         width: 90vw;
         height: 70vh;

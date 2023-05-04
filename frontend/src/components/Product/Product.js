@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons' 
 import ReviewCard from "./ReviewCard.js"
 import {Rating} from "@mui/material"
+import Loader from '../layout/Loader/Loader';
 
 const Product = () => {
     const {id} = useParams();

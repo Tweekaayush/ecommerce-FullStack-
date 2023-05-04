@@ -6,6 +6,7 @@ import {faEnvelope, faLockOpen} from "@fortawesome/free-solid-svg-icons"
 import {useDispatch, useSelector} from "react-redux"
 import {clearErrors, login, register} from "../../actions/userAction"
 import { useNavigate } from "react-router-dom";
+import {toast} from "react-toastify"
 
 const Login = ({history}) => {
 
@@ -61,8 +62,14 @@ const Login = ({history}) => {
   }
 
   useEffect(()=>{
+    if (error) {
+      alert(error);
+      dispatch(clearErrors());
+    }
+
     if(isAuthenticated)
       navigate("/account") 
+
   }, [dispatch, history, isAuthenticated,])
 
   const switchTabs = (e, tab)=>{
@@ -86,7 +93,12 @@ const Login = ({history}) => {
     <Fragment>
       {loading? "loading" : (<Fragment>
       <div className="loginSignUpContainer">
-        <div className="loginSignUpBox">
+        <div className='loginSignUpContent'>
+          <div className="loginSignUpContent-1">
+            <div className="loginSignUpContent-1-1"></div>
+          </div>
+          <div className="loginSignUpContent-2">
+          <div className="loginSignUpBox">
           <div>
             <div className="loginSignUpToggle">
               <p onClick={(e)=>switchTabs(e, "login")}>Sign In</p>
@@ -129,6 +141,8 @@ const Login = ({history}) => {
             </div>
             <input type="submit" value="Register" className='signUpBtn'/>
           </form>
+        </div>
+          </div>
         </div>
       </div>
     </Fragment>)}

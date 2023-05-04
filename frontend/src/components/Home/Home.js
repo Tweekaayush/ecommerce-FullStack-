@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState} from 'react'
 import Metadata from "../layout/Metadata"
 import "./Home.css"
-import {getProducts} from "../../actions/productAction"
+import {getProducts, clearErrors} from "../../actions/productAction"
 import {useSelector, useDispatch} from "react-redux"
 import 'react-multi-carousel/lib/styles.css';
 import Slide1 from "./Slide/Slide1"
@@ -13,6 +13,7 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Header from "./Header"
+import Loader from '../layout/Loader/Loader'
 
 
 const Home = () => {
@@ -34,6 +35,10 @@ const Home = () => {
     });
 
   useEffect(()=>{
+    if (error) {
+      alert(error);
+      dispatch(clearErrors());
+    }
     dispatch(getProducts());
   },[dispatch]);
 

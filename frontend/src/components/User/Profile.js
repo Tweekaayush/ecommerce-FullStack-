@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import Metadata from '../layout/Metadata'
 import UpdateProfile from './UpdateProfile'
+import UpdatePassword from "./UpdatePassword.js"
+import Loader from '../layout/Loader/Loader'
 
 
 const Profile = () => {
@@ -112,6 +114,7 @@ const Profile = () => {
                 </div>
               </div>
               <UpdateProfile clsname={editComponent} />
+              <UpdatePassword clsname={passwordComponent} boolVal={false}/>
             </div>
           </div>
         </div>

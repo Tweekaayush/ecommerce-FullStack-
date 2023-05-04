@@ -14,6 +14,13 @@ import {
     UPDATE_PROFILE_SUCCESS,
     UPDATE_PROFILE_RESET,
     UPDATE_PROFILE_FAIL,
+    UPDATE_PASSWORD_REQUEST,
+    UPDATE_PASSWORD_SUCCESS,
+    UPDATE_PASSWORD_RESET,
+    UPDATE_PASSWORD_FAIL,
+    FORGOT_PASSWORD_REQUEST,
+    FORGOT_PASSWORD_SUCCESS,
+    FORGOT_PASSWORD_FAIL,
     CLEAR_ERRORS
 } from "../constants/userConstants"
 
@@ -78,6 +85,7 @@ export const userReducer = (state = { user: {} }, action)=>{
 export const profileReducer = (state = {}, action)=>{
     switch(action.type){
         case UPDATE_PROFILE_REQUEST:
+        case UPDATE_PASSWORD_REQUEST:
             return{
                 ...state,
                 loading:true,
@@ -88,8 +96,15 @@ export const profileReducer = (state = {}, action)=>{
                 loading:false,
                 isUpdated: action.payload
             };
+        case UPDATE_PASSWORD_SUCCESS:
+            return{
+                ...state,
+                loading:false,
+                passIsUpdated: action.payload
+            };
 
         case UPDATE_PROFILE_FAIL:
+        case UPDATE_PASSWORD_FAIL:
             return {
             ...state,
             loading:false,
@@ -101,7 +116,44 @@ export const profileReducer = (state = {}, action)=>{
                 ...state,
                 isUpdated: false
             }
+        case UPDATE_PASSWORD_RESET:
+            return{
+                ...state,
+                passIsUpdated: false
+            }
 
+        case CLEAR_ERRORS:
+            return{
+                ...state,
+                error: null
+            };
+        default:
+            return state;
+    }
+}
+
+//forgot password
+
+export const forgotPasswordReducer = (state = {}, action)=>{
+    switch(action.type){
+        case FORGOT_PASSWORD_REQUEST:
+            return{
+                ...state,
+                loading:true,
+                error:null
+            };
+        case FORGOT_PASSWORD_SUCCESS:
+            return{
+                ...state,
+                loading:false,
+                message: action.payload
+            };
+        case FORGOT_PASSWORD_FAIL:
+            return {
+            ...state,
+            loading:false,
+            error: action.payload
+        };
         case CLEAR_ERRORS:
             return{
                 ...state,
