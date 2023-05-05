@@ -11,8 +11,8 @@
 }
 
 .cartCardImg{
-    width: 20%;
-    height: 100%;
+    width: 25%;
+    height: 80%;
     display: flex;
 }
 
@@ -20,11 +20,12 @@
     width: 80%;
     height: 100%;
     object-fit: cover;
+    border-radius:10px;
 }
 
 .cartCardContent{
     height: 100%;
-    width: 80%;
+    width: 75%;
     display: flex;
     flex-direction: column;
     justify-content: center;

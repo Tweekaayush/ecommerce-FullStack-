@@ -88,7 +88,6 @@ const Product = () => {
 
 const addToCart = () =>{
   dispatch(addItemsToCart(id))
-  alert("Items added to cart")
 }
 
   return (

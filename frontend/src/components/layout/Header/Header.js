@@ -4,11 +4,12 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import {useSelector} from "react-redux"
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
 const Header = () => {
 
-    const {isAuthenticated, user} = useSelector((state)=>state.user)
+    const {isAuthenticated} = useSelector((state)=>state.user)
     const {cartItems} = useSelector((state)=>state.cart)
     const [scroll, setScroll] = useState(false);
     const [keyword, setKeyword] = useState("");
@@ -47,15 +48,21 @@ const Header = () => {
                 </div>
                 {isAuthenticated && (
                 <div className="rightHeaderItems">
-                    <Link to="/wishlist" className="headerItem">Wishlist</Link>
-                    <Link to="/cart" className="headerItem">
-                        Cart
+                    <span>
+                        <Link to="/wishlist" className="headerItem">Wishlist</Link>
+                        <Link to="/wishlist"><ShoppingCartIcon/></Link>
+                    </span>
+                    <span>
+                        <Link to="/cart" className="headerItem">
+                            Cart
+                        </Link>
+                        <Link to="/cart"><ShoppingCartIcon/></Link>
                         {cartItems.length?(
-                            <span className='cartItemIndicator'>
-                                {cartItems.length}
-                            </span>
+                                <span className='cartItemIndicator'>
+                                    {cartItems.length}
+                                </span>
                         ):""}
-                    </Link>
+                    </span>
                 </div>
                 )}
             </div>
