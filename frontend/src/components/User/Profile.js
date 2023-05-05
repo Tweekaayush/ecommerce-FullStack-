@@ -81,7 +81,7 @@ const Profile = () => {
 
   return (
     <Fragment>
-      {loading? "loading":(
+      {loading? <Loader/>:(
         <Fragment>
           <Metadata title={user.name}></Metadata>
         <div className="profileContainer">

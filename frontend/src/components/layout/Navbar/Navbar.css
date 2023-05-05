@@ -6,13 +6,6 @@
     box-sizing: border-box;
 }
 
-.preload *{
-    animation-duration: 0s !important;
-    transition: none !important;
-    -webkit-animation-duration: 0s !important;
-}
-
-
 .navbar{
     position: relative;
     z-index: 1001;
@@ -56,7 +49,7 @@
     align-items:center;
 }
 
-.nav-item{
+.nav-signupitem{
     font-size:20px;
     color: white;
     text-decoration: none;
@@ -71,7 +64,6 @@
 
 .left-nav{
     position: fixed;
-    left: 0;
     height: 100%;
     width: 50%;
     background: #8E2DE2; 
@@ -95,31 +87,27 @@
     transition-timing-function: cubic-bezier(1,-0.04,.58,.84);
     display: none;
 }
-.nav-item-l a, .nav-item-r a{
+.nav-item a, .nav-item a{
     text-decoration: none;
     color: white;
 }
 
-.nav-item-l, .nav-item-r{
+.nav-item{
     text-decoration: none;
     padding: 10px;
     transition: all 0.5s;
     list-style: none;
     animation-delay: 1s;
     opacity: 0;
+    font-size: 30px;
 }
 
-.nav-item-r{
-    padding: 20px;
-}
-
-.nav-item-l a:hover{
+.left-nav .nav-item a:hover{
     color: rgb(16,14,20);
 }
 
-.nav-item-r a:hover{
+.right-nav .nav-item a:hover{
     color:#4A00E0;
-
 }
 
 .nav-toggler{
@@ -188,28 +176,17 @@
     transform: rotate(-47deg) translate(7px, -7px);
 }
 
-.nav-links-l, .nav-links-r{
+.nav-links{
     position: relative;
     height: 100%;
     width: 100%;
     top:150px;
     top: 60px;
-}
-.nav-links-l{
-    font-weight: 800;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    font-size: calc(25px + 23 * (100vw - 320px) / 1080);
-    padding-left: calc(25px + 15%);
-}
-
-.nav-links-r{
-    display:flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 calc(25px + 15%);
-    font-size: calc(16px + 8 * (100vw - 320px) / 1080);
+    align-items:center;
+    font:800 0.5rem Raleway;
 }
 
 
@@ -346,22 +323,37 @@
     }
 }
 
-@media screen and (max-width:900px){
+@media screen and (max-width:750px){
 
-    .nav-item-l, .nav-item-r{
-        font-size: 30px;
+    .left-nav{
+        display: block;
+        width: 50%;
     }
+    .right-nav{
+        display: block;
+        width: 50%;
+    }
+    .nav-toggler{
+        display: block;
+    }
+    .nav-items{
+        display: none;
+    }
+    .navProfile{
+        display: none;
+    }
+}
+
+@media screen and (max-width:500px){
+
+    .left-nav{
+        width: 100%;
+    }
+
     .right-nav{
         display: none;
     }
-    .left-nav{
-        display: block;
-        width: 100%;
-    }
-    .nav-links-l{
-        padding: 0;
-        text-align: center;
-    }
+    
     .nav-toggler{
         display: block;
     }

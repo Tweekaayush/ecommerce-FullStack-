@@ -6,6 +6,7 @@ import { clearErrors, resetPassword } from '../../actions/userAction';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faEnvelope, faLockOpen, faLock, faKey} from "@fortawesome/free-solid-svg-icons"
 import "./ResetPassword.css"
+import Loader from '../layout/Loader/Loader';
 
 const ResetPassword = () => {
 
@@ -45,24 +46,28 @@ const ResetPassword = () => {
 
   return (
     <Fragment>
-    <div className={`resetPasswordBox`}>
-        <h1>Reset Password</h1>
-        <form
-        className='resetPasswordForm'
-        onSubmit={resetPasswordSubmit}
-        >
-        <div className="oldResetPassword">
-            <FontAwesomeIcon icon={faLock} />
-            <input type="password"  value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password" required/>
-        </div>
-        <div className="newResetPassword">
-            <FontAwesomeIcon icon={faLockOpen} />
-            <input type="password"  value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="Confirm Passowrd" required/>
-        </div>
-        <input type="submit" value="Send" className='resetPasswordBtn'/>
-    </form>
-</div>
-</Fragment>
+      {loading? <Loader/>:(
+        <Fragment>
+        <div className={`resetPasswordBox`}>
+            <h1>Reset Password</h1>
+            <form
+            className='resetPasswordForm'
+            onSubmit={resetPasswordSubmit}
+            >
+            <div className="oldResetPassword">
+                <FontAwesomeIcon icon={faLock} />
+                <input type="password"  value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password" required/>
+            </div>
+            <div className="newResetPassword">
+                <FontAwesomeIcon icon={faLockOpen} />
+                <input type="password"  value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="Confirm Passowrd" required/>
+            </div>
+            <input type="submit" value="Send" className='resetPasswordBtn'/>
+        </form>
+    </div>
+    </Fragment>
+      )}
+    </Fragment>
   )
 }
 

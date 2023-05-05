@@ -1,0 +1,30 @@
+.slide2{
+    width: 100%;
+    height: calc((100vw - 330px) * 0.1);
+    position: relative;
+    border-radius:10px;
+    transition: all 0.2s;
+    margin: 0.3rem 0;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    text-align: center;
+}
+.slide2-img{
+    height: 60px;
+    width: 50px;
+    border-radius:10px;
+    object-fit: cover;
+}
+
+.slide2-title{
+    width: 60%;
+    color:white;
+    font: 400 1rem "Roboto";
+}
+
+@media screen and (max-width:1244px){
+    .slide2-title{
+        font: 400 0.8rem "Roboto";
+    }
+}

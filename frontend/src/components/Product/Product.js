@@ -10,9 +10,11 @@ import ReviewCard from "./ReviewCard.js"
 import {Rating} from "@mui/material"
 import Loader from '../layout/Loader/Loader';
 import Metadata from '../layout/Metadata';
-import Header from '../Home/Header';
+import Header from "../layout/Header/Header"
 
 const Product = () => {
+
+  const [scroll, setScroll] = useState(false)
     const {id} = useParams();
     const dispatch = useDispatch();
     const {product, loading, error} = useSelector((state)=>state.productDetails);
@@ -75,15 +77,23 @@ const Product = () => {
       max:5,
       readOnly:true
   }
+  window.addEventListener("scroll", ()=>{
+    if(window.scrollY > 64) 
+        setScroll(true);
+    else{
+        setScroll(false)
+    } 
+});
+
 
   return (
     <Fragment>
-      {loading? "loading": (
+      {loading? <Loader/>: (
       <Fragment>
         <Metadata title={product.name}></Metadata>
         <div className='productContainer'>
           <Header/>
-        <div className='productBox-1'>
+        <div className={scroll?"productBox-1 productBox-1-active":"productBox-1"}>
           <div className="productBox-1-1">
             <h1>{product.name}</h1>
             <Slider className='productCarousel-1' asNavFor={nav2} ref={(slider1)=>setNav1(slider1)} {...settings}>

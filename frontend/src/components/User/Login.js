@@ -8,6 +8,7 @@ import {clearErrors, login, register} from "../../actions/userAction"
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-toastify"
 import Metadata from '../layout/Metadata'
+import Loader from '../layout/Loader/Loader'
 
 const Login = ({history}) => {
 
@@ -92,7 +93,7 @@ const Login = ({history}) => {
 
   return (
     <Fragment>
-      {loading? "loading" : (<Fragment>
+      {loading? <Loader/> : (<Fragment>
         <Metadata title="Login"></Metadata>
       <div className="loginSignUpContainer">
         <div className='loginSignUpContent'>

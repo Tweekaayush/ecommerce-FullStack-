@@ -1,8 +1,8 @@
 .productContainer{
-    padding-top:calc(5rem + 1rem) ;
-    padding-bottom: 3rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background:rgb(75,1,224);
 }
 
@@ -13,6 +13,11 @@
     width: 100%;
     gap: 2rem;
     margin-bottom: 2rem;
+    padding: 3vmax 0;
+}
+
+.productBox-1-active{
+    margin-top: 5rem;
 }
 
 .productBox-1-1{

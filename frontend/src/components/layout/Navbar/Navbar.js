@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../../actions/userAction';
 
 const Navbar = () =>{
+
     const [toggle, setToggle] = useState(false);
     const {isAuthenticated, user} = useSelector((state)=>state.user);
     const dispatch = useDispatch()
@@ -21,14 +22,15 @@ const Navbar = () =>{
 
     function LeftLink({href, children, ...props}){
         return(
-            <li className={toggle?"nav-item-l slideupin":"nav-item-l slidedownout"}>
+            <li className={toggle?"nav-item slideupin":"nav-item slidedownout"}>
                 <a href ={href} {...props}>{children}</a>
             </li>
         );
     }
+
     function RightLink({href, children, ...props}){
         return(
-            <li className={toggle?"nav-item-r slideleftin":"nav-item-r sliderightout"}>
+            <li className={toggle?"nav-item slideleftin":"nav-item sliderightout"}>
                 <a href ={href} {...props}>{children}</a>
             </li>
         );
@@ -46,7 +48,7 @@ const Navbar = () =>{
                         </div>
                     ):(
                     <div className="nav-items">
-                        <a className="nav-item" href='/login'>Sign In</a>
+                        <a className="nav-signupitem" href='/login'>Sign In</a>
                     </div>                   
                     )}
                 <div className={toggle ? "nav-toggler toggle":"nav-toggler"} onClick={navToggle}>
@@ -62,7 +64,7 @@ const Navbar = () =>{
             </div>
             <div className={toggle?"lower-nav active-lower-nav":"lower-nav"}>
                     <div className={toggle?"left-nav nav-active":"left-nav"}>
-                        <ul className='nav-links-l'>
+                        <ul className='nav-links'>
                             <LeftLink href ="/">Home</LeftLink>
                             <LeftLink href ="/browse">Browse</LeftLink>
                             <LeftLink href ="/news">News</LeftLink>
@@ -71,9 +73,9 @@ const Navbar = () =>{
                         </ul>
                     </div> 
                     <div className={toggle?"right-nav nav-active":"right-nav"}>
-                        <ul className='nav-links-r'>
-                            <RightLink href ="">this is a parathis is a parathis is a parathis is a para</RightLink>
-                            <RightLink href ="">this is a parathis is a parathis is a parathis is a para</RightLink>
+                        <ul className='nav-links'>
+                            <RightLink href ="">Contact Us</RightLink>
+                            <RightLink href ="">Support</RightLink>
                             <div className={toggle?"nav-social-handles slideleftin":"nav-social-handles sliderightout"}>
                                 <span className='icons'><FaFacebook /></span>
                                 <span className='icons'><FaInstagram /></span>

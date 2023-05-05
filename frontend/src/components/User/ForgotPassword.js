@@ -5,6 +5,7 @@ import { clearErrors, forgotPassword } from '../../actions/userAction';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faEnvelope} from "@fortawesome/free-solid-svg-icons"
 import "./ForgotPassword.css"
+import Loader from '../layout/Loader/Loader';
 
 const ForgotPassword = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,8 @@ const ForgotPassword = () => {
 
   return (
     <Fragment>
+      {loading?<Loader/>:(
+        <Fragment>
       <div className="forgotPasswordContainer">
         <div className='forgotPasswordContent'>
           <div className="forgotPasswordContent-1">
@@ -56,6 +59,8 @@ const ForgotPassword = () => {
           </div>
         </div>
       </div>
+    </Fragment>
+      )}
     </Fragment>
   )
 }

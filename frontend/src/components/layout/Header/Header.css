@@ -3,6 +3,7 @@
     width: 100%;
     background-color: rgb(75, 1, 224);
     display: flex;
+    align-items:center;
     justify-content: center;
     z-index: 99;
 }
@@ -14,21 +15,32 @@
     transition: 0.5s ease-in-out;
 }
 
-.headerItems{
-    width: 80%;
+.headerContainer{
+    width: 74%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items:center;
 }
 
-.headerItem{
-    list-style: none;
-    padding: 10px;
-    gap: 1rem;
+.headerHead{
+    padding: 10px 10px 10px 0;
+    font: 300 1.3rem Raleway;
 }
 
-.headerItem a{
+.headerItems{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    flex: 1;
+}
+
+.headerItem{
+    padding: 10px;
+    font: 400 1.1rem Raleway;
     text-decoration: none;
+    color:rgba(255, 255, 255, 0.699);
+}
+.headerItem:hover{
     color:white;
 }
 
@@ -41,7 +53,7 @@
 .searchBox div svg{
     position: absolute;
     transform: translateX(1vmax);
-    font-size: 1.6vmax;
+    font-size: 1.3rem;
     color:rgba(0,0,0,0.623);
 }
 
@@ -51,6 +63,17 @@
     box-sizing:border-box;
     border: 1px solid rgba(0,0,0,0.267);
     border-radius: 50px;
-    font: 100 0.9vmax cursive;
+    font: 100 0.9rem cursive;
     outline: none;
+}
+
+@media screen and (max-width:600px) {
+    .searchBox div input{
+        padding: 0.5rem 0.5rem 0.5rem 2rem;
+        font: 100 0.6rem cursive;
+        width: 100%;
+    }
+    .headerItem{
+        font: 300 1rem Raleway;
+    }
 }

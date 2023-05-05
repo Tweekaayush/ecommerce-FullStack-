@@ -1,32 +1,24 @@
 .card-container{
-    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items:center;
     position: relative;
-    margin: 0.5rem;
-    height: 10rem
+    height: 10rem;
+    margin: 0 5px;
 }
 
 .card-img{
-    max-width: 100%;
-    max-height: 100%;
-    position: absolute;
-    object-fit: cover;
-    opacity: 0.5;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
-
-.card-info{
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-direction: column;
+    position: absolute;
+    opacity: 0.4;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .card-title{
     color: white;
-    margin-bottom: 20px;
+    position: absolute;
+    margin: auto;
+    font:700 1.5rem Raleway;
+    text-shadow: 2px 5px 6px rgba(0, 0, 0, 1);
 }

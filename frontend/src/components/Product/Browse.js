@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import "./Browse.css"
 import { useSelector, useDispatch } from 'react-redux'
 import { getProducts } from '../../actions/productAction'
-import Header from '../Home/Header'
+import Header from "../layout/Header/Header"
 import ProductCard from './ProductCard'
 import { useParams, useLocation } from 'react-router-dom'
 import Pagination from "react-js-pagination"
@@ -44,11 +44,11 @@ const Browse = () => {
 
   return (
     <Fragment>
-        {loading? "loading": (
+        {loading? <Loader/>: (
             <Fragment>
                 <Metadata title={"Browse"}></Metadata>
                 <div className='browseContainer'>
-                <Header/>
+                <Header opt="Browse"/>
                 <div className={scroll?"browseContent browseContent-active":"browseContent"}>
                     <div className="filterBox">
                         <Typography style={{color:"white", padding:"5px 0",fontSize:"1.5rem"}}> Price </Typography>

@@ -5,9 +5,7 @@ const GenreCard = (props) => {
   return (
     <div className="card-container">
         <img className = "card-img" src={props.img} alt="" />
-        <div className="card-info">
-            <h1 className='card-title'>{props.name}</h1>
-        </div>
+        <h1 className='card-title'>{props.name}</h1>
     </div>
   )
 }

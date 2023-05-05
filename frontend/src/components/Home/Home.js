@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons' 
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import Header from "./Header"
+import Header from "../layout/Header/Header"
 import Loader from '../layout/Loader/Loader'
 import { genres } from '../../genrelist'
 import { Link, useNavigate } from 'react-router-dom'
@@ -30,6 +30,10 @@ const Home = () => {
 
   const [scroll, setScroll] = useState(false);
   const [keyword, setKeyword] = useState("");
+  const [windowSize, setWindowSize] = useState([
+    window.innerWidth,
+    window.innerHeight,
+  ]);
 
     window.addEventListener("scroll", ()=>{
         if(window.scrollY > 64) 
@@ -40,11 +44,23 @@ const Home = () => {
     });
 
   useEffect(()=>{
+
     if (error) {
       alert(error);
       dispatch(clearErrors());
     }
     dispatch(getProducts());
+
+    const handleWindowResize = () => {
+      setWindowSize([window.innerWidth, window.innerHeight]);
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+
   },[dispatch]);
 
   function SampleNextArrow(props) {
@@ -70,6 +86,18 @@ const Home = () => {
       />
     );
   }
+    const smSlide={
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay:true,
+      autoplaySpeed:5000,
+      prevArrow:<SamplePrevArrow/>,
+      nextArrow:<SampleNextArrow/>,
+      adaptiveHeight:true,
+      dots:true
+    }
     const hslide= {
       infinite: true,
       speed: 500,
@@ -126,31 +154,37 @@ const Home = () => {
       ]
     };
     
+    function func(){
+      navigate("/browse")
+    }
 
   return (
     <Fragment>
-      {loading? "loading":(<Fragment>
+      {loading? <Loader/>:(<Fragment>
         <Metadata title="Ecommerce"></Metadata>
         <div className='homeContainer'>
-          <Header/>
+          <Header opt="Discover"/>
           <div className={scroll?"homeCarouselBox homeCarouselBox-active":"homeCarouselBox"}>
-            <div className='homeCarouselHeading'>
-              <h1>
-                Featured and Recommended
-              </h1>
-            </div>
-            <div className='homeCarousel'>
-              <Slider className='homeCarouselSlider-1' asNavFor={nav2} ref={(slider1)=>setNav1(slider1)} {...hslide}>
-                {products && products.map(product=>(
+            {windowSize[0] <= 850? (
+                <Slider className='homeCarouselSlider-1' {...smSlide}>
+                  {products && products.map(product=>(
                     <Slide1 id={product._id} img = {product.background_image} title ={product.name} price={product.price}/>
-                ))}
-              </Slider>
-              <Slider className='homeCarouselSlider-2'asNavFor={nav1} ref={(slider2)=>setNav2(slider2)} {...vslide}>
-                {products && products.map(product=>(
-                  <Slide2 id={product._id} img = {product.background_image} title ={product.name} avail={product.description}/>
-                ))}
-              </Slider>
-            </div>
+                  ))}
+                </Slider>
+            ):(
+              <Fragment>
+                <Slider className='homeCarouselSlider-1' asNavFor={nav2} ref={(slider1)=>setNav1(slider1)} {...hslide}>
+                  {products && products.map(product=>(
+                    <Slide1 id={product._id} img = {product.background_image} title ={product.name} price={product.price}/>
+                  ))}
+                </Slider>
+                <Slider className='homeCarouselSlider-2'asNavFor={nav1} ref={(slider2)=>setNav2(slider2)} {...vslide}>
+                  {products && products.map(product=>(
+                    <Slide2 id={product._id} img = {product.background_image} title ={product.name} avail={product.description}/>
+                  ))}
+                </Slider>
+              </Fragment> 
+            )}
           </div>
         <div className="homeBrowseByCategory">
           <div className='homeBrowseHeading'>
@@ -161,13 +195,13 @@ const Home = () => {
           <div className='homeBrowseCarousel'>
           <Slider {...multisettings}>
                 {genres.map((genre)=>(
-                    <GenreCard id={genre.id} img={genre.image_background} name={genre.name}/>
+                    <GenreCard id={genre.id} img={genre.image_background} name={genre.name} onClick={func}/>
                 ))}
           </Slider>
           </div>
         </div>
         <div className={isAuthenticated?"homeRecommendationSection homeRecommendationSection-active":"homeRecommendationSection"}>
-              <h1>Looking for recommendations</h1>
+              <h1>Looking for recommendations?</h1>
               <p>Sign in to view personalized recommendations</p>
               <a href="/login" className='btn'>Sign In</a>
               <p>Or <a href='/login'>Sign Up</a> and join Ecommerce for free</p>

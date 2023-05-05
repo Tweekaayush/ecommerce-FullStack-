@@ -25,22 +25,26 @@ const Header = () => {
     }
   return (
     <div className={scroll?"homeHeader activeHeader":"homeHeader"}>
-        <ul className="headerItems">
-            <li className="headerItem">
+        <div className="headerContainer">
+            <div className="headerHead">
                 <form action="" className="searchBox" onSubmit={searchSubmitHandler}>
                     <div className="">
                         <SearchIcon/>
                         <input type="text" value={keyword} onChange={(e)=> setKeyword(e.target.value)} id="" placeholder='Search Store'/>
                     </div>
                 </form>
-            </li>
-            <li className="headerItem">
-                <a href="/">Discover</a>
-            </li>
-            <li className="headerItem">
-                <a href="/browse">Browse</a>
-            </li>
-        </ul>
+            </div>
+            <div className="headerItems">
+                <div className="leftHeaderItems">
+                    <a href="" className="headerItem">Discover</a>
+                    <a href="" className="headerItem">Browse</a>
+                </div>
+                <div className="rightHeaderItems">
+                    <a href="" className="headerItem">Wishlist</a>
+                    <a href="" className="headerItem">Cart</a>
+                </div>
+            </div>
+        </div>
     </div>
   )
 }
