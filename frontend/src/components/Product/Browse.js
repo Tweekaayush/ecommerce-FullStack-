@@ -51,6 +51,7 @@ const Browse = () => {
                 <Header opt="Browse"/>
                 <div className={scroll?"browseContent browseContent-active":"browseContent"}>
                     <div className="filterBox">
+                        <div>
                         <Typography style={{color:"white", padding:"5px 0",fontSize:"1.5rem"}}> Price </Typography>
                         <Slider
                         value={price}
@@ -61,12 +62,15 @@ const Browse = () => {
                         max={10000}
                         >
                         </Slider>
+                        </div>
+                        <div>
                         <Typography style={{color:"white", padding:"5px 0",fontSize:"1.5rem"}}> Genres </Typography>
                         <ul className="genreBox">
                             {genres.map((genre)=>(
                                 <li className='genreItem' key = {genre.id} onClick={()=>setGenre(genre.name)}>{genre.name}</li>
                             ))}
                         </ul>
+                        </div>
                     </div>
                     <div className='searchResultBox'>
                         <div className="searchResults">

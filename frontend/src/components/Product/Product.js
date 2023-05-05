@@ -11,10 +11,11 @@ import {Rating} from "@mui/material"
 import Loader from '../layout/Loader/Loader';
 import Metadata from '../layout/Metadata';
 import Header from "../layout/Header/Header"
+import { addItemsToCart } from '../../actions/cartAction';
 
 const Product = () => {
 
-  const [scroll, setScroll] = useState(false)
+    const [scroll, setScroll] = useState(false)
     const {id} = useParams();
     const dispatch = useDispatch();
     const {product, loading, error} = useSelector((state)=>state.productDetails);
@@ -85,6 +86,10 @@ const Product = () => {
     } 
 });
 
+const addToCart = () =>{
+  dispatch(addItemsToCart(id))
+  alert("Items added to cart")
+}
 
   return (
     <Fragment>
@@ -117,7 +122,7 @@ const Product = () => {
                 <img src={product.background_image} alt="" />
                 <Rating {...options}/>
                 <h1 className="price">₹ {product.price}</h1>
-                <button>Add to Cart</button>
+                <button onClick={addToCart}>Add to Cart</button>
                 <button>Add to Wishlist</button>
                 <ul>
                   <li>developer</li>

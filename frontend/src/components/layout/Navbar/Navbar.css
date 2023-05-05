@@ -349,6 +349,10 @@
     .left-nav{
         width: 100%;
     }
+    .nav-brand{
+        font-weight: 700;
+        font-size: 1.5rem ;
+    }
 
     .right-nav{
         display: none;

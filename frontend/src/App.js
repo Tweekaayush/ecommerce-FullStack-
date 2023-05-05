@@ -14,6 +14,8 @@ import Browse from "./components/Product/Browse.js"
 import Profile from "./components/User/Profile.js"
 import ForgotPassword from "./components/User/ForgotPassword.js"
 import ResetPassword from "./components/User/ResetPassword.js"
+import Cart from "./components/Cart/Cart.js"
+
 
 function App() {
   const {isAuthenticated, user} = useSelector((state) => state.user)
@@ -38,6 +40,8 @@ function App() {
         <Route exact path = "/account" element={isAuthenticated ? <Profile/> : <Navigate to="/login"/>}></Route>
         <Route exact path = "/password/forgot" element={<ForgotPassword/>}></Route>
         <Route exact path = "/password/reset/:token" element={<ResetPassword/>}></Route>
+        <Route exact path = "/wishlist" element={<ResetPassword/>}></Route>
+        <Route exact path = "/cart" element={<Cart/>}></Route>
       </Routes>
       <Footer/>
     </Router>

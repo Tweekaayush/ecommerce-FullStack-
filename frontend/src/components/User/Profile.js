@@ -100,6 +100,9 @@ const Profile = () => {
             </div>
             <div className="rightProfileContainer">
               <div ref={detailsComp} className="detailsContainer">
+                <div className='detailsContainerHead'>
+                  <h1>Account Details</h1>
+                </div>
                 <div>
                   <h1>Full Name</h1>
                   <p>{user.name}</p>

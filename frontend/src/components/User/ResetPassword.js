@@ -7,6 +7,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faEnvelope, faLockOpen, faLock, faKey} from "@fortawesome/free-solid-svg-icons"
 import "./ResetPassword.css"
 import Loader from '../layout/Loader/Loader';
+import Metadata from '../layout/Metadata';
 
 const ResetPassword = () => {
 
@@ -48,6 +49,7 @@ const ResetPassword = () => {
     <Fragment>
       {loading? <Loader/>:(
         <Fragment>
+        <Metadata title="Reset Password"></Metadata>
         <div className={`resetPasswordBox`}>
             <h1>Reset Password</h1>
             <form

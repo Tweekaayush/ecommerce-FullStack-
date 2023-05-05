@@ -71,7 +71,9 @@ const UpdateProfile = ({clsname, boolVal}) => {
   return (
     <Fragment>
             <div className={`updateProfileBox ${clsname}`}>
+              <div className="updateProfileHead">
                 <h1>Update Details</h1>
+              </div>
                 <form
                 className='updateProfileForm'
                 encType='multipart/form-data'

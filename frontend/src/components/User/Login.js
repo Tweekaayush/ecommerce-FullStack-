@@ -94,7 +94,7 @@ const Login = ({history}) => {
   return (
     <Fragment>
       {loading? <Loader/> : (<Fragment>
-        <Metadata title="Login"></Metadata>
+        <Metadata title="Login/SignUp"></Metadata>
       <div className="loginSignUpContainer">
         <div className='loginSignUpContent'>
           <div className="loginSignUpContent-1">

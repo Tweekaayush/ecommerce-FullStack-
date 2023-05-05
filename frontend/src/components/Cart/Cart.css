@@ -1,0 +1,76 @@
+.cartContainer{
+    width: 100%;
+    height: 100%;
+    background-color:rgb(75, 1, 224);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
+.cartContainerBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 74%;
+    padding: 1rem 0;
+}
+
+.cartHead h1{
+    font: 500 3rem Raleway;
+    color: rgba(255, 255, 255, 0.753);
+    padding-bottom: 3rem;
+}
+
+.cartContents{
+    display: flex;
+    gap: 2rem;
+}
+
+.cartItems{
+    width: 70%;
+}
+
+.cartSummary{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.cartSummaryHead h1{
+    color:white;
+    font: 500 2rem Raleway;
+    padding-bottom: 2.5rem;
+}
+
+.cartSummaryItem, .cartSummaryTotal{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cartSummaryTotal{
+    border-top: 0.1rem solid rgba(255, 255, 255, 0.397);
+}
+
+.cartSummaryItem p{
+    color: white;
+    font: 500 0.8rem Raleway;
+    padding-bottom: 1.1rem;
+}
+.cartSummaryTotal p{
+    color: white;
+    font: 700 1rem Raleway;
+    padding: 1.5rem 0;
+}
+
+.cartSummaryButton{
+    background-color:rgb(35, 0, 104);
+    width: 100%;
+    text-align: center;
+    text-decoration: None;
+    color:white;
+    padding: 1.1rem;
+    border-radius:5px;
+    font: 500 1rem Raleway;
+}

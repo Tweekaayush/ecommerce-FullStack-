@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faEnvelope} from "@fortawesome/free-solid-svg-icons"
 import "./ForgotPassword.css"
 import Loader from '../layout/Loader/Loader';
+import Metadata from '../layout/Metadata';
 
 const ForgotPassword = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ const ForgotPassword = () => {
     <Fragment>
       {loading?<Loader/>:(
         <Fragment>
+          <Metadata title="Forgot Password"></Metadata>
       <div className="forgotPasswordContainer">
         <div className='forgotPasswordContent'>
           <div className="forgotPasswordContent-1">

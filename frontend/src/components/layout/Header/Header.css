@@ -77,3 +77,11 @@
         font: 300 1rem Raleway;
     }
 }
+
+.cartItemIndicator{
+    background:white;
+    color:black;
+    font: 500 1rem Raleway;
+    padding: 5px 10px;
+    border-radius:50%;
+}

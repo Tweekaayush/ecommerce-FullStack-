@@ -50,7 +50,9 @@ const UpdatePassword = ({clsname}) => {
   return (
     <Fragment>
     <div className={`updatePasswordBox ${clsname}`}>
-        <h1>Update Details</h1>
+        <div className="updatePasswordHead">
+            <h1>Change Password</h1>
+        </div>
         <form
         className='updatePasswordForm'
         onSubmit={updatePasswordSubmit}

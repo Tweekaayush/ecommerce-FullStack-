@@ -26,7 +26,7 @@ const Home = () => {
   const [nav2, setNav2] = useState();
   const [genre, setGenre] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate
+  const navigate = useNavigate();
 
   const [scroll, setScroll] = useState(false);
   const [keyword, setKeyword] = useState("");
@@ -154,10 +154,6 @@ const Home = () => {
       ]
     };
     
-    function func(){
-      navigate("/browse")
-    }
-
   return (
     <Fragment>
       {loading? <Loader/>:(<Fragment>
@@ -195,7 +191,9 @@ const Home = () => {
           <div className='homeBrowseCarousel'>
           <Slider {...multisettings}>
                 {genres.map((genre)=>(
-                    <GenreCard id={genre.id} img={genre.image_background} name={genre.name} onClick={func}/>
+                  <Link to="/browse" state={{genre: genre.name}}>
+                    <GenreCard id={genre.id} img={genre.image_background} name={genre.name}/>
+                  </Link>
                 ))}
           </Slider>
           </div>

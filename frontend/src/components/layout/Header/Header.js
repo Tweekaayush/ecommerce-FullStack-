@@ -2,8 +2,14 @@ import React, {useState} from 'react'
 import "./Header.css"
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import {useSelector} from "react-redux"
+
 
 const Header = () => {
+
+    const {isAuthenticated, user} = useSelector((state)=>state.user)
+    const {cartItems} = useSelector((state)=>state.cart)
     const [scroll, setScroll] = useState(false);
     const [keyword, setKeyword] = useState("");
     const navigate = useNavigate();
@@ -36,13 +42,22 @@ const Header = () => {
             </div>
             <div className="headerItems">
                 <div className="leftHeaderItems">
-                    <a href="" className="headerItem">Discover</a>
-                    <a href="" className="headerItem">Browse</a>
+                    <Link to="/" className="headerItem">Discover</Link>
+                    <Link to="/browse" className="headerItem">Browse</Link>
                 </div>
+                {isAuthenticated && (
                 <div className="rightHeaderItems">
-                    <a href="" className="headerItem">Wishlist</a>
-                    <a href="" className="headerItem">Cart</a>
+                    <Link to="/wishlist" className="headerItem">Wishlist</Link>
+                    <Link to="/cart" className="headerItem">
+                        Cart
+                        {cartItems.length?(
+                            <span className='cartItemIndicator'>
+                                {cartItems.length}
+                            </span>
+                        ):""}
+                    </Link>
                 </div>
+                )}
             </div>
         </div>
     </div>
