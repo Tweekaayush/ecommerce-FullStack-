@@ -6,10 +6,9 @@ import {faEnvelope, faLockOpen} from "@fortawesome/free-solid-svg-icons"
 import {useDispatch, useSelector} from "react-redux"
 import {clearErrors, login, register} from "../../actions/userAction"
 import { useNavigate } from "react-router-dom";
-import {toast} from "react-toastify"
 import Metadata from '../layout/Metadata'
 import Loader from '../layout/Loader/Loader'
-import { red } from '@mui/material/colors'
+import PersonIcon from '@mui/icons-material/Person';
 
 const Login = ({history}) => {
 
@@ -136,6 +135,7 @@ const Login = ({history}) => {
            onSubmit={registerSubmit}
           >
             <div className="signUpName">
+              <PersonIcon/>
               <input type="text" placeholder='Name' required name='name' value={name} onChange={registerDataChange}/>
             </div>
             <div className="signUpEmail">
@@ -144,7 +144,7 @@ const Login = ({history}) => {
             </div>
             <div className="signUpPassword">
             <FontAwesomeIcon icon={faLockOpen} />
-              <input type="password" name="password" value={password} onChange={registerDataChange} placeholder="********" required/>
+              <input type="password" name="password" value={password} onChange={registerDataChange} placeholder="password" required/>
             </div>
             <div id="registerImage">
             <img src={avatarPreview} alt="Avatar Preview" />

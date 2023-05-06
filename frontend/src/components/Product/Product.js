@@ -21,7 +21,6 @@ const Product = () => {
     const {product, loading, error} = useSelector((state)=>state.productDetails);
     const navigate= useNavigate();
     const {isAuthenticated, user} = useSelector((state)=>state.user)
-    const {min, req} = product.system_requirements
 
     useEffect(()=>{
         dispatch(getProductDetails(id));

@@ -1,0 +1,17 @@
+.MuiStepConnector-line{
+    display: none !important;
+}
+
+.MuiStepConnector-root{
+    height: 1px;
+    background-color:rgba(0, 0, 0, 0.329) !important;
+}
+
+.MuiStepConnector-active,
+.MuiStepConnector-completed{
+    background-color: rgb(69, 69, 255) !important;
+}
+
+.MuiTypography-root{
+    color:white;
+}

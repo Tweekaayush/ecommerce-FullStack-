@@ -18,6 +18,7 @@ import Cart from "./components/Cart/Cart.js"
 import Wishlist from "./components/Cart/Wishlist.js"
 import Billing from "./components/Cart/Billing.js"
 import NotFound from "./components/layout/Not Found/NotFound";
+import ConfirmOrder from "./components/Cart/ConfirmOrder";
 
 function App() {
   const {isAuthenticated, user} = useSelector((state) => state.user)
@@ -46,6 +47,7 @@ function App() {
         <Route exact path = "/wishlist" element={<Wishlist/>}></Route>
         <Route exact path = "/cart" element={isAuthenticated ? <Cart/> : <Navigate to="/"/>}></Route>
         <Route exact path = "/billing" element={isAuthenticated ? <Billing/> : <Navigate to="/"/>}></Route>
+        <Route exact path = "/order/confirm" element={isAuthenticated ? <ConfirmOrder/> : <Navigate to="/order/confirm"/>}></Route>
         <Route component={window.location.pathname === "/process/payment" ? null : NotFound}/>
       </Routes>
       <Footer/>

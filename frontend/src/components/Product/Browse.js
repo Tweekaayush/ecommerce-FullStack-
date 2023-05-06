@@ -10,6 +10,7 @@ import { Slider, Typography } from '@mui/material'
 import { genres } from '../../genrelist'
 import Loader from '../layout/Loader/Loader'
 import Metadata from '../layout/Metadata'
+import CloseIcon from '@mui/icons-material/Close';
 
 const Browse = () => {
 
@@ -66,7 +67,10 @@ const Browse = () => {
                         </div>
                         <div>
                         <Typography style={{color:"white", padding:"5px 0",fontSize:"1.5rem"}}> Genres </Typography>
-                        <p onClick={()=>setGenre("")}>{genre}</p>
+                        <p onClick={()=>setGenre("")} className='genreBtn'>
+                            {genre}
+                            <CloseIcon/>
+                        </p>
                         <ul className="genreBox">
                             {genres.map((genre)=>(
                                 <li className='genreItem' key = {genre.id} onClick={()=>setGenre(genre.name)}>{genre.name}</li>

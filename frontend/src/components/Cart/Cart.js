@@ -14,6 +14,7 @@ const Cart = () => {
     const {cartItems} = useSelector((state)=>state.cart)
     const [scroll, setScroll] = useState(false);
     const navigate = useNavigate()
+    const subTotal = cartItems.reduce((acc, item) => acc + item.price,0)
 
     const deleteCartItems = (id) =>{
         dispatch(removeItemsFromCart(id))
@@ -61,7 +62,7 @@ const Cart = () => {
                         </div>
                         <div className="cartSummaryItem">
                             <p>Price</p>
-                            <p>{`₹${cartItems.reduce((acc, item) => acc + item.price,0)}`}</p>
+                            <p>{subTotal}</p>
                         </div>
                         <div className="cartSummaryItem">
                             <p>Taxes</p>
@@ -69,7 +70,7 @@ const Cart = () => {
                         </div>
                         <div className="cartSummaryTotal">
                             <p>SubTotal</p>
-                            <p>{`₹${cartItems.reduce((acc, item) => acc + item.price,0)}`}</p>
+                            <p>{subTotal}</p>
                         </div>
                         <button onClick={checkOutHandler} className="cartSummaryButton">CHECK OUT</button>
                     </div>
