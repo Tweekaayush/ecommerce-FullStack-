@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import "./Login.css"
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faEnvelope, faLockOpen} from "@fortawesome/free-solid-svg-icons"
 import {useDispatch, useSelector} from "react-redux"
@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import {toast} from "react-toastify"
 import Metadata from '../layout/Metadata'
 import Loader from '../layout/Loader/Loader'
+import { red } from '@mui/material/colors'
 
 const Login = ({history}) => {
 
@@ -18,12 +19,17 @@ const Login = ({history}) => {
   const loginTab = useRef(null);
   const registerTab = useRef(null);
   const switcherTab = useRef(null);
+  const location = useLocation();
 
   const [user, setUser] = useState({
     name:"",
     email:"",
     password:""
   })
+
+  let redirect = location.search ? location.search.split("=")[1] : "account"
+  redirect = "/" + redirect
+  
 
   const {name, email, password}= user;
   const [loginEmail, setLoginEmail] = useState("");
@@ -69,10 +75,12 @@ const Login = ({history}) => {
       dispatch(clearErrors());
     }
 
-    if(isAuthenticated)
-      navigate("/account") 
+    if(isAuthenticated){
+      navigate(redirect)
+      console.log(redirect) 
+    }
 
-  }, [dispatch, history, isAuthenticated, alert])
+  }, [dispatch, history, isAuthenticated, alert, redirect])
 
   const switchTabs = (e, tab)=>{
     if(tab === "login"){

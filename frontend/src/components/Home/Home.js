@@ -153,7 +153,7 @@ const Home = () => {
         }
       ]
     };
-    
+
   return (
     <Fragment>
       {loading? <Loader/>:(<Fragment>
@@ -161,13 +161,6 @@ const Home = () => {
         <div className='homeContainer'>
           <Header opt="Discover"/>
           <div className={scroll?"homeCarouselBox homeCarouselBox-active":"homeCarouselBox"}>
-            {windowSize[0] <= 850? (
-                <Slider className='homeCarouselSlider-1' {...smSlide}>
-                  {products && products.map(product=>(
-                    <Slide1 id={product._id} img = {product.background_image} title ={product.name} price={product.price}/>
-                  ))}
-                </Slider>
-            ):(
               <Fragment>
                 <Slider className='homeCarouselSlider-1' asNavFor={nav2} ref={(slider1)=>setNav1(slider1)} {...hslide}>
                   {products && products.map(product=>(
@@ -180,7 +173,6 @@ const Home = () => {
                   ))}
                 </Slider>
               </Fragment> 
-            )}
           </div>
         <div className="homeBrowseByCategory">
           <div className='homeBrowseHeading'>
@@ -192,7 +184,7 @@ const Home = () => {
           <Slider {...multisettings}>
                 {genres.map((genre)=>(
                   <Link to="/browse" state={{genre: genre.name}}>
-                    <GenreCard id={genre.id} img={genre.image_background} name={genre.name}/>
+                    <GenreCard genre = {genre}/>
                   </Link>
                 ))}
           </Slider>

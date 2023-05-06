@@ -16,10 +16,12 @@ import ForgotPassword from "./components/User/ForgotPassword.js"
 import ResetPassword from "./components/User/ResetPassword.js"
 import Cart from "./components/Cart/Cart.js"
 import Wishlist from "./components/Cart/Wishlist.js"
+import Billing from "./components/Cart/Billing.js"
 import NotFound from "./components/layout/Not Found/NotFound";
 
 function App() {
   const {isAuthenticated, user} = useSelector((state) => state.user)
+  const {cartItems} = useSelector((state)=>state.cart)
   React.useEffect(()=>{
     WebFont.load({
       google:{
@@ -42,7 +44,8 @@ function App() {
         <Route exact path = "/password/forgot" element={<ForgotPassword/>}></Route>
         <Route exact path = "/password/reset/:token" element={<ResetPassword/>}></Route>
         <Route exact path = "/wishlist" element={<Wishlist/>}></Route>
-        <Route exact path = "/cart" element={<Cart/>}></Route>
+        <Route exact path = "/cart" element={isAuthenticated ? <Cart/> : <Navigate to="/"/>}></Route>
+        <Route exact path = "/billing" element={isAuthenticated ? <Billing/> : <Navigate to="/"/>}></Route>
         <Route component={window.location.pathname === "/process/payment" ? null : NotFound}/>
       </Routes>
       <Footer/>

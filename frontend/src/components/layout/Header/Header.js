@@ -49,10 +49,6 @@ const Header = () => {
                 {isAuthenticated && (
                 <div className="rightHeaderItems">
                     <span>
-                        <Link to="/wishlist" className="headerItem">Wishlist</Link>
-                        <Link to="/wishlist"><ShoppingCartIcon/></Link>
-                    </span>
-                    <span>
                         <Link to="/cart" className="headerItem">
                             Cart
                         </Link>

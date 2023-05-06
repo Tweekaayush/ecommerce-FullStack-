@@ -14,7 +14,8 @@ import Metadata from '../layout/Metadata'
 const Browse = () => {
 
     const location = useLocation();
-    const [genre, setGenre] = useState("");
+    const sbg = location.state ? location.state.genre : ""
+    const [genre, setGenre] = useState(sbg);
     const [currentPage, setCurrentPage] = useState(1);
     const [price, setPrice] = useState([0, 10000])
     const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const Browse = () => {
         } 
     });
 
-    useEffect(()=>{
+    useEffect(()=>{  
         dispatch(getProducts(keyword, currentPage, price, genre));
     }, [dispatch, keyword, currentPage, price, genre])
 
@@ -65,6 +66,7 @@ const Browse = () => {
                         </div>
                         <div>
                         <Typography style={{color:"white", padding:"5px 0",fontSize:"1.5rem"}}> Genres </Typography>
+                        <p onClick={()=>setGenre("")}>{genre}</p>
                         <ul className="genreBox">
                             {genres.map((genre)=>(
                                 <li className='genreItem' key = {genre.id} onClick={()=>setGenre(genre.name)}>{genre.name}</li>
@@ -97,8 +99,6 @@ const Browse = () => {
                         />
                         </div>
                         )}
-
-
                     </div>
                 </div>
             </div>

@@ -30,5 +30,14 @@
     transition: all 0.5s;
 }
 
-@media screen and (max-width:1244px){
+@media screen and (max-width:1024px){
+    .slide1{
+        height: calc((100vw - 110px) * .46);
+    }
+}
+
+@media screen and (max-width:850px){
+    .slide1{
+        height: calc((100vw - 110px) * .57);
+    }
 }

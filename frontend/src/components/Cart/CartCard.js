@@ -17,7 +17,7 @@ const CartCard = ({item, deleteCartItems}) => {
               <h1>{item.name}</h1>
           </div>
           <div className="cartCardPrice">
-            <p>{item.price}</p>
+            <p>₹ {item.price}</p>
           </div>
         </div>
         <div className="cartCardLowerItems">

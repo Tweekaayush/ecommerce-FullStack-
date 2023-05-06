@@ -7,6 +7,7 @@ import { useNavigate} from 'react-router-dom';
 import { logout } from '../../../actions/userAction';
 import { useDispatch } from 'react-redux';
 import "./UserOptions.css"
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
 const UserOptions = ({user}) => {
@@ -19,6 +20,11 @@ const UserOptions = ({user}) => {
       icon:<PersonIcon/>,
       name:"Profile",
       func: account
+    },
+    {
+      icon:<ShoppingCartIcon/>,
+      name: "Cart",
+      func: cart
     },
     {
       icon:<ExitToAppIcon/>,
@@ -42,6 +48,9 @@ const UserOptions = ({user}) => {
   }
   function logoutUser(){
     dispatch(logout());
+  }
+  function cart(){
+    navigate("/cart")
   }
 
 

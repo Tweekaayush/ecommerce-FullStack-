@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, Component, useState } from 'react'
 import Slider from 'react-slick'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetails } from '../../actions/productAction';
 import "./Product.css"
@@ -19,11 +19,13 @@ const Product = () => {
     const {id} = useParams();
     const dispatch = useDispatch();
     const {product, loading, error} = useSelector((state)=>state.productDetails);
+    const navigate= useNavigate();
+    const {isAuthenticated, user} = useSelector((state)=>state.user)
+    const {min, req} = product.system_requirements
 
     useEffect(()=>{
         dispatch(getProductDetails(id));
-    }, [dispatch, id])
-
+      }, [dispatch, id])
 
     const [nav1, setNav1] = useState();
     const [nav2, setNav2] = useState();
@@ -87,7 +89,12 @@ const Product = () => {
 });
 
 const addToCart = () =>{
-  dispatch(addItemsToCart(id))
+  if(isAuthenticated){
+    dispatch(addItemsToCart(id))
+  }
+  else{
+    navigate(`/login?redirect=product/${id}`)
+  }
 }
 
   return (
@@ -102,16 +109,16 @@ const addToCart = () =>{
             <h1>{product.name}</h1>
             <Slider className='productCarousel-1' asNavFor={nav2} ref={(slider1)=>setNav1(slider1)} {...settings}>
                   {
-                      product.images && product.images.map((item, i)=>(
-                        <img src={item.url} alt="" />  
+                      product.images && product.images.map((item)=>(
+                        <img key={item.id} src={item.url} alt="" />  
                       ))
                   }
             </Slider>
             <Slider className='productCarousel-2' asNavFor={nav1} ref={(slider2)=>setNav2(slider2)} {...settings2}>
                   {
-                      product.images && product.images.map((item, i)=>(
+                      product.images && product.images.map((item)=>(
                         <div className='carouselNavItem'>
-                          <img src={item.url} alt="" />  
+                          <img key={item.id} src={item.url} alt="" />  
                         </div>
                       ))
                   }
@@ -124,8 +131,8 @@ const addToCart = () =>{
                 <button onClick={addToCart}>Add to Cart</button>
                 <button>Add to Wishlist</button>
                 <ul>
-                  <li>developer</li>
-                  <li>Platform</li>
+                  <li>Released {product.released}</li>
+                  <li>Platform {product.platform}</li>
                 </ul>
             </div>
         </div>
@@ -139,11 +146,11 @@ const addToCart = () =>{
               <div className="productBox-2-2-1">
                   <div className="productBox-2-2-1-1">
                     <h3>Minimum:</h3>
-                    {/* <p>{product.system_requirements.minimum}</p> */}
+                    {/* <p>{product.system_requirements}</p> */}
                   </div>
                   <div className="productBox-2-2-1-2">
                     <h3>Recommended:</h3>
-                    {/* <p>{product.system_requirements.recommended}</p> */}
+                    {/* <p>{product.system_requirements}</p> */}
                   </div>
               </div>
             </div>

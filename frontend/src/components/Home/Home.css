@@ -149,6 +149,13 @@
 }
 
 
+@media screen and (max-width:1024px) {
+    .homeCarouselBox{
+        width: 90%;
+    }
+}
+
+
 @media screen and (max-width:900px) {
     .homeRecommendationSection h1{
         margin: 10px 0;
@@ -177,6 +184,15 @@
     
     .homeRecommendationSection-active{
         display: none;
+    }
+}
+
+@media screen and (max-width:850px) {
+    .homeCarouselBox .homeCarouselSlider-2{
+        display: none;
+    }
+    .homeCarouselSlider-1{
+        width: 100%;
     }
 }
 

@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import Metadata from '../layout/Metadata'
 import Header from '../layout/Header/Header'
 import CartCard from "./CartCard.js"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import "./Cart.css"
 import { useDispatch, useSelector } from 'react-redux'
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
@@ -12,7 +12,8 @@ const Cart = () => {
 
     const dispatch = useDispatch()
     const {cartItems} = useSelector((state)=>state.cart)
-    const [scroll, setScroll] = useState(false)
+    const [scroll, setScroll] = useState(false);
+    const navigate = useNavigate()
 
     const deleteCartItems = (id) =>{
         dispatch(removeItemsFromCart(id))
@@ -25,6 +26,10 @@ const Cart = () => {
             setScroll(false)
         } 
     });
+
+    const checkOutHandler = () =>{
+        navigate("/billing")
+    }
 
   return (
     <Fragment>
@@ -66,7 +71,7 @@ const Cart = () => {
                             <p>SubTotal</p>
                             <p>{`₹${cartItems.reduce((acc, item) => acc + item.price,0)}`}</p>
                         </div>
-                        <Link to="/" className="cartSummaryButton">CHECK OUT</Link>
+                        <button onClick={checkOutHandler} className="cartSummaryButton">CHECK OUT</button>
                     </div>
                 </div>
             </div>)}

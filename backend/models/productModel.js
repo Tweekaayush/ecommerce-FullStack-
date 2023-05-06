@@ -12,7 +12,15 @@ const productSchema = new mongoose.Schema({
     },
     description:{
         type:String,
-        required:[true, "Please enter product Descriptions"]
+        default:"Elevate your gaming experience with our exceptional PC games collection! From fast-paced shooters to challenging puzzles, our games offer endless hours of entertainment for gamers of all levels. With state-of-the-art graphics, intuitive controls, and thrilling gameplay, you'll be transported to a whole new world of excitement. Whether you're a fan of single-player campaigns or multiplayer battles, our PC games are designed to keep you on the edge of your seat. So why settle for anything less? Try our games today and unleash your inner gamer."
+    },
+    platform:{
+        type:String,
+        default:"Pc"
+    },
+    released:{
+        type:String,
+        default:"N/A"
     },
     price:{
         type:Number,
