@@ -86,7 +86,7 @@ input[type=number] {
     outline: none;
     box-shadow:0 2px 5px rgba(0,0,0,0.219);
 }
-.updatePasswordBtn:hover{
+.billingBtn:hover{
     background-color:rgb(102, 2, 190);
 }
 

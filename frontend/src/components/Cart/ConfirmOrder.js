@@ -4,19 +4,28 @@ import Metadata from "../layout/Metadata"
 import CheckoutSteps from './CheckoutSteps'
 import "./ConfirmOrder.css"
 import CartCard from './CartCard'
+import { useNavigate } from 'react-router-dom'
 
 const ConfirmOrder = () => {
 
+    const navigate = useNavigate()
     const {billingInfo, cartItems} = useSelector((state)=>state.cart)
     const {user} = useSelector((state)=>state.user)
     const subTotal = cartItems.reduce((acc, item) => acc + item.price,0)
     const tax = subTotal * 0.18
-    const total = subTotal + tax
+    const totalPrice = subTotal + tax
     const address = `${billingInfo.state}, ${billingInfo.country} (${billingInfo.pincode})`
 
     const confirmOrderHandler = () =>{
-
+        const data = {
+            subTotal,
+            tax,
+            totalPrice
+        }
+        sessionStorage.setItem("orderInfo", JSON.stringify(data))
+        navigate("/process/payment")
     }
+
   return (
     <Fragment>
         <Metadata title="Confirm Order"></Metadata>
@@ -76,7 +85,7 @@ const ConfirmOrder = () => {
                         </div>
                         <div className="confirmOrderSummaryTotal">
                             <p>Total</p>
-                            <p>{total}</p>
+                            <p>{totalPrice}</p>
                         </div>
                         <button onClick={confirmOrderHandler} className="confirmOrderSummaryButton">Proceed To Payment</button>
                     </div>
