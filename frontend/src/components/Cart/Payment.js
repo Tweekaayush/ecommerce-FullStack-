@@ -1,4 +1,4 @@
-import React, { Fragment, useRef } from 'react'
+import React, { Fragment, useEffect, useRef } from 'react'
 import "./Payment.css"
 import CheckoutSteps from './CheckoutSteps'
 import { useSelector, useDispatch } from 'react-redux'
@@ -6,6 +6,7 @@ import Metadata from '../layout/Metadata'
 import {CardNumberElement, CardCvcElement, CardExpiryElement, useStripe, useElements} from "@stripe/react-stripe-js"
 import axios from 'axios'
 import {useNavigate} from "react-router-dom"
+import {clearErrors, createOrder} from "../../actions/orderAction"
 
 const Payment = () => {
 
@@ -17,9 +18,16 @@ const Payment = () => {
   const elements = useElements()
   const {billingInfo, cartItems} = useSelector((state)=>state.cart)
   const {user} = useSelector((state)=>state.user)
-  // const {error} = useSelector((state)=>state.newOrder)
+  const {error} = useSelector((state)=>state.newOrder)
   const paymentData = {
     amount: Math.round(orderInfo.totalPrice * 100)
+  }
+  const order = {
+    billingInfo,
+    orderItems : cartItems, 
+    itemsPrice: orderInfo.subTotal, 
+    taxPrice:orderInfo.tax,  
+    totalPrice:orderInfo.totalPrice
   }
 
 
@@ -63,6 +71,11 @@ const Payment = () => {
         alert(result.error.message)
       }else{
         if(result.paymentIntent.status === "succeeded"){
+          order.paymentInfo={
+            id: result.paymentIntent.id,
+            status: result.paymentIntent.status
+          }
+          dispatch(createOrder(order))
           navigate("/success")
         }else{
           alert("There was some issue while processing your payment")
@@ -73,8 +86,14 @@ const Payment = () => {
       payBtn.current.disable = false
       alert(error.response.data.message)
     }
-
   }
+
+  useEffect(()=>{
+    if(error){
+      alert(error)
+      dispatch(clearErrors())
+    }
+  }, [dispatch, error, alert])
 
   return (
     <Fragment>

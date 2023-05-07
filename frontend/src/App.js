@@ -25,6 +25,7 @@ import About from "./components/layout/About/About"
 import Contact from "./components/layout/Contact/Contact"
 import { Elements } from "@stripe/react-stripe-js";
 import {loadStripe} from "@stripe/stripe-js"
+import OrderSuccess from "./components/Cart/OrderSuccess.js"
 
 function App() {
 
@@ -65,14 +66,15 @@ function App() {
         <Route exact path = "/contact" element={<Contact/>}></Route>
         <Route exact path = "/cart" element={isAuthenticated ? <Cart/> : <Navigate to="/"/>}></Route>
         <Route exact path = "/billing" element={isAuthenticated ? <Billing/> : <Navigate to="/"/>}></Route>
-        <Route exact path = "/order/confirm" element={isAuthenticated ? <ConfirmOrder/> : <Navigate to="/order/confirm"/>}></Route>
+        <Route exact path = "/order/confirm" element={isAuthenticated ? <ConfirmOrder/> : <Navigate to="/"/>}></Route>
         <Route exact path = "/process/payment" element={isAuthenticated ?
           <Elements stripe={loadStripe(stripeApiKey)}>
             <Payment/>
           </Elements>
-            : <Navigate to="/process/payment"/>}></Route>
+            : <Navigate to="/process/payment"/>}>
+        </Route>
+        <Route exact path = "/success" element={isAuthenticated ? <OrderSuccess/> : <Navigate to="/success"/>}></Route>
       </Routes>
-      {/* <Route exact path="/success" element={</>}></Route> */}
       <Footer/>
     </Router>
   );
