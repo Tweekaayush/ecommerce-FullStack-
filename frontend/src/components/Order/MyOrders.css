@@ -1,0 +1,96 @@
+.myOrdersBox{
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem 4rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.myOrdersBox .myOrdersHead h1{
+    font: 500 2rem Raleway;
+    color: rgba(255, 255, 255, 0.753);
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.466);
+}
+
+.myOrdersContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    min-height: 40vh;
+}
+
+.myOrdersContentHeadings{
+    display: flex;
+    background-color:rgba(0, 6, 62, 0.519);
+    padding: 1rem 5px;
+    margin: 5px 0;
+    color:white;
+    border-radius: 10px 10px 0 0;
+}
+.myOrdersContentHeadings div{
+    flex: 1
+}
+
+
+.myOrdersItemList{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    color:white;
+    overflow-x: scroll;
+}
+
+.myOrdersItemList .emptyOrdersDiv{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items:center;
+}
+
+
+.myOrdersContent .myOrdersItemList h1{
+    font: 400 1.5rem Raleway;
+    color:rgba(255, 255, 255, 0.544);
+}
+
+ul.react-paginate {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    align-items:center;
+    margin: 10px 0;
+  }
+  
+  ul.react-paginate li a {
+    padding: 0.6rem 0.8rem;
+    background-color:white;
+    border-left:1px solid grey;
+    border-right: 1px solid grey;
+    cursor: pointer;
+  }
+
+  ul.react-paginate li a svg{
+    font-size: 0.7rem;
+    padding: 0;
+  }
+  ul.react-paginate li.previous a,
+  ul.react-paginate li.next a,
+  ul.react-paginate li.break a {
+    border-color: transparent;
+  }
+  ul.react-paginate li.selected a {
+    background-color: #0366d6;
+    color: white;
+    min-width: 32px;
+  }
+  ul.react-paginate li.disabled a {
+    background-color: grey;
+  }
+  ul.react-paginate li.disable,
+  ul.react-paginate li.disabled a {
+    cursor: default;
+  }

@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color:rgb(75, 1, 224);
+}
+
 .navbar{
     position: relative;
     z-index: 1001;

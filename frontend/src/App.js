@@ -71,9 +71,9 @@ function App() {
           <Elements stripe={loadStripe(stripeApiKey)}>
             <Payment/>
           </Elements>
-            : <Navigate to="/process/payment"/>}>
+            : <Navigate to="/"/>}>
         </Route>
-        <Route exact path = "/success" element={isAuthenticated ? <OrderSuccess/> : <Navigate to="/success"/>}></Route>
+        <Route exact path = "/success" element={isAuthenticated ? <OrderSuccess/> : <Navigate to="/"/>}></Route>
       </Routes>
       <Footer/>
     </Router>

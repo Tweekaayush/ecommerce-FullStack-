@@ -69,7 +69,6 @@ const UpdateProfile = ({clsname, boolVal}) => {
       },[dispatch, user, isUpdated, navigate, alert])
 
   return (
-    <Fragment>
             <div className={`updateProfileBox ${clsname}`}>
               <div className="updateProfileHead">
                 <h1>Update Details</h1>
@@ -93,7 +92,7 @@ const UpdateProfile = ({clsname, boolVal}) => {
                 <input type="submit" value="Update Profile" className='updateProfileBtn'/>
             </form>
         </div>
-    </Fragment>
+
   )
 }
 

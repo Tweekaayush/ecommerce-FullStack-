@@ -116,7 +116,7 @@ const Payment = () => {
               <div>
                 <CardCvcElement className='paymentInput'/>
               </div>
-              <input type="submit" value={`Pay - ${orderInfo && orderInfo.totalPrice}`} ref={payBtn} className='paymentFormBtn' />
+              <input type="submit" value={`Pay - ₹ ${orderInfo && orderInfo.totalPrice}`} ref={payBtn} className='paymentFormBtn' />
             </form>
           </div>
         </div>

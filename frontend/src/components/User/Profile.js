@@ -6,6 +6,7 @@ import Metadata from '../layout/Metadata'
 import UpdateProfile from './UpdateProfile'
 import UpdatePassword from "./UpdatePassword.js"
 import Loader from '../layout/Loader/Loader'
+import MyOrders from '../Order/MyOrders'
 
 
 const Profile = () => {
@@ -116,8 +117,9 @@ const Profile = () => {
                   <p>{String(user.createdAt).substring(0, 10)}</p>
                 </div>
               </div>
+              <MyOrders clsname ={orderComponent}/>
               <UpdateProfile clsname={editComponent} />
-              <UpdatePassword clsname={passwordComponent} boolVal={false}/>
+              <UpdatePassword clsname={passwordComponent}/>
             </div>
           </div>
         </div>

@@ -39,8 +39,7 @@ const ResetPassword = () => {
     
             if(success){
                 alert("Password updated")
-                
-                navigate("/login")
+                navigate("/account")
             }
 
           },[dispatch, success, alert, navigate])
@@ -50,23 +49,25 @@ const ResetPassword = () => {
       {loading? <Loader/>:(
         <Fragment>
         <Metadata title="Reset Password"></Metadata>
-        <div className={`resetPasswordBox`}>
-            <h1>Reset Password</h1>
-            <form
-            className='resetPasswordForm'
-            onSubmit={resetPasswordSubmit}
-            >
-            <div className="oldResetPassword">
-                <FontAwesomeIcon icon={faLock} />
-                <input type="password"  value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password" required/>
-            </div>
-            <div className="newResetPassword">
-                <FontAwesomeIcon icon={faLockOpen} />
-                <input type="password"  value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="Confirm Passowrd" required/>
-            </div>
-            <input type="submit" value="Send" className='resetPasswordBtn'/>
-        </form>
-    </div>
+        <div className="resetPasswordContainer">
+          <div className="resetPasswordBox">
+              <h1>Reset Password</h1>
+              <form
+              className='resetPasswordForm'
+              onSubmit={resetPasswordSubmit}
+              >
+                <div className="oldResetPassword">
+                    <FontAwesomeIcon icon={faLock} />
+                    <input type="password"  value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password" required/>
+                </div>
+                <div className="newResetPassword">
+                    <FontAwesomeIcon icon={faLockOpen} />
+                    <input type="password"  value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="Confirm Passowrd" required/>
+                </div>
+                <input type="submit" value="Send" className='resetPasswordBtn'/>
+              </form>
+          </div>
+        </div>
     </Fragment>
       )}
     </Fragment>

@@ -3,8 +3,8 @@ import {useSelector} from "react-redux"
 import Metadata from "../layout/Metadata"
 import CheckoutSteps from './CheckoutSteps'
 import "./ConfirmOrder.css"
-import CartCard from './CartCard'
 import { useNavigate } from 'react-router-dom'
+import ConfirmOrderCard from "./ConfirmOrderCard.js"
 
 const ConfirmOrder = () => {
 
@@ -64,7 +64,7 @@ const ConfirmOrder = () => {
                         <div className='confirmOrderItems'>
                             {
                                 cartItems.map((item)=>(
-                                    <CartCard item = {item}/>
+                                    <ConfirmOrderCard item = {item}/>
                                 ))
                             }
                         </div>
@@ -77,15 +77,15 @@ const ConfirmOrder = () => {
                         </div>
                         <div className="confirmOrderSummaryItem">
                             <p>SubTotal</p>
-                            <p>{subTotal}</p>
+                            <p>₹ {subTotal}</p>
                         </div>
                         <div className="confirmOrderSummaryItem">
                             <p>Taxes</p>
-                            <p>{tax}</p>
+                            <p>₹ {tax}</p>
                         </div>
                         <div className="confirmOrderSummaryTotal">
                             <p>Total</p>
-                            <p>{totalPrice}</p>
+                            <p>₹ {totalPrice}</p>
                         </div>
                         <button onClick={confirmOrderHandler} className="confirmOrderSummaryButton">Proceed To Payment</button>
                     </div>

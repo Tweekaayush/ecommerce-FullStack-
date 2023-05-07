@@ -1,22 +1,15 @@
 footer{
     width: 100%;
-    background:rgb(20,18,26);
+    background:rgb(17, 0, 51);
     color: white;
     display: flex;
     align-items: center;
     flex-direction: column;
-    font-family: Phudu;
-}
-
-footer p{
-    font-size: calc(16px + 3 * (100vw - 320px) / 1080);
 }
 
 .upper-footer{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex:1;
+    padding: 10px;
 }
 
 .upper-footer div{
@@ -24,31 +17,88 @@ footer p{
     padding: 0 10px;
 }
 
-.footer-links{
+.upper-footer div h1{
+    font:600 3rem Phudu;
+    margin-bottom: 10px;
+}
+
+.upper-footer div p{
+    font:300 1rem Phudu;
+    margin-bottom: 5px;
+}
+
+.upper-footer div p a{
+    color:rgba(255, 255, 255, 0.418);
+}
+
+.upper-footer .footer-links{
     display: flex;
     align-items: center;
+    gap: 1rem;
+    padding: 0;
 }
 
-.upper-footer h1{
-    padding: 15px 0;
-    font-size: calc(25px + 23 * (100vw - 320px) / 1080);
-    font-family: Phudu;
+.footer-links a svg{
+    color:white;
+    font-size: 1.5rem;
 }
+
 
 .lower-footer{
-    background:rgb(5, 5, 7);
+    background:rgb(10, 0, 29);
     width: 100%;
     text-align: center;
     padding:10px;
-    color:rgb(173, 173, 173);
+    font: 300 1rem Raleway;
+    color:rgba(255, 255, 255, 0.479);
 }
 
-@media screen and (max-width:900px){
-    .upper-footer{
-        font-size: 15px;
+@media screen and (max-width:1024px){
+    .upper-footer div h1{
+        font-size: 2.5rem;
     }
-    .upper-footer h1{
-        padding: 15px 0;
+    .footer-links a svg{
+        color:white;
+        font-size: 1.5rem;
     }
-    
+}
+
+@media screen and (max-width:800px){
+    .upper-footer div h1{
+        font-size: 2rem;
+    }
+
+    .upper-footer div p{
+        font-size: 0.8rem;
+    }
+
+    .footer-links a svg{
+        color:white;
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width:630px){
+    .upper-footer div h1{
+        font-size: 1.5rem;
+    }
+
+    .upper-footer div p{
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width:494px){
+    .upper-footer div h1{
+        font-size: 1.2rem;
+    }
+
+    .upper-footer div p{
+        font-size: 0.6rem;
+    }
+
+    .footer-links a svg{
+        color:white;
+        font-size: 1rem;
+    }
 }

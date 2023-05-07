@@ -62,7 +62,7 @@ const Cart = () => {
                         </div>
                         <div className="cartSummaryItem">
                             <p>Price</p>
-                            <p>{subTotal}</p>
+                            <p>₹ {subTotal}</p>
                         </div>
                         <div className="cartSummaryItem">
                             <p>Taxes</p>
@@ -70,7 +70,7 @@ const Cart = () => {
                         </div>
                         <div className="cartSummaryTotal">
                             <p>SubTotal</p>
-                            <p>{subTotal}</p>
+                            <p>₹ {subTotal}</p>
                         </div>
                         <button onClick={checkOutHandler} className="cartSummaryButton">CHECK OUT</button>
                     </div>

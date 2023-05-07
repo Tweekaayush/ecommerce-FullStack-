@@ -48,7 +48,6 @@ const UpdatePassword = ({clsname}) => {
           },[dispatch, passIsUpdated, alert, navigate])
 
   return (
-    <Fragment>
     <div className={`updatePasswordBox ${clsname}`}>
         <div className="updatePasswordHead">
             <h1>Change Password</h1>
@@ -72,7 +71,6 @@ const UpdatePassword = ({clsname}) => {
         <input type="submit" value="Change" className='updatePasswordBtn'/>
     </form>
 </div>
-</Fragment>
   )
 }
 

@@ -76,7 +76,6 @@ const Login = ({history}) => {
 
     if(isAuthenticated){
       navigate(redirect)
-      console.log(redirect) 
     }
 
   }, [dispatch, history, isAuthenticated, alert, redirect])
