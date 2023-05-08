@@ -1,6 +1,6 @@
 footer{
     width: 100%;
-    background:rgb(17, 0, 51);
+    background:#001020;
     color: white;
     display: flex;
     align-items: center;
@@ -45,11 +45,11 @@ footer{
 
 
 .lower-footer{
-    background:rgb(10, 0, 29);
+    background:#000814;
     width: 100%;
     text-align: center;
     padding:10px;
-    font: 300 1rem Raleway;
+    font: 300 1rem Lato;
     color:rgba(255, 255, 255, 0.479);
 }
 

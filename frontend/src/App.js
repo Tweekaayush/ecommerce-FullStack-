@@ -43,7 +43,7 @@ function App() {
   useEffect(()=>{
     WebFont.load({
       google:{
-        families:["Raleway ","Kaushan Script","Sigmar One", "Phudu"]
+        families:["Raleway ","Kaushan Script","Sigmar One", "Phudu", "Lato"]
       }
     })
     store.dispatch(loadUser());

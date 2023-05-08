@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: Raleway;
+    font-family: Lato;
 }
 
 .browseContent{
@@ -17,11 +17,19 @@
     padding-top: 6rem;
 }
 
+.filterBox h1{
+    color:rgba(255, 255, 255, 0.877);
+}
+
 .searchResultBox{
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    min-height: 70vh;
+}
+.searchResultBox h1{
+    color:  rgba(255, 255, 255, 0.877);
+    margin: 0 0 2.5rem 2.5rem;
 }
 
 .searchResults{
@@ -61,7 +69,7 @@
 
 .page-link{
     text-decoration: none;
-    font: 300 0.7vmax "Roboto";
+    font: 300 0.7vmax Lato;
     color: rgb(80, 80, 80);
     transition: all 0.3s;
 }
@@ -78,19 +86,32 @@
 .genreBox{
     padding: 0;
     height: 300px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .genreItem{
     list-style: none;
     color:rgba(230, 230, 230, 0.795);
-    font: 400 0.9rem "Roboto";
+    font: 400 0.9rem Lato;
     margin: 0.5vmax;
     cursor:pointer;
     transition: all 0.5s;
 }
+
+.genreBtn{
+    background-color:white;
+    border-radius:15px;
+    padding:10px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.genreBtn svg{
+    font-size:1.2rem;
+}
+
 .noProducts{
-    font: 400 1.3vmax "Gill Sans";
+    font: 400 1.3vmax Lato;
     text-align: center;
     color: rgb(255,255,255,0.548);
 }

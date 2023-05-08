@@ -30,10 +30,6 @@ const Home = () => {
 
   const [scroll, setScroll] = useState(false);
   const [keyword, setKeyword] = useState("");
-  const [windowSize, setWindowSize] = useState([
-    window.innerWidth,
-    window.innerHeight,
-  ]);
 
     window.addEventListener("scroll", ()=>{
         if(window.scrollY > 64) 
@@ -50,16 +46,6 @@ const Home = () => {
       dispatch(clearErrors());
     }
     dispatch(getProducts());
-
-    const handleWindowResize = () => {
-      setWindowSize([window.innerWidth, window.innerHeight]);
-    };
-
-    window.addEventListener('resize', handleWindowResize);
-
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
 
   },[dispatch]);
 

@@ -20,11 +20,11 @@
 .slide2-title{
     width: 60%;
     color:white;
-    font: 400 1rem "Roboto";
+    font: 400 0.9rem Lato;
 }
 
 @media screen and (max-width:1244px){
     .slide2-title{
-        font: 400 0.8rem "Roboto";
+        font: 400 0.7rem Lato;
     }
 }

@@ -1,7 +1,7 @@
 .cartCardContainer{
     width: 100%;
     height: 30vh;
-    background-color:rgba(28, 3, 78, 0.644);
+    background-color:#003566;
     margin: 0 0 1rem 0;
     border-radius: 10px;
     display: flex;
@@ -12,7 +12,7 @@
 
 .cartCardImg{
     width: 25%;
-    height: 80%;
+    height: 100%;
     display: flex;
 }
 
@@ -45,17 +45,17 @@
 .cartCardUpperItem-l p{
     text-align: center;
     color:white;
-    font: 500 0.5rem Raleway;
-    background-color:rgb(85, 0, 255);
+    font: 300 0.5rem Lato;
+    background-color:#001D3D;
     border-radius:4px;
     padding: 6px;
-    width: 15%;
+    width: 16%;
     letter-spacing: 1px;
 }
 
 .cartCardUpperItem-l h1{
     color: white;
-    font: 400 1.5rem Raleway;
+    font: 400 1.5rem Lato;
     padding-top: 5px;
 }
 
@@ -80,7 +80,7 @@
     background: transparent;
     border: none;
     color: rgba(255, 255, 255, 0.445);
-    font: 400 1rem Raleway;
+    font: 400 1rem Phudu;
     text-decoration: underline;
     margin-left: 1rem;
 }

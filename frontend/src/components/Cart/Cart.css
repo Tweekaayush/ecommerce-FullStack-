@@ -1,6 +1,6 @@
 .cartContainer{
     width: 100%;
-    height: 100%;
+    min-height: 65vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,7 +12,7 @@
     flex-direction: column;
     justify-content: center;
     width: 74%;
-    padding: 1rem 0;
+    padding: 1rem 0 10rem 0;
 }
 
 .cartContainerBox-active, .emptyCartContainer-active{
@@ -20,7 +20,7 @@
 }
 
 .cartHead h1{
-    font: 500 3rem Raleway;
+    font: 500 3rem Lato;
     color: rgba(255, 255, 255, 0.753);
     padding-bottom: 3rem;
 }
@@ -44,7 +44,7 @@
 
 .cartSummaryHead h1{
     color:white;
-    font: 500 2rem Raleway;
+    font: 500 2rem Phudu;
     padding-bottom: 2.5rem;
 }
 
@@ -59,24 +59,29 @@
 
 .cartSummaryItem p{
     color: white;
-    font: 500 0.8rem Raleway;
+    font: 500 0.8rem Lato;
     padding-bottom: 1.1rem;
 }
 .cartSummaryTotal p{
     color: white;
-    font: 700 1rem Raleway;
+    font: 700 1rem Lato;
     padding: 1.5rem 0;
 }
 
 .cartSummaryButton{
-    background-color:rgb(35, 0, 104);
+    background-color:#0171da;
     width: 100%;
     text-align: center;
     text-decoration: None;
     color:white;
     padding: 1.1rem;
     border-radius:5px;
-    font: 500 1rem Raleway;
+    font: 500 1rem Phudu;
+    border:none;
+    transition: all 0.3s;
+}
+.cartSummaryButton:hover{
+    background-color:#1c88ed;
 }
 
 .emptyCartContainer{

@@ -25,7 +25,7 @@
 
 .upperProfile h1{
     color: rgba(255, 255, 255, 0.788);
-    font:500 2.2vmax "Roboto";
+    font:500 2.2vmax Lato;
 }
 
 .upperProfile img{
@@ -48,23 +48,23 @@
     text-align: center;
     text-decoration: none;
     color: white;
-    font: 400 1.2vmax "Roboto";
-    border-bottom: 1px solid rgb(126, 71, 255);
+    font: 400 1.2vmax Lato;
+    border-bottom: 1px solid #003566;
     padding: 2rem;
 }
 
 .leftProfileContainer p:hover{
-    background:rgb(54, 0, 180);
+    background:#003566;
     transition: all 0.3s;
 }
 
 .leftProfileContainer-active{
-    background:rgb(54, 0, 180);
+    background:#003566;
 }
 
 
 .rightProfileContainer{
-    background:rgb(54, 0, 180);
+    background:#003566;
     width: 80%;
     height: 100%;
 }
@@ -85,7 +85,7 @@
 }
 
 .rightProfileContainer .detailsContainerHead h1{
-    font: 500 2rem Raleway;
+    font: 500 2rem Lato;
     color: rgba(255, 255, 255, 0.753);
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.466);
@@ -93,14 +93,14 @@
 
 .rightProfileContainer div h1{
     color: rgba(255, 255, 255, 0.753);
-    font: 400 1.7rem "Roboto";
+    font: 400 1.7rem Lato;
 }
 
 .rightProfileContainer .detailsContainer div p{
     color: rgba(255, 255, 255, 0.808);
-    font: 400 1rem cursive;
+    font: 400 1rem Lato;
     padding: 1rem;
-    background-color:rgba(29, 0, 88, 0.452);
+    background-color:#001D3D;
     border-radius:10px;
     margin: 0.5rem 0;
 }
@@ -113,7 +113,6 @@
 
 .rightProfileButtons a{
     border:none;
-    background-color:rgb(49, 12, 122);
     font: 400 1vmax "Roboto";
     color: white;
     text-decoration: none;
@@ -138,7 +137,6 @@
 
     .rightProfileContainer{
         border-left:none;
-        border-top: 1px solid rgb(49, 12, 122);
         overflow: scroll;
     }
 

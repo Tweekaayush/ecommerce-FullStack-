@@ -1,21 +1,21 @@
 .productCard {
-    width: 14vmax;
+    width: 18rem;
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    color: rgb(48, 48, 48);
-    margin: 2vmax;
+    color: rgb(255, 255, 255);
     transition: all 0.5s;
     padding-bottom: 0.5vmax;
-    box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+    box-shadow: 0 0 5px rgba(15, 15, 15, 0.808);
+    margin: 0.5rem;
   }
   
   .productCard > img {
-    width: 14vmax;
+    width: 18rem;
   }
   
   .productCard > p {
-    font-family: "Roboto";
+    font-family: Lato;
     font-size: 1.2vmax;
     margin: 1vmax 0.5vmax;
     margin-bottom: 0;
@@ -23,7 +23,7 @@
   
   .productCard > span {
     margin: 0.5vmax;
-    color: tomato;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    color: #1c88ed;
+    font-family: Lato;
     font-size: 1vmax;
   }

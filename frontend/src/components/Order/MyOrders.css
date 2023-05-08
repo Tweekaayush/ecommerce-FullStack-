@@ -9,7 +9,7 @@
 }
 
 .myOrdersBox .myOrdersHead h1{
-    font: 500 2rem Raleway;
+    font: 500 2rem Lato;
     color: rgba(255, 255, 255, 0.753);
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.466);
@@ -25,7 +25,7 @@
 
 .myOrdersContentHeadings{
     display: flex;
-    background-color:rgba(0, 6, 62, 0.519);
+    background-color: #001d3d;
     padding: 1rem 5px;
     margin: 5px 0;
     color:white;
@@ -53,7 +53,7 @@
 
 
 .myOrdersContent .myOrdersItemList h1{
-    font: 400 1.5rem Raleway;
+    font: 400 1.5rem Lato;
     color:rgba(255, 255, 255, 0.544);
 }
 

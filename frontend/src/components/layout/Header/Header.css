@@ -1,7 +1,7 @@
 .homeHeader{
     height: 5rem;
     width: 100%;
-    background-color: rgb(75, 1, 224);
+    background-color: #001D3D;
     display: flex;
     align-items:center;
     justify-content: center;
@@ -24,7 +24,7 @@
 
 .headerHead{
     padding: 10px 10px 10px 0;
-    font: 300 1.3rem Raleway;
+    font: 300 1.3rem Lato;
 }
 
 .headerItems{
@@ -36,7 +36,7 @@
 
 .headerItem{
     padding: 10px;
-    font: 400 1.1rem Raleway;
+    font: 300 1.1rem Lato;
     text-decoration: none;
     color:rgba(255, 255, 255, 0.699);
 }
@@ -89,7 +89,7 @@
 .cartItemIndicator{
     background:rgb(0, 127, 201);
     color:rgb(255, 255, 255);
-    font: 500 1rem Raleway;
+    font: 500 1rem Lato;
     width: 1.5rem;
     height: 1.5rem;
     border-radius:50%;
@@ -124,6 +124,6 @@
         width: 100%;
     }
     .headerItem{
-        font: 300 1rem Raleway;
+        font: 300 1rem Lato;
     }
 }

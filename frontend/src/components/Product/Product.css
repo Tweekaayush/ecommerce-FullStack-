@@ -1,55 +1,107 @@
 .productContainer{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items:center;
     justify-content: center;
+    width: 100%;
+}
+
+.productContainerHeading{
+    width: 74%;
+    padding-bottom:1rem;
+}
+.productContainerHeading span{
+    outline: white;
+}
+.productContainerHeading h1{
+    color:white;
+    font:600 2rem Lato;
 }
 
 .productBox-1{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    padding: 3vmax 0;
+    justify-content: space-between;
+    width: 74%;
+    margin-bottom: 5rem;
 }
 
-.productBox-1-active{
+.productContainer-active{
     margin-top: 5rem;
 }
 
 .productBox-1-1{
-    width: 50%;
+    width: 70%;
     display: flex;
     flex-direction: column;
 }
 
 .productCarousel-1{
     width: 100%;
-    height: 100%;
-    padding: 5px;
+    height: calc((100vw - 110px) * .322);
+    border: 3px solid #57a7fe;
+    margin-bottom:5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .productCarousel-1 img, .productCarousel-2 img{
-    max-height: 100%;
-    max-width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 .productCarousel-2{
     width: 100%;
-}
-
-.carouselNavItem{
-    padding: 0 5px;
+    height: calc((100vw - 110px) * 0.112);
+    border: 3px solid #57a7fe;
 }
 
 .productBox-1-2{
     width: 25%;
     display: flex;
     flex-direction: column;
-
 }
+
+.productBtn{
+    border: none;
+    background-color:#0171da;
+    color: white;
+    font: 500 1rem Phudu;
+    width: 100%;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-radius:4px;
+    outline: none;
+    box-shadow:0 2px 5px rgba(0,0,0,0.219);
+    margin: 5px 0;
+}
+
+.productBtn:hover{
+    background-color: #1c88ed;
+}
+
+.productBox-1-2 img{
+    margin-bottom: 4rem;
+}
+
+.productBox-1-2 .productPrice{
+    color:white;
+}
+
+.productDevDetails{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.productDevDetails div{
+    display: flex;
+    color:white;
+    justify-content: space-between;
+    border-bottom:1px solid rgba(255, 255, 255, 0.493);
+    padding: 10px 0;
+    font:300 1rem Lato;
+}
+
 
 .productCarousel-1 .slick-arrow.slick-prev,
 .productCarousel-1 .slick-arrow.slick-next {
@@ -77,51 +129,68 @@
 }
 
 .productBox-2{
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items:center;
+    background-color:#003566;
+    padding: 2rem;
+    border-radius:10px;
+    margin-bottom: 2rem;
 }
 
-.productBox-2-1{
-    margin: 2rem, 0;
-    width: 78%;
+.productBox-2-1 h1, .productBox-2-2 h1, .reviewsHeading{
+    width: 100%;
+    font: 500 2.5rem Lato;
+    color:#7abfff;
+    border-bottom: 1px solid #1c88ed;
 }
+
 
 .productBox-2-1 p{
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     color: white;
-}
-.productBox-2-1 h1{
-    padding: 1vmax 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.886);
+    font:300 1.2rem Lato;
 }
 
-.productBox-2-2{
+.productBox-2-1, .productBox-2-2{
     margin: 2rem, 0;
-    width: 78%;
+    width: 100%;
 }
-
-.productBox-2-2 h1{
-    padding: 1vmax 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.886);
-}
-
 .productBox-2-3{
-    margin: 2rem, 0;
-    width: 78%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items:center;
+    flex-direction: column;
+}
+
+.productReviewsBox{
+    width: 100%;
+    display: flex;
 }
 
 .productBox-2-3-1{
-    width: 30%;
-    border-right: 1px solid rgb(35, 0, 105);
+    flex: 1;
+    border-right: 1px solid #1c88ed;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.productBox-2-3-1 h1{
+    color:white;
+    font:400 1.5rem Lato;
 }
 .productBox-2-3-2{
-    width: 70%;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+
 }
 
 .productBox-2-2-1{
@@ -132,19 +201,50 @@
     align-items:center;
 }
 
+.productBox-2-2-1 div h2{
+    color:white;
+    font:400 1rem Lato
+}
+
 .productBox-2-2-1-1, .productBox-2-2-1-2{
     width: 50%;
 }
 
-.reviewsHeading{
-    width: 78%;
-    padding: 1vmax 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.886);
-    margin-bottom: 4vmax;
+
+.submitDialog{
+    display: flex;
+    flex-direction: column;
+}
+
+.submitDialogTextArea{
+    border:1px solid #001d3d;
+    margin: 1rem 0;
+    outline: none;
+    padding: 1rem;
+    font:300 1rem "Lato"
 }
 
 .noReviews{
     font: 400 1.3vmax "Gill Sans";
     text-align: center;
     color: rgb(255,255,255,0.548);
+}
+
+.reviewBtn{
+    border: none;
+    background-color:#0171da;
+    color: white;
+    font: 500 1rem Lato;
+    width: 60%;
+    padding: 0.7rem;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-radius:4px;
+    outline: none;
+    box-shadow:0 2px 5px rgba(0,0,0,0.219);
+    margin: 5px 0;
+}
+
+.reviewBtn:hover{
+    background-color: #1c88ed;
 }

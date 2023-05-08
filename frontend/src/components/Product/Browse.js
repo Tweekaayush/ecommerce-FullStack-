@@ -19,6 +19,7 @@ const Browse = () => {
     const [genre, setGenre] = useState(sbg);
     const [currentPage, setCurrentPage] = useState(1);
     const [price, setPrice] = useState([0, 10000])
+    const [sliderVal, setSliderVal] = useState([0, 10000])
     const dispatch = useDispatch();
     const {products ,loading, error, productCount, resultPerPage, filteredProductsCount}  = useSelector((state)=>state.products);
     const {keyword} = useParams();
@@ -40,8 +41,8 @@ const Browse = () => {
     const setCurrentPageNo = (e) =>{
         setCurrentPage(e)
     }
-    const priceHandler = (e, newPrice) =>{
-        setPrice(newPrice)
+    const priceHandler = (e) =>{
+        setPrice(sliderVal)
     }
 
   return (
@@ -53,32 +54,37 @@ const Browse = () => {
                 <Header opt="Browse"/>
                 <div className={scroll?"browseContent browseContent-active":"browseContent"}>
                     <div className="filterBox">
+                        <h1>Filter :</h1>
                         <div>
-                        <Typography style={{color:"white", padding:"5px 0",fontSize:"1.5rem"}}> Price </Typography>
-                        <Slider
-                        value={price}
-                        onChange={priceHandler}
-                        valueLabelDisplay='auto'
-                        aria-labelledby='range-slider'
-                        min={0}
-                        max={10000}
-                        >
-                        </Slider>
+                            <Typography style={{color:"rgba(255, 255, 255, 0.712)", padding:"5px 0",fontSize:"1.5rem"}}> Price </Typography>
+                            <Slider
+                            value={sliderVal}
+                            onChange={(e)=>setSliderVal(e.target.value)}
+                            onChangeCommitted={priceHandler}
+                            valueLabelDisplay='auto'
+                            aria-labelledby='range-slider'
+                            min={0}
+                            max={10000}
+                            >
+                            </Slider>
                         </div>
                         <div>
-                        <Typography style={{color:"white", padding:"5px 0",fontSize:"1.5rem"}}> Genres </Typography>
-                        <p onClick={()=>setGenre("")} className='genreBtn'>
-                            {genre}
-                            <CloseIcon/>
-                        </p>
-                        <ul className="genreBox">
-                            {genres.map((genre)=>(
-                                <li className='genreItem' key = {genre.id} onClick={()=>setGenre(genre.name)}>{genre.name}</li>
-                            ))}
-                        </ul>
+                            <Typography style={{color:"rgba(255, 255, 255, 0.712)", padding:"5px 0",fontSize:"1.5rem"}}> Genres </Typography>
+                            <div onClick={()=>setGenre("")} className="genreBtn">
+                                <p>
+                                    {genre}
+                                </p>
+                                <CloseIcon/>
+                            </div>
+                            <ul className="genreBox">
+                                {genres.map((genre)=>(
+                                    <li className='genreItem' key = {genre.id} onClick={()=>setGenre(genre.name)}>{genre.name}</li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                     <div className='searchResultBox'>
+                        <h1>Games :</h1>
                         <div className="searchResults">
                             {count? products.map((product)=>(
                                 <ProductCard key={product._id} product={product}/>

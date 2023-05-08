@@ -32,7 +32,7 @@
 
 .confirmOrderSummaryHead h1{
     color:white;
-    font: 500 2rem roboto;
+    font: 500 2rem Phudu;
     padding-bottom: 2.5rem;
 }
 
@@ -47,22 +47,28 @@
 
 .confirmOrderSummaryItem p{
     color: white;
-    font: 500 0.8rem roboto;
+    font: 500 0.8rem Lato;
     padding-bottom: 1.1rem;
 }
 .confirmOrderSummaryTotal p{
     color: white;
-    font: 700 1rem roboto;
+    font: 500 1rem Lato;
     padding: 1.5rem 0;
 }
 
 .confirmOrderSummaryButton{
-    background-color:rgb(35, 0, 104);
+    background-color: #0171da;
     width: 100%;
     text-align: center;
     text-decoration: None;
     color:white;
     padding: 1.1rem;
     border-radius:5px;
-    font: 500 1rem roboto;
+    font: 500 1rem Phudu;
+    border:none;
+    transition: all 0.3s;
+}
+
+.confirmOrderSummaryButton:hover{
+    background-color: #1c88ed;
 }

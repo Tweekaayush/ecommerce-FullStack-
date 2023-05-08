@@ -7,11 +7,14 @@ import "./Product.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons' 
 import ReviewCard from "./ReviewCard.js"
-import {Rating} from "@mui/material"
+import {Rating, Dialog, DialogActions, DialogTitle, DialogContent, Button} from "@mui/material"
 import Loader from '../layout/Loader/Loader';
 import Metadata from '../layout/Metadata';
 import Header from "../layout/Header/Header"
 import { addItemsToCart } from '../../actions/cartAction';
+import { newReview, clearErrors } from '../../actions/productAction';
+import { NEW_REVIEW_RESET } from '../../constants/productConstants';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 const Product = () => {
 
@@ -21,13 +24,48 @@ const Product = () => {
     const {product, loading, error} = useSelector((state)=>state.productDetails);
     const navigate= useNavigate();
     const {isAuthenticated, user} = useSelector((state)=>state.user)
+    const { success, error: reviewError } = useSelector(
+      (state) => state.newReview
+    );
+  const [open, setOpen] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
 
     useEffect(()=>{
+      if (error) {
+        alert.error(error);
+        dispatch(clearErrors());
+      }
+  
+      if (reviewError) {
+        alert.error(reviewError);
+        dispatch(clearErrors());
+      }
+      if (success) {
+      alert("Review Submitted Successfully");
+      dispatch({ type: NEW_REVIEW_RESET });
+    }
         dispatch(getProductDetails(id));
-      }, [dispatch, id])
+      }, [dispatch, id, reviewError, success])
 
     const [nav1, setNav1] = useState();
     const [nav2, setNav2] = useState();
+
+    const submitReviewToggle = () => {
+      open ? setOpen(false) : setOpen(true);
+    };
+
+    const reviewSubmitHandler = () => {
+      const myForm = new FormData();
+  
+      myForm.set("rating", rating);
+      myForm.set("comment", comment);
+      myForm.set("productId", id);
+  
+      dispatch(newReview(myForm));
+  
+      setOpen(false);
+    };
 
     function SampleNextArrow(props) {
       const { className, style, onClick } = props;
@@ -71,6 +109,8 @@ const Product = () => {
       arrows:true,
       swipeToSlide:true,
       focusOnSelect:true,
+      nextArrow: <SampleNextArrow/>,
+      prevArrow: <SamplePrevArrow/>
     }
 
     const options = {
@@ -101,19 +141,25 @@ const addToCart = () =>{
       {loading? <Loader/>: (
       <Fragment>
         <Metadata title={product.name}></Metadata>
-        <div className='productContainer'>
+        <div className={scroll?'productContainer productContainer-active':"productContainer"}>
           <Header/>
-        <div className={scroll?"productBox-1 productBox-1-active":"productBox-1"}>
-          <div className="productBox-1-1">
+          <div className="productContainerHeading">
             <h1>{product.name}</h1>
-            <Slider className='productCarousel-1' asNavFor={nav2} ref={(slider1)=>setNav1(slider1)} {...settings}>
+            <Rating 
+            {...options}
+            emptyIcon={<StarBorderIcon style={{color:"white"}}/>}
+            />
+          </div>
+          <div className="productBox-1">
+            <div className="productBox-1-1">
+              <Slider className='productCarousel-1' asNavFor={nav2} ref={(slider1)=>setNav1(slider1)} {...settings}>
                   {
                       product.images && product.images.map((item)=>(
                         <img key={item.id} src={item.url} alt="" />  
                       ))
                   }
-            </Slider>
-            <Slider className='productCarousel-2' asNavFor={nav1} ref={(slider2)=>setNav2(slider2)} {...settings2}>
+              </Slider>
+              <Slider className='productCarousel-2' asNavFor={nav1} ref={(slider2)=>setNav2(slider2)} {...settings2}>
                   {
                       product.images && product.images.map((item)=>(
                         <div className='carouselNavItem'>
@@ -121,18 +167,24 @@ const addToCart = () =>{
                         </div>
                       ))
                   }
-            </Slider>
+              </Slider>
           </div>
             <div className="productBox-1-2">
                 <img src={product.background_image} alt="" />
-                <Rating {...options}/>
-                <h1 className="price">₹ {product.price}</h1>
-                <button onClick={addToCart}>Add to Cart</button>
-                <button>Add to Wishlist</button>
-                <ul>
-                  <li>Released {product.released}</li>
-                  <li>Platform {product.platform}</li>
-                </ul>
+                <p className="productPrice">₹ {product.price}</p>
+                <button className="productBtn" onClick={addToCart}>Add to Cart</button>
+                <div className='productDevDetails'>
+                  <div>
+                    <p>Released</p>
+                    <p>
+                       {product.released}
+                    </p>
+                  </div>
+                  <div>
+                    <p>Platform</p>
+                    <p>{product.platform}</p>
+                  </div>
+                </div>
             </div>
         </div>
         <div className="productBox-2">
@@ -144,31 +196,69 @@ const addToCart = () =>{
               <h1>System Requirements</h1>
               <div className="productBox-2-2-1">
                   <div className="productBox-2-2-1-1">
-                    <h3>Minimum:</h3>
+                    <h2>Minimum:</h2>
                     {/* <p>{product.system_requirements}</p> */}
                   </div>
                   <div className="productBox-2-2-1-2">
-                    <h3>Recommended:</h3>
+                    <h2>Recommended:</h2>
                     {/* <p>{product.system_requirements}</p> */}
                   </div>
               </div>
             </div>
-            <h1 className="reviewsHeading">REVIEWS</h1>
             <div className="productBox-2-3">
-              <div className="productBox-2-3-1">
-                  <h1>Overall Reviews</h1>
-                  <Rating {...options}/>
-                  <p>{product.numOfReviews}</p>
-                  <button>Write a Review</button>
-              </div>
-              <div className="productBox-2-3-2">
-                {product.reviews && product.reviews[0] ?(
-                  <div className="reviews">
-                    {product.reviews && product.reviews.map((review)=> <ReviewCard review={review}/>)}
-                  </div>
-                ): (
-                  <p className="noReviews">No Reviews Yet</p>
-                )}
+              <h1 className="reviewsHeading">Reviews</h1>
+              <div className="productReviewsBox">
+                <div className="productBox-2-3-1">
+                    <h1>Overall Reviews</h1>
+                    <p>
+                      <Rating 
+                        {...options}
+                        emptyIcon={<StarBorderIcon style={{color:"white"}}/>}
+                        size="small"
+                        />
+                    </p>
+                    <button onClick={submitReviewToggle} className='reviewBtn'>Write a Review</button>
+                </div>
+                <div className="productBox-2-3-2">
+                  <Dialog
+                  aria-labelledby='simple-dialog-title'
+                  open ={open}
+                  onClose={submitReviewToggle}
+                  >
+                    <DialogTitle className='submitDialogHeading'>Submit Review</DialogTitle>
+                    <DialogContent className='submitDialog'>
+                      <Rating
+                        onChange={(e)=>setRating(e.target.value)}
+                        value = {rating}
+                        size='large'
+                        />
+                        <textarea 
+                        cols="30"
+                        rows="5"
+                        className='submitDialogTextArea'
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
+                        >
+
+                        </textarea>
+                      </DialogContent>
+                      <DialogActions>
+                        <Button onClick={submitReviewToggle} color="secondary">
+                          Cancel
+                        </Button>
+                        <Button onClick={reviewSubmitHandler} color="primary">
+                          Submit
+                        </Button>
+                      </DialogActions>
+                  </Dialog>
+                  {product.reviews && product.reviews[0] ?(
+                    <div className="reviews">
+                      {product.reviews && product.reviews.map((review)=> <ReviewCard review={review}/>)}
+                    </div>
+                  ): (
+                    <p className="noReviews">No Reviews Yet</p>
+                  )}
+                </div>
               </div>
             </div>
         </div>

@@ -15,10 +15,10 @@
 }
 .reviewCard p{
     color: rgba(255, 255, 255, 0.836);
-    font: 600 0.9vmax "Roboto";
+    font: 600 1rem Raleway;
 }
 
-.reviewCard span{
+.reviewCard .comment{
     color: rgba(255, 255, 255, 0.445);
     font: 300 0.8vmax cursive;
 }

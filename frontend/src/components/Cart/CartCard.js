@@ -21,7 +21,6 @@ const CartCard = ({item, deleteCartItems}) => {
           </div>
         </div>
         <div className="cartCardLowerItems">
-          <button>Move to wishlist</button>
           <button onClick={()=>deleteCartItems(item.product)}>Remove</button>
         </div>
       </div>
