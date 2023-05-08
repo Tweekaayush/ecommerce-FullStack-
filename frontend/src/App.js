@@ -26,10 +26,11 @@ import Contact from "./components/layout/Contact/Contact"
 import { Elements } from "@stripe/react-stripe-js";
 import {loadStripe} from "@stripe/stripe-js"
 import OrderSuccess from "./components/Cart/OrderSuccess.js"
+import Dashboard from "./components/Admin/Dashboard.js"
 
 function App() {
 
-  const {isAuthenticated, user} = useSelector((state) => state.user)
+  const {isAuthenticated, user, loading} = useSelector((state) => state.user)
   const {cartItems} = useSelector((state)=>state.cart)
   const [stripeApiKey, setStripeApiKey] = useState("")
 
@@ -58,22 +59,23 @@ function App() {
         <Route exact path ="/product/:id" element={<Product/>}/>
         <Route exact path ="/browse" element={<Browse/>}/>
         <Route exact path ="/browse/:keyword" element={<Browse/>}/>
-        <Route exact path = "/account" element={isAuthenticated ? <Profile/> : <Navigate to="/login"/>}></Route>
+        <Route exact path = "/account" element={isAuthenticated === true ? <Profile/> : <Navigate to="/login"/>}></Route>
         <Route exact path = "/password/forgot" element={<ForgotPassword/>}></Route>
         <Route exact path = "/password/reset/:token" element={<ResetPassword/>}></Route>
         <Route exact path = "/wishlist" element={<Wishlist/>}></Route>
         <Route exact path = "/about" element={<About/>}></Route>
         <Route exact path = "/contact" element={<Contact/>}></Route>
-        <Route exact path = "/cart" element={isAuthenticated ? <Cart/> : <Navigate to="/"/>}></Route>
-        <Route exact path = "/billing" element={isAuthenticated ? <Billing/> : <Navigate to="/"/>}></Route>
-        <Route exact path = "/order/confirm" element={isAuthenticated ? <ConfirmOrder/> : <Navigate to="/"/>}></Route>
-        <Route exact path = "/process/payment" element={isAuthenticated ?
+        <Route exact path = "/cart" element={isAuthenticated === true ? <Cart/> : <Navigate to="/"/>}></Route>
+        <Route exact path = "/billing" element={isAuthenticated === true ? <Billing/> : <Navigate to="/"/>}></Route>
+        <Route exact path = "/order/confirm" element={isAuthenticated === true ? <ConfirmOrder/> : <Navigate to="/"/>}></Route>
+        <Route exact path = "/process/payment" element={isAuthenticated === true ?
           <Elements stripe={loadStripe(stripeApiKey)}>
             <Payment/>
           </Elements>
             : <Navigate to="/"/>}>
         </Route>
-        <Route exact path = "/success" element={isAuthenticated ? <OrderSuccess/> : <Navigate to="/"/>}></Route>
+        <Route exact path = "/success" element={isAuthenticated === true ? <OrderSuccess/> : <Navigate to="/"/>}></Route>
+        <Route exact path = "/admin/dashboard" element={(isAuthenticated === true && user.role ==="admin")? <Dashboard/> : <Navigate to="/account"/>}></Route>
       </Routes>
       <Footer/>
     </Router>

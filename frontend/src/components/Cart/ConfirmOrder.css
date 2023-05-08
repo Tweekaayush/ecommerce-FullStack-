@@ -18,7 +18,40 @@
 
 .confirmOrderBox-l{
     width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
+
+.confirmBillingsInfo{
+    display: flex;
+    flex-direction: column;
+    background:#002752b8;
+    padding: 1rem;
+    border-radius:10px;
+}
+
+.confirmBillingsInfo div{
+    display: flex;
+    color:white;
+    font:300 1rem Lato;
+    gap:2rem;
+    padding: 0.5rem 0;
+}
+
+.confirmOrderItemsBox, .confirmOrderBillingDetails{
+    display:flex;
+    flex-direction: column;
+}
+
+.confirmOrderItemsHead, .billingDetailsHead{
+    font: 300 1.1rem Lato;
+    color: rgba(255, 255, 255, 0.768);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.466);
+    margin-bottom: 1rem;
+}
+
 .confirmOrderBox-r{
     width: 300px;
 }
@@ -71,4 +104,19 @@
 
 .confirmOrderSummaryButton:hover{
     background-color: #1c88ed;
+}
+
+@media screen and (max-width:1024px) {
+    .confirmOrderBox{
+        flex-direction: column;
+        width: 90%;
+        justify-content: center;
+        align-items:center;
+    }
+    .confirmOrderBox-l, .confirmOrderBox-r{
+        width: 100%;
+    }
+    .confirmOrderSummary{
+        width: 100%;
+    }
 }

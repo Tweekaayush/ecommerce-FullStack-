@@ -77,6 +77,7 @@ const Payment = () => {
           }
           dispatch(createOrder(order))
           navigate("/success")
+          localStorage.clear()
         }else{
           alert("There was some issue while processing your payment")
         }
@@ -101,10 +102,6 @@ const Payment = () => {
       <CheckoutSteps activeSteps={2}/>
       <div className="paymentContainer">
         <div className="paymentBox">
-          <div className="paymentMethods">
-            <p>Credit Card</p>
-          </div>
-          <div className="paymentDetails">
             <form className="paymentForm" onSubmit={submitPaymentHandler}>
               <h1 className="paymentHead">Card Details</h1>
               <div>
@@ -118,7 +115,6 @@ const Payment = () => {
               </div>
               <input type="submit" value={`Pay - ₹ ${orderInfo && orderInfo.totalPrice}`} ref={payBtn} className='paymentFormBtn' />
             </form>
-          </div>
         </div>
       </div>
     </Fragment>

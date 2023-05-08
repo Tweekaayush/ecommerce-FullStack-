@@ -8,14 +8,14 @@
 }
 
 .paymentBox{
-    width: 74%;
+    width: 30rem;
     display: flex;
     justify-content: center;
     height: 70vh;
-    background-color:rgb(42, 0, 128);
+    background-color: #003566;
     color: white;
-    padding: 2rem;
     border-radius: 5px;
+    border-radius:10px;
 }
 
 .paymentMethods{
@@ -24,15 +24,9 @@
     flex-direction: column;
     border-right: 1px solid white;
 }
-.paymentDetails{
-    width: 80%;
-    display: flex;
-    justify-content: center;
-    align-items:center;
-}
 
 .paymentForm{
-    width: 30%;
+    width: 70%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -83,4 +77,14 @@
 }
 .paymentFormBtn:hover{
     background-color:rgb(35, 174, 255);
+}
+
+
+@media screen and (max-width:600px) {
+    .paymentBox{
+        width: 20rem;
+    }
+    .paymentForm{
+        width: 80%;
+    }
 }

@@ -40,15 +40,15 @@ const ConfirmOrder = () => {
                         </div>
                         <div className="confirmBillingsInfo">
                             <div>
-                                <p>Name</p>
+                                <p>Name:</p>
                                 <span>{billingInfo.name}</span>
                             </div>
                             <div>
-                                <p>Email</p>
+                                <p>Email:</p>
                                 <span>{billingInfo.email}</span>
                             </div>
                             <div>
-                                <p>Phone</p>
+                                <p>Phone:</p>
                                 <span>{billingInfo.phoneNo}</span>
                             </div>
                             <div>
@@ -59,7 +59,7 @@ const ConfirmOrder = () => {
                     </div>
                     <div className="confirmOrderItemsBox">
                         <div className="confirmOrderItemsHead">
-                            <h1>Your Items</h1>
+                            <h1>Your Cart Items</h1>
                         </div>
                         <div className='confirmOrderItems'>
                             {

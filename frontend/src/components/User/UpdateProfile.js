@@ -5,6 +5,7 @@ import { UPDATE_PROFILE_RESET } from '../../constants/userConstants';
 import { clearErrors,loadUser, updateProfile } from '../../actions/userAction';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faEnvelope, faLockOpen} from "@fortawesome/free-solid-svg-icons"
+import PersonIcon from '@mui/icons-material/Person';
 import "./UpdateProfile.css"
 
 const UpdateProfile = ({clsname, boolVal}) => {
@@ -79,6 +80,7 @@ const UpdateProfile = ({clsname, boolVal}) => {
                 onSubmit={updateProfileSubmit}
                 >
                 <div className="updateProfileName">
+                  <PersonIcon/>
                 <input type="text" placeholder='Name' required name='name' value={name} onChange={(e)=>setName(e.target.value)}/>
                 </div>
                 <div className="updateProfileEmail">

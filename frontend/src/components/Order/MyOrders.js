@@ -38,6 +38,11 @@ const MyOrders = ({clsname}) => {
     dispatch(myOrders());
   }, [dispatch, error, alert])
 
+  const Sort = () =>{
+    if(currentItems.length !== 0)
+      currentItems.sort()
+  }
+
   return (
       <div className={`myOrdersBox ${clsname}`}>
         <div className="myOrdersHead">
@@ -53,7 +58,7 @@ const MyOrders = ({clsname}) => {
                 <p>Status:</p>
               </div>
               <div>
-                <p>Amount:</p>
+                <p onClick={Sort}>Amount:</p>
               </div>
             </div>  
             {currentItems.length !== 0 ? (
