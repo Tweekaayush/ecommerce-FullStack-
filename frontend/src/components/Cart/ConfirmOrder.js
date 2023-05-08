@@ -12,7 +12,8 @@ const ConfirmOrder = () => {
     const {billingInfo, cartItems} = useSelector((state)=>state.cart)
     const {user} = useSelector((state)=>state.user)
     const subTotal = cartItems.reduce((acc, item) => acc + item.price,0)
-    const tax = subTotal * 0.18
+    let tax = (subTotal * 0.18)
+    tax = (Number)(tax.toFixed(2))
     const totalPrice = subTotal + tax
     const address = `${billingInfo.state}, ${billingInfo.country} (${billingInfo.pincode})`
 

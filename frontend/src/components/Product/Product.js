@@ -27,9 +27,9 @@ const Product = () => {
     const { success, error: reviewError } = useSelector(
       (state) => state.newReview
     );
-  const [open, setOpen] = useState(false);
-  const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState("");
+    const [open, setOpen] = useState(false);
+    const [rating, setRating] = useState(0);
+    const [comment, setComment] = useState("");
 
     useEffect(()=>{
       if (error) {
@@ -196,12 +196,12 @@ const addToCart = () =>{
               <h1>System Requirements</h1>
               <div className="productBox-2-2-1">
                   <div className="productBox-2-2-1-1">
-                    <h2>Minimum:</h2>
-                    {/* <p>{product.system_requirements}</p> */}
+                    {/* <h2>Minimum:</h2> */}
+                    <p>{product.minimum}</p>
                   </div>
                   <div className="productBox-2-2-1-2">
-                    <h2>Recommended:</h2>
-                    {/* <p>{product.system_requirements}</p> */}
+                    {/* <h2>Recommended:</h2> */}
+                    <p>{product.recommended}</p>
                   </div>
               </div>
             </div>

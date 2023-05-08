@@ -198,7 +198,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items:center;
 }
 
 .productBox-2-2-1 div h2{
@@ -208,6 +207,8 @@
 
 .productBox-2-2-1-1, .productBox-2-2-1-2{
     width: 50%;
+    color:white;
+    font: 300 1rem Lato;
 }
 
 
