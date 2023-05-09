@@ -38,6 +38,24 @@
 
 @media screen and (max-width:850px){
     .slide1{
-        height: calc((100vw - 110px) * .57);
+        height: calc((100vw - 110px) * .63);
+    }
+}
+
+@media screen and (max-width:600px){
+    .slide1{
+        height: calc((100vw - 110px) * .65);
+    }
+    .slide1-btn{
+        font:500 0.8rem Phudu;
+    }
+}
+
+@media screen and (max-width:400px){
+    .slide1{
+        height: calc((100vw - 110px) * .75);
+    }
+    .slide1-btn{
+        font:500 0.6rem Phudu;
     }
 }

@@ -18,11 +18,17 @@
 .headerContainer{
     width: 74%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items:center;
 }
 
+.headerContainer svg{
+    display: none;
+    color:white;
+}
+
 .headerHead{
+    display: flex;
     padding: 10px 10px 10px 0;
     font: 300 1.3rem Lato;
 }
@@ -56,10 +62,17 @@
 }
 
 .searchBox div svg{
+    display: block;
     position: absolute;
     transform: translateX(1vmax);
     font-size: 1.3rem;
     color:rgba(0,0,0,0.623);
+}
+
+#closeInput{
+    color:rgba(0,0,0,0.623);
+    right: 7%;
+    display: none;
 }
 
 .searchBox div input{
@@ -98,32 +111,96 @@
     transform: translateX(-30%)translateY(-6%);
 }
 
+.leftHeaderItems{
+    display: flex;
+}
+
+.headerDropBtn{
+    display: none;
+    padding: 10px;
+    font: 300 1.1rem Lato;
+    color:rgba(255, 255, 255, 0.699);
+}
+
 @media screen and (max-width:1024px) {
+    .headerContainer svg{
+        display: block;
+    }
     .headerContainer{
         width: 90%;
+        justify-content: space-between;
     }
     .rightHeaderItems .headerItem{
         display: none;
     }
-
     .rightHeaderItems svg {
         display: block;
     }
     .cartItemIndicator{
         width: 1rem;
         height: 1rem;
-        transform: translateY(-190%)translateX(70%);
+        transform: translateY(-190%)translateX(52%);
         font-size: 0.7rem;
+    }
+    .headerDropBtn{
+        display: block;
+    }
+    .leftHeaderItems{
+        display: none;
+        width: 100%;
+        position: absolute;
+        flex-direction: column;
+        transform: translateY(95%);
+        left: 0;
+        align-items:center;
+    }
+    .headerItem{
+        width: 90%;
+        background-color: #00152b;
+    }
+
+    #closeInput{
+        display: block;
+    }
+    .headerHead{
+        display: none;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        z-index: 1;
+        justify-content: center;
+        padding:0;
+    }
+    .searchBox{
+        width: 90%;
+    }
+    .searchBox div input{
+        width: 100%;
+        border-radius:0;
+        padding: 1rem 1rem 1rem 3rem;
+    }
+    .searchBox div svg{
+        color:rgba(255, 255, 255, 0.623);
+    }
+    .headerItems{
+        flex: 0;
     }
 }
 
 @media screen and (max-width:600px) {
     .searchBox div input{
-        padding: 0.5rem 0.5rem 0.5rem 2rem;
-        font: 100 0.6rem cursive;
-        width: 100%;
+        padding: .7rem .7rem .7rem 3rem;
+        font: 100 1rem cursive;
     }
     .headerItem{
         font: 300 1rem Lato;
     }
+}
+
+.headerToggle-active{
+    display: flex;
+}
+
+.headerInput-Toggle{
+    display: flex;
 }
