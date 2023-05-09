@@ -8,6 +8,9 @@
     background:#003566;
     border-radius: 15px 0 0 15px;
 }
+.sidebarContainer a{
+    text-decoration: none;
+}
 
 .sidebarContainer div{
     display: flex;

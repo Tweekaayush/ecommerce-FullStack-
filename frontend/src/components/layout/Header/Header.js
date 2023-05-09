@@ -7,7 +7,7 @@ import {useSelector} from "react-redux"
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CloseIcon from '@mui/icons-material/Close';
 
-const Header = () => {
+const Header = ({btnInfo ="Discover"}) => {
 
     const {isAuthenticated} = useSelector((state)=>state.user)
     const {cartItems} = useSelector((state)=>state.cart)
@@ -40,6 +40,10 @@ const Header = () => {
         setHeaderDrop(false)
     }
 
+    const headerDropToggle = () =>{
+        setHeaderDrop(!headerDrop)
+    }
+
   return (
     <div className={scroll?"homeHeader activeHeader":"homeHeader"}>
         <div className="headerContainer">
@@ -53,8 +57,11 @@ const Header = () => {
                     </div>
                 </form>
             </div>
-            <div onClick={()=>setHeaderDrop(!headerDrop)}className='headerDropBtn'>
-                    Button
+            <div onClick={headerDropToggle}className='headerDropBtn'>
+                    <span>
+                        {btnInfo}
+                    </span>
+                    <div className={headerDrop?"caret caret-active":"caret"}></div>
             </div>
             <div className="headerItems">
                 <div className={headerDrop?"leftHeaderItems headerToggle-active":"leftHeaderItems"}>

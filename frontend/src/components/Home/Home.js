@@ -145,7 +145,7 @@ const Home = () => {
       {loading? <Loader/>:(<Fragment>
         <Metadata title="Ecommerce"></Metadata>
         <div className='homeContainer'>
-          <Header opt="Discover"/>
+          <Header btnInfo="Discover"/>
           <div className={scroll?"homeCarouselBox homeCarouselBox-active":"homeCarouselBox"}>
               <Fragment>
                 <Slider className='homeCarouselSlider-1' asNavFor={nav2} ref={(slider1)=>setNav1(slider1)} {...hslide}>

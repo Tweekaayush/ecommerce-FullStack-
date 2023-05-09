@@ -117,9 +117,25 @@
 
 .headerDropBtn{
     display: none;
-    padding: 10px;
     font: 300 1.1rem Lato;
     color:rgba(255, 255, 255, 0.699);
+    justify-content: center;
+    align-items:center;
+    gap: 0.5rem;
+}
+
+.caret{
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top:6px solid white;
+    transition: 0.3s;
+    margin-top: 5px;
+}
+
+.caret-active{
+    transform: rotate(180deg);
 }
 
 @media screen and (max-width:1024px) {
@@ -143,7 +159,7 @@
         font-size: 0.7rem;
     }
     .headerDropBtn{
-        display: block;
+        display: flex;
     }
     .leftHeaderItems{
         display: none;

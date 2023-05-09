@@ -29,19 +29,40 @@
 }
 .searchResultBox h1{
     color:  rgba(255, 255, 255, 0.877);
-    margin: 0 0 2.5rem 2.5rem;
+    margin: 0.5rem;
+
 }
 
 .searchResults{
     width: 100%;
+    min-height: 80vh;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items:center;
 }
 
 .filterBox{
-    width: 20%;
+    display: flex;
+    flex-direction: column;
+    background-color:#003566;
+    padding: 1rem;
+    border-radius:10px;
+    gap: 1rem;
+    width: 25%;
+}
+
+.filterBox h1{
+    color:rgba(255, 255, 255, 0.763);
+    font: 300 1.5rem Lato;
+    border-bottom: 1px solid white;
+}
+
+.filterBox div h1{
+    font: 300 1.2rem Lato;
+    padding: 0 0 10px 0 ;
+    border:none;
+}
+
+.filterContent{
     display: flex;
     flex-direction: column;
 }
@@ -83,10 +104,16 @@
     color: rgb(255, 255, 255);
 }
 
-.genreBox{
-    padding: 0;
-    height: 300px;
-    overflow-y: scroll;
+.genreBox{ 
+    position: relative;
+}
+
+.genreList{
+  overflow-y: scroll;
+  position: absolute;
+  height: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
 .genreItem{
@@ -105,6 +132,8 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+    padding: 16px;
+    cursor: pointer;
 }
 .genreBtn svg{
     font-size:1.2rem;
@@ -118,16 +147,24 @@
 
 @media screen and (max-width:1024px) {
     .browseContent{
+        width: 90%;
+    }
+    .browseContent{
         flex-direction: column;
     }
-    .filterBox{
-        width: 100%;
-        flex: 1;
+    .filterContent{
         flex-direction: row;
-        gap: 1rem;
     }
+    .filterContent div{
+        padding:10px;
+        flex: 1;
+    }
+
     .genreBox{
         width: 100%;
         position: absolute;
+    }
+    .filterBox{
+        width: 100%;
     }
 }

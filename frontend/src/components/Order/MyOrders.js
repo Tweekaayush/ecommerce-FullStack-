@@ -19,7 +19,6 @@ const MyOrders = ({clsname}) => {
   orders&&orders.forEach((item,i)=>{
   items.push(item)
   })
-  console.log(orders)
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = items.slice(itemOffset, endOffset)
   const pageCount =  Math.ceil(items.length / itemsPerPage)

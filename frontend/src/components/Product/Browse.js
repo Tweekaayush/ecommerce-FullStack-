@@ -51,36 +51,40 @@ const Browse = () => {
             <Fragment>
                 <Metadata title={"Browse"}></Metadata>
                 <div className='browseContainer'>
-                <Header opt="Browse"/>
+                <Header btnInfo="Browse"/>
                 <div className={scroll?"browseContent browseContent-active":"browseContent"}>
                     <div className="filterBox">
-                        <h1>Filter :</h1>
-                        <div>
-                            <Typography style={{color:"rgba(255, 255, 255, 0.712)", padding:"5px 0",fontSize:"1.5rem"}}> Price </Typography>
-                            <Slider
-                            value={sliderVal}
-                            onChange={(e)=>setSliderVal(e.target.value)}
-                            onChangeCommitted={priceHandler}
-                            valueLabelDisplay='auto'
-                            aria-labelledby='range-slider'
-                            min={0}
-                            max={10000}
-                            >
-                            </Slider>
-                        </div>
-                        <div>
-                            <Typography style={{color:"rgba(255, 255, 255, 0.712)", padding:"5px 0",fontSize:"1.5rem"}}> Genres </Typography>
-                            <div onClick={()=>setGenre("")} className="genreBtn">
-                                <p>
-                                    {genre}
-                                </p>
-                                <CloseIcon/>
+                        <h1>Filter</h1>
+                        <div className="filterContent">
+                            <div>
+                                <h1>Price</h1>
+                                <Slider
+                                value={sliderVal}
+                                onChange={(e)=>setSliderVal(e.target.value)}
+                                onChangeCommitted={priceHandler}
+                                valueLabelDisplay='auto'
+                                aria-labelledby='range-slider'
+                                min={0}
+                                max={10000}
+                                >
+                                </Slider>
                             </div>
-                            <ul className="genreBox">
-                                {genres.map((genre)=>(
-                                    <li className='genreItem' key = {genre.id} onClick={()=>setGenre(genre.name)}>{genre.name}</li>
-                                ))}
-                            </ul>
+                            <div>
+                                <h1>Genre</h1>
+                                <div className="genreBox">
+                                    <div onClick={()=>setGenre("")} className="genreBtn">
+                                        <p>
+                                            {genre}
+                                        </p>
+                                        <CloseIcon/>
+                                    </div>
+                                    <div className="genreList">    
+                                        {genres.map((genre)=>(
+                                            <p className='genreItem' key = {genre.id} onClick={()=>setGenre(genre.name)}>{genre.name}</p>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className='searchResultBox'>

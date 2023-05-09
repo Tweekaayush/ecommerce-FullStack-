@@ -1,0 +1,134 @@
+.aboutContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.aboutBox{
+    width: 90%;
+    padding: 3rem 0;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+}
+
+.upperAboutContainer{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    width: 100%;
+    padding-bottom: 2rem ;
+}
+
+.upperAboutContainer div{
+    flex: 1;
+    width: 50%;
+    padding: 2rem;
+}
+
+.upperAboutContent{
+    display: flex;
+    flex-direction: column;
+}
+
+.aboutImage{
+    width: 50%;
+}
+
+.aboutImage img{
+    width: 100%;
+    height: 100%;
+}
+
+.upperAboutContent h1{
+    font: bolder 4rem Lato;
+
+    color:white;
+}
+
+.upperAboutContent h3{
+    font: 500 2rem Lato;
+    padding: 2rem 0;
+    color:rgba(255, 255, 255, 0.767);
+}
+
+.upperAboutContent p{
+    font: 200 1.3rem Lato;
+    letter-spacing: 3px;
+    line-height: 2rem;
+    color:rgba(255, 255, 255, 0.486);
+}
+
+.lowerAboutContainer{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    color: white;
+    width: 100%;
+}
+
+.lowerAboutContainer p{
+    background-color: #003566;
+    padding: 2rem;
+    font: 200 1.3rem Lato;
+    letter-spacing: 2px;
+    line-height: 2rem;
+    color:rgba(255, 255, 255, 0.753);
+    box-shadow: #0084ff27 0px 3px 6px, #0084ff27 0px 3px 6px;
+}
+
+
+@media screen and (max-width:1024px) {
+    .upperAboutContent h1{
+        font: bolder 3.5rem Lato;
+    }
+    
+    .upperAboutContent h3{
+        font: 500 1.5rem Lato;
+    }
+    .upperAboutContent p{
+        font: 200 1.1rem Lato;
+    }
+
+    .lowerAboutContainer p{
+        font: 200 1.1rem Lato;
+    }
+}
+
+@media screen and (max-width:850px) {
+    .upperAboutContent h1{
+        font: bolder 3rem Lato;
+    }
+    
+    .upperAboutContent h3{
+        font: 500 1.3rem Lato;
+    }
+    .upperAboutContent p{
+        font: 200 1rem Lato;
+    }
+
+    .lowerAboutContainer p{
+        font: 200 1rem Lato;
+    }
+}
+
+@media screen and (max-width:850px) {
+    .aboutImage{
+        display: none;
+    }
+
+    .upperAboutContainer{
+        padding: 0;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .upperAboutContainer div, .lowerAboutContainer p{
+        padding: 1rem;
+    }
+    .upperAboutContainer{
+        padding-bottom: 1rem;
+    }
+}

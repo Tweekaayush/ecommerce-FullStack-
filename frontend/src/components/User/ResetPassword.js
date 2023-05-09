@@ -33,7 +33,6 @@ const ResetPassword = () => {
 
         useEffect(()=>{
             if (error) {
-                alert(error);
                 dispatch(clearErrors());
               }
     
@@ -42,7 +41,7 @@ const ResetPassword = () => {
                 navigate("/account")
             }
 
-          },[dispatch, success, alert, navigate])
+          },[dispatch, error, success, navigate])
 
   return (
     <Fragment>

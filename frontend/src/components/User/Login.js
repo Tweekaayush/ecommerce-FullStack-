@@ -10,7 +10,7 @@ import Metadata from '../layout/Metadata'
 import Loader from '../layout/Loader/Loader'
 import PersonIcon from '@mui/icons-material/Person';
 
-const Login = ({history}) => {
+const Login = () => {
 
   const dispatch = useDispatch();
   const {error, loading, isAuthenticated} = useSelector((state) => state.user)
@@ -70,15 +70,14 @@ const Login = ({history}) => {
 
   useEffect(()=>{
     if (error) {
-      alert(error);
       dispatch(clearErrors());
     }
 
-    if(isAuthenticated){
+    if(isAuthenticated === true){
       navigate(redirect)
     }
 
-  }, [dispatch, history, isAuthenticated, alert, redirect])
+  }, [dispatch, isAuthenticated, redirect])
 
   const switchTabs = (e, tab)=>{
     if(tab === "login"){

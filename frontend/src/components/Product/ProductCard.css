@@ -1,4 +1,5 @@
 .productCard {
+    height: 13.5rem;
     width: 18rem;
     display: flex;
     flex-direction: column;

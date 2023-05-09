@@ -22,7 +22,6 @@ body{
     z-index: 9;
     width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     height: 100%;
     position: absolute;
@@ -42,6 +41,7 @@ body{
     font-family: Lato;
 }
 
+
 .navProfile{
     height: 100%;
     padding-top: 10px;
@@ -53,12 +53,17 @@ body{
     align-items:center;
 }
 
-.nav-signupitem{
+.upper-nav-links{
+    flex:1;
+    display: flex;
+}
+
+.nav-upper-item{
     font-size:20px;
-    color: white;
+    color: rgba(255, 255, 255, 0.636);
     text-decoration: none;
-    padding: 10px;
     transition: all 0.5s;
+    padding: 10px;
 }
 
 .lower-nav{
@@ -339,11 +344,17 @@ body{
     .nav-toggler{
         display: block;
     }
+    .upper-nav-links{
+        display: none;
+    }
     .nav-items{
         display: none;
     }
     .navProfile{
         display: none;
+    }
+    .upper-nav{
+        justify-content: space-between;
     }
 }
 

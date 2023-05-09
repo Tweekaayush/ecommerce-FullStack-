@@ -17,6 +17,10 @@ ChartJS.register(
 const Dashboard = () => {
 
     const dashboardTab = useRef(null)
+    const dashboardProductsTab = useRef(null)
+    const dashboardOrdersTab = useRef(null)
+    const dashboardUsersTab = useRef(null)
+
     const { orders } = useSelector((state) => state.myOrders);
 
     let totalAmount = 0;
@@ -43,28 +47,39 @@ const Dashboard = () => {
             title:{
                 display: true,
             },
+        },
+        scale:{
+            x:{
+                grid:{
+                    color:"red"
+                }
+            }
         }
       })
-
-    const [dashboardOrderComponent, setOrderComponent] = useState("dashboardContent-inactive");
-    const [dashboardProductsComponent, setEditComponent] = useState("dashboardContent-inactive");
-    const [dashboardUsersComponent, setPasswordComponent] = useState("dashboardContent-inactive");
-    const [dashboardReviewsComponent, setDashboardReviewsComponent] = useState("dashboardContent-inactive")
 
     const switcherTab = (tab) =>{
         if(tab === "dashboard"){
             dashboardTab.current.classList.remove("dashboardContent-inactive")
+            dashboardOrdersTab.current.classList.add("dashboardContent-inactive")
+            dashboardProductsTab.current.classList.add("dashboardContent-inactive")
+            dashboardUsersTab.current.classList.add("dashboardContent-inactive")
         }else if(tab === "orders"){
             dashboardTab.current.classList.add("dashboardContent-inactive")
+            dashboardOrdersTab.current.classList.remove("dashboardContent-inactive")
+            dashboardProductsTab.current.classList.add("dashboardContent-inactive")
+            dashboardUsersTab.current.classList.add("dashboardContent-inactive")
         }
         else if(tab === "products"){
             dashboardTab.current.classList.add("dashboardContent-inactive")
-        }
-        else if(tab === "reviews"){
-            dashboardTab.current.classList.add("dashboardContent-inactive")
+            dashboardOrdersTab.current.classList.add("dashboardContent-inactive")
+            dashboardProductsTab.current.classList.remove("dashboardContent-inactive")
+            dashboardUsersTab.current.classList.add("dashboardContent-inactive")
         }
         else if(tab === "users"){
             dashboardTab.current.classList.add("dashboardContent-inactive")
+            dashboardOrdersTab.current.classList.add("dashboardContent-inactive")
+            dashboardProductsTab.current.classList.add("dashboardContent-inactive")
+            dashboardUsersTab.current.classList.remove("dashboardContent-inactive")
         }
     }
 
@@ -76,7 +91,7 @@ const Dashboard = () => {
             <div className="dashboardContainerContent">
                 <div ref={dashboardTab} className="dashboardComponent">
                     <div className="dashboardHeading">
-                        <h1>Dashboard</h1>
+                        <h1 className='dashboardAllHeadings'>Dashboard</h1>
                     </div>
                     <div className="dashboardDetails">
                         <div className="dashboardSummaryBox">
@@ -101,6 +116,24 @@ const Dashboard = () => {
                             <></>
                           <Line data={lineState} options={options} />
                         </div>
+                    </div>
+                </div>
+                <div ref={dashboardProductsTab} className="dashboardComponent dashboardContent-inactive">
+                    <div className="dashboardHeading">
+                        <h1 className='dashboardAllHeadings'>Products</h1>
+                    </div>
+                    <div className="dashboardProductComponent">
+                        
+                    </div>
+                </div>
+                <div ref={dashboardOrdersTab} className="dashboardComponent dashboardContent-inactive">
+                    <div className="dashboardHeading">
+                        <h1 className='dashboardAllHeadings'>Orders</h1>
+                    </div>
+                </div>
+                <div ref={dashboardUsersTab} className="dashboardComponent dashboardContent-inactive">
+                    <div className="dashboardHeading">
+                        <h1 className='dashboardAllHeadings'>Users</h1>
                     </div>
                 </div>
             </div>

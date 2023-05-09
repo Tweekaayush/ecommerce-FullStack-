@@ -12,10 +12,12 @@ const Sidebar = ({switcherTab}) => {
 
   return (
     <div className="sidebarContainer">
-            <div onClick={() => switcherTab("home")}>
-                <HomeIcon/>
-                <p>Home</p>
-            </div>
+            <Link to="/">
+                <div>
+                    <HomeIcon/>
+                    <p>Home</p>
+                </div>
+            </Link>
             <div onClick={()=>switcherTab("dashboard")}>
                 <DashboardIcon/>
                 <p>Dashboard</p>
@@ -31,10 +33,6 @@ const Sidebar = ({switcherTab}) => {
             <div onClick={()=>switcherTab("users")}>
                 <GroupIcon/>
                 <p>Users</p>
-            </div>
-            <div onClick={()=>switcherTab("reviews")}>
-                <RateReviewIcon/>
-                <p>Reviews</p>
             </div>
         </div>
   )

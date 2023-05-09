@@ -4,6 +4,7 @@ import "./Navbar.css"
 import UserOptions from './UserOptions';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../../actions/userAction';
+import { Link } from 'react-router-dom';
 
 const Navbar = () =>{
 
@@ -20,10 +21,15 @@ const Navbar = () =>{
         setToggle(!toggle);
     }
 
+    function linkClick(){
+        setToggle(false)
+        document.body.style.overflow = 'unset';
+    }
+
     function LeftLink({href, children, ...props}){
         return(
             <li className={toggle?"nav-item slideupin":"nav-item slidedownout"}>
-                <a href ={href} {...props}>{children}</a>
+                <Link onClick={linkClick} to ={href} {...props}>{children}</Link>
             </li>
         );
     }
@@ -31,7 +37,7 @@ const Navbar = () =>{
     function RightLink({href, children, ...props}){
         return(
             <li className={toggle?"nav-item slideleftin":"nav-item sliderightout"}>
-                <a href ={href} {...props}>{children}</a>
+                <Link onClick={linkClick} to ={href} {...props}>{children}</Link>
             </li>
         );
     }
@@ -39,17 +45,21 @@ const Navbar = () =>{
     return (
         <nav className="navbar">
             <div className="upper-nav">
-                <a href="/" className="nav-brand">
+                <Link to="/" className="nav-brand">
                     Ecommerce
-                </a>      
+                </Link>  
+                <div className="upper-nav-links">
+                    <Link className="nav-upper-item" to="/about">About</Link>
+                    <Link className="nav-upper-item" to="/support">Support</Link>
+                </div>    
                     {isAuthenticated?(
                         <div className="navProfile">
                             <UserOptions user={user}/>
                         </div>
                     ):(
-                    <div className="nav-items">
-                        <a className="nav-signupitem" href='/login'>Sign In</a>
-                    </div>                   
+                        <div className="nav-items">
+                            <Link className="nav-upper-item" to='/login'>Sign In</Link>
+                        </div>                   
                     )}
                 <div className={toggle ? "nav-toggler toggle":"nav-toggler"} onClick={navToggle}>
                     <div className='lines'>
@@ -67,14 +77,16 @@ const Navbar = () =>{
                         <ul className='nav-links'>
                             <LeftLink href ="/">Home</LeftLink>
                             <LeftLink href ="/browse">Browse</LeftLink>
-                            <LeftLink href ="/news">News</LeftLink>
+                            <LeftLink href ="/about">About</LeftLink>
                             <LeftLink href ="/login">{isAuthenticated? "Profile" : "Sign In"}</LeftLink>
                             {isAuthenticated && <LeftLink href="/" onClick={()=>{dispatch(logout())}}>Logout</LeftLink>}
                         </ul>
                     </div> 
                     <div className={toggle?"right-nav nav-active":"right-nav"}>
                         <ul className='nav-links'>
-                            <RightLink href ="">Contact Us</RightLink>
+                            {isAuthenticated && user.role === "admin" && (
+                            <RightLink href ="/admin/dashboard">Dashboard</RightLink>
+                            )}
                             <RightLink href ="">Support</RightLink>
                             <div className={toggle?"nav-social-handles slideleftin":"nav-social-handles sliderightout"}>
                                 <span className='icons'><FaFacebook /></span>
