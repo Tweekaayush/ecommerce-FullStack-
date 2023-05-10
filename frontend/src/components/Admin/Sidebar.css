@@ -4,9 +4,9 @@
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    min-height: 100%;
     background:#003566;
     border-radius: 15px 0 0 15px;
+    min-height: 100%;
 }
 .sidebarContainer a{
     text-decoration: none;
@@ -45,3 +45,10 @@
     }
 }
 
+@media screen and (max-width:700px) {
+    .sidebarContainer{
+        width: 100%;
+        flex-direction: row;
+        border-radius: 10px 10px 0 0;
+    }
+}

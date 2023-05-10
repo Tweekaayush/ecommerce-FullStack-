@@ -1,12 +1,16 @@
-import React, { Fragment, useRef, useState } from 'react'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import "./Dashboard.css"
 import Sidebar from "./Sidebar.js"
 import Metadata from "../layout/Metadata"
 import {Line} from "react-chartjs-2"
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import {Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Title, Tooltip, Legend, Scale} from "chart.js"
 import ProductList from "./ProductList.js"
 import ProductForm from "./ProductForm.js"
+import { clearErrors, getAdminProducts } from '../../actions/productAction'
+import { getAllOrders } from '../../actions/orderAction'
+import OrderList from "./OrderList.js"
+import UserList from "./UserList.js"
 
 
 ChartJS.register(
@@ -18,6 +22,12 @@ ChartJS.register(
 
 const Dashboard = () => {
 
+    const {loading} = useSelector((state)=>state.user)
+    const { orders } = useSelector((state) => state.allOrders);
+    const {products} = useSelector((state)=>state.products);
+    const {users} = useSelector((state)=>state.allUsers)
+
+    const dispatch = useDispatch()
     const dashboardTab = useRef(null)
     const dashboardProductsTab = useRef(null)
     const dashboardOrdersTab = useRef(null)
@@ -25,13 +35,16 @@ const Dashboard = () => {
     const switcherProductTab = useRef(null)
     const [productListComponent, setProductListComponent] = useState("")
     const [productFromComponent, setProductFromComponent] = useState("dashboardContent-inactive")
-    const { orders } = useSelector((state) => state.myOrders);
+    
+    useEffect(()=>{
+      dispatch(getAdminProducts())
+      dispatch(getAllOrders())
+    },[dispatch])
 
-    let totalAmount = 0;
-    orders &&
-    orders.forEach((item) => {
-      totalAmount += item.totalPrice;
-    });
+    let totalAmount = 0
+    orders&& orders.forEach((order)=>{
+        totalAmount += order.totalPrice
+    })
 
     const lineState = {
         labels: ["Initial Amount", "Total Amount"],
@@ -40,7 +53,7 @@ const Dashboard = () => {
             label: "TOTAL AMOUNT",
             backgroundColor: "#003566",
             hoverBackgroundColor: "rgb(197, 72, 49)",
-            data: [0, 5000],
+            data: [0, 10000],
           },
         ],
       };
@@ -60,6 +73,7 @@ const Dashboard = () => {
             }
         }
       })
+
 
     const switcherTab = (tab) =>{
         if(tab === "dashboard"){
@@ -87,7 +101,24 @@ const Dashboard = () => {
         }
     }
 
-    const switchCompTabs = (e, tab)=>{
+    const switchProductTabs = (e, tab)=>{
+        if(tab === "AllProducts"){
+            switcherProductTab.current.classList.add("shiftToNeutral");
+            switcherProductTab.current.classList.remove("shiftToRight");
+
+            setProductListComponent("")
+            setProductFromComponent("dashboardContent-inactive")
+        }
+        if(tab === "ProductForm"){
+            switcherProductTab.current.classList.remove("shiftToNeutral");
+            switcherProductTab.current.classList.add("shiftToRight");
+
+            setProductListComponent("dashboardContent-inactive")
+            setProductFromComponent("")
+        }
+      }
+
+    const switchUsersTabs = (e, tab)=>{
         if(tab === "all"){
             switcherProductTab.current.classList.add("shiftToNeutral");
             switcherProductTab.current.classList.remove("shiftToRight");
@@ -106,85 +137,81 @@ const Dashboard = () => {
 
   return (
     <Fragment>
-        <Metadata title="Dashboard" />
-        <div className="dashboardContainer">
-            <Sidebar switcherTab={switcherTab}/>
-            <div className="dashboardContainerContent">
-                <div ref={dashboardTab} className="dashboardComponent">
-                    <div className="dashboardHeading">
-                        <h1 className='dashboardAllHeadings'>Dashboard</h1>
-                    </div>
-                    <div className="dashboardDetails">
-                        <div className="dashboardSummaryBox">
-                            <div>
-                                <p>Products</p>
-                                <p>50</p>
+        {loading === false && (
+            <Fragment>
+                <Metadata title="Dashboard" />
+                <div className="dashboardContainer">
+                    <div className="dashboardBox">
+                        <Sidebar switcherTab={switcherTab}/>
+                        <div className="dashboardContainerContent">
+                            <div ref={dashboardTab} className="dashboardComponent">
+                                <div className="dashboardHeading">
+                                    <h1 className='dashboardAllHeadings'>Dashboard</h1>
+                                </div>
+                                <div className="dashboardDetails">
+                                    <div className="dashboardSummaryBox">
+                                        <div>
+                                            <p>Products</p>
+                                            <p>{products && products.length}</p>
+                                        </div>
+                                        <div>
+                                            <p>Orders</p>
+                                            <p>{orders && orders.length}</p>
+                                        </div>
+                                        <div>
+                                            <p>Users</p>
+                                            <p>{users && users.length}</p>
+                                        </div>
+                                        <div>
+                                            <p>Total Earnings:</p>
+                                            <p>{orders && totalAmount}</p>
+                                        </div>
+                                    </div>
+                                    <div className="lineChart">
+                                        <></>
+                                    <Line data={lineState} options={options} />
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <p>Orders</p>
-                                <p>50</p>
+                            <div ref={dashboardProductsTab} className="dashboardComponent dashboardContent-inactive">
+                                <div className="dashboardHeading">
+                                    <h1 className='dashboardAllHeadings'>Products</h1>
+                                </div>
+                                <div className="dashboardComponentDetails">
+                                    <div className="dashboardCompBtns">
+                                        <div>
+                                            <p onClick={(e)=>switchProductTabs(e, "AllProducts")}>All Products</p>
+                                            <p onClick={(e)=>switchProductTabs(e, "ProductForm")}>Add a Product</p>
+                                        </div>
+                                        <button ref={switcherProductTab}></button>
+                                    </div>
+                                    <div className="dashboardComponentSection">
+                                        <ProductList opt={productListComponent}/>
+                                        <ProductForm opt={productFromComponent}/>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <p>Users</p>
-                                <p>50</p>
+                            <div ref={dashboardOrdersTab} className="dashboardComponent dashboardContent-inactive">
+                                <div className="dashboardHeading">
+                                    <h1 className='dashboardAllHeadings'>Orders</h1>
+                                </div>
+                                <div className="dashboardComponentDetails">
+                                    <OrderList/>
+                                </div>
                             </div>
-                            <div>
-                                <p>Reviews</p>
-                                <p>50</p>
-                            </div>
-                        </div>
-                        <div className="lineChart">
-                            <></>
-                          <Line data={lineState} options={options} />
-                        </div>
-                    </div>
-                </div>
-                <div ref={dashboardProductsTab} className="dashboardComponent dashboardContent-inactive">
-                    <div className="dashboardHeading">
-                        <h1 className='dashboardAllHeadings'>Products</h1>
-                    </div>
-                    <div className="dashboardComponentDetails">
-                        <div className="dashboardCompBtns">
-                            <div>
-                                <p onClick={(e)=>switchCompTabs(e, "all")}>All Products</p>
-                                <p onClick={(e)=>switchCompTabs(e, "action")}>Add a Product</p>
-                            </div>
-                            <button ref={switcherProductTab}></button>
-                        </div>
-                        <div className="dashboardComponentSection">
-                            <ProductList opt={productListComponent}/>
-                            <ProductForm opt={productFromComponent}/>
-                        </div>
-                    </div>
-                </div>
-                <div ref={dashboardOrdersTab} className="dashboardComponent dashboardContent-inactive">
-                    <div className="dashboardHeading">
-                        <h1 className='dashboardAllHeadings'>Orders</h1>
-                    </div>
-                    <div className="dashboardComponentDetails">
-                        <div className="dashboardCompBtns">
-                            <div>
-                                <p>All orders</p>
-                                <p>Update Order</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div ref={dashboardUsersTab} className="dashboardComponent dashboardContent-inactive">
-                    <div className="dashboardHeading">
-                        <h1 className='dashboardAllHeadings'>Users</h1>
-                    </div>
-                    <div className="dashboardComponentDetails">
-                        <div className="dashboardCompBtns">
-                            <div>
-                                <p>All Users</p>
-                                <p>Update Users</p>
+                            <div ref={dashboardUsersTab} className="dashboardComponent dashboardContent-inactive">
+                                <div className="dashboardHeading">
+                                    <h1 className='dashboardAllHeadings'>Users</h1>
+                                </div>
+                                <div className="dashboardComponentDetails">
+                                    <UserList/>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </Fragment>
+        )}
     </Fragment>
   )
 }
