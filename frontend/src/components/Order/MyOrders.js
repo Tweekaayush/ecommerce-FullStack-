@@ -13,7 +13,7 @@ const MyOrders = ({clsname}) => {
   const dispatch = useDispatch()
   const {loading, error, orders} = useSelector((state)=>state.myOrders)
 
-  const itemsPerPage = 2
+  const itemsPerPage = 4
   const [itemOffset, setItemOffset] = useState(0);
   const items = []
   orders&&orders.forEach((item,i)=>{
@@ -57,7 +57,7 @@ const MyOrders = ({clsname}) => {
                 <p>Status:</p>
               </div>
               <div>
-                <p onClick={Sort}>Amount:</p>
+                <p>Amount:</p>
               </div>
             </div>  
             {currentItems.length !== 0 ? (

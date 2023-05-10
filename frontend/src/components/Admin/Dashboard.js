@@ -5,6 +5,8 @@ import Metadata from "../layout/Metadata"
 import {Line} from "react-chartjs-2"
 import {useSelector} from "react-redux"
 import {Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Title, Tooltip, Legend, Scale} from "chart.js"
+import ProductList from "./ProductList.js"
+import ProductForm from "./ProductForm.js"
 
 
 ChartJS.register(
@@ -20,7 +22,9 @@ const Dashboard = () => {
     const dashboardProductsTab = useRef(null)
     const dashboardOrdersTab = useRef(null)
     const dashboardUsersTab = useRef(null)
-
+    const switcherProductTab = useRef(null)
+    const [productListComponent, setProductListComponent] = useState("")
+    const [productFromComponent, setProductFromComponent] = useState("dashboardContent-inactive")
     const { orders } = useSelector((state) => state.myOrders);
 
     let totalAmount = 0;
@@ -83,6 +87,23 @@ const Dashboard = () => {
         }
     }
 
+    const switchCompTabs = (e, tab)=>{
+        if(tab === "all"){
+            switcherProductTab.current.classList.add("shiftToNeutral");
+            switcherProductTab.current.classList.remove("shiftToRight");
+
+            setProductListComponent("")
+            setProductFromComponent("dashboardContent-inactive")
+        }
+        if(tab === "action"){
+            switcherProductTab.current.classList.remove("shiftToNeutral");
+            switcherProductTab.current.classList.add("shiftToRight");
+
+            setProductListComponent("dashboardContent-inactive")
+            setProductFromComponent("")
+        }
+      }
+
   return (
     <Fragment>
         <Metadata title="Dashboard" />
@@ -122,18 +143,44 @@ const Dashboard = () => {
                     <div className="dashboardHeading">
                         <h1 className='dashboardAllHeadings'>Products</h1>
                     </div>
-                    <div className="dashboardProductComponent">
-                        
+                    <div className="dashboardComponentDetails">
+                        <div className="dashboardCompBtns">
+                            <div>
+                                <p onClick={(e)=>switchCompTabs(e, "all")}>All Products</p>
+                                <p onClick={(e)=>switchCompTabs(e, "action")}>Add a Product</p>
+                            </div>
+                            <button ref={switcherProductTab}></button>
+                        </div>
+                        <div className="dashboardComponentSection">
+                            <ProductList opt={productListComponent}/>
+                            <ProductForm opt={productFromComponent}/>
+                        </div>
                     </div>
                 </div>
                 <div ref={dashboardOrdersTab} className="dashboardComponent dashboardContent-inactive">
                     <div className="dashboardHeading">
                         <h1 className='dashboardAllHeadings'>Orders</h1>
                     </div>
+                    <div className="dashboardComponentDetails">
+                        <div className="dashboardCompBtns">
+                            <div>
+                                <p>All orders</p>
+                                <p>Update Order</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div ref={dashboardUsersTab} className="dashboardComponent dashboardContent-inactive">
                     <div className="dashboardHeading">
                         <h1 className='dashboardAllHeadings'>Users</h1>
+                    </div>
+                    <div className="dashboardComponentDetails">
+                        <div className="dashboardCompBtns">
+                            <div>
+                                <p>All Users</p>
+                                <p>Update Users</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
