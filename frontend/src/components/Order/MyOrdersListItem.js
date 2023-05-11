@@ -10,7 +10,7 @@ const MyOrdersListItem = ({order}) => {
                 <p>{order._id}</p>
             </div>
             <div className="myOrdersListStatus">
-                <p>{order.orderStatus}</p>
+                <p style={{color:order.orderStatus === "Processing"?"orange":"green"}}>{order.orderStatus}</p>
             </div>
             <div className="myOrdersListAmount">
                 <p>{order.totalPrice}</p>

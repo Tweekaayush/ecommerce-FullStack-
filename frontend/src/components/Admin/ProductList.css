@@ -62,6 +62,7 @@
     font: 300 0.9rem Lato;
     color:white;
     flex: 0.7;
+    display: flex;
 }
 
 .listItems div:first-child{

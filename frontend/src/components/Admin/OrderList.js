@@ -4,15 +4,21 @@ import ReactPaginate from 'react-paginate'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import "./ProductList.css"
-import { clearErrors, deleteOrder, getAllOrders } from '../../actions/orderAction';
+import { clearErrors, deleteOrder, getAllOrders, getOrderDetails } from '../../actions/orderAction';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CreateIcon from '@mui/icons-material/Create';
 import { DELETE_ORDER_RESET } from '../../constants/orderConstants';
+import { Dialog, DialogContent, DialogActions, Button, DialogTitle } from '@mui/material';
+import { UPDATE_ORDER_RESET } from '../../constants/orderConstants';
+import { updateOrder } from '../../actions/orderAction';
 
 const OrderList = () => {
     const dispatch = useDispatch()
     const {error, orders} = useSelector((state)=>state.allOrders)
-    const {error: deleteError, isDeleted} = useSelector((state)=>state.order)
+    const {error: deleteError, isDeleted, error: updateError, isUpdated} = useSelector((state)=>state.order)
+    const { order, error: orderDetailsError, loading } = useSelector((state) => state.orderDetails);
+    const [open, setOpen] = useState(false)
+    const [orderStatus, setOrderStatus] = useState("")
     const itemsPerPage = 5
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
@@ -32,16 +38,50 @@ const OrderList = () => {
       dispatch(deleteOrder(id))
     }
 
+    const updateOrderToggle = (id) => {
+      dispatch(getOrderDetails(id))
+      open ? setOpen(false) : setOpen(true);
+    };
+
+    const updateOrderHandler = (e) => {
+      e.preventDefault();
+      if(orderStatus === "" || orderStatus === order.orderStatus){
+        setOrderStatus("")
+        console.log("yo")
+        setOpen(false)
+        return
+      }
+
+      const myForm = new FormData();
+
+      myForm.set("orderStatus", orderStatus);
+
+      dispatch(updateOrder(order._id, myForm));
+      setOrderStatus("")
+      setOpen(false)      
+    };
+
     useEffect(()=>{
         if(error){
             dispatch(clearErrors())
+        }
+        if(orderDetailsError){
+          dispatch(clearErrors())
+        }
+        if (updateError) {
+          alert(updateError);
+          dispatch(clearErrors());
+        }
+        if (isUpdated) {
+          alert("Order Updated Successfully");
+          dispatch({ type: UPDATE_ORDER_RESET });
         }
         if(isDeleted){
           alert("Order Deleted Successfully")
           dispatch({type:DELETE_ORDER_RESET})
         }
         dispatch(getAllOrders())
-    }, [dispatch,error, isDeleted])
+    }, [dispatch,error, isDeleted, orderDetailsError, updateError, isUpdated])
 
   return (
         <div className={`listContent`}>
@@ -73,12 +113,13 @@ const OrderList = () => {
                         <p>{String(order.createdAt).substring(0, 10)}</p>
                     </div>
                     <div>
-                        <p>{order.orderStatus}</p>
+                        <p style={{color:order.orderStatus === "Processing"?"orange":"green"}}>{order.orderStatus}</p>
                     </div>
                     <div>
                         <p>{order.totalPrice}</p>
                     </div>
                     <div>
+                      <CreateIcon onClick={()=>updateOrderToggle(order._id)}/>
                       <DeleteIcon onClick={()=>deleteOrderHandler(order._id)}/>
                     </div>
                 </div> 
@@ -101,6 +142,30 @@ const OrderList = () => {
             renderOnZeroPageCount={null}
             className="react-paginate"
           />
+          <Dialog
+            aria-labelledby='simple-dialog-title'
+            open ={open}
+            onClose={()=>{
+              setOrderStatus("")
+              open ? setOpen(false) : setOpen(true);
+            }}
+          >
+            <DialogTitle className='submitDialogHeading'>Update Order Status</DialogTitle>
+            <DialogContent className='submitDialog'>
+                  <p>{order && order._id}</p>
+                  <p>{order && order.totalPrice}</p>      
+                  <p>{String(order && order.createdAt).substring(0, 10)}</p>      
+                  <select onChange={(e)=>setOrderStatus(e.target.value)} >
+                    <option value={order && order.orderStatus} >{order && order.orderStatus}</option>
+                    <option value={order && order.orderStatus === "Processing"?"Delivered":"Processing"}>{order && order.orderStatus === "Processing"?"Delivered":"Processing"}</option>
+                  </select>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={updateOrderHandler} color="primary">
+                    Update
+                  </Button>
+                </DialogActions>
+          </Dialog>
         </div>
   )
 }

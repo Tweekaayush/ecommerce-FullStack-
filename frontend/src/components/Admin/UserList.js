@@ -52,8 +52,10 @@ const UserList = () => {
       open ? setOpen(false) : setOpen(true);
     };
 
-    const updateUserHandler = () => {
+    const updateUserHandler = (e) => {
+      e.preventDefault();
       if(role === "" || role === curUser.role){
+        setRole("")
         setOpen(false);
         return
       }
