@@ -250,21 +250,16 @@ exports.updateUserRole = catchAsyncErrors(async(req, res, next)=>{
         name:req.body.name,
         email:req.body.email,
         role:req.body.role
-    };
+    }; 
 
-    const user = await User.findByIdAndUpdate(req.params.id, userData,{
+    await User.findByIdAndUpdate(req.params.id, userData,{
         new:true,
         runValidators:true,
         useFindAndModify:false
     });
 
-    if(!user){
-        return next(new ErrorHandler(`User with id: ${req.prams.id} does not exist`));
-    }
-
     res.status(200).json({
         success:true,
-        user
     });
 
 })

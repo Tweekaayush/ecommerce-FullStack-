@@ -4,17 +4,23 @@ import ReactPaginate from 'react-paginate'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import "./ProductList.css"
-import { clearErrors, deleteUser, getAllUsers } from '../../actions/userAction';
+import { clearErrors, deleteUser, getAllUsers, updateUser } from '../../actions/userAction';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CreateIcon from '@mui/icons-material/Create';
 import { DELETE_USER_RESET } from '../../constants/userConstants';
+import { Dialog, DialogContent, DialogTitle, Button, DialogActions } from '@mui/material';
+import { getUserDetails } from '../../actions/userAction';
+import { UPDATE_USER_RESET } from '../../constants/userConstants';
 
 const UserList = () => {
 
     const dispatch = useDispatch()
     const {error, users} = useSelector((state)=>state.allUsers)
     const {user} = useSelector((state)=>state.user)
-    const {error: deleteError, isDeleted, message} = useSelector((state)=>state.profile)
+    const {error: deleteError, isDeleted, message, isUpdated} = useSelector((state)=>state.profile)
+    const {loading, error:userDetailsError, user: curUser} = useSelector((state)=>state.userDetails)
+    const [role, setRole] = useState("")
+    const [open, setOpen] = useState(false)
     const itemsPerPage = 5
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
@@ -38,6 +44,30 @@ const UserList = () => {
         dispatch(deleteUser(id))
     }
 
+    
+    const updateUserToggle = (id) => {
+      if(id !== user.id){
+        dispatch(getUserDetails(id))
+      }
+      open ? setOpen(false) : setOpen(true);
+    };
+
+    const updateUserHandler = () => {
+      if(role === "" || role === curUser.role){
+        setOpen(false);
+        return
+      }
+     
+      const myForm = new FormData();
+  
+      myForm.set("name", curUser.name);
+      myForm.set("email", curUser.email);
+      myForm.set("role", role);
+      dispatch(updateUser(curUser._id, myForm))
+      setRole("")
+      setOpen(false)      
+    };
+
     useEffect(()=>{
         if(error){
            dispatch(clearErrors())
@@ -45,13 +75,20 @@ const UserList = () => {
         if(deleteError){
           dispatch(clearErrors())
         }
+        if(userDetailsError){
+          dispatch(clearErrors())
+        }
         if(isDeleted){
           alert("User Deleted Successfully")
           dispatch({type:DELETE_USER_RESET})
         }
+        if(isUpdated){
+          alert("User Role Updated Succesfully")
+          dispatch({ type: UPDATE_USER_RESET });
+        }
 
         dispatch(getAllUsers())
-    },[dispatch, error, alert, deleteError, isDeleted])
+    },[dispatch, error, alert, deleteError, isDeleted, userDetailsError, isUpdated])
   return (
     <div className={`listContent`}>
           <div className="listItemList">
@@ -88,6 +125,7 @@ const UserList = () => {
                         <p>{user.email}</p>
                     </div>
                     <div>
+                      <CreateIcon onClick={()=>updateUserToggle(user._id)}/>
                       <DeleteIcon onClick={()=>deleteUserHandler(user._id)}/>
                     </div>
                 </div> 
@@ -110,6 +148,30 @@ const UserList = () => {
             renderOnZeroPageCount={null}
             className="react-paginate"
           />
+               <Dialog
+                  aria-labelledby='simple-dialog-title'
+                  open ={open}
+                  onClose={()=>{
+                    setRole("")
+                    open ? setOpen(false) : setOpen(true);
+                  }}
+                  >
+                    <DialogTitle className='submitDialogHeading'>Update User Role</DialogTitle>
+                    <DialogContent className='submitDialog'>
+
+                        <p>{curUser.name}</p>
+                        <p>{curUser.email}</p>      
+                        <select onChange={(e)=>setRole(e.target.value)} >
+                          <option value={curUser.role}>{curUser.role}</option>
+                          <option value={curUser.role==="admin"?"user":"admin"}>{curUser.role==="admin"?"user":"admin"}</option>
+                        </select>
+                      </DialogContent>
+                      <DialogActions>
+                        <Button onClick={updateUserHandler} color="primary">
+                          Update
+                        </Button>
+                      </DialogActions>
+                  </Dialog>
         </div>
   )
 }
