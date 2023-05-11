@@ -17,9 +17,15 @@
     width: 100%;
 }
 .listContentHeadings div{
-    flex: 1
+    font: 300 0.9rem Lato;
+    flex: 0.7;
 }
-
+.listContentHeadings div:first-child{
+    flex: 1;
+}
+.listContentHeadings div:last-child{
+    flex: 0.1;
+}
 
 .listItemList{
     flex:1;
@@ -53,14 +59,51 @@
 }
 
 .listItems div{
+    font: 300 0.9rem Lato;
     color:white;
-    flex: 1;
+    flex: 0.7;
 }
 
-.listItems div:nth-last-child(2){
-    flex:0.1;
+.listItems div:first-child{
+    flex: 1;
 }
 
 .listItems div:last-child{
     flex: 0.1;
+}
+
+.listItems div svg{
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width:850px) {
+    .listContentHeadings div{
+        font: 300 0.7rem Lato;
+    }
+
+    .listItems div{
+        font: 300 0.7rem Lato;
+    }
+
+    .listItems div svg{
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .listContentHeadings div{
+        font: 300 0.55rem Lato;
+    }
+
+    .listItems div{
+        font: 300 0.55rem Lato;
+    }
+
+    .listItems div:first-child{
+        font: 300 0.44rem Lato;
+    }
+
+    .listItems div svg{
+        font-size: 0.8rem;
+    }
 }

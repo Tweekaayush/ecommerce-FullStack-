@@ -1,19 +1,21 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {clearErrors, getAdminProducts} from "../../actions/productAction"
+import {clearErrors, deleteProduct, getAdminProducts} from "../../actions/productAction"
 import ReactPaginate from 'react-paginate'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import "./ProductList.css"
 import DeleteIcon from '@mui/icons-material/Delete';
 import CreateIcon from '@mui/icons-material/Create';
+import { DELETE_PRODUCT_RESET } from '../../constants/productConstants';
 
 const ProductList = ({opt}) => {
 
 
     const dispatch = useDispatch()
     const {error, products} = useSelector((state)=>state.products)
-    const itemsPerPage = 4
+    const {error:deleteError, isDeleted} = useSelector((state)=>state.product)
+    const itemsPerPage = 5
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
     const items = []
@@ -28,13 +30,23 @@ const ProductList = ({opt}) => {
         setItemOffset(newOffset);
     };
 
+    const deleteProductHandler = (id) =>{
+        dispatch(deleteProduct(id))
+    }
+
     useEffect(()=>{
         if(error){
             dispatch(clearErrors())
         }
-
+        if(deleteError){
+            dispatch(clearErrors())
+        }
+        if(isDeleted){
+          alert("Product has been deleted!");
+          dispatch({type: DELETE_PRODUCT_RESET})
+        }
         dispatch(getAdminProducts())
-    }, [dispatch])
+    }, [dispatch, alert, deleteError, isDeleted])
 
   return (
         <div className={`listContent ${opt}`}>
@@ -48,6 +60,9 @@ const ProductList = ({opt}) => {
               </div>
               <div>
                 <p>Amount:</p>
+              </div>
+              <div>
+                <p>Actions</p>
               </div>
             </div>  
             {currentItems.length !== 0 ? (
@@ -63,10 +78,7 @@ const ProductList = ({opt}) => {
                         <p>{product.price}</p>
                     </div>
                     <div>
-                      <CreateIcon/>
-                    </div>
-                    <div>
-                      <DeleteIcon/>
+                      <DeleteIcon onClick={()=>deleteProductHandler(product._id)}/>
                     </div>
                 </div> 
               )))

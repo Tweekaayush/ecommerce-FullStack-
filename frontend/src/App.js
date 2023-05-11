@@ -16,24 +16,22 @@ import Profile from "./components/User/Profile"
 import ForgotPassword from "./components/User/ForgotPassword"
 import ResetPassword from "./components/User/ResetPassword"
 import Cart from "./components/Cart/Cart"
-import Wishlist from "./components/Cart/Wishlist"
 import Billing from "./components/Cart/Billing"
 import NotFound from "./components/layout/Not Found/NotFound";
 import ConfirmOrder from "./components/Cart/ConfirmOrder";
 import Payment from "./components/Cart/Payment.js"
 import About from "./components/layout/About/About"
-import Contact from "./components/layout/Contact/Contact"
 import { Elements } from "@stripe/react-stripe-js";
 import {loadStripe} from "@stripe/stripe-js"
 import OrderSuccess from "./components/Cart/OrderSuccess.js"
 import Dashboard from "./components/Admin/Dashboard.js"
 import PrivateRoute from "./components/Route/PrivateRoute";
 import AdminRoute from "./components/Route/AdminRoute";
+import News from "./components/layout/News/News";
+import Support from "./components/layout/Support/Support";
 
 function App() {
 
-  const {isAuthenticated, user, loading} = useSelector((state) => state.user)
-  const {cartItems} = useSelector((state)=>state.cart)
   const [stripeApiKey, setStripeApiKey] = useState("")
 
   async function getStripeApiKey(){
@@ -46,7 +44,7 @@ function App() {
   useEffect(()=>{
     WebFont.load({
       google:{
-        families:["Raleway ","Kaushan Script","Sigmar One", "Phudu", "Lato"]
+        families:["Raleway ","Kaushan Script","Sigmar One", "Phudu", "Lato","Montserrat"]
       }
     })
     store.dispatch(loadUser());
@@ -58,16 +56,15 @@ function App() {
       <Routes>
         <Route exact path ="/" element={<Home/>} />
         <Route exact path ="/about" element={<About/>} />
-        <Route exact path ="/contact" element={<Contact/>} />
+        <Route exact path ="/support" element={<Support/>} />
         <Route exact path ="/login" element={<Login/>} />
         <Route exact path ="/product/:id" element={<Product/>}/>
         <Route exact path ="/browse" element={<Browse/>}/>
         <Route exact path ="/browse/:keyword" element={<Browse/>}/>
-        <Route exact path = "/password/forgot" element={<ForgotPassword/>}></Route>
-        <Route exact path = "/password/reset/:token" element={<ResetPassword/>}></Route>
-        <Route exact path = "/about" element={<About/>}></Route>
-        <Route exact path = "/contact" element={<Contact/>}></Route>
-        
+        <Route exact path = "/password/forgot" element={<ForgotPassword/>}/>
+        <Route exact path = "/password/reset/:token" element={<ResetPassword/>} />
+        <Route exact path = "/news" element={<News/>}></Route>        
+
         {/* Private Routes */}
 
         <Route element={<PrivateRoute/>}>
@@ -90,6 +87,8 @@ function App() {
           </Route>
 
         </Route>
+
+        <Route path="/*"element={<NotFound/>}/>
       </Routes>
       <Footer/>
     </Router>

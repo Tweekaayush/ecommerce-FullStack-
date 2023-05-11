@@ -27,6 +27,14 @@ import {
     ALL_USERS_REQUEST,
     ALL_USERS_SUCCESS,
     ALL_USERS_FAIL,
+    DELETE_USER_REQUEST,
+    DELETE_USER_SUCCESS,
+    DELETE_USER_FAIL,
+    DELETE_USER_RESET,
+    UPDATE_USER_REQUEST,
+    UPDATE_USER_SUCCESS,
+    UPDATE_USER_FAIL,
+    UPDATE_USER_RESET,
     CLEAR_ERRORS
 } from "../constants/userConstants"
 
@@ -92,11 +100,15 @@ export const profileReducer = (state = {}, action)=>{
     switch(action.type){
         case UPDATE_PROFILE_REQUEST:
         case UPDATE_PASSWORD_REQUEST:
+        case UPDATE_USER_REQUEST:
+        case DELETE_USER_REQUEST:
             return{
                 ...state,
                 loading:true,
             };
+
         case UPDATE_PROFILE_SUCCESS:
+        case UPDATE_USER_SUCCESS:
             return{
                 ...state,
                 loading:false,
@@ -108,9 +120,18 @@ export const profileReducer = (state = {}, action)=>{
                 loading:false,
                 passIsUpdated: action.payload
             };
+        case DELETE_USER_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                isDeleted: action.payload.success,
+                message: action.payload.message,
+            };
 
         case UPDATE_PROFILE_FAIL:
         case UPDATE_PASSWORD_FAIL:
+        case UPDATE_USER_FAIL:
+        case DELETE_USER_FAIL:
             return {
             ...state,
             loading:false,
@@ -118,6 +139,7 @@ export const profileReducer = (state = {}, action)=>{
         };
 
         case UPDATE_PROFILE_RESET:
+        case UPDATE_USER_RESET:
             return{
                 ...state,
                 isUpdated: false
@@ -127,6 +149,11 @@ export const profileReducer = (state = {}, action)=>{
                 ...state,
                 passIsUpdated: false
             }
+        case DELETE_USER_RESET:
+            return {
+                ...state,
+                isDeleted: false,
+            };
 
         case CLEAR_ERRORS:
             return{

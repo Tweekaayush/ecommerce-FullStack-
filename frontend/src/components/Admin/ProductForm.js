@@ -40,12 +40,11 @@ const ProductForm = ({opt}) => {
       myForm.set("price", price)
       myForm.set("description", description)
       myForm.set("genre", genre)
-      myForm.set("name", name)
       myForm.set("background_image", bgImg)
 
-      images.forEach((image)=>{
-        myForm.append("images", image)
-      })
+      images.forEach((image) => {
+        myForm.append("images", image);
+      });
 
       dispatch(createProduct(myForm))
   }
@@ -109,6 +108,7 @@ const ProductForm = ({opt}) => {
             </div>
 
             <div>
+              <label>Background Image:</label>
               <input className='productFormImageInput' type="file" name="background_image" accept='image/' onChange={imageDataChange} />
             </div>
             {bgImg &&(
@@ -118,6 +118,7 @@ const ProductForm = ({opt}) => {
             )}
 
             <div>
+              <label>Gameplay Images:</label>
               <input className='productFormImageInput' type="file" name="productImages" accept='image/' onChange={imageDataChange}multiple />
             </div>
             <div id="productImgPreview">

@@ -67,6 +67,7 @@ const Header = ({btnInfo ="Discover"}) => {
                 <div className={headerDrop?"leftHeaderItems headerToggle-active":"leftHeaderItems"}>
                     <Link to="/" className="headerItem">Discover</Link>
                     <Link to="/browse" className="headerItem">Browse</Link>
+                    <Link to="/news" className="headerItem">News</Link>
                 </div>
                 {isAuthenticated && (
                 <div className="rightHeaderItems">

@@ -4,14 +4,17 @@ import ReactPaginate from 'react-paginate'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import "./ProductList.css"
-import { clearErrors, getAllUsers } from '../../actions/userAction';
+import { clearErrors, deleteUser, getAllUsers } from '../../actions/userAction';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CreateIcon from '@mui/icons-material/Create';
+import { DELETE_USER_RESET } from '../../constants/userConstants';
 
 const UserList = () => {
 
     const dispatch = useDispatch()
     const {error, users} = useSelector((state)=>state.allUsers)
+    const {user} = useSelector((state)=>state.user)
+    const {error: deleteError, isDeleted, message} = useSelector((state)=>state.profile)
     const itemsPerPage = 5
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
@@ -27,12 +30,28 @@ const UserList = () => {
         setItemOffset(newOffset);
     };
 
+    const deleteUserHandler = (id) =>{
+      if(id === user._id){
+        alert("Admin user cannot be deleted")
+        return
+      }
+        dispatch(deleteUser(id))
+    }
+
     useEffect(()=>{
         if(error){
            dispatch(clearErrors())
         }
+        if(deleteError){
+          dispatch(clearErrors())
+        }
+        if(isDeleted){
+          alert("User Deleted Successfully")
+          dispatch({type:DELETE_USER_RESET})
+        }
+
         dispatch(getAllUsers())
-    },[dispatch, error])
+    },[dispatch, error, alert, deleteError, isDeleted])
   return (
     <div className={`listContent`}>
           <div className="listItemList">
@@ -48,6 +67,9 @@ const UserList = () => {
               </div>
               <div>
                 <p>Email</p>
+              </div>
+              <div>
+                <p>Actions</p>
               </div>
             </div>  
             {currentItems.length !== 0 ? (
@@ -66,10 +88,7 @@ const UserList = () => {
                         <p>{user.email}</p>
                     </div>
                     <div>
-                      <CreateIcon/>
-                    </div>
-                    <div>
-                      <DeleteIcon/>
+                      <DeleteIcon onClick={()=>deleteUserHandler(user._id)}/>
                     </div>
                 </div> 
               )))

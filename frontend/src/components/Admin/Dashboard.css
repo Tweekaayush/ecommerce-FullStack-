@@ -24,6 +24,7 @@
     flex-direction: column;
     align-items:center;
     padding: 1rem;
+    margin-top: 1rem;
 }
 
 .dashboardHeading{
@@ -31,7 +32,7 @@
 }
 
 .dashboardAllHeadings{
-    font: bold 2rem Lato;
+    font: bold 2rem Montserrat;
     color: rgba(0, 0, 0, 0.842);
     padding-bottom: 0.3rem;
     letter-spacing: 1px;
@@ -63,12 +64,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items:center;
-    border-right: 1px solid #0475de;
-    padding:1rem 0;
-    font-family: Lato;
+    border-right: 1px solid #004c94;
+    font-family: Montserrat;
     color:white;
     transition: 0.3s;
+    min-height: 18vh;
+    width: 100%;
 }
 
 .dashboardSummaryBox div:hover{
@@ -84,13 +85,14 @@
     border:none;
 }
 
-.lineChart{
-    width: 32rem;
-    height: 17rem;
-    margin: 1rem 0;
-    padding: 1rem 0 1rem 1rem;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+.dashboardSummaryBox div p:first-child{
+    padding: 0.5rem 0.7rem;
+    border-bottom:1px solid #004c94;
+}
+.dashboardSummaryBox div p:last-child{
+    text-align: center;
+    flex: 1;
+    padding-top: 1.8rem;
 }
 
 .dashboardComponentDetails{

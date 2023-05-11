@@ -45,6 +45,7 @@ const Dashboard = () => {
     orders&& orders.forEach((order)=>{
         totalAmount += order.totalPrice
     })
+    totalAmount = totalAmount.toFixed(2)
 
     const lineState = {
         labels: ["Initial Amount", "Total Amount"],
@@ -151,25 +152,21 @@ const Dashboard = () => {
                                 <div className="dashboardDetails">
                                     <div className="dashboardSummaryBox">
                                         <div>
-                                            <p>Products</p>
+                                            <p>Products:</p>
                                             <p>{products && products.length}</p>
                                         </div>
                                         <div>
-                                            <p>Orders</p>
+                                            <p>Orders:</p>
                                             <p>{orders && orders.length}</p>
                                         </div>
                                         <div>
-                                            <p>Users</p>
+                                            <p>Users:</p>
                                             <p>{users && users.length}</p>
                                         </div>
                                         <div>
                                             <p>Total Earnings:</p>
-                                            <p>{orders && totalAmount}</p>
+                                            <p>₹ {totalAmount}</p>
                                         </div>
-                                    </div>
-                                    <div className="lineChart">
-                                        <></>
-                                    <Line data={lineState} options={options} />
                                     </div>
                                 </div>
                             </div>

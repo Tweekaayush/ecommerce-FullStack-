@@ -15,7 +15,7 @@
 }
 .productContainerHeading h1{
     color:white;
-    font:600 2rem Lato;
+    font:600 2rem Montserrat;
 }
 
 .productBox-1{
@@ -153,7 +153,7 @@
 
 .productBox-2-1 h1, .productBox-2-2 h1, .reviewsHeading{
     width: 100%;
-    font: 500 2.5rem Lato;
+    font: 500 2.5rem Montserrat;
     color:#7abfff;
     border-bottom: 1px solid #1c88ed;
 }

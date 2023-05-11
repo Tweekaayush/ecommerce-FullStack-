@@ -33,7 +33,7 @@ const Login = () => {
   const {name, email, password}= user;
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [avatar, setAvatar] = useState();
+  const [avatar, setAvatar] = useState("/Profile.png");
   const [avatarPreview, setAvatarPreview] = useState("/Profile.png")
 
 

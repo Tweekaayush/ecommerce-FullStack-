@@ -1,5 +1,5 @@
 .productCard {
-    height: 13.5rem;
+    height: 15rem;
     width: 18rem;
     display: flex;
     flex-direction: column;
@@ -12,7 +12,7 @@
   }
   
   .productCard > img {
-    width: 18rem;
+    width: 100%;
   }
   
   .productCard > p {
@@ -28,3 +28,15 @@
     font-family: Lato;
     font-size: 1vmax;
   }
+
+@media screen and (max-width:1244px) {
+  .productCard{
+    width: 15rem;
+  }
+}
+
+@media screen and (max-width:1025px) {
+  .productCard{
+    width: 16.5rem;
+  }
+}

@@ -43,42 +43,58 @@
 }
 
 .upperAboutContent h1{
-    font: bolder 4rem Lato;
-
+    font: bold 4rem Montserrat;
+    opacity: 0;
     color:white;
 }
 
 .upperAboutContent h3{
     font: 500 2rem Lato;
     padding: 2rem 0;
+    opacity: 0;
     color:rgba(255, 255, 255, 0.767);
 }
 
 .upperAboutContent p{
+    opacity: 0;
     font: 200 1.3rem Lato;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     line-height: 2rem;
     color:rgba(255, 255, 255, 0.486);
 }
 
 .lowerAboutContainer{
+    background-color: #003566;
     display: flex;
     justify-content: center;
     align-items:center;
     color: white;
     width: 100%;
+    box-shadow: #0084ff27 0px 3px 6px, #0084ff27 0px 3px 6px;
+    opacity: 0;
 }
 
 .lowerAboutContainer p{
-    background-color: #003566;
     padding: 2rem;
     font: 200 1.3rem Lato;
     letter-spacing: 2px;
     line-height: 2rem;
     color:rgba(255, 255, 255, 0.753);
-    box-shadow: #0084ff27 0px 3px 6px, #0084ff27 0px 3px 6px;
 }
 
+.slideLeftIn{
+    animation: slideLeftIn 0.5s ease-in-out forwards;
+}
+.slideLeftIn2{
+    animation: slideLeftIn 0.5s 0.2s ease-in-out forwards;
+}
+.slideLeftIn3{
+    animation: slideLeftIn 0.5s 0.3s ease-in-out forwards;
+}
+
+.slideUpIn{
+    animation: slideUpIn 0.5s 0.5s ease-in-out forwards; 
+}
 
 @media screen and (max-width:1024px) {
     .upperAboutContent h1{

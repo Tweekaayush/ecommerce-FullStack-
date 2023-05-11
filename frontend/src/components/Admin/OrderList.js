@@ -4,13 +4,15 @@ import ReactPaginate from 'react-paginate'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import "./ProductList.css"
-import { clearErrors, getAllOrders } from '../../actions/orderAction';
+import { clearErrors, deleteOrder, getAllOrders } from '../../actions/orderAction';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CreateIcon from '@mui/icons-material/Create';
+import { DELETE_ORDER_RESET } from '../../constants/orderConstants';
 
 const OrderList = () => {
     const dispatch = useDispatch()
     const {error, orders} = useSelector((state)=>state.allOrders)
+    const {error: deleteError, isDeleted} = useSelector((state)=>state.order)
     const itemsPerPage = 5
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
@@ -26,12 +28,20 @@ const OrderList = () => {
         setItemOffset(newOffset);
     };
 
+    const deleteOrderHandler = (id) =>{
+      dispatch(deleteOrder(id))
+    }
+
     useEffect(()=>{
         if(error){
             dispatch(clearErrors())
         }
+        if(isDeleted){
+          alert("Order Deleted Successfully")
+          dispatch({type:DELETE_ORDER_RESET})
+        }
         dispatch(getAllOrders())
-    }, [dispatch])
+    }, [dispatch,error, isDeleted])
 
   return (
         <div className={`listContent`}>
@@ -48,6 +58,9 @@ const OrderList = () => {
               </div>
               <div>
                 <p>Amount:</p>
+              </div>
+              <div>
+                <p>Actions</p>
               </div>
             </div>  
             {currentItems.length !== 0 ? (
@@ -66,10 +79,7 @@ const OrderList = () => {
                         <p>{order.totalPrice}</p>
                     </div>
                     <div>
-                      <CreateIcon/>
-                    </div>
-                    <div>
-                      <DeleteIcon/>
+                      <DeleteIcon onClick={()=>deleteOrderHandler(order._id)}/>
                     </div>
                 </div> 
               )))

@@ -87,7 +87,7 @@ const Navbar = () =>{
                             {isAuthenticated && user.role === "admin" && (
                             <RightLink href ="/admin/dashboard">Dashboard</RightLink>
                             )}
-                            <RightLink href ="">Support</RightLink>
+                            <RightLink href ="/support">Support</RightLink>
                             <div className={toggle?"nav-social-handles slideleftin":"nav-social-handles sliderightout"}>
                                 <span className='icons'><FaFacebook /></span>
                                 <span className='icons'><FaInstagram /></span>

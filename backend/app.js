@@ -8,9 +8,9 @@ const errorMiddleware = require("./middleware/error");
 
 dotenv.config({path:"backend/config/config.env"});
 
-app.use(express.json());
+app.use(express.json({limit:'1000mb'}));
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({extended: true, limit:'1000mb'}))
 app.use(fileUpload())
 
 //Route imports
