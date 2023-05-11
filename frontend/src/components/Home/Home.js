@@ -4,9 +4,9 @@ import "./Home.css"
 import {getProducts, clearErrors} from "../../actions/productAction"
 import {useSelector, useDispatch} from "react-redux"
 import 'react-multi-carousel/lib/styles.css';
-import Slide1 from "./Slide/Slide1"
-import Slide2 from "./Slide/Slide2"
-import GenreCard from "./GenreCard/GenreCard"
+import Slide1 from "./Slide1"
+import Slide2 from "./Slide2"
+import GenreCard from "./GenreCard"
 import Slider from "react-slick"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons' 
@@ -16,6 +16,7 @@ import Header from "../layout/Header/Header"
 import Loader from '../layout/Loader/Loader'
 import { genres } from '../../genrelist'
 import { Link, useNavigate } from 'react-router-dom'
+import HomeNewsSection from './HomeNewsSection'
 
 
 const Home = () => {
@@ -170,7 +171,7 @@ const Home = () => {
           <Slider {...multisettings}>
                 {genres.map((genre)=>(
                   <Link to="/browse" state={{genre: genre.name}}>
-                    <GenreCard genre = {genre}/>
+                    <GenreCard key = {genre.id} genre = {genre}/>
                   </Link>
                 ))}
           </Slider>
@@ -182,6 +183,7 @@ const Home = () => {
               <a href="/login" className='btn'>Sign In</a>
               <p>Or <a href='/login'>Sign Up</a> and join Ecommerce for free</p>
         </div>
+        <HomeNewsSection/>
       </div>
       </Fragment>
       )}

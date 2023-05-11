@@ -95,9 +95,9 @@ body{
     transition-timing-function: cubic-bezier(1,-0.04,.58,.84);
     display: none;
 }
-.nav-item a, .nav-item a{
+.nav-item a{
     text-decoration: none;
-    color: white;
+    color: rgba(255, 255, 255, 0.766);
 }
 
 .nav-item{
@@ -111,11 +111,11 @@ body{
 }
 
 .left-nav .nav-item a:hover{
-    color: rgb(16,14,20);
+    color: rgb(255, 255, 255);
 }
 
 .right-nav .nav-item a:hover{
-    color:#4A00E0;
+    color:#0171da;
 }
 
 .nav-toggler{
@@ -198,6 +198,11 @@ body{
 }
 
 
+.nav-upper-item:hover{
+    background-color:white;
+    color:black;
+}
+
 .slidedownout:nth-child(1){
     animation: slideDownOut 0.5s 0.4s ease-in-out backwards;
 }
@@ -265,7 +270,7 @@ body{
 }
 
 .nav-social-handles .icons:hover{
-    color: #4A00E0;
+    color: #0171da;
 }
 
 

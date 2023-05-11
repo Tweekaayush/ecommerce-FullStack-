@@ -1,0 +1,89 @@
+.newsCard{
+    width: 100%;
+    height: 12rem;
+    background-color: #0035669f;
+    margin-top: 1rem;
+    display: flex;
+    backdrop-filter: blur(10px);
+}
+
+.newsCard-l{
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsCard-l img{
+    width: 80%;
+    height: 70%;
+}
+
+.newsCard-r{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:1rem;
+}
+
+.newsCard-r h1{
+    font:bold 2rem Montserrat;
+    color:white;
+}
+.newsCard-r h3{
+    font:500 1.1rem Montserrat;
+    color:white;
+}
+.newsCard-r p{
+    font:300 1rem Montserrat;
+    color:rgba(255, 255, 255, 0.637);
+}
+
+.newsCard-r a{
+    text-decoration: none;
+    color:white;
+    text-align: end;
+}
+.newsCard-r a{
+    text-decoration: none;
+    color:white;
+    padding-right: 1rem;
+}   
+
+
+@media screen and (max-width:850px){
+    .newsCard-r{
+        gap:0.5rem;
+    }
+    .newsCard-r h1{
+        font:bold 1.4rem Montserrat;
+        color:white;
+    }
+    .newsCard-r h3{
+        font:500 1rem Lato;
+        color:white;
+    }
+    .newsCard-r p{
+        font:300 0.9rem Lato;
+        color:rgba(255, 255, 255, 0.637);
+    }
+    .newsCard-r a svg{
+        font-size:1.3rem ;
+    }
+}
+
+@media screen and (max-width:850px){
+    .newsCard-r{
+        gap:0.3rem;
+    }
+    .newsCard-r h1{
+        font:bold 1.3rem Montserrat;
+    }
+    .newsCard-r h3{
+        font:500 0.9rem Lato;
+    }
+    .newsCard-r p{
+        font:300 0.8rem Lato;
+    }
+}

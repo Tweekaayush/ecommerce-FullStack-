@@ -26,7 +26,9 @@ const Footer = () =>{
                 </div>
                 <div>
                     <h1>About us</h1>
-                    <p>this is a para.this is a para.this is a para.this is a para.this is a para.this is a para.this is a para.</p>
+                    <p>
+                        Our collection covers every genre and satisfies all cravings for interactive entertainment
+                    </p>
                 </div>
             </div>
             <div className='lower-footer'>

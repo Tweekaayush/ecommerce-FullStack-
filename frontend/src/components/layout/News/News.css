@@ -1,0 +1,34 @@
+.newsContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+
+.newsBox{
+    width: 74%;
+}
+
+.newsBox-active{
+    margin-top: 5rem;
+}
+
+.newsHeading h1{
+    font: 500 2rem Montserrat;
+    color: rgba(255, 255, 255, 0.753);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.466);
+}
+
+.newsContent{
+    width: 100%;
+    padding-top: 1rem;
+}
+
+@media screen and (max-width:1024px) {
+    .newsBox{
+        width: 90%;
+    }
+}

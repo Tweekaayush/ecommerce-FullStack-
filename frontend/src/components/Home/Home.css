@@ -4,8 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: Raleway;
-    background: rgb(0,29,61);
+    font-family: Lato;
 }
 
 .homeCarouselBox{
@@ -127,7 +126,7 @@
     padding: 10px;
     text-decoration: none;
     color:white;
-    background:rgb(78, 1, 244);
+    background:#003566;
     font: 400 1.1rem Raleway;     
     border-radius:10px;
 }

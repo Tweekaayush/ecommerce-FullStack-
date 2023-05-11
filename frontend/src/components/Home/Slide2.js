@@ -1,5 +1,4 @@
-import React, { Fragment } from 'react';
-import {Link, useParams} from "react-router-dom";
+import React from 'react';
 import "./Slide2.css";
 
 const Slide2 = (props) => {

@@ -83,17 +83,28 @@
 }
 
 .slideLeftIn{
-    animation: slideLeftIn 0.5s ease-in-out forwards;
+    animation: slideLeftInAbout 0.5s ease-in-out forwards;
 }
 .slideLeftIn2{
-    animation: slideLeftIn 0.5s 0.2s ease-in-out forwards;
+    animation: slideLeftInAbout 0.5s 0.2s ease-in-out forwards;
 }
 .slideLeftIn3{
-    animation: slideLeftIn 0.5s 0.3s ease-in-out forwards;
+    animation: slideLeftInAbout 0.5s 0.3s ease-in-out forwards;
 }
 
 .slideUpIn{
     animation: slideUpIn 0.5s 0.5s ease-in-out forwards; 
+}
+
+@keyframes slideLeftInAbout {
+    0%{
+        transform: translateX(10%);
+        opacity:0;
+    }
+    100%{
+        transform: translateX(0%);
+        opacity: 1;
+    }
 }
 
 @media screen and (max-width:1024px) {

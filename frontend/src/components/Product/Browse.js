@@ -6,7 +6,7 @@ import Header from "../layout/Header/Header"
 import ProductCard from './ProductCard'
 import { useParams, useLocation, useNavigate } from 'react-router-dom'
 import Pagination from "react-js-pagination"
-import { Slider, Typography } from '@mui/material'
+import { Slider } from '@mui/material'
 import { genres } from '../../genrelist'
 import Loader from '../layout/Loader/Loader'
 import Metadata from '../layout/Metadata'

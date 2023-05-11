@@ -1,0 +1,45 @@
+.homeNewsSection{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.homeNewsBox{
+    position: relative;
+    height: 8rem;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.homeNewsBox h1{
+    color:white;
+    position: absolute;
+    font: bold 2rem Montserrat;
+    text-shadow: 2px 5px 6px rgba(0, 0, 0, 1);
+    letter-spacing: 1px;
+}
+
+.homeNewsBox img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius:15px;
+}
+
+.homeNewsBoxFilter{
+    backdrop-filter: blur(3px);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+@media screen and (max-width:750px) {
+    .homeNewsBox{
+        width: 90%;
+        height: 7rem;
+    }   
+}

@@ -14,11 +14,15 @@ const About = () => {
           <div className="upperAboutContent">
             <h1 className='slideLeftIn'>About Us</h1>
             <h3 className='slideLeftIn2'>Play to the beat.</h3>
-            <p className='slideLeftIn3'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores explicabo similique cum. Sit consequatur sapiente tenetur officiis rem blanditiis alias veritatis saepe neque quasi quas tempore modi, odit ipsam vitae?</p>
+            <p className='slideLeftIn3'>
+                Step into a world where gaming dreams come to life and embark on an unforgettable journey through a vast collection of digital adventures.
+            </p>
           </div>
         </div>
         <div className="lowerAboutContainer slideUpIn">
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis asperiores vitae molestias cum omnis neque autem placeat sunt iste quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero exercitationem doloremque ab quisquam enim at, ea iure qui id vitae?</p>
+          <p>
+          At GameOn, we are passionate about delivering the ultimate gaming experience to enthusiasts like you. Whether you're a casual gamer seeking the latest releases or a seasoned player in search of nostalgic classics, we have something to cater to every gaming taste.
+          </p>
         </div>
       </div>
     </div>
