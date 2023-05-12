@@ -22,25 +22,49 @@
     padding-bottom: 2rem ;
 }
 
-.upperAboutContainer div{
-    flex: 1;
-    width: 50%;
-    padding: 2rem;
-}
 
 .upperAboutContent{
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 .aboutImage{
     width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex: 1;
+}
+
+.aboutImage .slick-slider{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.aboutImage .slick-arrow.slick-prev::before,
+.aboutImage .slick-arrow.slick-next::before {
+    display: none;
+}
+
+.aboutImage .slick-dots li button::before{
+    color:white;
+}
+
+.aboutImage div{
+    width: 20rem;
+    height: 20rem;
 }
 
 .aboutImage img{
-    width: 100%;
     height: 100%;
+    width: 100%;
 }
+
+
 
 .upperAboutContent h1{
     font: bold 4rem Montserrat;
@@ -126,7 +150,7 @@
 
 @media screen and (max-width:850px) {
     .upperAboutContent h1{
-        font: bolder 3rem Lato;
+        font: bolder 2.5rem Lato;
     }
     
     .upperAboutContent h3{

@@ -37,7 +37,7 @@ const MyOrders = ({clsname}) => {
     }
 
     dispatch(myOrders());
-  }, [dispatch, error, alert])
+  }, [dispatch, error, toast])
 
   const Sort = () =>{
     if(currentItems.length !== 0)

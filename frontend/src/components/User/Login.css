@@ -245,4 +245,7 @@
         width: 8vmax;
         border-radius: 100%;
       }
+    .loginSignUpContent-2{
+        background-color:#001d3d;
+    }
 }

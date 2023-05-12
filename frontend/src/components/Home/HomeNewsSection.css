@@ -3,13 +3,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem 0;
+    padding: 5% 0;
 }
 
 .homeNewsBox{
     position: relative;
     height: 8rem;
-    width: 70%;
+    width: 74%;
     display: flex;
     justify-content: center;
     align-items:center;
@@ -31,7 +31,7 @@
 }
 
 .homeNewsBoxFilter{
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(2px);
     height: 100%;
     width: 100%;
     position: absolute;

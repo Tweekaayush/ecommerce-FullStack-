@@ -82,7 +82,7 @@ const OrderList = () => {
           dispatch({ type : DELETE_ORDER_RESET})
         }
         dispatch(getAllOrders())
-    }, [dispatch,error, isDeleted, orderDetailsError, updateError, isUpdated])
+    }, [dispatch,error, isDeleted, orderDetailsError, updateError, isUpdated, toast])
 
   return (
         <div className="listContent">

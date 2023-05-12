@@ -1,19 +1,39 @@
 import React from 'react'
 import "./About.css"
 import Metadata from "../Metadata"
+import Slider from "react-slick"
+import {img} from "../../../doodles.js"
 
 const About = () => {
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    autoplaySpeed: 3000,
+    autoplay:true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: false,
+    prevArrow: false
+  };
+
   return (
     <div className="aboutContainer">
       <Metadata title="About Us" />
       <div className="aboutBox">
         <div className="upperAboutContainer">
           <div className="aboutImage">
-            <img src="https://media.tenor.com/uTGE6zSoSs8AAAAC/future-gaming.gif" alt="" />
+            <Slider {...settings}>
+              {img.map((item, i)=>(
+                  <div>
+                    <img src={item.url} key={i} alt="" />
+                  </div>
+              ))}
+            </Slider>
           </div>
           <div className="upperAboutContent">
             <h1 className='slideLeftIn'>About Us</h1>
-            <h3 className='slideLeftIn2'>Play to the beat.</h3>
+            <h3 className='slideLeftIn2'>Play to the beat.</h3>   
             <p className='slideLeftIn3'>
                 Step into a world where gaming dreams come to life and embark on an unforgettable journey through a vast collection of digital adventures.
             </p>

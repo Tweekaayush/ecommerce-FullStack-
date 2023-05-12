@@ -47,7 +47,7 @@ const UpdatePassword = ({clsname}) => {
                     type: UPDATE_PASSWORD_RESET
                 })
             }
-          },[dispatch, passIsUpdated, alert, navigate])
+          },[dispatch, passIsUpdated, toast, navigate])
 
   return (
     <div className={`updatePasswordBox ${clsname}`}>

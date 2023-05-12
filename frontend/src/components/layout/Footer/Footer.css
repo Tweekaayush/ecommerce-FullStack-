@@ -1,6 +1,6 @@
 footer{
     width: 100%;
-    background:#001020;
+    background: #001124;;
     color: white;
     display: flex;
     align-items: center;
@@ -45,7 +45,7 @@ footer{
 
 
 .lower-footer{
-    background:#000814;
+    background:#000a14;;
     width: 100%;
     text-align: center;
     padding:10px;

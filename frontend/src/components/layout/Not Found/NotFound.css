@@ -8,18 +8,18 @@
     align-items: center;
   }
 
-  .notFoundError{
-    font: bold 8rem Montserrat;
-    color: rgba(255, 255, 255, 0.418);
+  .notFoundImg{
+    width: 20rem;
+    height: 20rem;
   }
 
-  .notFoundHeading{
-    font: bold 1.95rem Montserrat;
-    color: rgb(255, 255, 255);
+  .notFoundImg img{
+    width: 100%;
+    height: 100%;
   }
 
   .pageNotFoundContainer > p {
-    font:300 1.3rem Lato;
+    font:300 1.3rem Montserrat;
     color:rgba(255, 255, 255, 0.616);
     margin: 1rem 0;
   }
@@ -30,23 +30,26 @@
     border: none;
     padding: 1rem 3rem;
     cursor: pointer;
-    font: 400 1rem "Roboto";
+    font: 400 1rem Montserrat;
     text-decoration: none;
     margin-top: 1rem;
   }
   
   @media screen and (max-width: 600px) {
-    .PageNotFound > a {
-      padding: 3vw 6vw;
-      font: 400 4vw "Roboto";
-      margin: 2vmax;
+
+    .notFoundImg{
+      width: 15rem;
+      height: 15rem;
+    }
+
+    .pageNotFoundContainer > a {
+      padding: 1rem 3rem;
+      font: 400 1rem Montserrat;
+      margin: 1rem;
     }
   
-    .PageNotFound > svg {
-      font-size: 20vw;
-    }
-    .PageNotFound > p {
-      margin: 2vmax;
-      font-size: 5vw;
+    .pageNotFoundContainer > p {
+      margin: 1rem;
+      font-size: 1rem;
     }
   }

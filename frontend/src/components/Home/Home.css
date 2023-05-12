@@ -21,8 +21,8 @@
 
 .homeCarouselSlider-1{
     width: 80%;
-    border:5px solid #00003d;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    border:2px solid #000000;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
 }
 
@@ -92,13 +92,13 @@
 
 .homeBrowseHeading{
     width: 74%;
-    padding: 1rem 0;
 }
 
 .homeBrowseHeading h1{
     color:white;
-    font-size:1.5rem;
+    font-size:1.3rem;
     font-family: Montserrat;
+    padding: 1rem 0;
 }
 
 .homeRecommendationSection{

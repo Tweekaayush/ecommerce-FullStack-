@@ -92,7 +92,7 @@ const UserList = () => {
         }
 
         dispatch(getAllUsers())
-    },[dispatch, error, alert, deleteError, isDeleted, userDetailsError, isUpdated])
+    },[dispatch, error, alert, deleteError, isDeleted, userDetailsError, isUpdated, toast])
   return (
     <div className={`listContent`}>
           <div className="listItemList">

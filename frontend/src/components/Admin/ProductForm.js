@@ -30,12 +30,11 @@ const ProductForm = ({opt}) => {
       toast.success("Product Added Successfully")
       dispatch({type:NEW_PRODUCT_RESET})
     }
-  },[dispatch, alert, error, success])
+  },[dispatch, alert, error, success,toast])
 
 
   const productSubmitHandler = (e) =>{
       e.preventDefault()
-
       const myForm = new FormData()
 
       myForm.set("name", name)
@@ -52,23 +51,23 @@ const ProductForm = ({opt}) => {
       dispatch(createProduct(myForm))
   }
   const imageDataChange = (e) =>{
-      const files = Array.from(e.target.files);
+    const files = Array.from(e.target.files);
 
-      setImages([]);
-      setImagesPrev([]);
+    setImages([]);
+    setImagesPrev([]);
 
-      files.forEach((file) => {
-        const reader = new FileReader();
+    files.forEach((file) => {
+      const reader = new FileReader();
 
-        reader.onload = () => {
-          if (reader.readyState === 2) {
-            setImagesPrev((old) => [...old, reader.result]);
-            setImages((old) => [...old, reader.result]);
-          }
-        };
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setImagesPrev((old) => [...old, reader.result]);
+          setImages((old) => [...old, reader.result]);
+        }
+      };
 
-        reader.readAsDataURL(file);
-      });
+      reader.readAsDataURL(file);
+    });
   }
 
   return (
@@ -101,7 +100,7 @@ const ProductForm = ({opt}) => {
             </div>
             <div>
               <label>Images:</label>
-              <input required className='productFormImageInput' type="file" name="productImages" accept='image/' onChange={imageDataChange} multiple />
+              <input required className='productFormImageInput' type="file" name="productImages" accept='image/*' onChange={imageDataChange} multiple />
             </div>
             <div id="productImgPreview">
               {imagesPrev.map((image, i)=>(

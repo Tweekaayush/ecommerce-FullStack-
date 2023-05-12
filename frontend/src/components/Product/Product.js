@@ -38,10 +38,12 @@ const Product = () => {
 
     useEffect(()=>{
       if (error) {
+        toast.error(error)
         dispatch(clearErrors());
       }
   
       if (reviewError) {
+        toast.error(reviewError)
         dispatch(clearErrors());
       }
       if (success) {
@@ -49,7 +51,7 @@ const Product = () => {
         dispatch({ type: NEW_REVIEW_RESET });
       }
         dispatch(getProductDetails(id));
-      }, [dispatch, id, reviewError, success])
+      }, [dispatch, id, reviewError, success, error, toast])
 
     const [nav1, setNav1] = useState();
     const [nav2, setNav2] = useState();

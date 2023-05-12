@@ -39,7 +39,9 @@ const Cart = () => {
             <Header/>
             {cartItems.length === 0?(
                 <div className={scroll?"emptyCartContainer emptyCartContainer-active":"emptyCartContainer"}>
-                    <RemoveShoppingCartIcon/>
+                    <div>
+                        <img src="/emptycart.png" alt="" />
+                    </div>
                     <h1>Your cart is empty</h1>
                     <Link to="/">Shop for Games</Link>
                 </div>

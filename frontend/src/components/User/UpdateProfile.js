@@ -67,7 +67,7 @@ const UpdateProfile = ({clsname, boolVal}) => {
                 type: UPDATE_PROFILE_RESET
             })
         }
-      },[dispatch, user, isUpdated, navigate, alert])
+      },[dispatch, user, isUpdated, navigate, toast, error])
 
   return (
             <div className={`updateProfileBox ${clsname}`}>

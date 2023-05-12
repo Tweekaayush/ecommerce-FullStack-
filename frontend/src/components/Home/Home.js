@@ -46,7 +46,7 @@ const Home = () => {
     }
     dispatch(getProducts());
 
-  },[dispatch]);
+  },[dispatch, error, toast]);
 
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -105,6 +105,8 @@ const Home = () => {
     const multisettings = { 
       speed: 500,
       arrows:true,
+      prevArrow:<SamplePrevArrow/>,
+      nextArrow:<SampleNextArrow/>,
       responsive: [
         {
           breakpoint:5000,

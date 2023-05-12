@@ -12,6 +12,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import {useNavigate} from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Billing = () => {
 
@@ -29,7 +31,7 @@ const Billing = () => {
         e.preventDefault();
 
         if(phoneNo.length !== 10){
-            alert("Phone No length should be 10 digit")
+            toast.error("Phone No length should be 10 digit")
             return
         }
         dispatch(saveBillingInfo({name, email, phoneNo, pincode, country, state}));
@@ -112,6 +114,14 @@ const Billing = () => {
                 </form>
             </div>
         </div>
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          rtl={false}
+          theme="colored"
+        />
     </Fragment>
   )
 }

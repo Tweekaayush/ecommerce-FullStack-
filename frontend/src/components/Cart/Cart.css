@@ -1,10 +1,10 @@
 .cartContainer{
     width: 100%;
-    min-height: 65vh;
+    min-height: 95vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items:center;
+    gap: 1rem;
 }
 
 .cartContainerBox{
@@ -89,7 +89,16 @@
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    height: 51.9vh;
+    width: 100%;
+    padding-top: 5rem;
+}
+
+.emptyCartContainer div{
+    width: 20rem;
+}
+.emptyCartContainer div img{
+    width: 100%;
+    height: 100%;
 }
 
 .emptyCartContainer svg{
@@ -99,7 +108,7 @@
 .emptyCartContainer h1{
     color: rgba(255, 255, 255, 0.829);
     font: 300 2.5rem Raleway;
-    padding: 1.5rem 0 0.5rem 0;
+    padding: .5rem 0;
 }
 .emptyCartContainer a{
     color:rgba(255, 255, 255, 0.589);

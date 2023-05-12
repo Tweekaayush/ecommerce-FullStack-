@@ -48,7 +48,7 @@ const ProductList = ({opt}) => {
           dispatch({type: DELETE_PRODUCT_RESET})
         }
         dispatch(getAdminProducts())
-    }, [dispatch, alert, deleteError, isDeleted])
+    }, [dispatch, alert, deleteError, isDeleted, toast])
 
   return (
         <div className={`listContent ${opt}`}>

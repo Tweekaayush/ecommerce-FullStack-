@@ -37,7 +37,7 @@ const ForgotPassword = () => {
       toast.success(message)
     }
 
-  }, [dispatch, error, message, alert])
+  }, [dispatch, error, message, toast])
 
   return (
     <Fragment>
