@@ -15,6 +15,8 @@ import { addItemsToCart } from '../../actions/cartAction';
 import { newReview, clearErrors } from '../../actions/productAction';
 import { NEW_REVIEW_RESET } from '../../constants/productConstants';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Product = () => {
 
@@ -43,7 +45,8 @@ const Product = () => {
         dispatch(clearErrors());
       }
       if (success) {
-      dispatch({ type: NEW_REVIEW_RESET });
+        toast.success("Review Added")
+        dispatch({ type: NEW_REVIEW_RESET });
       }
         dispatch(getProductDetails(id));
       }, [dispatch, id, reviewError, success])
@@ -104,7 +107,7 @@ const Product = () => {
     }
 
     const settings2 = {
-      slidesToShow:3,
+      slidesToShow: 4,
       slidesToScroll:1,
       arrows:true,
       swipeToSlide:true,
@@ -119,7 +122,7 @@ const Product = () => {
       max:5,
       readOnly:true
   }
-  
+
   window.addEventListener("scroll", ()=>{
     if(window.scrollY > 64) 
         setScroll(true);
@@ -131,6 +134,7 @@ const Product = () => {
 const addToCart = () =>{
   if(isAuthenticated){
     dispatch(addItemsToCart(id))
+    toast.success("Added to Cart")
   }
   else{
     navigate(`/login?redirect=product/${id}`)
@@ -273,6 +277,14 @@ const addToCart = () =>{
         </div>
     </div>
       </Fragment>)}
+      <ToastContainer
+      position="top-center"
+      autoClose={3000}
+      hideProgressBar={true}
+      newestOnTop={false}
+      rtl={false}
+      theme="colored"
+      />
     </Fragment>
   )
 }

@@ -8,6 +8,8 @@ import "./ProductList.css"
 import DeleteIcon from '@mui/icons-material/Delete';
 import CreateIcon from '@mui/icons-material/Create';
 import { DELETE_PRODUCT_RESET } from '../../constants/productConstants';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductList = ({opt}) => {
 
@@ -42,7 +44,7 @@ const ProductList = ({opt}) => {
             dispatch(clearErrors())
         }
         if(isDeleted){
-          alert("Product has been deleted!");
+          toast.success("Product has been deleted!");
           dispatch({type: DELETE_PRODUCT_RESET})
         }
         dispatch(getAdminProducts())

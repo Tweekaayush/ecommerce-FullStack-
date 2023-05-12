@@ -17,6 +17,8 @@ import Loader from '../layout/Loader/Loader'
 import { genres } from '../../genrelist'
 import { Link, useNavigate } from 'react-router-dom'
 import HomeNewsSection from './HomeNewsSection'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Home = () => {
@@ -39,7 +41,7 @@ const Home = () => {
   useEffect(()=>{
 
     if (error) {
-      alert(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     dispatch(getProducts());
@@ -183,6 +185,14 @@ const Home = () => {
       </div>
       </Fragment>
       )}
+      <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          rtl={false}
+          theme="colored"
+        />
     </Fragment>
   )
 }

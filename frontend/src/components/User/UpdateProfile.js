@@ -7,6 +7,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faEnvelope, faLockOpen} from "@fortawesome/free-solid-svg-icons"
 import PersonIcon from '@mui/icons-material/Person';
 import "./UpdateProfile.css"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UpdateProfile = ({clsname, boolVal}) => {
 
@@ -53,16 +55,14 @@ const UpdateProfile = ({clsname, boolVal}) => {
             setAvatarPreview(user.avatar.url)
         }
         if (error) {
-            alert(error);
+            toast.error(error);
             dispatch(clearErrors());
           }
 
         if(isUpdated){
-            alert("Profile updated")
+            toast.success("Profile updated")
             dispatch(loadUser());
-
             navigate("/account")
-    
             dispatch({
                 type: UPDATE_PROFILE_RESET
             })

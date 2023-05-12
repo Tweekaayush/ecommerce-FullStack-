@@ -6,6 +6,8 @@ import ReactPaginate from 'react-paginate';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import MyOrdersListItem from './MyOrdersListItem';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const MyOrders = ({clsname}) => {
@@ -30,7 +32,7 @@ const MyOrders = ({clsname}) => {
 
   useEffect(()=>{
     if(error){
-      alert(error)
+      toast.error(error)
       dispatch(clearErrors())
     }
 

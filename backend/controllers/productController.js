@@ -39,7 +39,7 @@ exports.createProduct = catchAsyncErrors(async (req, res, next)=>{
 
     req.body.images = imagesLinks
 
-    req.body.background_image = imagesLinks[0].id;
+    req.body.background_image = imagesLinks[0].url;
     
     req.body.user = req.user._id;
 

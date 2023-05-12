@@ -6,6 +6,8 @@ import { clearErrors, updatePassword } from '../../actions/userAction';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faEnvelope, faLockOpen, faLock, faKey} from "@fortawesome/free-solid-svg-icons"
 import "./UpdatePassword.css"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UpdatePassword = ({clsname}) => {
 
@@ -32,12 +34,12 @@ const UpdatePassword = ({clsname}) => {
 
         useEffect(()=>{
             if (error) {
-                alert(error);
+                toast.error(error);
                 dispatch(clearErrors());
               }
     
             if(passIsUpdated){
-                alert("Password updated")
+                toast.success("Password updated")
                 
                 navigate("/account")
             

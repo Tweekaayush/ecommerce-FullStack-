@@ -7,6 +7,8 @@ import {faEnvelope} from "@fortawesome/free-solid-svg-icons"
 import "./ForgotPassword.css"
 import Loader from '../layout/Loader/Loader';
 import Metadata from '../layout/Metadata';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ForgotPassword = () => {
   const dispatch = useDispatch();
@@ -27,12 +29,12 @@ const ForgotPassword = () => {
 
   useEffect(()=>{
     if(error){
-      alert(error)
+      toast.error(error)
       dispatch(clearErrors());
     }
 
     if(message){
-      alert(message)
+      toast.success(message)
     }
 
   }, [dispatch, error, message, alert])
@@ -63,6 +65,14 @@ const ForgotPassword = () => {
       </div>
     </Fragment>
       )}
+      <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          rtl={false}
+          theme="colored"
+        />
     </Fragment>
   )
 }

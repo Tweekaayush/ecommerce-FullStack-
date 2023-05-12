@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import Metadata from '../layout/Metadata'
 import Loader from '../layout/Loader/Loader'
 import PersonIcon from '@mui/icons-material/Person';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
@@ -70,6 +72,7 @@ const Login = () => {
 
   useEffect(()=>{
     if (error) {
+      toast.error(error)
       dispatch(clearErrors());
     }
 
@@ -155,6 +158,14 @@ const Login = () => {
         </div>
       </div>
     </Fragment>)}
+    <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          rtl={false}
+          theme="colored"
+        />
     </Fragment>
   )
 }

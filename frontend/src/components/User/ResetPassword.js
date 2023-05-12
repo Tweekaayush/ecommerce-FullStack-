@@ -2,12 +2,14 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { UPDATE_PASSWORD_RESET } from '../../constants/userConstants';
-import { clearErrors, resetPassword } from '../../actions/userAction';
+import { clearErrors, loadUser, resetPassword } from '../../actions/userAction';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faEnvelope, faLockOpen, faLock, faKey} from "@fortawesome/free-solid-svg-icons"
 import "./ResetPassword.css"
 import Loader from '../layout/Loader/Loader';
 import Metadata from '../layout/Metadata';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ResetPassword = () => {
 
@@ -33,11 +35,13 @@ const ResetPassword = () => {
 
         useEffect(()=>{
             if (error) {
+                toast.error(error)
                 dispatch(clearErrors());
               }
     
             if(success){
-                alert("Password updated")
+                toast.success("Password updated")
+                dispatch(loadUser())
                 navigate("/account")
             }
 
@@ -69,6 +73,15 @@ const ResetPassword = () => {
         </div>
     </Fragment>
       )}
+      <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          rtl={false}
+          theme="colored"
+          pauseOnFocusLoss
+        />
     </Fragment>
   )
 }

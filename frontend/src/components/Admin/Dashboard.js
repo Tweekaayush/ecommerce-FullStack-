@@ -11,7 +11,8 @@ import { clearErrors, getAdminProducts } from '../../actions/productAction'
 import { getAllOrders } from '../../actions/orderAction'
 import OrderList from "./OrderList.js"
 import UserList from "./UserList.js"
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 ChartJS.register(
     LineElement,
@@ -209,6 +210,14 @@ const Dashboard = () => {
                 </div>
             </Fragment>
         )}
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          rtl={false}
+          theme="colored"
+        />
     </Fragment>
   )
 }

@@ -4,6 +4,8 @@ import { genres } from '../../genrelist'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearErrors, createProduct } from '../../actions/productAction'
 import { NEW_PRODUCT_RESET } from '../../constants/productConstants'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductForm = ({opt}) => {
 
@@ -11,6 +13,7 @@ const ProductForm = ({opt}) => {
   const [price, setPrice] = useState("")
   const [description, setDescription] = useState("")
   const [genre, setGenre] = useState("")
+  const [released, setReleased] = useState("")
   const [images, setImages] = useState([])
   const [imagesPrev, setImagesPrev] = useState([])
 
@@ -20,11 +23,11 @@ const ProductForm = ({opt}) => {
 
   useEffect(()=>{
     if(error){
-      alert(error)
+      toast.error(error)
       dispatch(clearErrors())
     }
     if(success){
-      alert("Product Added Successfully")
+      toast.success("Product Added Successfully")
       dispatch({type:NEW_PRODUCT_RESET})
     }
   },[dispatch, alert, error, success])
@@ -39,6 +42,7 @@ const ProductForm = ({opt}) => {
       myForm.set("price", price)
       myForm.set("description", description)
       myForm.set("genre", genre)
+      myForm.set("released", released)
       myForm.set("background_image", "")
 
       images.forEach((image) => {
@@ -79,15 +83,16 @@ const ProductForm = ({opt}) => {
                <input className='productFormInput' type="text" placeholder='Product Name' required value={name} onChange={(e)=>setName(e.target.value)}/>
             </div>
             <div>
-
               <input className='productFormInput' type="number" value={price} onChange={(e)=>setPrice(e.target.value)} placeholder="Price" required/>
             </div>
             <div>
-
-              <textarea className='productFormInput' placeholder="Product Description" value={description} onChange={(e)=>setDescription(e.target.value)} cols="30" rows="1"></textarea>
+              <input className='productFormInput' type="date" value={released} onChange={(e)=>setReleased(e.target.value)} placeholder="Released" required/>
             </div>
             <div>
-              <select className='productFormInput' value={genre} onChange={(e)=>setGenre(e.target.value)}>
+              <textarea required className='productFormInput' placeholder="Product Description" value={description} onChange={(e)=>setDescription(e.target.value)} cols="30" rows="1"></textarea>
+            </div>
+            <div>
+              <select required className='productFormInput' value={genre} onChange={(e)=>setGenre(e.target.value)}>
                 <option value="">Select Genre</option>
                 {genres.map((genre)=>(
                   <option key={genre.id} value={genre.name}>{genre.name}</option>
@@ -96,7 +101,7 @@ const ProductForm = ({opt}) => {
             </div>
             <div>
               <label>Images:</label>
-              <input className='productFormImageInput' type="file" name="productImages" accept='image/' onChange={imageDataChange}multiple />
+              <input required className='productFormImageInput' type="file" name="productImages" accept='image/' onChange={imageDataChange} multiple />
             </div>
             <div id="productImgPreview">
               {imagesPrev.map((image, i)=>(

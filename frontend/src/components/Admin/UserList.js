@@ -11,6 +11,8 @@ import { DELETE_USER_RESET } from '../../constants/userConstants';
 import { Dialog, DialogContent, DialogTitle, Button, DialogActions } from '@mui/material';
 import { getUserDetails } from '../../actions/userAction';
 import { UPDATE_USER_RESET } from '../../constants/userConstants';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UserList = () => {
 
@@ -38,7 +40,7 @@ const UserList = () => {
 
     const deleteUserHandler = (id) =>{
       if(id === user._id){
-        alert("Admin user cannot be deleted")
+        toast.error("Admin user cannot be deleted")
         return
       }
         dispatch(deleteUser(id))
@@ -81,11 +83,11 @@ const UserList = () => {
           dispatch(clearErrors())
         }
         if(isDeleted){
-          alert("User Deleted Successfully")
+          toast.success("User Deleted Successfully")
           dispatch({type:DELETE_USER_RESET})
         }
         if(isUpdated){
-          alert("User Role Updated Succesfully")
+          toast.success("User Role Updated Succesfully")
           dispatch({ type: UPDATE_USER_RESET });
         }
 

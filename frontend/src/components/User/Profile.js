@@ -7,6 +7,8 @@ import UpdateProfile from './UpdateProfile'
 import UpdatePassword from "./UpdatePassword.js"
 import Loader from '../layout/Loader/Loader'
 import MyOrders from '../Order/MyOrders'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Profile = () => {
@@ -125,6 +127,14 @@ const Profile = () => {
         </div>
     </Fragment>
       )}
+      <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          rtl={false}
+          theme="colored"
+        />
     </Fragment>   
   )
 }

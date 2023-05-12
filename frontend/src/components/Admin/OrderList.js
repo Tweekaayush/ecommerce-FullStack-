@@ -11,6 +11,8 @@ import { DELETE_ORDER_RESET } from '../../constants/orderConstants';
 import { Dialog, DialogContent, DialogActions, Button, DialogTitle } from '@mui/material';
 import { UPDATE_ORDER_RESET } from '../../constants/orderConstants';
 import { updateOrder } from '../../actions/orderAction';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const OrderList = () => {
     const dispatch = useDispatch()
@@ -69,16 +71,15 @@ const OrderList = () => {
           dispatch(clearErrors())
         }
         if (updateError) {
-          alert(updateError);
           dispatch(clearErrors());
         }
         if (isUpdated) {
-          alert("Order Updated Successfully");
+          toast.success("Order Updated Successfully");
           dispatch({ type: UPDATE_ORDER_RESET });
         }
         if(isDeleted){
-          alert("Order Deleted Successfully")
-          dispatch({type:DELETE_ORDER_RESET})
+          toast.success("Order Deleted Successfully")
+          dispatch({ type : DELETE_ORDER_RESET})
         }
         dispatch(getAllOrders())
     }, [dispatch,error, isDeleted, orderDetailsError, updateError, isUpdated])
