@@ -34,14 +34,14 @@ const productSchema = new mongoose.Schema({
     images:[
         {
             id:{
-                type:Number,
+                type:String,
                 required:true
             },
             url:{
                 type:String,
                 required:true
-            }
-        }
+            },
+        },
     ],
     genre:{
         type:String,

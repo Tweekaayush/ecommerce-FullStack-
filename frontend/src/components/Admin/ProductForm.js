@@ -11,8 +11,6 @@ const ProductForm = ({opt}) => {
   const [price, setPrice] = useState("")
   const [description, setDescription] = useState("")
   const [genre, setGenre] = useState("")
-  const [bgImg, setBgImg] = useState("")
-  const [bgImgPrev, setBgImgPrev] = useState("")
   const [images, setImages] = useState([])
   const [imagesPrev, setImagesPrev] = useState([])
 
@@ -22,7 +20,8 @@ const ProductForm = ({opt}) => {
 
   useEffect(()=>{
     if(error){
-      clearErrors()
+      alert(error)
+      dispatch(clearErrors())
     }
     if(success){
       alert("Product Added Successfully")
@@ -40,7 +39,7 @@ const ProductForm = ({opt}) => {
       myForm.set("price", price)
       myForm.set("description", description)
       myForm.set("genre", genre)
-      myForm.set("background_image", bgImg)
+      myForm.set("background_image", "")
 
       images.forEach((image) => {
         myForm.append("images", image);
@@ -49,16 +48,6 @@ const ProductForm = ({opt}) => {
       dispatch(createProduct(myForm))
   }
   const imageDataChange = (e) =>{
-    if(e.target.name === "background_image"){
-      const reader = new FileReader();
-      reader.onload = () =>{
-        if(reader.readyState === 2){            
-          setBgImgPrev(reader.result);
-          setBgImg(reader.result)
-        }
-      };
-      reader.readAsDataURL(e.target.files[0]);
-    }else{
       const files = Array.from(e.target.files);
 
       setImages([]);
@@ -76,7 +65,6 @@ const ProductForm = ({opt}) => {
 
         reader.readAsDataURL(file);
       });
-    }
   }
 
   return (
@@ -106,19 +94,8 @@ const ProductForm = ({opt}) => {
                 ))}
               </select>
             </div>
-
             <div>
-              <label>Background Image:</label>
-              <input className='productFormImageInput' type="file" name="background_image" accept='image/' onChange={imageDataChange} />
-            </div>
-            {bgImg &&(
-            <div id="backgroundImgPreview">
-              <img src={bgImgPrev} alt="bgImg" />
-            </div>
-            )}
-
-            <div>
-              <label>Gameplay Images:</label>
+              <label>Images:</label>
               <input className='productFormImageInput' type="file" name="productImages" accept='image/' onChange={imageDataChange}multiple />
             </div>
             <div id="productImgPreview">

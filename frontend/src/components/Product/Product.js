@@ -104,7 +104,7 @@ const Product = () => {
     }
 
     const settings2 = {
-      slidesToShow:4,
+      slidesToShow:3,
       slidesToScroll:1,
       arrows:true,
       swipeToSlide:true,
@@ -119,6 +119,7 @@ const Product = () => {
       max:5,
       readOnly:true
   }
+  
   window.addEventListener("scroll", ()=>{
     if(window.scrollY > 64) 
         setScroll(true);
