@@ -5,6 +5,7 @@
     align-items:center;
     min-height: 40vh;
     width: 100%;
+    padding-top: 2rem;
 }
 
 .listContentHeadings{
@@ -18,13 +19,13 @@
 }
 .listContentHeadings div{
     font: 300 0.9rem Lato;
-    flex: 0.7;
+    flex: 0.5;
 }
 .listContentHeadings div:first-child{
     flex: 1;
 }
 .listContentHeadings div:last-child{
-    flex: 0.1;
+    flex: 0.2;
 }
 
 .listItemList{
@@ -43,7 +44,6 @@
     color:rgba(0, 0, 0, 0.575);
 }
 
-
 .listContent .listItemList h1{
     font: 400 1.5rem Lato;
     color:rgba(255, 255, 255, 0.544);
@@ -61,7 +61,7 @@
 .listItems div{
     font: 300 0.9rem Lato;
     color:white;
-    flex: 0.7;
+    flex: 0.5;
     display: flex;
 }
 
@@ -70,11 +70,54 @@
 }
 
 .listItems div:last-child{
-    flex: 0.1;
+    display: flex;
+    justify-content: space-evenly;
+    flex: 0.2;
 }
 
 .listItems div svg{
     font-size: 1.2rem;
+}
+
+.listItems div svg:nth-child(2):hover{
+    color: red;
+}
+
+.listItems div svg:nth-child(1):hover{
+    color: cyan;
+}
+
+
+.updateDialog{
+    display: flex;
+    flex-direction: column;
+}
+
+.updateDialogHeading{
+    font: bold 10px Montserrat;
+    color: #1d7add;
+}
+
+.updateDialog p, .updateDialog select{
+    cursor: pointer;
+    width: 100%;
+    padding: 1px 0 10px 0;
+    border: none;
+    font: 400 1rem Lato;
+    color: #0184ff;
+    background:white;
+    letter-spacing: 1px;
+}
+
+.updateDialog p:nth-child(odd){
+    color: #001d3d;
+    font: 600 1rem Montserrat;
+    padding: 0;
+}
+
+
+.userdivflex{
+    flex: 1 !important;
 }
 
 @media screen and (max-width:850px) {
@@ -97,14 +140,17 @@
     }
 
     .listItems div{
-        font: 300 0.55rem Lato;
+        font: 300 0.6rem Lato;
     }
 
     .listItems div:first-child{
-        font: 300 0.44rem Lato;
+        font: 300 0.5rem Lato;
     }
 
     .listItems div svg{
         font-size: 0.8rem;
+    }
+    .userdivflex{
+        font-size: 0.5rem !important;
     }
 }

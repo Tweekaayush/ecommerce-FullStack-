@@ -7,7 +7,7 @@ const Slide1 = (props) => {
     <Link to={`/product/${props.id}`}>
       <div className="slide1">            
         <img src={props.img} className="slide1-img" alt={props.id}/>
-        <Link to={`/product/${props.id}`} className="slide1-btn">Shop Now</Link>
+        <button className="slide1-btn">Shop Now</button>
       </div>
     </Link>
   )

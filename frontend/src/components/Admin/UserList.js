@@ -104,7 +104,7 @@ const UserList = () => {
               <div>
                 <p>Role</p>
               </div>
-              <div>
+              <div className='userdivflex'>
                 <p>Email</p>
               </div>
               <div>
@@ -121,10 +121,10 @@ const UserList = () => {
                         <p>{String(user.createdAt).substring(0, 10)}</p>
                     </div>
                     <div>
-                        <p>{user.role}</p>
+                        <p style={{color:user.role === "user"?"cyan":"limegreen"}}>{user.role}</p>
                     </div>
-                    <div>
-                        <p>{user.email}</p>
+                    <div className='userdivflex'>
+                        <p >{user.email}</p>
                     </div>
                     <div>
                       <CreateIcon onClick={()=>updateUserToggle(user._id)}/>
@@ -158,11 +158,13 @@ const UserList = () => {
                     open ? setOpen(false) : setOpen(true);
                   }}
                   >
-                    <DialogTitle className='submitDialogHeading'>Update User Role</DialogTitle>
-                    <DialogContent className='submitDialog'>
-
+                    <DialogTitle className='updateDialogHeading'>Update User Role</DialogTitle>
+                    <DialogContent className='updateDialog'>
+                        <p>Name:</p>
                         <p>{curUser.name}</p>
+                        <p>Email:</p>
                         <p>{curUser.email}</p>      
+                        <p>Role:</p>
                         <select onChange={(e)=>setRole(e.target.value)} >
                           <option value={curUser.role}>{curUser.role}</option>
                           <option value={curUser.role==="admin"?"user":"admin"}>{curUser.role==="admin"?"user":"admin"}</option>

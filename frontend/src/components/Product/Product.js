@@ -31,20 +31,20 @@ const Product = () => {
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
 
+    const rec = JSON.parse('{"OS": "Windows 10 64 Bit, Windows 8.1 64 Bit, Windows 8 64 Bit, Windows 7 64 Bit Service Pack 1",    "Processor": "Intel Core i5 3470 @ 3.2GHz (4 CPUs) / AMD X8 FX-8350 @ 4GHz (8 CPUs)",    "Memory": "8 GB RAM",    "Graphics": "NVIDIA GTX 660 2GB / AMD HD 7870 2GB",    "Storage": "72 GB available space",    "Sound Card": "100% DirectX 10 compatible"}')
+    const min = JSON.parse('{"OS": "Windows 10 64 Bit, Windows 8.1 64 Bit, Windows 8 64 Bit, Windows 7 64 Bit Service Pack 1, Windows Vista 64 Bit Service Pack 2* (*NVIDIA video card recommended if running Vista OS)","Processor": "Intel Core 2 Quad CPU Q6600 @ 2.40GHz (4 CPUs) / AMD Phenom 9850 Quad-Core Processor (4 CPUs) @ 2.5GHz","Memory": "4 GB RAM","Graphics": "NVIDIA 9800 GT 1GB / AMD HD 4870 1GB (DX 10, 10.1, 11)","Storage": "72 GB available space","Sound Card": "100% DirectX 10 compatible"}')
+
     useEffect(()=>{
       if (error) {
-        alert.error(error);
         dispatch(clearErrors());
       }
   
       if (reviewError) {
-        alert.error(reviewError);
         dispatch(clearErrors());
       }
       if (success) {
-      alert("Review Submitted Successfully");
       dispatch({ type: NEW_REVIEW_RESET });
-    }
+      }
         dispatch(getProductDetails(id));
       }, [dispatch, id, reviewError, success])
 
@@ -196,12 +196,20 @@ const addToCart = () =>{
               <h1>System Requirements</h1>
               <div className="productBox-2-2-1">
                   <div className="productBox-2-2-1-1">
-                    {/* <h2>Minimum:</h2> */}
-                    <p>{product.minimum}</p>
+                    <h2>Minimum:</h2>
+                    <p><span>OS: </span> {min.OS}</p>
+                    <p><span>Processor: </span> {min.Processor}</p>
+                    <p><span>Memory: </span> {min.Memory}</p>
+                    <p><span>Graphics: </span> {min.Graphics}</p>
+                    <p><span>Storage: </span> {min.Storage}</p>
                   </div>
                   <div className="productBox-2-2-1-2">
-                    {/* <h2>Recommended:</h2> */}
-                    <p>{product.recommended}</p>
+                    <h2>Recommended:</h2>
+                    <p><span>OS: </span> {rec.OS}</p>
+                    <p><span>Processor: </span> {rec.Processor}</p>
+                    <p><span>Memory: </span> {rec.Memory}</p>
+                    <p><span>Graphics: </span> {rec.Graphics}</p>
+                    <p><span>Storage: </span> {rec.Storage}</p>
                   </div>
               </div>
             </div>

@@ -33,7 +33,11 @@
     border-radius: 10px 10px 0 0;
 }
 .myOrdersContentHeadings div{
-    flex: 1
+    flex: 0.5;
+}
+
+.myOrdersContentHeadings div:first-child{
+    flex: 1;
 }
 
 
@@ -43,6 +47,7 @@
     flex-direction: column;
     color:white;
 }
+
 
 .myOrdersItemList .emptyOrdersDiv{
     display: flex;
@@ -94,3 +99,34 @@ ul.react-paginate {
   ul.react-paginate li.disabled a {
     cursor: default;
   }
+
+  @media screen and (max-width:600px) {
+    
+  }
+
+  @media screen and (max-width:1024px) {
+
+    .myOrdersContentHeadings div p{
+        font: 300 .9rem Lato;
+    }
+
+}
+
+@media screen and (max-width:850px) {
+    .myOrdersContentHeadings div p{
+        font: 300 .7rem Lato;
+    }
+    .myOrdersContentHeadings div{
+      flex: 0.4;
+  }  
+}
+
+@media screen and (max-width:600px) {
+    .myOrdersContentHeadings div p{
+        font: 300 .65rem Lato !important;
+    }
+    .myOrdersBox{
+      padding: 1.5rem 1rem;
+    }
+    
+}

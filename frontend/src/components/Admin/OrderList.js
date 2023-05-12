@@ -84,7 +84,7 @@ const OrderList = () => {
     }, [dispatch,error, isDeleted, orderDetailsError, updateError, isUpdated])
 
   return (
-        <div className={`listContent`}>
+        <div className="listContent">
           <div className="listItemList">
             <div className="listContentHeadings">
               <div>
@@ -113,7 +113,7 @@ const OrderList = () => {
                         <p>{String(order.createdAt).substring(0, 10)}</p>
                     </div>
                     <div>
-                        <p style={{color:order.orderStatus === "Processing"?"orange":"green"}}>{order.orderStatus}</p>
+                        <p style={{color:order.orderStatus === "Processing"?"orange":"limegreen"}}>{order.orderStatus}</p>
                     </div>
                     <div>
                         <p>{order.totalPrice}</p>
@@ -150,11 +150,15 @@ const OrderList = () => {
               open ? setOpen(false) : setOpen(true);
             }}
           >
-            <DialogTitle className='submitDialogHeading'>Update Order Status</DialogTitle>
-            <DialogContent className='submitDialog'>
+            <DialogTitle className='updateDialogHeading'>Update Order Status</DialogTitle>
+            <DialogContent className='updateDialog'>
+                  <p>Order Id:</p>
                   <p>{order && order._id}</p>
+                  <p>Amount:</p>
                   <p>{order && order.totalPrice}</p>      
+                  <p>Date (Ordered):</p>
                   <p>{String(order && order.createdAt).substring(0, 10)}</p>      
+                  <p>Status:</p>
                   <select onChange={(e)=>setOrderStatus(e.target.value)} >
                     <option value={order && order.orderStatus} >{order && order.orderStatus}</option>
                     <option value={order && order.orderStatus === "Processing"?"Delivered":"Processing"}>{order && order.orderStatus === "Processing"?"Delivered":"Processing"}</option>

@@ -7,7 +7,8 @@ const ReviewCard = ({review}) => {
         value: review.rating,
         precision:0.5,
         max:5,
-        readOnly:true
+        readOnly:true,
+        size: "small"
     }
     
   return (

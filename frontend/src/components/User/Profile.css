@@ -1,9 +1,9 @@
 .profileContainer{
     display: flex;
     width: 100%;
-    justify-content: center;
     align-items: flex-end;
     flex-direction: column;
+    min-height: 95vh;
 }
 
 .upperProfile{
@@ -20,7 +20,7 @@
     display: flex;
     justify-content: center;
     align-items:flex-start;
-    height: 80vh;
+    height: 100%;
 }
 
 .upperProfile h1{
@@ -136,7 +136,6 @@
 
     .rightProfileContainer{
         border-left:none;
-        overflow: scroll;
         width: 100%;
     }
 

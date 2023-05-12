@@ -14,6 +14,7 @@
     border-radius:10px;
 }
 .slide1-btn{
+    cursor: pointer;
     position:absolute;
     bottom: 10%;
     left: 6%;
@@ -24,10 +25,11 @@
     font:500 1rem Phudu;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    border: none;
 }
 .slide1-btn:hover{
     color:white;
-    background-color:rgb(15, 0, 56);
+    background-color:#003566;
     transition: all 0.5s;
 }
 

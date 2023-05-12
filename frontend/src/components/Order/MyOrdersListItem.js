@@ -9,8 +9,11 @@ const MyOrdersListItem = ({order}) => {
             <div className="myOrdersListId">
                 <p>{order._id}</p>
             </div>
+            <div className="myOrdersListId">
+                <p>{String(order.createdAt).substring(0, 10)}</p>
+            </div>
             <div className="myOrdersListStatus">
-                <p style={{color:order.orderStatus === "Processing"?"orange":"green"}}>{order.orderStatus}</p>
+                <p style={{color:order.orderStatus === "Processing"?"orange":"limegreen"}}>{order.orderStatus}</p>
             </div>
             <div className="myOrdersListAmount">
                 <p>{order.totalPrice}</p>

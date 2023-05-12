@@ -13,5 +13,35 @@
 
 .myOrdersListItem div{
     color:white;
+    flex: 0.5;
+}
+
+.myOrdersListItem div:first-child{
+    color:white;
     flex: 1;
+}
+
+
+@media screen and (max-width:1024px) {
+
+    .myOrdersListItem div p{
+        font: 300 .9rem Lato;
+    }
+
+}
+
+@media screen and (max-width:850px) {
+    .myOrdersListItem div p{
+        font: 300 .68rem Lato;
+    }
+    .myOrdersListItem div{
+        flex: 0.4;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .myOrdersListItem div p{
+        font: 300 .65rem Lato !important;
+    }
+    
 }

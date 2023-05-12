@@ -8,7 +8,7 @@
 .dashboardBox{
     width: 95%;
     display: flex;
-    min-height: 100vh;
+    min-height: 90vh;
     margin: 2rem 0;
 }
 

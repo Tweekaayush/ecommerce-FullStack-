@@ -54,6 +54,9 @@ const MyOrders = ({clsname}) => {
                 <p>ID:</p>
               </div>
               <div>
+                <p>Ordered on:</p>
+              </div>
+              <div>
                 <p>Status:</p>
               </div>
               <div>

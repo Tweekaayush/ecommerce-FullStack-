@@ -212,14 +212,18 @@
 }
 
 .productBox-2-2-1 div h2{
-    color:white;
+    color:#7abfff;
+    font:400 1rem Lato
+}
+.productBox-2-2-1 div p span{
+    color:#ffffff;
     font:400 1rem Lato
 }
 
 .productBox-2-2-1-1, .productBox-2-2-1-2{
     width: 50%;
-    color: rgba(255, 255, 255, 0.786);
-    font: 300 1rem Lato;
+    color: rgba(255, 255, 255, 0.637);
+    font: 300 0.9rem Lato;
 }
 
 
@@ -300,5 +304,15 @@
     }
     .reviewBtn{
         font-size: 0.8rem;
+    }
+    .productBox-2-2-1{
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .productBox-2-2-1-1{
+        width: 100%;
+    }
+    .productBox-2-2-1-2{
+        width: 100%;
     }
 }

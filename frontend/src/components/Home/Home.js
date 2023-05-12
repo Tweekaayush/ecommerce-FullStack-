@@ -25,13 +25,9 @@ const Home = () => {
   const {loading, error, products,productCount} = useSelector((state)=>state.products);
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
-  const [genre, setGenre] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [scroll, setScroll] = useState(false);
-  const [keyword, setKeyword] = useState("");
-
     window.addEventListener("scroll", ()=>{
         if(window.scrollY > 64) 
             setScroll(true);
