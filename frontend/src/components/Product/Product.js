@@ -26,17 +26,24 @@ const Product = () => {
     const {product, loading, error} = useSelector((state)=>state.productDetails);
     const navigate= useNavigate();
     const {isAuthenticated, user} = useSelector((state)=>state.user)
+    const [sys, setSys] = useState(false)
     const { success, error: reviewError } = useSelector(
       (state) => state.newReview
     );
     const [open, setOpen] = useState(false);
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
-
-    const rec = JSON.parse('{"OS": "Windows 10 64 Bit, Windows 8.1 64 Bit, Windows 8 64 Bit, Windows 7 64 Bit Service Pack 1",    "Processor": "Intel Core i5 3470 @ 3.2GHz (4 CPUs) / AMD X8 FX-8350 @ 4GHz (8 CPUs)",    "Memory": "8 GB RAM",    "Graphics": "NVIDIA GTX 660 2GB / AMD HD 7870 2GB",    "Storage": "72 GB available space",    "Sound Card": "100% DirectX 10 compatible"}')
-    const min = JSON.parse('{"OS": "Windows 10 64 Bit, Windows 8.1 64 Bit, Windows 8 64 Bit, Windows 7 64 Bit Service Pack 1, Windows Vista 64 Bit Service Pack 2* (*NVIDIA video card recommended if running Vista OS)","Processor": "Intel Core 2 Quad CPU Q6600 @ 2.40GHz (4 CPUs) / AMD Phenom 9850 Quad-Core Processor (4 CPUs) @ 2.5GHz","Memory": "4 GB RAM","Graphics": "NVIDIA 9800 GT 1GB / AMD HD 4870 1GB (DX 10, 10.1, 11)","Storage": "72 GB available space","Sound Card": "100% DirectX 10 compatible"}')
+    let min,rec
+    
+      if(product.minimum){
+        min = JSON.parse(product.minimum)
+      }
+      if(product.recommended){
+        rec = JSON.parse(product.recommended)
+      }
 
     useEffect(()=>{
+
       if (error) {
         toast.error(error)
         dispatch(clearErrors());
@@ -184,7 +191,7 @@ const addToCart = () =>{
                   <div>
                     <p>Release Date:</p>
                     <p>
-                       {product.released}
+                       {String(product.released).substring(0,10)}
                     </p>
                   </div>
                   <div>
@@ -206,19 +213,19 @@ const addToCart = () =>{
               <div className="productBox-2-2-1">
                   <div className="productBox-2-2-1-1">
                     <h2>Minimum:</h2>
-                    <p><span>OS: </span> {min.OS}</p>
-                    <p><span>Processor: </span> {min.Processor}</p>
-                    <p><span>Memory: </span> {min.Memory}</p>
-                    <p><span>Graphics: </span> {min.Graphics}</p>
-                    <p><span>Storage: </span> {min.Storage}</p>
+                    <p><span>OS: </span> {min && min.OS}</p>
+                    <p><span>Processor: </span> {min && min.Processor}</p>
+                    <p><span>Memory: </span> {min && min.Memory}</p>
+                    <p><span>Graphics: </span> {min && min.Graphics}</p>
+                    <p><span>Storage: </span> {min && min.Storage}</p>
                   </div>
                   <div className="productBox-2-2-1-2">
                     <h2>Recommended:</h2>
-                    <p><span>OS: </span> {rec.OS}</p>
-                    <p><span>Processor: </span> {rec.Processor}</p>
-                    <p><span>Memory: </span> {rec.Memory}</p>
-                    <p><span>Graphics: </span> {rec.Graphics}</p>
-                    <p><span>Storage: </span> {rec.Storage}</p>
+                    <p><span>OS: </span> {rec && rec.OS}</p>
+                    <p><span>Processor: </span> {rec && rec.Processor}</p>
+                    <p><span>Memory: </span> {rec && rec.Memory}</p>
+                    <p><span>Graphics: </span> {rec && rec.Graphics}</p>
+                    <p><span>Storage: </span> {rec && rec.Storage}</p>
                   </div>
               </div>
             </div>
@@ -227,11 +234,11 @@ const addToCart = () =>{
               <hr className='productDetailsUnderline'/>
               <div className="productReviewsBox">
                 <div className="productBox-2-3-1">
-                    <h1>Overall Reviews</h1>
+                    <h1>Overall Reviews ({product.numOfReviews})</h1>
                     <p>
                       <Rating 
                         {...options}
-                        emptyIcon={<StarBorderIcon style={{color:"white"}}/>}
+                        emptyIcon={<StarBorderIcon style={{color:"white", fontSize:"1.15rem"}}/>}
                         size="small"
                         />
                     </p>

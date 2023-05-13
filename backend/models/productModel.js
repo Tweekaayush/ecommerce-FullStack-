@@ -18,8 +18,12 @@ const productSchema = new mongoose.Schema({
         type:String,
         default:"Pc"
     },
-    released:{
+    developer:{
         type:String,
+        default:"N/A"
+    },
+    released:{
+        type:Date,
         default:"N/A"
     },
     price:{

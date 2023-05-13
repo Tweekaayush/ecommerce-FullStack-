@@ -170,7 +170,7 @@
 .productBox-2-1 p{
     margin: 1.4rem 0;
     color: rgba(255, 255, 255, 0.637);
-    font:300 1rem Lato;
+    font:300 1.1rem Lato;
 }
 
 .productBox-2-1, .productBox-2-2, .productBox-2-3{
@@ -226,17 +226,19 @@
 
 .productBox-2-2-1 div h2{
     color:#7abfff;
-    font:400 1rem Lato;
+    font:400 1.1rem Lato;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
 }
 .productBox-2-2-1 div p span{
     color:#ffffff;
-    font:400 1rem Lato;
+    font:400 1.1rem Lato;
 }
 
 .productBox-2-2-1-1, .productBox-2-2-1-2{
     width: 50%;
     color: rgba(255, 255, 255, 0.637);
-    font: 300 0.85rem Lato;
+    font: 300 0.9rem Lato;
 }
 
 

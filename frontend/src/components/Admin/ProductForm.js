@@ -6,6 +6,7 @@ import { clearErrors, createProduct } from '../../actions/productAction'
 import { NEW_PRODUCT_RESET } from '../../constants/productConstants'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { developers } from '../../developerlist'
 
 const ProductForm = ({opt}) => {
 
@@ -14,6 +15,8 @@ const ProductForm = ({opt}) => {
   const [description, setDescription] = useState("")
   const [genre, setGenre] = useState("")
   const [released, setReleased] = useState("")
+  const [platform, setPlatform] = useState("")
+  const [developer, setDeveloper] = useState("")
   const [images, setImages] = useState([])
   const [imagesPrev, setImagesPrev] = useState([])
 
@@ -42,6 +45,8 @@ const ProductForm = ({opt}) => {
       myForm.set("description", description)
       myForm.set("genre", genre)
       myForm.set("released", released)
+      myForm.set("platform", platform)
+      myForm.set("developer", developer)
       myForm.set("background_image", "")
 
       images.forEach((image) => {
@@ -96,6 +101,23 @@ const ProductForm = ({opt}) => {
                 {genres.map((genre)=>(
                   <option key={genre.id} value={genre.name}>{genre.name}</option>
                 ))}
+              </select>
+            </div>
+            <div>
+              <select required className='productFormInput' value={platform} onChange={(e)=>setPlatform(e.target.value)}>
+                <option value="">Select Platform</option>
+                  <option value="PC">PC</option>
+                  <option value="PS">PS</option>
+                  <option value="Xbox">Xbox</option>
+                  <option value="Nintendo">Nintendo</option>
+              </select>
+            </div>
+            <div>
+              <select required className='productFormInput' value={developer} onChange={(e)=>setDeveloper(e.target.value)}>
+                <option value="">Select Developer</option>
+                  {developers.map((dev, i)=>(
+                    <option key={dev.id} value={dev.name}>{dev.name}</option>
+                  ))}
               </select>
             </div>
             <div>
