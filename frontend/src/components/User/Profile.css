@@ -87,7 +87,12 @@
     font: 500 2rem Montserrat;
     color: rgba(255, 255, 255, 0.753);
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.466);
+}
+.profileHeadingUnderlines{
+    display:block;
+    border:none;
+    height:1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 255),rgba(255, 255, 255, 100), rgba(255, 255, 255, 0));
 }
 
 .rightProfileContainer div h1{
@@ -130,6 +135,10 @@
 }
 
 @media screen and (max-width: 600px){
+    .detailsContainer{
+        padding: 1rem;
+    }
+
     .profileContainer{
         flex-direction: column;
     }
@@ -140,12 +149,12 @@
     }
 
     .upperProfile a{
-        font: 400 1.7vmax "Roboto";
+        font: 400 1.7vmax Montserrat;
         padding: 1vmax;
     }
 
     .rightProfileContainer div h1{
-        font:400 2.5vmax "Roboto";
+        font:400 1rem Lato;
     }
 
     .rightProfileContainer div p{
@@ -162,6 +171,9 @@
     }
     .leftProfileContainer p{
         border-bottom:none;
+    }
+    .rightProfileContainer .detailsContainerHead h1{
+        font-size: 1.6rem;
     }
     
 }

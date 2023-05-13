@@ -48,6 +48,7 @@ const MyOrders = ({clsname}) => {
       <div className={`myOrdersBox ${clsname}`}>
         <div className="myOrdersHead">
             <h1>My Orders</h1>
+            <hr className='profileHeadingUnderlines'/>
         </div>
         <div className="myOrdersContent">
           <div className="myOrdersItemList">

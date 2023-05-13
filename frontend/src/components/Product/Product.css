@@ -15,7 +15,7 @@
 }
 .productContainerHeading h1{
     color:white;
-    font:600 2rem Montserrat;
+    font: 500 2rem Montserrat;
 }
 
 .productBox-1{
@@ -149,26 +149,35 @@
     padding: 2rem;
     border-radius:10px;
     margin-bottom: 2rem;
+    gap: 1.5rem;
 }
 
 .productBox-2-1 h1, .productBox-2-2 h1, .reviewsHeading{
     width: 100%;
-    font: 500 2.5rem Montserrat;
+    font: 800 1.5rem Montserrat;
     color:#7abfff;
-    border-bottom: 1px solid #1c88ed;
+    text-transform: uppercase;
 }
 
+.productDetailsUnderline{
+    display:block;
+    border:none;
+    height:1px;
+    width: 100%;
+    background-image: linear-gradient(to right, #1c88ed, rgba(255, 255, 255, 0));
+}
 
 .productBox-2-1 p{
-    margin: 1.5rem 0;
-    color: rgba(255, 255, 255, 0.786);
-    font:300 1.1rem Lato;
+    margin: 1.4rem 0;
+    color: rgba(255, 255, 255, 0.637);
+    font:300 1rem Lato;
 }
 
-.productBox-2-1, .productBox-2-2{
-    margin: 2rem, 0;
+.productBox-2-1, .productBox-2-2, .productBox-2-3{
+    padding: 2rem, 0;
     width: 100%;
 }
+
 .productBox-2-3{
     width: 100%;
     display: flex;
@@ -217,11 +226,11 @@
 
 .productBox-2-2-1 div h2{
     color:#7abfff;
-    font:400 1rem Lato
+    font:400 1rem Lato;
 }
 .productBox-2-2-1 div p span{
     color:#ffffff;
-    font:400 1rem Lato
+    font:400 1rem Lato;
 }
 
 .productBox-2-2-1-1, .productBox-2-2-1-2{
@@ -250,6 +259,10 @@
     color: rgb(255,255,255,0.548);
 }
 
+.reviews{
+    width: 90%;
+}
+
 .reviewBtn{
     border: none;
     background-color:#0171da;
@@ -268,6 +281,8 @@
 .reviewBtn:hover{
     background-color: #1c88ed;
 }
+
+
 
 @media screen and (max-width:1024px) {
 
@@ -297,17 +312,33 @@
     }
     .productBox-1-2 .productPrice{
         color:white;
-        font: 300 1.5rem Lato;
+        font: 300 1.3rem Lato;
         text-align: right;
     }
 }
 
 @media screen and (max-width:800px){
+
+    .productContainerHeading h1{
+        font:600 1.6rem Montserrat;
+    }
+
+    .productBox-2-1 p{
+        font:300 0.9rem Lato;
+    }
+
+    .productReviewsBox{
+        flex-direction: column;
+    }
+    .productBox-2-3-1{
+        border:none;
+        justify-content: center;
+        align-items:center;
+        border-bottom:1px solid #1c88ed;
+    }
+
     .productBox-2-1 h1, .productBox-2-2 h1, .reviewsHeading{
-        width: 100%;
-        font: 500 2rem Montserrat;
-        color:#7abfff;
-        border-bottom: 1px solid #1c88ed;
+        font: 800 1.3rem Montserrat;
     }
     .productBox-2{
         padding: 1rem 0.5rem;
@@ -330,5 +361,8 @@
     }
     .productBox-2-3-1 button{
         width: 90%;
+    }
+    .productCarousel-2 .slick-arrow{
+        display: none !important;
     }
 }

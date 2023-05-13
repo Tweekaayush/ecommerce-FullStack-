@@ -182,13 +182,13 @@ const addToCart = () =>{
                 <button className="productBtn" onClick={addToCart}>Add to Cart</button>
                 <div className='productDevDetails'>
                   <div>
-                    <p>Released</p>
+                    <p>Release Date:</p>
                     <p>
                        {product.released}
                     </p>
                   </div>
                   <div>
-                    <p>Platform</p>
+                    <p>Platform:</p>
                     <p>{product.platform}</p>
                   </div>
                 </div>
@@ -196,11 +196,13 @@ const addToCart = () =>{
         </div>
         <div className="productBox-2">
             <div className="productBox-2-1">
-              <h1>Description</h1>
+              <h1>About this Game</h1>
+              <hr className='productDetailsUnderline'/>
               <p>{product.description}</p>
             </div>
             <div className="productBox-2-2">
               <h1>System Requirements</h1>
+              <hr className='productDetailsUnderline'/>
               <div className="productBox-2-2-1">
                   <div className="productBox-2-2-1-1">
                     <h2>Minimum:</h2>
@@ -222,6 +224,7 @@ const addToCart = () =>{
             </div>
             <div className="productBox-2-3">
               <h1 className="reviewsHeading">Reviews</h1>
+              <hr className='productDetailsUnderline'/>
               <div className="productReviewsBox">
                 <div className="productBox-2-3-1">
                     <h1>Overall Reviews</h1>

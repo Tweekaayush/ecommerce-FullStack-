@@ -105,6 +105,7 @@ const Profile = () => {
               <div ref={detailsComp} className="detailsContainer">
                 <div className='detailsContainerHead'>
                   <h1>Account Details</h1>
+                  <hr className='profileHeadingUnderlines'/>
                 </div>
                 <div>
                   <h1>Full Name</h1>

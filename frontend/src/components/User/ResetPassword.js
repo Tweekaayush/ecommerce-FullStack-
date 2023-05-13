@@ -53,22 +53,31 @@ const ResetPassword = () => {
         <Fragment>
         <Metadata title="Reset Password"></Metadata>
         <div className="resetPasswordContainer">
-          <div className="resetPasswordBox">
-              <h1>Reset Password</h1>
-              <form
-              className='resetPasswordForm'
-              onSubmit={resetPasswordSubmit}
-              >
-                <div className="oldResetPassword">
-                    <FontAwesomeIcon icon={faLock} />
-                    <input type="password"  value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password" required/>
-                </div>
-                <div className="newResetPassword">
-                    <FontAwesomeIcon icon={faLockOpen} />
-                    <input type="password"  value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="Confirm Passowrd" required/>
-                </div>
-                <input type="submit" value="Send" className='resetPasswordBtn'/>
-              </form>
+          <div className="resetPasswordContent">
+            <div className="resetPasswordContent-1">
+              <div className="resetPasswordContent-1-1">
+                <img src="/reset.png" alt="" />
+              </div>
+            </div>
+            <div className="resetPasswordContent-2">
+              <div className="resetPasswordBox">
+                  <h1>Reset Password</h1>
+                  <form
+                  className='resetPasswordForm'
+                  onSubmit={resetPasswordSubmit}
+                  >
+                    <div className="oldResetPassword">
+                        <FontAwesomeIcon icon={faLock} />
+                        <input type="password"  value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password" required/>
+                    </div>
+                    <div className="newResetPassword">
+                        <FontAwesomeIcon icon={faLockOpen} />
+                        <input type="password"  value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="Confirm Passowrd" required/>
+                    </div>
+                    <input type="submit" value="Send" className='resetPasswordBtn'/>
+                  </form>
+              </div>
+            </div>
           </div>
         </div>
     </Fragment>

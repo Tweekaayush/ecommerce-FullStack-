@@ -7,7 +7,7 @@ const HomeNewsSection = () => {
     window.scrollTo(0, 0)
 }
   return (
-    <div className="homeNewsSection">
+    <div className="homeNewsContainer">
         <Link to="/news" onClick={scrollToTop} className="homeNewsBox">
             <img src="https://wallpaper.dog/large/10763872.jpg" alt="" />
             <div className="homeNewsBoxFilter"></div>

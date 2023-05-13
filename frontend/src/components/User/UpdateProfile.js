@@ -73,6 +73,7 @@ const UpdateProfile = ({clsname, boolVal}) => {
             <div className={`updateProfileBox ${clsname}`}>
               <div className="updateProfileHead">
                 <h1>Update Details</h1>
+                <hr className='profileHeadingUnderlines'/>
               </div>
                 <form
                 className='updateProfileForm'

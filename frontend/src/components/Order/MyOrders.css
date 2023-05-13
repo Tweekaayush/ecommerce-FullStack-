@@ -12,7 +12,6 @@
     font: 500 2rem Lato;
     color: rgba(255, 255, 255, 0.753);
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.466);
 }
 
 .myOrdersContent{
@@ -100,12 +99,7 @@ ul.react-paginate {
     cursor: default;
   }
 
-  @media screen and (max-width:600px) {
-    
-  }
-
   @media screen and (max-width:1024px) {
-
     .myOrdersContentHeadings div p{
         font: 300 .9rem Lato;
     }
@@ -113,6 +107,7 @@ ul.react-paginate {
 }
 
 @media screen and (max-width:850px) {
+
     .myOrdersContentHeadings div p{
         font: 300 .7rem Lato;
     }
@@ -128,5 +123,9 @@ ul.react-paginate {
     .myOrdersBox{
       padding: 1.5rem 1rem;
     }
+
+    .myOrdersBox .myOrdersHead h1{
+      font-size: 1.6rem;
+  }
     
 }

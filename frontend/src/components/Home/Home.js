@@ -97,6 +97,7 @@ const Home = () => {
     const vslide={
       arrows:false,
       slidesToShow: 4,
+      slidesToScroll: 1,
       vertical: true,
       verticalSwiping: true,
       swipeToSlide: true,
@@ -161,40 +162,40 @@ const Home = () => {
                 </Slider>
               </Fragment> 
           </div>
-        <div className="homeBrowseByCategory">
-          <div className='homeBrowseHeading'>
-            <h1>
-              Browse by Category
-            </h1>
+          <div className="homeBrowseByCategory">
+            <div className='homeBrowseHeading'>
+              <h1>
+                Browse by Category
+              </h1>
+            </div>
+            <div className='homeBrowseCarousel'>
+            <Slider {...multisettings}>
+                  {genres.map((genre)=>(
+                    <Link to="/browse" state={{genre: genre.name}}>
+                      <GenreCard key = {genre.id} genre = {genre}/>
+                    </Link>
+                  ))}
+            </Slider>
+            </div>
           </div>
-          <div className='homeBrowseCarousel'>
-          <Slider {...multisettings}>
-                {genres.map((genre)=>(
-                  <Link to="/browse" state={{genre: genre.name}}>
-                    <GenreCard key = {genre.id} genre = {genre}/>
-                  </Link>
-                ))}
-          </Slider>
+          <div className={isAuthenticated?"homeRecommendationSection homeRecommendationSection-active":"homeRecommendationSection"}>
+                <h1>Looking for recommendations?</h1>
+                <p>Sign in to view personalized recommendations</p>
+                <a href="/login" className='btn'>Sign In</a>
+                <p>Or <a href='/login'>Sign Up</a> and join Ecommerce for free</p>
           </div>
+          <HomeNewsSection/>
         </div>
-        <div className={isAuthenticated?"homeRecommendationSection homeRecommendationSection-active":"homeRecommendationSection"}>
-              <h1>Looking for recommendations?</h1>
-              <p>Sign in to view personalized recommendations</p>
-              <a href="/login" className='btn'>Sign In</a>
-              <p>Or <a href='/login'>Sign Up</a> and join Ecommerce for free</p>
-        </div>
-        <HomeNewsSection/>
-      </div>
-      </Fragment>
+        </Fragment>
       )}
       <ToastContainer
-          position="top-center"
-          autoClose={3000}
-          hideProgressBar={true}
-          newestOnTop={false}
-          rtl={false}
-          theme="colored"
-        />
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        rtl={false}
+        theme="colored"
+      />
     </Fragment>
   )
 }

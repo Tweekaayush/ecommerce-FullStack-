@@ -41,7 +41,7 @@ const About = () => {
         </div>
         <div className="lowerAboutContainer slideUpIn">
           <p>
-          At GameOn, we are passionate about delivering the ultimate gaming experience to enthusiasts like you. Whether you're a casual gamer seeking the latest releases or a seasoned player in search of nostalgic classics, we have something to cater to every gaming taste.
+          `At GameOn, we are passionate about delivering the ultimate gaming experience to enthusiasts like you. Whether you're a casual gamer seeking the latest releases or a seasoned player in search of nostalgic classics, we have something to cater to every gaming taste.'
           </p>
         </div>
       </div>

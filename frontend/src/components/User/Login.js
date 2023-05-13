@@ -72,7 +72,6 @@ const Login = () => {
 
   useEffect(()=>{
     if (error) {
-      toast.error(error)
       dispatch(clearErrors());
     }
 
@@ -80,7 +79,7 @@ const Login = () => {
       navigate(redirect)
     }
 
-  }, [dispatch, isAuthenticated, redirect])
+  }, [dispatch, isAuthenticated, redirect, navigate, error])
 
   const switchTabs = (e, tab)=>{
     if(tab === "login"){

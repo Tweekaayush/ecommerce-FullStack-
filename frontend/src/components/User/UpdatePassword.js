@@ -53,6 +53,7 @@ const UpdatePassword = ({clsname}) => {
     <div className={`updatePasswordBox ${clsname}`}>
         <div className="updatePasswordHead">
             <h1>Change Password</h1>
+            <hr className='profileHeadingUnderlines'/>
         </div>
         <form
         className='updatePasswordForm'

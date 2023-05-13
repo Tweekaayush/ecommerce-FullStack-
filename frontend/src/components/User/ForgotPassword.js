@@ -47,7 +47,11 @@ const ForgotPassword = () => {
       <div className="forgotPasswordContainer">
         <div className='forgotPasswordContent'>
           <div className="forgotPasswordContent-1">
-            <div className="forgotPasswordContent-1-1"></div>
+            <div className="forgotPasswordContent-1-1">
+              {/* <h1>Forgot Your Password ?</h1>
+              <hr className='formsUnderline' /> */}
+              <img src="/forgot.png" alt="" />
+            </div>
           </div>
           <div className="forgotPasswordContent-2">
             <div className="forgotPasswordBox">
