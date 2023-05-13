@@ -36,7 +36,15 @@
     color: rgba(0, 0, 0, 0.842);
     padding-bottom: 0.3rem;
     letter-spacing: 1px;
-    border-bottom: 1px solid black;
+    text-transform: uppercase;
+}
+
+.dashboardHeadingUnderline{
+    display:block;
+    border:none;
+    height:1px;
+    width: 100%;
+    background-image: linear-gradient(to right, #001d3d, rgba(255, 255, 255, 0));
 }
 
 .dashboardContent-inactive{

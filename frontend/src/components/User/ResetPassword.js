@@ -56,7 +56,7 @@ const ResetPassword = () => {
           <div className="resetPasswordContent">
             <div className="resetPasswordContent-1">
               <div className="resetPasswordContent-1-1">
-                <img src="/reset.png" alt="" />
+                <img src="/reset3.png" alt="" />
               </div>
             </div>
             <div className="resetPasswordContent-2">
@@ -74,7 +74,7 @@ const ResetPassword = () => {
                         <FontAwesomeIcon icon={faLockOpen} />
                         <input type="password"  value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="Confirm Passowrd" required/>
                     </div>
-                    <input type="submit" value="Send" className='resetPasswordBtn'/>
+                    <input type="submit" value="Reset" className='resetPasswordBtn'/>
                   </form>
               </div>
             </div>

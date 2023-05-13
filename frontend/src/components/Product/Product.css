@@ -261,6 +261,7 @@
 
 .reviews{
     width: 90%;
+    min-height: 5rem;
 }
 
 .reviewBtn{
@@ -320,7 +321,7 @@
 @media screen and (max-width:800px){
 
     .productContainerHeading h1{
-        font:600 1.6rem Montserrat;
+        font:500 1.6rem Montserrat;
     }
 
     .productBox-2-1 p{
@@ -331,6 +332,7 @@
         flex-direction: column;
     }
     .productBox-2-3-1{
+        gap: 0;
         border:none;
         justify-content: center;
         align-items:center;

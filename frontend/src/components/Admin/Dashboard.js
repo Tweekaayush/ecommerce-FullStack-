@@ -149,6 +149,7 @@ const Dashboard = () => {
                             <div ref={dashboardTab} className="dashboardComponent">
                                 <div className="dashboardHeading">
                                     <h1 className='dashboardAllHeadings'>Dashboard</h1>
+                                    <hr className='dashboardHeadingUnderline'/>
                                 </div>
                                 <div className="dashboardDetails">
                                     <div className="dashboardSummaryBox">
@@ -174,6 +175,7 @@ const Dashboard = () => {
                             <div ref={dashboardProductsTab} className="dashboardComponent dashboardContent-inactive">
                                 <div className="dashboardHeading">
                                     <h1 className='dashboardAllHeadings'>Products</h1>
+                                    <hr className='dashboardHeadingUnderline'/>
                                 </div>
                                 <div className="dashboardComponentDetails">
                                     <div className="dashboardCompBtns">
@@ -192,6 +194,7 @@ const Dashboard = () => {
                             <div ref={dashboardOrdersTab} className="dashboardComponent dashboardContent-inactive">
                                 <div className="dashboardHeading">
                                     <h1 className='dashboardAllHeadings'>Orders</h1>
+                                    <hr className='dashboardHeadingUnderline'/>
                                 </div>
                                 <div className="dashboardComponentDetails">
                                     <OrderList/>
@@ -200,6 +203,7 @@ const Dashboard = () => {
                             <div ref={dashboardUsersTab} className="dashboardComponent dashboardContent-inactive">
                                 <div className="dashboardHeading">
                                     <h1 className='dashboardAllHeadings'>Users</h1>
+                                    <hr className='dashboardHeadingUnderline'/>
                                 </div>
                                 <div className="dashboardComponentDetails">
                                     <UserList/>

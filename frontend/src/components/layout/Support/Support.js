@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import Metadata from "../Metadata"
 
 const Support = () => {
   return (
-    <div>Support</div>
+    <Fragment>
+      <Metadata title="Support"></Metadata>
+      <div>Support</div>
+    </Fragment>
   )
 }
 

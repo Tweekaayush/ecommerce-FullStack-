@@ -25,6 +25,7 @@ footer{
 .upper-footer div p{
     font:300 1rem Montserrat;
     margin-bottom: 5px;
+    color:rgba(255, 255, 255, 0.915);
 }
 
 .upper-footer div p a{

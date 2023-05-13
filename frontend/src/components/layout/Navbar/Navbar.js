@@ -46,7 +46,7 @@ const Navbar = () =>{
         <nav className="navbar">
             <div className="upper-nav">
                 <Link to="/" className="nav-brand">
-                    Ecommerce
+                    GameOn
                 </Link>  
                 <div className="upper-nav-links">
                     <Link className="nav-upper-item" to="/about">About</Link>

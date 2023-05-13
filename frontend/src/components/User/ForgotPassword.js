@@ -50,7 +50,7 @@ const ForgotPassword = () => {
             <div className="forgotPasswordContent-1-1">
               {/* <h1>Forgot Your Password ?</h1>
               <hr className='formsUnderline' /> */}
-              <img src="/forgot.png" alt="" />
+              <img src="/forgot1.png" alt="" />
             </div>
           </div>
           <div className="forgotPasswordContent-2">
