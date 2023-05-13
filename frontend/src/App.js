@@ -29,6 +29,7 @@ import PrivateRoute from "./components/Route/PrivateRoute";
 import AdminRoute from "./components/Route/AdminRoute";
 import News from "./components/layout/News/News";
 import Support from "./components/layout/Support/Support";
+import OrderDetails from "./components/Order/OrderDetails";
 
 function App() {
 
@@ -69,6 +70,7 @@ function App() {
 
         <Route element={<PrivateRoute/>}>
           <Route exact path = "/account" element={<Profile/>}></Route>
+          <Route exact path = "/order/:id" element={<OrderDetails/>}></Route>
           <Route exact path = "/cart" element={<Cart/>}></Route>
           <Route exact path = "/billing" element={<Billing/>}></Route>
           <Route exact path = "/order/confirm" element={<ConfirmOrder/>}></Route>

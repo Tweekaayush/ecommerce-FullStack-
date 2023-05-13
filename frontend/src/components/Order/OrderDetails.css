@@ -1,0 +1,124 @@
+.orderDetailsContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
+.orderDetailsBox{
+    min-height: 65vh;
+    width: 74%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 5rem 0;
+}
+
+.orderDetailsBox-l{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.orderInfo{
+    display: flex;
+    flex-direction: column;
+    background:#002752b8;
+    padding: 1rem;
+    border-radius:10px;
+}
+
+.orderInfo div{
+    display: flex;
+    color:white;
+    font:300 1rem Lato;
+    gap:2rem;
+    padding: 0.5rem 0;
+}
+
+.orderDetailsItemsBox, .orderDetailsBillingDetails{
+    display:flex;
+    flex-direction: column;
+}
+
+.orderDetailsItemsHead, .orderDetailsHead{
+    font: 300 1.1rem Lato;
+    color: rgba(255, 255, 255, 0.768);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.466);
+    margin-bottom: 1rem;
+}
+
+.orderDetailsBox-r{
+    width: 300px;
+}
+
+.orderDetailsSummary{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    background:#003566;
+    padding: 1rem;
+    border-radius:10px;
+}
+
+.orderDetailsSummaryHead h1{
+    color:white;
+    font: 500 2rem Phudu;
+    padding-bottom: 2.5rem;
+}
+
+.orderDetailsSummaryItem, .orderDetailsSummaryTotal{
+    display: flex;
+    justify-content: space-between;
+}
+
+.orderDetailsSummaryTotal{ 
+    border-top: 0.1rem solid rgba(255, 255, 255, 0.397);
+}
+
+.orderDetailsSummaryItem p{
+    color: white;
+    font: 500 0.8rem Lato;
+    padding-bottom: 1.1rem;
+}
+.orderDetailsSummaryTotal p{
+    color: white;
+    font: 500 1rem Lato;
+    padding: 1.5rem 0;
+}
+
+.orderDetailsSummaryButton{
+    background-color: #0171da;
+    width: 100%;
+    text-align: center;
+    text-decoration: None;
+    color:white;
+    padding: 1.1rem;
+    border-radius:5px;
+    font: 500 1rem Phudu;
+    border:none;
+    transition: all 0.3s;
+}
+
+.orderDetailsSummaryButton:hover{
+    background-color: #1c88ed;
+}
+
+@media screen and (max-width:1024px) {
+    .orderDetailsBox{
+        flex-direction: column;
+        width: 90%;
+        justify-content: center;
+        align-items:center;
+    }
+    .orderDetailsBox-l, .orderDetailsBox-r{
+        width: 100%;
+    }
+    .orderDetailsSummary{
+        width: 100%;
+    }
+}
