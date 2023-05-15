@@ -16,7 +16,7 @@ const ProductList = ({opt}) => {
 
     const dispatch = useDispatch()
     const {error, products} = useSelector((state)=>state.products)
-    const {error:deleteError, isDeleted} = useSelector((state)=>state.product)
+    const {loading, error:deleteError, isDeleted} = useSelector((state)=>state.product)
     const itemsPerPage = 5
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
@@ -33,6 +33,7 @@ const ProductList = ({opt}) => {
     };
 
     const deleteProductHandler = (id) =>{
+      if(loading) return
         dispatch(deleteProduct(id))
     }
 

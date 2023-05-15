@@ -13,6 +13,7 @@ import OrderList from "./OrderList.js"
 import UserList from "./UserList.js"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getAllUsers } from '../../actions/userAction'
 
 ChartJS.register(
     LineElement,
@@ -40,22 +41,26 @@ const Dashboard = () => {
     useEffect(()=>{
       dispatch(getAdminProducts())
       dispatch(getAllOrders())
+      dispatch(getAllUsers())
     },[dispatch])
 
+    let years = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     let totalAmount = 0
     orders&& orders.forEach((order)=>{
+        let mon = Number(String(order.createdAt).substring(5,7))
         totalAmount += order.totalPrice
+        years[mon] += order.totalPrice 
     })
     totalAmount = totalAmount.toFixed(2)
 
     const lineState = {
-        labels: ["Initial Amount", "Total Amount"],
+        labels: ["Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep","Oct","Nov","Dec"],
         datasets: [
           {
             label: "TOTAL AMOUNT",
             backgroundColor: "#003566",
             hoverBackgroundColor: "rgb(197, 72, 49)",
-            data: [0, 10000],
+            data: years,
           },
         ],
       };
@@ -66,13 +71,6 @@ const Dashboard = () => {
             title:{
                 display: true,
             },
-        },
-        scale:{
-            x:{
-                grid:{
-                    color:"red"
-                }
-            }
         }
       })
 
@@ -120,23 +118,6 @@ const Dashboard = () => {
         }
       }
 
-    const switchUsersTabs = (e, tab)=>{
-        if(tab === "all"){
-            switcherProductTab.current.classList.add("shiftToNeutral");
-            switcherProductTab.current.classList.remove("shiftToRight");
-
-            setProductListComponent("")
-            setProductFromComponent("dashboardContent-inactive")
-        }
-        if(tab === "action"){
-            switcherProductTab.current.classList.remove("shiftToNeutral");
-            switcherProductTab.current.classList.add("shiftToRight");
-
-            setProductListComponent("dashboardContent-inactive")
-            setProductFromComponent("")
-        }
-      }
-
   return (
     <Fragment>
         {loading === false && (
@@ -169,6 +150,9 @@ const Dashboard = () => {
                                             <p>Total Earnings:</p>
                                             <p>₹ {totalAmount}</p>
                                         </div>
+                                    </div>
+                                    <div className="lineChart">
+                                        <Line data={lineState} />
                                     </div>
                                 </div>
                             </div>

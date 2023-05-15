@@ -56,14 +56,15 @@
     display: flex;
     flex-direction: column;
     padding:1rem 0;
+    gap: 1rem;
 }
 
 .dashboardSummaryBox{
     width: 100%;
     display: flex;
     justify-content: center;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-    background-color:#003566;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px, rgba(0, 0, 0, 0.22) 0px 5px 10px;
+    background-color:#ffffff;
     border-radius:10px;
 }
 
@@ -72,16 +73,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-right: 1px solid #004c94;
+    border-right: 1px solid #00000072;
     font-family: Montserrat;
-    color:white;
+    color:rgba(0, 0, 0, 0.73);
     transition: 0.3s;
     min-height: 18vh;
     width: 100%;
-}
-
-.dashboardSummaryBox div:hover{
-    background-color:#0475de;
 }
 
 .dashboardSummaryBox div:first-child{
@@ -95,7 +92,7 @@
 
 .dashboardSummaryBox div p:first-child{
     padding: 0.5rem 0.7rem;
-    border-bottom:1px solid #004c94;
+    color:rgba(0, 0, 0, 0.684);
 }
 .dashboardSummaryBox div p:last-child{
     text-align: center;
@@ -113,7 +110,6 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color:#0000000e;
 }
 
 .dashboardCompBtns div{
@@ -139,6 +135,13 @@
     background-color: #001D3D;
 }
 
+.lineChart {
+    width: 60%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px, rgba(0, 0, 0, 0.22) 0px 5px 10px;
+    padding: 0.5rem;
+    border-radius:10px;
+}
+
 
 @media screen and (max-width:950px) {
     .dashboardContainerContent{
@@ -147,6 +150,11 @@
 }
 
 @media screen and (max-width:700px) {
+
+    .lineChart {
+        width: 100%;
+    }
+
     .dashboardBox{
         flex-direction: column;
     }

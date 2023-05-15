@@ -1,0 +1,118 @@
+.supportContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.supportHeading{
+    background:#0061bc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+}
+.supportHeading h1{
+    width: 80%;
+    font: 500 2rem Montserrat;
+    color: rgba(255, 255, 255, 0.768);
+}
+
+.supportUnderline{
+    display:block;
+    border:none;
+    height:1px;
+    width: 100%;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 255) rgba(255, 255, 255, 0));
+}
+.contactUnderline{
+    display:block;
+    border:none;
+    height:1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0),rgba(255, 255, 255, 255), rgba(255, 255, 255, 0));
+}
+
+.faqBox{
+    min-height: 70vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    position: relative;
+}
+
+.faqBox img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0.1;
+    margin-top:auto;
+}
+
+.supportHeads{
+    padding: 2rem 0;
+    width: 80%;
+}
+
+.contactHeads{
+    padding: 2rem 0;
+    width: 50%;
+}
+
+.supportHeads h1{
+    font: bold 4rem Montserrat;
+    color: rgba(255, 255, 255, 0.768);
+}
+
+.faqContent{
+    width: 80%;
+    color: rgba(255, 255, 255, 0.768);
+}
+
+.faqs{
+    margin: 1rem 0;
+}
+
+.contactBox{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    padding: 1rem 0;
+}
+
+.contactHeads h1{
+    text-align: center;
+    font: bold 2.5rem Montserrat;
+    color: rgba(255, 255, 255, 0.768);
+}
+
+.contactDetails{
+    background-color:#004586;
+    padding: 1rem;
+    transition: all 0.5s;
+}
+
+.contactDetails a{
+    font: 400 2rem Montserrat;
+    color:white;
+    text-decoration: none;
+}
+
+.contactDetails:hover{
+    background-color:#0060bb;
+}
+
+@media screen and (max-width:1024px) {
+    .supportHeading h1{
+        width: 90%;
+    }
+    .supportHeads{
+        padding: 2rem 0;
+        width: 90%;
+    }
+    
+    .faqContent{
+        width: 90%;
+    } 
+}

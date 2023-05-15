@@ -6,14 +6,14 @@ import {Link} from "react-router-dom"
 import "./Footer.css"
 
 const Footer = () =>{
-    console.log(process.env.FRONTEND_MAIL)
+    const mailto = process.env.REACT_APP_FRONTEND_MAIL
     return(
         <footer id ="footer">
             <div className='upper-footer'>
                 <div>
                     <h1>GET IN TOUCH</h1>
                     <p>Phone : 1234543341</p>
-                    <p>or <a href={`mailto:${process.env.FRONTEND_MAIL}`}> send us an email</a></p>
+                    <p>or <a href={`mailto:${mailto}`}> send us an email</a></p>
                     <div className='footer-links'>
                         <Link to ="/"><FacebookIcon/></Link>
                         <Link to ="/"><TwitterIcon/></Link>
@@ -23,7 +23,7 @@ const Footer = () =>{
                 </div>
                 <div>
                     <h1>WE'RE HIRING</h1>
-                    <p>Want a job? <a href={`mailto:${process.env.FRONTEND_MAIL}`}>Email your cv</a></p>
+                    <p>Want a job? <a href={`mailto:${mailto}`}>Email your cv</a></p>
                 </div>
                 <div>
                     <h1>About us</h1>

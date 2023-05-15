@@ -37,10 +37,12 @@ const OrderList = () => {
     };
 
     const deleteOrderHandler = (id) =>{
+      if(loading) return
       dispatch(deleteOrder(id))
     }
 
     const updateOrderToggle = (id) => {
+      if(loading) return
       dispatch(getOrderDetails(id))
       open ? setOpen(false) : setOpen(true);
     };
