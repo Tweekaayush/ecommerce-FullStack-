@@ -10,6 +10,9 @@ const cloudinary = require("cloudinary")
 //Register a User
 
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
+
+    var regx = /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/
+
     const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
       folder: "avatars",
       width: 150,
@@ -17,6 +20,10 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     });
   
     const { name, email, password } = req.body;
+
+    if(!regx.test(email)){
+      return next(new ErrorHandler("Please Enter a Valid Email", 401))
+    }
   
     const user = await User.create({
       name,
@@ -36,10 +43,8 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 exports.loginUser = catchAsyncErrors( async(req, res, next)=>{
     const {email, password} = req.body;
 
-    // checking if user has given password and email both
-
     if(!email || !password){
-        return next(new ErrorHandler("Please Enter Email and Password", 400))
+        return next(new ErrorHandler("Please Enter Email and Password", 401))
     }
 
     const user = await User.findOne({email}).select("+password")
@@ -164,11 +169,11 @@ exports.updatePassword = catchAsyncErrors(async(req, res, next)=>{
     const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
 
     if(!isPasswordMatched){
-        return next(new ErrorHandler("Old Password is incorrect", 400));
+        return next(new ErrorHandler("Old Password is incorrect", 401));
     }
 
     if(req.body.newPassword !== req.body.confirmPassword){
-        return next(new ErrorHandler("password doesnot match",400));
+        return next(new ErrorHandler("password doesnot match",401));
     }
 
     user.password = req.body.newPassword;
@@ -228,7 +233,7 @@ exports.getAllUsers = catchAsyncErrors(async(req, res, next)=>{
     })
 })
 
-// Get all users
+// Get single user
 exports.getSingleUser = catchAsyncErrors(async(req, res, next)=>{
     const user = await User.findById(req.params.id);
 

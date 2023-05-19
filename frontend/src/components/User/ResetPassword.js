@@ -10,6 +10,7 @@ import Loader from '../layout/Loader/Loader';
 import Metadata from '../layout/Metadata';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 const ResetPassword = () => {
 
@@ -53,14 +54,25 @@ const ResetPassword = () => {
         <Fragment>
         <Metadata title="Reset Password"></Metadata>
         <div className="resetPasswordContainer">
-          <div className="resetPasswordContent">
-            <div className="resetPasswordContent-1">
-              <div className="resetPasswordContent-1-1">
-                <img src="/reset3.png" alt="" />
+            <div className='resetPasswordContent'>
+              <div className="resetPasswordContent-1">
+                <div className="resetPasswordContent-1-1">
+                  <img src="/mountain1.png" alt="" />
+                  <div className="resetPasswordLeft-1">
+                    <Link to="/">GameOn</Link>
+                  </div>
+                  <div className="resetPasswordLeft-2">
+                    <h3>Ready to reset your password?</h3>
+                    <h1>Reset Password</h1>
+                    <hr className='resetPasswordUnderline'/>
+                    <p>
+                      Secure your account by providing a new password. And keep updating your password to stay safe from password theft.
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="resetPasswordContent-2">
-              <div className="resetPasswordBox">
+              <div className="resetPasswordContent-2">
+                <div className="resetPasswordBox">
                   <h1>Reset Password</h1>
                   <form
                   className='resetPasswordForm'
@@ -76,11 +88,11 @@ const ResetPassword = () => {
                     </div>
                     <input type="submit" value="Reset" className='resetPasswordBtn'/>
                   </form>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-    </Fragment>
+        </Fragment>
       )}
       <ToastContainer
           position="top-center"

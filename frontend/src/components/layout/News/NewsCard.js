@@ -7,13 +7,13 @@ const NewsCard = ({card}) => {
   return (
     <div className="newsCard">
         <div className="newsCard-l">
-            <img src={card.image.original} alt="" />
+            <img src={card.urlToImage} alt="" />
         </div>
         <div className="newsCard-r">
             <h1>{card.title}</h1>
-            <h3>Published on {card.update_date}</h3>
-            <p>{card.lede}</p>
-            <Link to={card.site_detail_url}>
+            <h3>{card.author}</h3>
+            <p>{String(card.publishedAt).substring(0, 10)}</p>
+            <Link to={card.url}>
                 <OpenInNewIcon/>
             </Link>
         </div>

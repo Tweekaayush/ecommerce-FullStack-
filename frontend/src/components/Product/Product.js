@@ -33,7 +33,9 @@ const Product = () => {
     const [open, setOpen] = useState(false);
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
+
     let min,rec
+    let desc = ""
     
       if(product.minimum){
         min = JSON.parse(product.minimum)
@@ -41,6 +43,10 @@ const Product = () => {
       if(product.recommended){
         rec = JSON.parse(product.recommended)
       }
+      if(product.description){
+        desc = product.description
+      }
+
 
     useEffect(()=>{
 
@@ -150,6 +156,13 @@ const addToCart = () =>{
   }
 }
 
+function NewlineText(props) {
+  const text = String(props.text);  
+  let newText = text.split('\n').map((item, i) => {
+    return <p key={i}>{item}</p>;
+  });
+}
+
   return (
     <Fragment>
       {loading? <Loader/>: (
@@ -168,14 +181,14 @@ const addToCart = () =>{
             <div className="productBox-1-1">
               <Slider className='productCarousel-1' asNavFor={nav2} ref={(slider1)=>setNav1(slider1)} {...settings}>
                   {
-                      product.images && product.images.map((item)=>(
+                      product.images && product.images.slice(1, product.images.length).map((item)=>(
                         <img key={item.id} src={item.url} alt="" />  
                       ))
                   }
               </Slider>
               <Slider className='productCarousel-2' asNavFor={nav1} ref={(slider2)=>setNav2(slider2)} {...settings2}>
                   {
-                      product.images && product.images.map((item)=>(
+                      product.images && product.images.slice(1, product.images.length).map((item)=>(
                         <div className='carouselNavItem'>
                           <img key={item.id} src={item.url} alt="" />  
                         </div>

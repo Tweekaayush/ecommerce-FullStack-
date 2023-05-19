@@ -166,7 +166,7 @@
         width: 100%;
         position: absolute;
         flex-direction: column;
-        transform: translateY(95%);
+        transform: translateY(80%);
         left: 0;
         align-items:center;
     }

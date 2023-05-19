@@ -1,11 +1,21 @@
-import React, { Fragment, useState} from 'react'
+import React, { Fragment, useState, useEffect} from 'react'
 import Header from '../Header/Header'
 import Metadata from '../Metadata'
-import {news} from "../../../newsList"
 import "./News.css"
 import NewsCard from './NewsCard'
+import axios from "axios"
 
 const News = () => {
+
+    const url = "https://newsapi.org/v2/everything?q=games&apiKey=da629fa28a214b9ba69aeafd7de69562"
+    const [news, setNews] = useState([])
+
+
+    useEffect(()=>{
+        axios.get(`${url}`).then((response)=>{
+            setNews(response.data.articles.slice(0, 30))
+        })
+    },[])
 
     const [scroll, setScroll] = useState(false)
     window.addEventListener("scroll", ()=>{

@@ -6,31 +6,36 @@
 }
 
 .supportHeading{
-    background:#0061bc;
+    background:#0171da;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 10rem;
+    padding: 0 10%;
 }
 .supportHeading h1{
     width: 80%;
     font: 500 2rem Montserrat;
-    color: rgba(255, 255, 255, 0.768);
+    color: rgb(255, 255, 255);
 }
 
-.supportUnderline{
-    display:block;
-    border:none;
-    height:1px;
-    width: 100%;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 255) rgba(255, 255, 255, 0));
+.supportHeading img{
+    width: 20%;
+    transform: translateY(-10%);
 }
+
 .contactUnderline{
     display:block;
     border:none;
     height:1px;
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0),rgba(255, 255, 255, 255), rgba(255, 255, 255, 0));
+}
+.supportUnderline{
+    display:block;
+    border:none;
+    height:1px;
+    width: 100%;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 255), rgba(255, 255, 255, 0));
 }
 
 .faqBox{
@@ -61,8 +66,8 @@
 }
 
 .supportHeads h1{
-    font: bold 4rem Montserrat;
-    color: rgba(255, 255, 255, 0.768);
+    font: bold 3.5rem Montserrat;
+    color: rgba(255, 255, 255, 0.849);
 }
 
 .faqContent{
@@ -70,40 +75,66 @@
     color: rgba(255, 255, 255, 0.768);
 }
 
-.faqs{
-    margin: 1rem 0;
+.contactStyleDiv{
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+    width: 100%;
+    height: 8rem;
+    background:#072443;
+    position: absolute;
+    transform: translateY(-1%);
 }
 
 .contactBox{
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     align-items:center;
-    padding: 1rem 0;
+    padding: 0 0 4rem 0;
+    background:#003566;
 }
 
 .contactHeads h1{
     text-align: center;
-    font: bold 2.5rem Montserrat;
+    font: bold 3rem Montserrat;
     color: rgba(255, 255, 255, 0.768);
+    padding: 8rem 0 0 0;
 }
 
 .contactDetails{
-    background-color:#004586;
+    background-color:#0171da;
     padding: 1rem;
     transition: all 0.5s;
+    border-radius: 5px;
 }
 
+
 .contactDetails a{
-    font: 400 2rem Montserrat;
+    font: 400 1.5rem Montserrat;
     color:white;
     text-decoration: none;
+    display: flex;
+}
+
+.contactDetails a svg{
+    font-size: 1.8rem;
+    position: absolute;
+}
+
+.contactDetails a p{
+    padding: 0 2rem;
+    padding-right: 0;
 }
 
 .contactDetails:hover{
-    background-color:#0060bb;
+    background-color:#1c88ed;
 }
 
 @media screen and (max-width:1024px) {
+
+    .supportHeading{
+        padding: 0 5%;
+    }
+
     .supportHeading h1{
         width: 90%;
     }
@@ -111,8 +142,49 @@
         padding: 2rem 0;
         width: 90%;
     }
+    .supportHeads h1, .contactHeads h1{
+        font-size: 2.8rem;
+    }
     
     .faqContent{
         width: 90%;
     } 
+}
+@media screen and (max-width:600px) {
+
+    .supportHeading{
+        height: 8rem;
+    }
+
+    .supportHeading h1{
+        font-size: 1.1rem;
+    }
+
+    .supportHeading img{
+        width: 40%;
+        transform: translateY(-10%);
+    }
+
+    .supportHeads h1, .contactHeads h1{
+        font-size: 2.5rem;
+    }
+
+    .contactStyleDiv{
+        height: 5rem;
+    }
+
+    .contactHeads h1{
+        padding: 5rem 0 0 0;
+    }    
+
+    .contactDetails a{  
+        font-size: 1rem;
+    }
+    .contactDetails a svg{
+        font-size: 1.3rem;
+    }
+    .contactDetails a p{
+        padding: 0 1.5rem;
+        padding-right: 0;
+    }
 }

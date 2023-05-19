@@ -49,7 +49,7 @@ const Dashboard = () => {
     orders&& orders.forEach((order)=>{
         let mon = Number(String(order.createdAt).substring(5,7))
         totalAmount += order.totalPrice
-        years[mon] += order.totalPrice 
+        years[mon-1] += order.totalPrice 
     })
     totalAmount = totalAmount.toFixed(2)
 

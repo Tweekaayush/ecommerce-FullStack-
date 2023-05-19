@@ -57,7 +57,7 @@ const Header = ({btnInfo ="Discover"}) => {
                     </div>
                 </form>
             </div>
-            <div onClick={headerDropToggle}className='headerDropBtn'>
+            <div onClick={headerDropToggle} className='headerDropBtn'>
                     <span>
                         {btnInfo}
                     </span>

@@ -71,15 +71,16 @@ const Login = () => {
   }
 
   useEffect(()=>{
-    if (error) {
+    if (error && error !== "Please Login to access this resource") {
+      toast.error(error)
       dispatch(clearErrors());
     }
 
-    if(isAuthenticated === true){
+    if(isAuthenticated){
       navigate(redirect)
     }
 
-  }, [dispatch, isAuthenticated, redirect, navigate, error])
+  }, [dispatch, isAuthenticated, redirect, navigate, error, toast])
 
   const switchTabs = (e, tab)=>{
     if(tab === "login"){
@@ -105,54 +106,67 @@ const Login = () => {
       <div className="loginSignUpContainer">
         <div className='loginSignUpContent'>
           <div className="loginSignUpContent-1">
-            <div className="loginSignUpContent-1-1"></div>
+            <div className="loginSignUpContent-1-1">
+              <img src="/mountain1.png" alt="" />
+              <div className="loginSignUpLeft-1">
+                <Link to="/">GameOn</Link>
+              </div>
+              <div className="loginSignUpLeft-2">
+                <h3>You're just one step away...</h3>
+                <h1>Join Our Community</h1>
+                <hr className='loginSignUpUnderline'/>
+                <p>
+                  Just a click, and you enter a world of amazing action adventures, heart-wrenching plot-based games, intuitive puzzles for small kids or any specific game that you’re thinking of.
+                </p>
+              </div>
+            </div>
           </div>
           <div className="loginSignUpContent-2">
-          <div className="loginSignUpBox">
-          <div>
-            <div className="loginSignUpToggle">
-              <p onClick={(e)=>switchTabs(e, "login")}>Sign In</p>
-              <p onClick={(e)=>switchTabs(e, "register")}>Register</p>
+            <div className="loginSignUpBox">
+              <div>
+                <div className="loginSignUpToggle">
+                  <p onClick={(e)=>switchTabs(e, "login")}>Sign In</p>
+                  <p onClick={(e)=>switchTabs(e, "register")}>Register</p>
+                </div>
+                <button ref={switcherTab}></button>
+              </div>
+              <form action="" className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
+                <div className="loginEmail">
+                <FontAwesomeIcon icon={faEnvelope} />
+                  <input type="email" value={loginEmail} onChange={(e)=>setLoginEmail(e.target.value)} placeholder="123@gmail.com" required/>
+                </div>
+                <div className="loginPassword">
+                <FontAwesomeIcon icon={faLockOpen} />
+                  <input type="password" value={loginPassword} onChange={(e)=>setLoginPassword(e.target.value)} placeholder="********" required/>
+                </div>
+                <Link to="/password/forgot">Forget Password ?</Link>
+                <input type="submit" value="Login" className='loginBtn' />
+              </form>
+              <form
+              className='signUpForm'
+              ref={registerTab}
+              encType='multipart/form-data'
+              onSubmit={registerSubmit}
+              >
+                <div className="signUpName">
+                  <PersonIcon/>
+                  <input type="text" placeholder='Name' required name='name' value={name} onChange={registerDataChange}/>
+                </div>
+                <div className="signUpEmail">
+                  <FontAwesomeIcon icon={faEnvelope} />
+                  <input type="email" name="email" value={email} onChange={registerDataChange} placeholder="123@gmail.com" required/>
+                </div>
+                <div className="signUpPassword">
+                  <FontAwesomeIcon icon={faLockOpen} />
+                  <input type="password" name="password" value={password} onChange={registerDataChange} placeholder="password" required/>
+                </div>
+                <div id="registerImage">
+                  <img src={avatarPreview} alt="Avatar Preview" />
+                  <input type="file" name="avatar" accept='image/' onChange={registerDataChange} />
+                </div>
+                <input type="submit" value="Register" className='signUpBtn'/>
+              </form>
             </div>
-            <button ref={switcherTab}></button>
-          </div>
-          <form action="" className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
-            <div className="loginEmail">
-             <FontAwesomeIcon icon={faEnvelope} />
-              <input type="email" value={loginEmail} onChange={(e)=>setLoginEmail(e.target.value)} placeholder="123@gmail.com" required/>
-            </div>
-            <div className="loginPassword">
-            <FontAwesomeIcon icon={faLockOpen} />
-              <input type="password" value={loginPassword} onChange={(e)=>setLoginPassword(e.target.value)} placeholder="********" required/>
-            </div>
-            <Link to="/password/forgot">Forget Password ?</Link>
-            <input type="submit" value="Login" className='loginBtn' />
-          </form>
-          <form
-           className='signUpForm'
-           ref={registerTab}
-           encType='multipart/form-data'
-           onSubmit={registerSubmit}
-          >
-            <div className="signUpName">
-              <PersonIcon/>
-              <input type="text" placeholder='Name' required name='name' value={name} onChange={registerDataChange}/>
-            </div>
-            <div className="signUpEmail">
-            <FontAwesomeIcon icon={faEnvelope} />
-              <input type="email" name="email" value={email} onChange={registerDataChange} placeholder="123@gmail.com" required/>
-            </div>
-            <div className="signUpPassword">
-            <FontAwesomeIcon icon={faLockOpen} />
-              <input type="password" name="password" value={password} onChange={registerDataChange} placeholder="password" required/>
-            </div>
-            <div id="registerImage">
-            <img src={avatarPreview} alt="Avatar Preview" />
-              <input type="file" name="avatar" accept='image/' onChange={registerDataChange} />
-            </div>
-            <input type="submit" value="Register" className='signUpBtn'/>
-          </form>
-        </div>
           </div>
         </div>
       </div>

@@ -145,7 +145,7 @@ const Home = () => {
   return (
     <Fragment>
       {loading? <Loader/>:(<Fragment>
-        <Metadata title="Ecommerce"></Metadata>
+        <Metadata title="GameOn"></Metadata>
         <div className='homeContainer'>
           <Header btnInfo="Discover"/>
           <div className={scroll?"homeCarouselBox homeCarouselBox-active":"homeCarouselBox"}>

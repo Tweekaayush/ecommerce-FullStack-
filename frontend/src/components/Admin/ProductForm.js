@@ -38,6 +38,8 @@ const ProductForm = ({opt}) => {
 
   const productSubmitHandler = (e) =>{
       e.preventDefault()
+    console.log(released)
+
       const myForm = new FormData()
 
       myForm.set("name", name)
@@ -106,8 +108,8 @@ const ProductForm = ({opt}) => {
             <div>
               <select required className='productFormInput' value={platform} onChange={(e)=>setPlatform(e.target.value)}>
                 <option value="">Select Platform</option>
-                  <option value="PC">PC</option>
-                  <option value="PS">PS</option>
+                  <option value="Pc">Pc</option>
+                  <option value="Ps">Ps</option>
                   <option value="Xbox">Xbox</option>
                   <option value="Nintendo">Nintendo</option>
               </select>

@@ -5,10 +5,12 @@
     margin-top: 1rem;
     display: flex;
     backdrop-filter: blur(10px);
+    border-radius:10px
 }
 
 .newsCard-l{
     width: 25%;
+    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,6 +19,7 @@
 .newsCard-l img{
     width: 80%;
     height: 70%;
+    border-radius:10px;
 }
 
 .newsCard-r{
@@ -24,15 +27,16 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap:1rem;
+    gap:0.3rem;
+    padding: 0 0.5rem;
 }
 
 .newsCard-r h1{
-    font:bold 2rem Montserrat;
+    font:bold 1.1rem Montserrat;
     color:white;
 }
 .newsCard-r h3{
-    font:500 1.1rem Montserrat;
+    font:500 1rem Montserrat;
     color:white;
 }
 .newsCard-r p{
@@ -56,8 +60,8 @@
     .newsCard-r{
         gap:0.5rem;
     }
-    .newsCard-r h1{
-        font:bold 1.4rem Montserrat;
+    /* .newsCard-r h1{
+        font:bold 1rem Montserrat;
         color:white;
     }
     .newsCard-r h3{
@@ -65,25 +69,35 @@
         color:white;
     }
     .newsCard-r p{
-        font:300 0.9rem Lato;
+        font:300 1rem Lato;
         color:rgba(255, 255, 255, 0.637);
     }
     .newsCard-r a svg{
         font-size:1.3rem ;
-    }
+    } */
 }
 
-@media screen and (max-width:850px){
+@media screen and (max-width:600px){
+
+    .newsCard{
+        height: 9rem;
+    }
+
+    .newsCard-l img{
+        width: 70%;
+        height: 50%;
+    }
+
     .newsCard-r{
         gap:0.3rem;
     }
     .newsCard-r h1{
-        font:bold 1.3rem Montserrat;
+        font-size: 0.8rem;
     }
     .newsCard-r h3{
-        font:500 0.9rem Lato;
+        font-size: 0.7rem;
     }
     .newsCard-r p{
-        font:300 0.8rem Lato;
+        font-size: 0.7rem;
     }
 }

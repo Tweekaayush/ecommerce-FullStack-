@@ -1,0 +1,16 @@
+.faqs{
+    margin: 1rem 0;
+}
+
+.faqs .MuiAccordion-root{
+    background-color:#00529e;
+    color:rgba(255, 255, 255, 0.87);
+}
+.faqs .MuiAccordion-root svg{
+    color:rgb(255, 255, 255);
+}
+
+.MuiCollapse-root{
+    background-color:#003566;
+    color:rgb(255, 255, 255);
+}
