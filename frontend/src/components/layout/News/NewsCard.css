@@ -10,15 +10,15 @@
 
 .newsCard-l{
     width: 25%;
-    height: 80%;
+    height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .newsCard-l img{
     width: 80%;
-    height: 70%;
     border-radius:10px;
 }
 
@@ -84,7 +84,7 @@
     }
 
     .newsCard-l img{
-        width: 70%;
+        width: 90%;
         height: 50%;
     }
 

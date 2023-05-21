@@ -13,10 +13,16 @@ import { UPDATE_ORDER_RESET } from '../../constants/orderConstants';
 import { updateOrder } from '../../actions/orderAction';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Pagination from "react-js-pagination"
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 
 const OrderList = () => {
     const dispatch = useDispatch()
     const {error, orders} = useSelector((state)=>state.allOrders)
+    const [currentPage, setCurrentPage] = useState(1)
     const {error: deleteError, isDeleted, error: updateError, isUpdated} = useSelector((state)=>state.order)
     const { order, error: orderDetailsError, loading } = useSelector((state) => state.orderDetails);
     const [open, setOpen] = useState(false)
@@ -32,8 +38,9 @@ const OrderList = () => {
     const pageCount =  Math.ceil(items.length / itemsPerPage)
 
     const handlePageClick = (event) => {
-        const newOffset = (event.selected * itemsPerPage) % items.length;
-        setItemOffset(newOffset);
+      const newOffset = ((event-1) * itemsPerPage) % items.length;
+      setItemOffset(newOffset);
+      setCurrentPage(event)
     };
 
     const deleteOrderHandler = (id) =>{
@@ -134,17 +141,26 @@ const OrderList = () => {
             )
             }
           </div>
-
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel={<ChevronRightIcon/>}
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
-            pageCount={pageCount}
-            previousLabel={<ChevronLeftIcon/>}
-            renderOnZeroPageCount={null}
-            className="react-paginate"
-          />
+          {
+            orders && (
+              <div className="paginationBox">
+                <Pagination
+                  activePage={currentPage}
+                  itemsCountPerPage={itemsPerPage}
+                  totalItemsCount={items.length}
+                  onChange={handlePageClick}
+                  nextPageText={<KeyboardArrowRightIcon/>}
+                  prevPageText={<KeyboardArrowLeftIcon/>}
+                  firstPageText={<KeyboardDoubleArrowLeftIcon/>}
+                  lastPageText={<KeyboardDoubleArrowRightIcon/>}
+                  itemClass='page-item'
+                  linkClass='page-link'
+                  activeClass='pageItemActive'
+                  activeLinkClass='pageLinkActive'
+                />
+              </div>
+            )
+          }
           <Dialog
             aria-labelledby='simple-dialog-title'
             open ={open}

@@ -11,6 +11,11 @@ import { genres } from '../../genrelist'
 import Loader from '../layout/Loader/Loader'
 import Metadata from '../layout/Metadata'
 import CloseIcon from '@mui/icons-material/Close';
+import TuneIcon from '@mui/icons-material/Tune';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 
 const Browse = () => {
 
@@ -57,7 +62,10 @@ const Browse = () => {
                 <Header btnInfo="Browse"/>
                 <div className={scroll?"browseContent browseContent-active":"browseContent"}>
                     <div className="filterBox">
-                        <h1>Filters</h1>
+                        <div className="filterHeading">
+                            <TuneIcon/>
+                            <h1>Filters</h1>
+                        </div>
                         <div className="filterContent">
                             <div>
                                 <h1>Price:</h1>
@@ -125,10 +133,10 @@ const Browse = () => {
                             itemsCountPerPage={resultPerPage}
                             totalItemsCount={filteredProductsCount}
                             onChange={setCurrentPageNo}
-                            nextPageText="Next"
-                            prevPageText="Prev"
-                            firstPageText="1st"
-                            lastPageText="Last"
+                            nextPageText={<KeyboardArrowRightIcon/>}
+                            prevPageText={<KeyboardArrowLeftIcon/>}
+                            firstPageText={<KeyboardDoubleArrowLeftIcon/>}
+                            lastPageText={<KeyboardDoubleArrowRightIcon/>}
                             itemClass='page-item'
                             linkClass='page-link'
                             activeClass='pageItemActive'

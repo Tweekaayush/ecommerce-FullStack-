@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react'
+import React, {Fragment, useEffect, useState } from 'react'
 import "./MyOrders.css"
 import {useDispatch, useSelector} from "react-redux"
 import {myOrders, clearErrors} from "../../actions/orderAction"
@@ -8,14 +8,20 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import MyOrdersListItem from './MyOrdersListItem';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Pagination from "react-js-pagination"
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 
 
 const MyOrders = ({clsname}) => {
 
   const dispatch = useDispatch()
   const {loading, error, orders} = useSelector((state)=>state.myOrders)
+  const [currentPage, setCurrentPage] = useState(1)
 
-  const itemsPerPage = 4
+  const itemsPerPage = 5
   const [itemOffset, setItemOffset] = useState(0);
   const items = []
   orders&&orders.forEach((item,i)=>{
@@ -26,8 +32,9 @@ const MyOrders = ({clsname}) => {
   const pageCount =  Math.ceil(items.length / itemsPerPage)
 
   const handlePageClick = (event) => {
-      const newOffset = (event.selected * itemsPerPage) % items.length;
+      const newOffset = ((event-1) * itemsPerPage) % items.length;
       setItemOffset(newOffset);
+      setCurrentPage(event)
   };
 
   useEffect(()=>{
@@ -38,11 +45,6 @@ const MyOrders = ({clsname}) => {
 
     dispatch(myOrders());
   }, [dispatch, error, toast])
-
-  const Sort = () =>{
-    if(currentItems.length !== 0)
-      currentItems.sort()
-  }
 
   return (
       <div className={`myOrdersBox ${clsname}`}>
@@ -77,17 +79,26 @@ const MyOrders = ({clsname}) => {
             )
             }
           </div>
-
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel={<ChevronRightIcon/>}
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
-            pageCount={pageCount}
-            previousLabel={<ChevronLeftIcon/>}
-            renderOnZeroPageCount={null}
-            className="react-paginate"
-          />
+          {
+            orders && (
+              <div className="paginationBox">
+                <Pagination
+                  activePage={currentPage}
+                  itemsCountPerPage={itemsPerPage}
+                  totalItemsCount={items.length}
+                  onChange={handlePageClick}
+                  nextPageText={<KeyboardArrowRightIcon/>}
+                  prevPageText={<KeyboardArrowLeftIcon/>}
+                  firstPageText={<KeyboardDoubleArrowLeftIcon/>}
+                  lastPageText={<KeyboardDoubleArrowRightIcon/>}
+                  itemClass='page-item'
+                  linkClass='page-link'
+                  activeClass='pageItemActive'
+                  activeLinkClass='pageLinkActive'
+                />
+              </div>
+            )
+          }
         </div>
     </div>
   )

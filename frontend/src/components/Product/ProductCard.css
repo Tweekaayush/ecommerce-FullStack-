@@ -9,6 +9,9 @@
     padding-bottom: 0.5rem;
     box-shadow: 0 0 5px rgba(15, 15, 15, 0.808);
     margin: 0.5rem;
+    background-color:#003566;
+    padding: 5px 0;
+    border-radius:5px;
   }
   
   .productCard img {

@@ -21,6 +21,14 @@
     color:rgba(255, 255, 255, 0.877);
 }
 
+.filterHeading{
+    display: flex;
+    border-bottom:1px solid white;
+}
+.filterHeading svg{
+    color:white;
+}
+
 .searchResultBox{
     width: 80%;
     display: flex;
@@ -95,7 +103,13 @@
 
 .page-link{
     text-decoration: none;
-    font: 300 0.7vmax Lato;
+    font: 300 .9rem Lato;
+    color: rgb(80, 80, 80);
+    transition: all 0.3s;
+}
+.page-link svg{
+    text-decoration: none;
+    font: 300 .9rem Lato;
     color: rgb(80, 80, 80);
     transition: all 0.3s;
 }

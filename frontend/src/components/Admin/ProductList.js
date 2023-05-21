@@ -10,6 +10,11 @@ import CreateIcon from '@mui/icons-material/Create';
 import { DELETE_PRODUCT_RESET } from '../../constants/productConstants';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Pagination from "react-js-pagination"
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 
 const ProductList = ({opt}) => {
 
@@ -18,6 +23,7 @@ const ProductList = ({opt}) => {
     const {error, products} = useSelector((state)=>state.products)
     const {loading, error:deleteError, isDeleted} = useSelector((state)=>state.product)
     const itemsPerPage = 5
+    const [currentPage, setCurrentPage] = useState(1)
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
     const items = []
@@ -28,8 +34,9 @@ const ProductList = ({opt}) => {
     const pageCount =  Math.ceil(items.length / itemsPerPage)
 
     const handlePageClick = (event) => {
-        const newOffset = (event.selected * itemsPerPage) % items.length;
-        setItemOffset(newOffset);
+      const newOffset = ((event-1) * itemsPerPage) % items.length;
+      setItemOffset(newOffset);
+      setCurrentPage(event)
     };
 
     const deleteProductHandler = (id) =>{
@@ -93,16 +100,26 @@ const ProductList = ({opt}) => {
             }
           </div>
 
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel={<ChevronRightIcon/>}
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
-            pageCount={pageCount}
-            previousLabel={<ChevronLeftIcon/>}
-            renderOnZeroPageCount={null}
-            className="react-paginate"
-          />
+          {
+            products && (
+              <div className="paginationBox">
+                <Pagination
+                  activePage={currentPage}
+                  itemsCountPerPage={itemsPerPage}
+                  totalItemsCount={items.length}
+                  onChange={handlePageClick}
+                  nextPageText={<KeyboardArrowRightIcon/>}
+                  prevPageText={<KeyboardArrowLeftIcon/>}
+                  firstPageText={<KeyboardDoubleArrowLeftIcon/>}
+                  lastPageText={<KeyboardDoubleArrowRightIcon/>}
+                  itemClass='page-item'
+                  linkClass='page-link'
+                  activeClass='pageItemActive'
+                  activeLinkClass='pageLinkActive'
+                />
+              </div>
+            )
+          }
         </div>
   )
 }

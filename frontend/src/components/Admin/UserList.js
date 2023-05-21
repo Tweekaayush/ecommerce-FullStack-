@@ -13,6 +13,11 @@ import { getUserDetails } from '../../actions/userAction';
 import { UPDATE_USER_RESET } from '../../constants/userConstants';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Pagination from "react-js-pagination"
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 
 const UserList = () => {
 
@@ -21,6 +26,7 @@ const UserList = () => {
     const {user} = useSelector((state)=>state.user)
     const {error: deleteError, isDeleted, message, isUpdated} = useSelector((state)=>state.profile)
     const {loading, error:userDetailsError, user: curUser} = useSelector((state)=>state.userDetails)
+    const [currentPage, setCurrentPage] = useState(1)
     const [role, setRole] = useState("")
     const [open, setOpen] = useState(false)
     const itemsPerPage = 5
@@ -32,11 +38,6 @@ const UserList = () => {
     })
     const currentItems = items.slice(itemOffset, endOffset)
     const pageCount =  Math.ceil(items.length / itemsPerPage)
-
-    const handlePageClick = (event) => {
-        const newOffset = (event.selected * itemsPerPage) % items.length;
-        setItemOffset(newOffset);
-    };
 
     const deleteUserHandler = (id) =>{
       if(id === user._id){
@@ -93,6 +94,13 @@ const UserList = () => {
 
         dispatch(getAllUsers())
     },[dispatch, error, alert, deleteError, isDeleted, userDetailsError, isUpdated, toast])
+
+    const handlePageClick = (event) => {
+      const newOffset = ((event-1) * itemsPerPage) % items.length;
+      setItemOffset(newOffset);
+      setCurrentPage(event)
+    };
+
   return (
     <div className={`listContent`}>
           <div className="listItemList">
@@ -141,43 +149,52 @@ const UserList = () => {
             )
             }
           </div>
-
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel={<ChevronRightIcon/>}
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
-            pageCount={pageCount}
-            previousLabel={<ChevronLeftIcon/>}
-            renderOnZeroPageCount={null}
-            className="react-paginate"
-          />
-               <Dialog
-                  aria-labelledby='simple-dialog-title'
-                  open ={open}
-                  onClose={()=>{
-                    setRole("")
-                    open ? setOpen(false) : setOpen(true);
-                  }}
-                  >
-                    <DialogTitle className='updateDialogHeading'>Update User Role</DialogTitle>
-                    <DialogContent className='updateDialog'>
-                        <p>Name:</p>
-                        <p>{curUser.name}</p>
-                        <p>Email:</p>
-                        <p>{curUser.email}</p>      
-                        <p>Role:</p>
-                        <select onChange={(e)=>setRole(e.target.value)} >
-                          <option value={curUser.role}>{curUser.role}</option>
-                          <option value={curUser.role==="admin"?"user":"admin"}>{curUser.role==="admin"?"user":"admin"}</option>
-                        </select>
-                      </DialogContent>
-                      <DialogActions>
-                        <Button onClick={updateUserHandler} color="primary">
-                          Update
-                        </Button>
-                      </DialogActions>
-                  </Dialog>
+          {
+            users && (
+              <div className="paginationBox">
+                <Pagination
+                  activePage={currentPage}
+                  itemsCountPerPage={itemsPerPage}
+                  totalItemsCount={items.length}
+                  onChange={handlePageClick}
+                  nextPageText={<KeyboardArrowRightIcon/>}
+                  prevPageText={<KeyboardArrowLeftIcon/>}
+                  firstPageText={<KeyboardDoubleArrowLeftIcon/>}
+                  lastPageText={<KeyboardDoubleArrowRightIcon/>}
+                  itemClass='page-item'
+                  linkClass='page-link'
+                  activeClass='pageItemActive'
+                  activeLinkClass='pageLinkActive'
+                />
+              </div>
+            )
+          }
+         <Dialog
+            aria-labelledby='simple-dialog-title'
+            open ={open}
+            onClose={()=>{
+              setRole("")
+              open ? setOpen(false) : setOpen(true);
+            }}
+            >
+              <DialogTitle className='updateDialogHeading'>Update User Role</DialogTitle>
+              <DialogContent className='updateDialog'>
+                  <p>Name:</p>
+                  <p>{curUser.name}</p>
+                  <p>Email:</p>
+                  <p>{curUser.email}</p>      
+                  <p>Role:</p>
+                  <select onChange={(e)=>setRole(e.target.value)} >
+                    <option value={curUser.role}>{curUser.role}</option>
+                    <option value={curUser.role==="admin"?"user":"admin"}>{curUser.role==="admin"?"user":"admin"}</option>
+                  </select>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={updateUserHandler} color="primary">
+                    Update
+                  </Button>
+                </DialogActions>
+            </Dialog>
         </div>
   )
 }

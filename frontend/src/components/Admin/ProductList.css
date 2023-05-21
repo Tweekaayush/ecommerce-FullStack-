@@ -91,33 +91,36 @@
 .updateDialog{
     display: flex;
     flex-direction: column;
+    padding: 1rem 0;
 }
 
 .updateDialogHeading{
-    font: bold 10px Montserrat;
     color: #1d7add;
+    border-bottom:1px solid black;
 }
 
 .updateDialog p, .updateDialog select{
     cursor: pointer;
     width: 100%;
-    padding: 1px 0 10px 0;
-    border: none;
     font: 400 1rem Lato;
-    color: #0184ff;
+    color: #3b3b3b;
     background:white;
-    letter-spacing: 1px;
 }
 
 .updateDialog p:nth-child(odd){
     color: #001d3d;
     font: 600 1rem Montserrat;
-    padding: 0;
+    padding: 10px 0 0 0;
 }
 
 
 .userdivflex{
     flex: 1 !important;
+}
+.updateDialog select{
+    padding: 5px 0;
+    border: none;
+    outline: none;
 }
 
 @media screen and (max-width:850px) {
