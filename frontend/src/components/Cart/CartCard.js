@@ -3,6 +3,10 @@ import "./CartCard.css"
 import { Link } from 'react-router-dom'
 
 const CartCard = ({item, deleteCartItems}) => {
+  const dev = process.env.REACT_APP_DISCOUNT
+  const discount = 75;
+  const newPrice = item.price * discount / 100
+
   return (
     <div className="cartCardContainer">
       <div className="cartCardImg">
@@ -17,7 +21,15 @@ const CartCard = ({item, deleteCartItems}) => {
               <h1>{item.name}</h1>
           </div>
           <div className="cartCardPrice">
-            <p>₹ {item.price}</p>
+            {dev !== item.developer && (
+              <p>₹ {item.price}</p>
+            )}
+            {dev === item.developer && (
+              <>
+                <p className="cartPrice-d">₹ {item.price}</p>
+                <p className='discountedCartPrice'>₹ {newPrice}</p>
+              </>
+            )}
           </div>
         </div>
         <div className="cartCardLowerItems">

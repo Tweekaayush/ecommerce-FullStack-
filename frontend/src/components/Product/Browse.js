@@ -26,6 +26,7 @@ const Browse = () => {
     const [caret, setCaret] = useState(false)
     const [currentPage, setCurrentPage] = useState(1);
     const [price, setPrice] = useState([0, 10000])
+    const [developer,setDeveloper] = useState("Bethesda Softworks")
     const [sliderVal, setSliderVal] = useState([0, 10000])
     const dispatch = useDispatch();
     const {products ,loading, error, productCount, resultPerPage, filteredProductsCount}  = useSelector((state)=>state.products);

@@ -20,6 +20,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Product = () => {
 
+    const dev = process.env.REACT_APP_DISCOUNT
     const [scroll, setScroll] = useState(false)
     const {id} = useParams();
     const dispatch = useDispatch();
@@ -33,6 +34,8 @@ const Product = () => {
     const [open, setOpen] = useState(false);
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
+    const discount = 75;
+    const newPrice = product.price * discount / 100
 
     let min,rec
     let desc = ""
@@ -198,7 +201,15 @@ function NewlineText(props) {
           </div>
             <div className="productBox-1-2">
                 <img src={product.background_image} alt="" />
-                <p className="productPrice">₹ {product.price}</p>
+                {dev !== product.developer && (
+                  <p className="productPrice">₹ {product.price}</p>
+                  )}
+                {dev === product.developer && (
+                  <>
+                    <p className="productPrice-d">₹ {product.price}</p>
+                    <p className='discountedPrice'>₹ {newPrice}</p>
+                  </>
+                )}
                 <button className="productBtn" onClick={addToCart}>Add to Cart</button>
                 <div className='productDevDetails'>
                   <div>

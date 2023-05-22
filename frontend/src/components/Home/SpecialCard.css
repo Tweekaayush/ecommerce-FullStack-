@@ -24,6 +24,10 @@
     color:rgb(0, 0, 0);
 }
 
+.specialCard-active .normalCardPrice p{
+    color:rgba(0, 0, 0, 0.852);
+}
+
 .specialImg{
     width: 20%;
     height: 100%;
@@ -87,6 +91,18 @@
     color:rgb(168, 241, 94);
 }
 
+.normalCardPrice{
+    width: 15%;
+    padding: 0 .7rem 0 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items:center;
+}
+
+.normalCardPrice p{
+    font: 300 0.7rem Montserrat;
+    color:rgba(255, 255, 255, 0.595);
+}
 
 @media screen and (max-width:1244px) {
     .specialCardContent{
@@ -96,7 +112,7 @@
         flex-direction: column;
         justify-content: center;
     }
-    .specialCardPrice{
+    .specialCardPrice, .normalCardPrice{
         width: 20%;
     }
 }
@@ -115,7 +131,7 @@
     .specialCardContent p{
         font: 300 0.7rem Montserrat;
     }
-    .specialCardPrice{
+    .specialCardPrice, .normalCardPrice{
         width: 30%;
     }
     .specialCardPrice div:first-child{

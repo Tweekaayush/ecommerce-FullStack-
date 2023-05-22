@@ -34,6 +34,21 @@
     font-size: 1rem;
   }
 
+  .productCard .browsePrice-d{
+    color:rgba(255, 255, 255, 0.658);
+    text-decoration: line-through;
+    font: 300 0.8rem Lato;
+    margin: 0.1rem 0.5rem;
+  }
+  .productCard .browseDiscountedPrice{
+    color:rgb(168, 241, 94);
+    background-color:green;
+    width: fit-content;
+    padding: 0.3rem;
+    font: 300 .8rem Lato;
+    margin: 0.1rem 0.5rem;
+  }
+
 @media screen and (max-width:1244px) {
   .productCard{
     width: 15rem;

@@ -10,6 +10,7 @@ import {clearErrors, createOrder} from "../../actions/orderAction"
 
 const Payment = () => {
 
+  const dev = process.env.REACT_APP_DISCOUNT
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"))
@@ -75,6 +76,11 @@ const Payment = () => {
             id: result.paymentIntent.id,
             status: result.paymentIntent.status
           }
+          order.orderItems.map((item)=>{
+            if(dev === item.developer){
+              item.price = (item.price * 75/100)
+            }
+          })
           dispatch(createOrder(order))
           navigate("/success")
           localStorage.clear()

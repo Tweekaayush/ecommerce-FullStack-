@@ -98,6 +98,19 @@
     color:white;
     font: 300 1rem Lato;
 }
+.productBox-1-2 .productPrice-d{
+    color:rgba(255, 255, 255, 0.658);
+    text-decoration: line-through;
+    padding: 0.3rem;
+    font: 300 0.8rem Lato;
+}
+.productBox-1-2 .discountedPrice{
+    color:rgb(168, 241, 94);
+    background-color:green;
+    padding: 0.3rem;
+    width: fit-content;
+    font: 300 1rem Lato;
+}
 
 .productDevDetails{
     display: flex;

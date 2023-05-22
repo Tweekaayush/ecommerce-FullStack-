@@ -10,11 +10,15 @@ import { removeItemsFromCart } from '../../actions/cartAction'
 
 const Cart = () => {
 
+    const dev = process.env.REACT_APP_DISCOUNT
     const dispatch = useDispatch()
     const {cartItems} = useSelector((state)=>state.cart)
     const [scroll, setScroll] = useState(false);
     const navigate = useNavigate()
-    const subTotal = cartItems.reduce((acc, item) => acc + item.price,0)
+    let subTotal = 0
+    cartItems.map((item) => {
+        subTotal +=(dev === item.developer)?(item.price * 75/100):item.price
+    })
 
     const deleteCartItems = (id) =>{
         dispatch(removeItemsFromCart(id))

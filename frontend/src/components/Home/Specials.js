@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import "./Specials.css"
 import SpecialCard from './SpecialCard'
-import { useDispatch, useSelector } from 'react-redux'
-import { getProducts } from '../../actions/productAction'
 
 const Specials = ({products}) => {
 
-    const [prodNo, setProdNo] = useState(0)
     const [startIdx, setStartIdx] = useState(0)
     const [endIdx, setEndIdx] = useState(1)
     const [active, setActive] = useState(0)

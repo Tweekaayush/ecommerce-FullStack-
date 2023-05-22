@@ -68,3 +68,18 @@
     text-align: right;
     color: white; 
 }
+
+.confirmOrderCardPrice .cartPrice-d{
+    color:rgba(255, 255, 255, 0.658);
+    text-decoration: line-through;
+    padding: 0.3rem;
+    font: 300 0.8rem Lato;
+    text-align: right;
+}
+
+.confirmOrderCardPrice .discountedCartPrice{
+    text-align: right;
+    color:rgb(168, 241, 94);
+    font: 300 1rem Lato;
+    margin: 0;
+}

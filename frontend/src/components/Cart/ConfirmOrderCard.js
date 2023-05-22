@@ -3,6 +3,10 @@ import "./ConfirmOrderCard.css"
 import { Link } from 'react-router-dom'
 
 const ConfirmOrderCard = ({item, deleteCartItems}) => {
+  const dev = process.env.REACT_APP_DISCOUNT
+  const discount = 75;
+  const newPrice = item.price * discount / 100
+  
   return (
     <div className="confirmOrderCardContainer">
       <div className="confirmOrderCardImg">
@@ -17,7 +21,15 @@ const ConfirmOrderCard = ({item, deleteCartItems}) => {
               <h1>{item.name}</h1>
           </div>
           <div className="confirmOrderCardPrice">
-            <p>₹ {item.price}</p>
+          {dev !== item.developer && (
+              <p>₹ {item.price}</p>
+            )}
+            {dev === item.developer && (
+              <>
+                <p className="cartPrice-d">₹ {item.price}</p>
+                <p className='discountedCartPrice'>₹ {newPrice}</p>
+              </>
+            )}
           </div>
         </div>
       </div>
