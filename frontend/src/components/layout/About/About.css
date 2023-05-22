@@ -69,13 +69,13 @@
 
 
 .upperAboutContent h1{
-    font: bold 4rem Montserrat;
+    font: bold 3.7rem Montserrat;
     opacity: 0;
     color:white;
 }
 
 .upperAboutContent h3{
-    font: 500 2rem Lato;
+    font: 500 1.9rem Lato;
     padding: 2rem 0;
     opacity: 0;
     color:rgba(255, 255, 255, 0.767);
@@ -83,7 +83,7 @@
 
 .upperAboutContent p{
     opacity: 0;
-    font: 200 1.3rem Lato;
+    font: 200 1.2rem Lato;
     letter-spacing: 2px;
     line-height: 2rem;
     color:rgba(255, 255, 255, 0.486);
@@ -102,7 +102,7 @@
 
 .lowerAboutContainer p{
     padding: 2rem;
-    font: 200 1.3rem Lato;
+    font: 200 1.2rem Lato;
     letter-spacing: 2px;
     line-height: 2rem;
     color:rgba(255, 255, 255, 0.753);

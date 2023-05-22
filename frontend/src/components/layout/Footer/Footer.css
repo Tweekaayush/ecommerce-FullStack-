@@ -1,10 +1,23 @@
 footer{
     width: 100%;
-    background: #001124;;
+    background: rgb(7, 25, 43);
     color: white;
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+.topbtn{
+    padding: 5px;
+    font: 300 1rem Montserrat;
+    background-color:#0a3052;
+    width: 100%;
+    text-align:center;
+    transition: all 0.3s;
+}
+
+.topbtn:hover{
+    background-color:#1f538a;
 }
 
 .upper-footer{
@@ -46,11 +59,11 @@ footer{
 
 
 .lower-footer{
-    background:#000a14;;
+    background:rgb(2, 18, 35);
     width: 100%;
     text-align: center;
     padding:10px;
-    font: 300 1rem Lato;
+    font: 300 0.9rem Lato;
     color:rgba(255, 255, 255, 0.479);
 }
 
@@ -86,6 +99,9 @@ footer{
 
     .upper-footer div p{
         font-size: 0.8rem;
+    }
+    .lower-footer{
+        font-size: 0.7rem;
     }
 }
 

@@ -1,0 +1,125 @@
+.specialCard{
+    width: 100%;
+    height: 5rem;
+    background:rgb(9, 40, 75);
+    display: flex;
+    margin-bottom: 0.3rem;
+}
+
+.specialCard-active{
+    background-color: rgb(136,161,179);
+}
+
+.specialCard-active .specialCardContent h1{
+    color:black;
+}
+.specialCard-active .specialCardContent h3{
+    color:rgba(0, 0, 0, 0.642);
+}
+.specialCard-active .specialCardContent p{
+    color:rgba(0, 0, 0, 0.852);
+}
+
+.specialCard-active .specialCardPrice div:last-child p:last-child{
+    color:rgb(0, 0, 0);
+}
+
+.specialImg{
+    width: 20%;
+    height: 100%;
+}
+
+.specialImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.specialCardContent{
+    width: 65%;
+    padding: 0 0.7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.specialCardContent h1{
+    font: 300 .9rem Montserrat;
+    color:white;
+}
+.specialCardContent h3{
+    font: 300 0.85rem Montserrat;
+    color:rgba(255, 255, 255, 0.642);
+}
+.specialCardContent p{
+    font: 300 0.85rem Montserrat;
+    color:rgba(255, 255, 255, 0.445);
+}
+.specialCardPrice{
+    width: 15%;
+    padding: 0 .7rem 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.specialCardPrice div{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-end;
+}
+
+.specialCardPrice div:first-child{
+    padding: 0.3rem;
+    font: 300 0.75rem Montserrat;
+    color:rgb(168, 241, 94);
+    background:green;
+}
+
+.specialCardPrice div:last-child p:first-child{
+    font: 300 0.67rem Montserrat;
+    text-decoration: line-through;
+    color:rgba(255, 255, 255, 0.595);
+}
+
+.specialCardPrice div:last-child p:last-child{
+    font: 300 .7rem Montserrat;
+    color:rgb(168, 241, 94);
+}
+
+
+@media screen and (max-width:1244px) {
+    .specialCardContent{
+        width: 60%;
+        padding: 0 0.7rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .specialCardPrice{
+        width: 20%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .specialCard{
+        height: 4.5rem;
+    }
+
+    .specialCardContent h1{
+        font: 300 .75rem Montserrat;
+    }
+    .specialCardContent h3{
+        font: 300 0.7rem Montserrat;
+    }
+    .specialCardContent p{
+        font: 300 0.7rem Montserrat;
+    }
+    .specialCardPrice{
+        width: 30%;
+    }
+    .specialCardPrice div:first-child{
+        padding: 0.25rem;
+        font: 300 0.7rem Montserrat;
+    }
+}

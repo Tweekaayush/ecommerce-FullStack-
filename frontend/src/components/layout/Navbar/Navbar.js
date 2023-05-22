@@ -78,6 +78,7 @@ const Navbar = () =>{
                             <LeftLink href ="/">Home</LeftLink>
                             <LeftLink href ="/browse">Browse</LeftLink>
                             <LeftLink href ="/about">About</LeftLink>
+                            <LeftLink href ="/support">Support</LeftLink>
                             <LeftLink href ="/login">{isAuthenticated? "Profile" : "Sign In"}</LeftLink>
                             {isAuthenticated && <LeftLink href="/" onClick={()=>{dispatch(logout())}}>Logout</LeftLink>}
                         </ul>

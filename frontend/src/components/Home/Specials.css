@@ -1,0 +1,143 @@
+.specialsContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.specialsListHead{
+    background:rgb(9, 40, 75);
+    border-radius:5px 5px 0 0;
+    padding:0.6rem;
+    display: flex;
+    justify-content:flex-end;
+}
+.specialsListHead p{
+    font: 300 0.8rem Montserrat;
+    color:white;
+    padding: 0.3rem;
+}
+
+.specialsListHead a{
+    font: 300 0.8rem Montserrat;
+    border: 1px solid white;
+    color:white;
+    text-decoration: none;
+    padding: 0.3rem;
+    border-radius: 3px;
+}
+
+.specialsHeading{
+    width: 74%;
+}
+
+.specialsHeading h1{
+    font:300 1rem Montserrat;
+    color:white;
+    background:#003566;
+    width: max-content;
+    padding: .5rem;
+    border-radius: 5px 5px 0 0;
+}
+
+.specialsContentBox{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background:#003566;
+}
+
+.specialsContent{
+    padding: 1rem 0;
+    width: 74%;
+    display: flex;
+}
+
+.specialsList{
+    width: 50rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.specialSwitch{
+    width: 1rem;
+    height: 5rem;
+    background-color:rgb(136,161,179);
+}
+
+.specialsDescription{
+    background:rgb(136,161,179);
+    height: 78vh;
+    width: 18rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    transition: all 0.3s;
+}
+
+.specialsDescription h1{
+    font: 400 1.2rem Montserrat;
+    padding: 0 0 0.5rem 0;
+}
+
+.specialReviews{
+    background:rgb(26, 49, 74);
+    padding: 0.3rem;
+    border-radius:3px;
+}
+
+.specialReviews h3, .specialReviews p{
+    font: 300 0.7rem Montserrat;
+    color: rgba(255, 255, 255, 0.788);
+}
+
+.specialImageList{
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items:center;
+}
+
+.specialImageListItem{
+    width: 100%;
+
+}
+.specialImageListItem img{
+    width: 100%;
+}
+
+
+@media screen and (max-width:1244px) {
+    .specialsList{
+        width: 45rem;
+    }
+    .specialsDescription{
+        width: 20rem;
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .specialsContent{
+        width: 90%;
+    }
+    .specialsHeading{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .specialsContent{
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .specialSwitch{
+        display: none;
+    }
+    .specialsDescription{
+        display: none;
+    }
+    .specialsList{
+        width: 100%;
+    }
+}

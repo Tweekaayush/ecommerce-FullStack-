@@ -40,9 +40,8 @@ body{
     position: absolute;
     padding: 0 20px;
     transition: 0.5s ease;
-    background: #001124;
+    background: rgb(2, 18, 35);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-brand{
@@ -210,6 +209,10 @@ body{
     font:800 0.5rem Lato;
 }
 
+.nav-item:nth-child(4){
+    display: none;
+}
+
 
 .nav-upper-item:hover{
     background-color:white;
@@ -217,35 +220,41 @@ body{
 }
 
 .slidedownout:nth-child(1){
-    animation: slideDownOut 0.5s 0.4s ease-in-out backwards;
+    animation: slideDownOut 0.5s 0.5s ease-in-out backwards;
 }
 .slidedownout:nth-child(2){
-    animation: slideDownOut 0.5s 0.3s ease-in-out backwards;
+    animation: slideDownOut 0.5s 0.4s ease-in-out backwards;
 }
 .slidedownout:nth-child(3){
-    animation: slideDownOut 0.5s 0.2s ease-in-out backwards;
+    animation: slideDownOut 0.5s 0.3s ease-in-out backwards;
 }
 .slidedownout:nth-child(4){
-    animation: slideDownOut 0.5s 0.1 ease-in-out backwards;
+    animation: slideDownOut 0.5s 0.2s ease-in-out backwards;
 }
 .slidedownout:nth-child(5){
+    animation: slideDownOut 0.5s 0.1s ease-in-out backwards;
+}
+.slidedownout:nth-child(6){
     animation: slideDownOut 0.5s ease-in-out backwards;
 }
 
 
 .slideupin:nth-child(1){
-    animation: slideUpIn 0.5s 1.2s ease-in-out forwards; 
+    animation: slideUpIn 0.5s 1.3s ease-in-out forwards; 
 }
 .slideupin:nth-child(2){
-    animation: slideUpIn 0.5s 1.1s ease-in-out forwards; 
+    animation: slideUpIn 0.5s 1.2s ease-in-out forwards; 
 }
 .slideupin:nth-child(3){
-    animation: slideUpIn 0.5s 1s ease-in-out forwards; 
+    animation: slideUpIn 0.5s 1.1s ease-in-out forwards; 
 }
 .slideupin:nth-child(4){
-    animation: slideUpIn 0.5s 0.9s ease-in-out forwards; 
+    animation: slideUpIn 0.5s 1s ease-in-out forwards; 
 }
 .slideupin:nth-child(5){
+    animation: slideUpIn 0.5s 0.9s ease-in-out forwards; 
+}
+.slideupin:nth-child(6){
     animation: slideUpIn 0.5s 0.8s ease-in-out forwards; 
 }
 
@@ -398,5 +407,9 @@ body{
     }
     .navProfile{
         display: none;
+    }
+
+    .nav-item:nth-child(4){
+        display: block;
     }
 }

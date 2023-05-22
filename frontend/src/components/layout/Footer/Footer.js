@@ -7,8 +7,16 @@ import "./Footer.css"
 
 const Footer = () =>{
     const mailto = process.env.REACT_APP_FRONTEND_MAIL
+
+    const scrollToTop = () =>{
+        window.scroll({top: 0, left: 0, behavior: 'smooth' })
+    }
+
     return(
         <footer id ="footer">
+            <div className="topbtn" onClick={scrollToTop}>
+                Back to Top
+            </div>
             <div className='upper-footer'>
                 <div>
                     <h1>GET IN TOUCH</h1>

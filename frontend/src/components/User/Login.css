@@ -37,6 +37,10 @@
     transform: translateX(-1.85rem) translateY(-3.5rem);
 }
 
+.loginSignUpLeft-1{
+    z-index: 1;
+}
+
 .loginSignUpLeft-1 a{
     text-decoration: none;
     color:rgba(255, 255, 255, 0.795);
@@ -210,7 +214,7 @@
     color: white;
     font: 300 1.1rem Phudu;
     width: 100%;
-    padding: 0.8vmax;
+    padding: .9rem;
     cursor: pointer;
     transition: all 0.3s;
     border-radius:4px;

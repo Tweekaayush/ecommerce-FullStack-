@@ -19,6 +19,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import HomeNewsSection from './HomeNewsSection'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Specials from './Specials'
 
 
 const Home = () => {
@@ -185,6 +186,7 @@ const Home = () => {
                 <p>Or <a href='/login'>Sign Up</a> and join Ecommerce for free</p>
           </div>
           <HomeNewsSection/>
+          <Specials products={products}/>
         </div>
         </Fragment>
       )}

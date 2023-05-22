@@ -7,7 +7,8 @@ import axios from "axios"
 
 const News = () => {
 
-    const url = "https://newsapi.org/v2/everything?q=games&apiKey=da629fa28a214b9ba69aeafd7de69562"
+
+    const url = `https://newsapi.org/v2/everything?q=games&apiKey=${process.env.REACT_APP_NEWS_KEY}`
     const [news, setNews] = useState([])
 
 
