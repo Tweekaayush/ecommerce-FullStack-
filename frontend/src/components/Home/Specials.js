@@ -9,6 +9,21 @@ const Specials = ({products}) => {
     const [active, setActive] = useState(0)
     const [ht, setHt] = useState(0)
 
+    const ratings = (i) =>{
+        switch(i){
+            case 0: return "No Reviews "
+            case 1: return "Mostly Negative "
+            case 1.5:return "Mostly Negative "
+            case 2: return "Negative "
+            case 2.5:return "Negative "
+            case 3: return "Mixed "
+            case 3.5:return "Positive "
+            case 4: return "Very Positive "
+            case 4.5: return "Overwhelmingly Positive "
+            case 5: return "Overwhelmingly Positive "
+        }
+    }
+
     const activeCard = (i) =>{
         setStartIdx(i)
         setEndIdx(i+1)
@@ -43,7 +58,12 @@ const Specials = ({products}) => {
                         <h1>{item.name}</h1>
                         <div className="specialReviews">
                             <h3>Overall user Reviews:</h3>
-                            <p>({item.numOfReviews})</p>
+                            <p>
+                                <span>
+                                    {ratings(item.ratings)}
+                                </span>
+                                ({item.numOfReviews})
+                            </p>
                         </div>
                         <div className="specialImageList">
                             {item.images.slice(1,4).map((img, i)=>(

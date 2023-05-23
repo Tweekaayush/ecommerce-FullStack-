@@ -13,7 +13,7 @@
 .specialCard-active .specialCardContent h1{
     color:black;
 }
-.specialCard-active .specialCardContent h3{
+.specialCard-active .specialCardContent svg{
     color:rgba(0, 0, 0, 0.642);
 }
 .specialCard-active .specialCardContent p{
@@ -45,14 +45,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items:flex-start;
 }
 
 .specialCardContent h1{
     font: 300 .9rem Montserrat;
     color:white;
 }
-.specialCardContent h3{
-    font: 300 0.85rem Montserrat;
+.specialCardContent svg{
+    font-size: 0.85rem;
     color:rgba(255, 255, 255, 0.642);
 }
 .specialCardContent p{
@@ -125,7 +126,7 @@
     .specialCardContent h1{
         font: 300 .75rem Montserrat;
     }
-    .specialCardContent h3{
+    .specialCardContent svg{
         font: 300 0.7rem Montserrat;
     }
     .specialCardContent p{

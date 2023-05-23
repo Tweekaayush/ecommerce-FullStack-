@@ -82,8 +82,8 @@ const Payment = () => {
             }
           })
           dispatch(createOrder(order))
-          navigate("/success")
           localStorage.clear()
+          navigate("/success")
         }else{
           alert("There was some issue while processing your payment")
         }

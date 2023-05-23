@@ -16,7 +16,7 @@ const News = () => {
         axios.get(`${url}`).then((response)=>{
             setNews(response.data.articles.slice(0, 30))
         })
-    },[])
+    },[url])
 
     const [scroll, setScroll] = useState(false)
     window.addEventListener("scroll", ()=>{
