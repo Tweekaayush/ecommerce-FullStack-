@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 const CartCard = ({item, deleteCartItems}) => {
   const dev = process.env.REACT_APP_DISCOUNT
-  const discount = 75;
-  const newPrice = item.price * discount / 100
+  const discount = process.env.REACT_APP_DISCOUNT_VAL;
+  const newPrice = item.price - (item.price * discount / 100)
 
   return (
     <div className="cartCardContainer">

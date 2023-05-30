@@ -10,6 +10,7 @@ import {clearErrors, createOrder} from "../../actions/orderAction"
 
 const Payment = () => {
 
+  const discount = process.env.REACT_APP_DISCOUNT_VAL;
   const dev = process.env.REACT_APP_DISCOUNT
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -78,7 +79,7 @@ const Payment = () => {
           }
           order.orderItems.map((item)=>{
             if(dev === item.developer){
-              item.price = (item.price * 75/100)
+              item.price = item.price - (item.price * discount/100)
             }
           })
           dispatch(createOrder(order))

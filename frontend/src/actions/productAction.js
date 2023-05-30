@@ -21,6 +21,9 @@ import {
     UPDATE_PRODUCT_REQUEST,
     UPDATE_PRODUCT_SUCCESS,
     UPDATE_PRODUCT_FAIL,
+    RECOMMENDED_PRODUCT_SUCCESS,
+    RECOMMENDED_PRODUCT_REQUEST,
+    RECOMMENDED_PRODUCT_FAIL,
     CLEAR_ERRORS
 } from "../constants/productConstants.js"
 
@@ -55,6 +58,7 @@ export const getProducts = (keyword="", currentPage=1, price=[0, 10000], genre,d
     }
 };
 
+
 //Get All products(Admin)
 
 export const getAdminProducts = () => async(dispatch)=>{
@@ -71,6 +75,27 @@ export const getAdminProducts = () => async(dispatch)=>{
     }catch(error){
         dispatch({
             type: ADMIN_PRODUCT_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+
+//getRecommendedProducts
+
+export const getRecommendedProducts = (genre) => async(dispatch)=>{
+    try{
+        dispatch({type:RECOMMENDED_PRODUCT_REQUEST})
+
+        const {data} = await axios.get(`/api/v1/products?genre=${genre}`)
+
+        dispatch({
+            type: RECOMMENDED_PRODUCT_SUCCESS,
+            payload: data
+        })
+        
+    }catch(error){
+        dispatch({
+            type: RECOMMENDED_PRODUCT_FAIL,
             payload: error.response.data.message
         })
     }

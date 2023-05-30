@@ -24,6 +24,21 @@ const Specials = ({products}) => {
         }
     }
 
+    const ratingsStyle = (i)=>{
+        switch(i){
+            case 0: return {color:"white"}
+            case 1: return {color:"#FD5C00"}
+            case 1.5:return {color:"#FD5C00"}
+            case 2: return {color:"#FD5C00"}
+            case 2.5:return {color:"#FD5C00"}
+            case 3: return {color:"yellow"}
+            case 3.5:return {color:"#009EFF"}
+            case 4: return {color:"#009EFF"}
+            case 4.5: return {color:"#009EFF"}
+            case 5: return {color:"#009EFF"}
+        }
+    }
+
     const activeCard = (i) =>{
         setStartIdx(i)
         setEndIdx(i+1)
@@ -59,7 +74,7 @@ const Specials = ({products}) => {
                         <div className="specialReviews">
                             <h3>Overall user Reviews:</h3>
                             <p>
-                                <span>
+                                <span style={ratingsStyle(item.ratings)}>
                                     {ratings(item.ratings)}
                                 </span>
                                 ({item.numOfReviews})

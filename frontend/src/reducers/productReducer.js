@@ -24,6 +24,9 @@ import {
     UPDATE_PRODUCT_SUCCESS,
     UPDATE_PRODUCT_RESET,
     UPDATE_PRODUCT_FAIL,
+    RECOMMENDED_PRODUCT_SUCCESS,
+    RECOMMENDED_PRODUCT_REQUEST,
+    RECOMMENDED_PRODUCT_FAIL,
     CLEAR_ERRORS
 } from "../constants/productConstants.js"
 
@@ -52,6 +55,35 @@ export const productsReducer = (state = { products : [] }, action)=>{
 
         case ALL_PRODUCT_FAIL:
         case ADMIN_PRODUCT_FAIL:
+            return{
+                loading: false,
+                error:action.payload
+            }
+
+        case CLEAR_ERRORS:
+            return{
+                ...state,
+                error: null
+            }
+        default:
+            return state
+    }
+};
+export const recommendedProductsReducer = (state = { recomProducts : [] }, action)=>{
+    switch(action.type){
+        case RECOMMENDED_PRODUCT_REQUEST:
+            return{
+                loading:true,
+                recomProducts:[]
+            };
+
+        case RECOMMENDED_PRODUCT_SUCCESS:
+            return{
+                loading: false,
+                recomProducts: action.payload.products,
+            }
+
+        case RECOMMENDED_PRODUCT_FAIL:
             return{
                 loading: false,
                 error:action.payload

@@ -5,8 +5,8 @@ import "./ProductCard.css"
 const ProductCard = ({ product }) => {
 
   const dev = process.env.REACT_APP_DISCOUNT
-  const discount = 75;
-  const newPrice = product.price * discount / 100
+  const discount = process.env.REACT_APP_DISCOUNT_VAL;
+  const newPrice = product.price - (product.price * discount / 100)
 
   return (
     <Link className="productCard" to={`/product/${product._id}`}>

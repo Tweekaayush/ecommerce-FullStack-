@@ -34,8 +34,8 @@ const Product = () => {
     const [open, setOpen] = useState(false);
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
-    const discount = 75;
-    const newPrice = product.price * discount / 100
+    const discount = process.env.REACT_APP_DISCOUNT_VAL;
+    const newPrice = product.price - (product.price * discount / 100)
 
     let min,rec
     let desc = ""
@@ -49,6 +49,36 @@ const Product = () => {
       if(product.description){
         desc = product.description
       }
+
+      const ratings = (i) =>{
+        switch(i){
+            case 0: return "No Reviews "
+            case 1: return "Mostly Negative "
+            case 1.5:return "Mostly Negative "
+            case 2: return "Negative "
+            case 2.5:return "Negative "
+            case 3: return "Mixed "
+            case 3.5:return "Positive "
+            case 4: return "Very Positive "
+            case 4.5: return "Overwhelmingly Positive "
+            case 5: return "Overwhelmingly Positive "
+        }
+    }
+
+    const ratingsStyle = (i)=>{
+        switch(i){
+            case 0: return {color:"white"}
+            case 1: return {color:"#FD5C00"}
+            case 1.5:return {color:"#FD5C00"}
+            case 2: return {color:"#FD5C00"}
+            case 2.5:return {color:"#FD5C00"}
+            case 3: return {color:"yellow"}
+            case 3.5:return {color:"#009EFF"}
+            case 4: return {color:"#009EFF"}
+            case 4.5: return {color:"#009EFF"}
+            case 5: return {color:"#009EFF"}
+        }
+    }
 
 
     useEffect(()=>{
@@ -258,7 +288,8 @@ function NewlineText(props) {
               <hr className='productDetailsUnderline'/>
               <div className="productReviewsBox">
                 <div className="productBox-2-3-1">
-                    <h1>Overall Reviews ({product.numOfReviews})</h1>
+                    <h1>Overall Reviews</h1>
+                    <p style={ratingsStyle(product.ratings)}>{ratings(product.ratings)} <span style={{color:"white"}}>({product.numOfReviews})</span></p>
                     <p>
                       <Rating 
                         {...options}

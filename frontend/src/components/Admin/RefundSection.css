@@ -1,0 +1,27 @@
+.refundContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.refundContent{
+    padding: 1rem 0.5rem 0 0.5rem;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+    margin: 2rem 0;
+    border-radius:15px;
+    background:white;
+}
+.backTrackLink{
+    flex: 0.05;
+    text-align: right;
+}
+
+.refundContentBox{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}

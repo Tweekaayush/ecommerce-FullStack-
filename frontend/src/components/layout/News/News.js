@@ -4,6 +4,7 @@ import Metadata from '../Metadata'
 import "./News.css"
 import NewsCard from './NewsCard'
 import axios from "axios"
+import Loader from '../Loader/Loader'
 
 const News = () => {
 
@@ -29,19 +30,21 @@ const News = () => {
   return (
     <Fragment>
         <Metadata title="News" />
-        <div className="newsContainer">
-        <Header btnInfo='News' />
-            <div className={scroll?"newsBox newsBox-active":"newsBox"}>
-                <div className="newsHeading">
-                    <h1>News</h1>
-                </div>
-                <div className="newsContent">
-                    {news.map((item,i)=>(
-                        <NewsCard key = {i} card ={item}/>
-                    ))}
+        {news.length !== 0 ? (
+            <div className="newsContainer">
+            <Header btnInfo='News' />
+                <div className={scroll?"newsBox newsBox-active":"newsBox"}>
+                    <div className="newsHeading">
+                        <h1>News</h1>
+                    </div>
+                    <div className="newsContent">
+                        {news.map((item,i)=>(
+                            <NewsCard key = {i} card ={item}/>
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
+        ): <Loader />}
     </Fragment>
   )
 }

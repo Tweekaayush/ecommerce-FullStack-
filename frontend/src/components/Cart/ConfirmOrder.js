@@ -9,12 +9,13 @@ import ConfirmOrderCard from "./ConfirmOrderCard.js"
 const ConfirmOrder = () => {
 
     const dev = process.env.REACT_APP_DISCOUNT
+    const discount = process.env.REACT_APP_DISCOUNT_VAL;
     const navigate = useNavigate()
     const {billingInfo, cartItems} = useSelector((state)=>state.cart)
     const {user} = useSelector((state)=>state.user)
     let subTotal = 0
     cartItems.map((item) => {
-        subTotal +=(dev === item.developer)?(item.price * 75/100):item.price
+        subTotal +=(dev === item.developer)?(item.price - (item.price * discount / 100)):item.price
     })
     let tax = (subTotal * 0.18)
     tax = (Number)(tax.toFixed(2))

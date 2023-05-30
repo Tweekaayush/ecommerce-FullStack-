@@ -31,7 +31,7 @@ const Support = () => {
    },
    {
       q: "How do I get best gaming experience while playing on PC?",
-      a: "If you're playing on Windows, make sure that your device meets the highest system requirements by checking your system information. You can also enable Game Mode to prioritise your device's resources for gameplay. For more info, see: ......................",
+      a:"If you're playing on Windows, make sure that your device meets the highest system requirements by checking your system information. You can also enable Game Mode to prioritise your device's resources for gameplay.",
    },
     {
       q: "How do we get information about games that are highly anticipated and about to release worldwide?",

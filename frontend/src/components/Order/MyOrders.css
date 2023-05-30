@@ -99,6 +99,10 @@ ul.react-paginate {
     cursor: default;
   }
 
+  .emptyOrdersDiv{
+    margin-top: 4rem;
+  }
+
   @media screen and (max-width:1024px) {
     .myOrdersContentHeadings div p{
         font: 300 .9rem Lato;

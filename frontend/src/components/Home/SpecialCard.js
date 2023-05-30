@@ -7,8 +7,8 @@ import { faWindows, faPlaystation, faXbox } from '@fortawesome/free-brands-svg-i
 const SpecialCard = ({product, idx, activeCard, opt}) => {
 
     const dev = process.env.REACT_APP_DISCOUNT
-    const discount = 75;
-    const newPrice = product.price * 75 / 100
+    const discount = process.env.REACT_APP_DISCOUNT_VAL;
+    const newPrice = product.price - (product.price * discount / 100)
     const navigate = useNavigate()
     const nav = ()=>{
         navigate(`/product/${product._id}`)

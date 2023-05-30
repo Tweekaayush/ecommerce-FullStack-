@@ -20,6 +20,7 @@ import HomeNewsSection from './HomeNewsSection'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Specials from './Specials'
+import Recommendation from './Recommendation'
 
 
 const Home = () => {
@@ -187,6 +188,7 @@ const Home = () => {
           </div>
           <HomeNewsSection/>
           <Specials products={products}/>
+          <Recommendation products={products}/>
         </div>
         </Fragment>
       )}

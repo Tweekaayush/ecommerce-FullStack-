@@ -30,6 +30,8 @@ import AdminRoute from "./components/Route/AdminRoute";
 import News from "./components/layout/News/News";
 import Support from "./components/layout/Support/Support";
 import OrderDetails from "./components/Order/OrderDetails";
+import Chat from "./components/layout/Chat/Chat";
+import RefundSection from "./components/Admin/RefundSection";
 
 function App() {
 
@@ -86,6 +88,7 @@ function App() {
 
           <Route element = {<AdminRoute isAdmin={true} />}>
             <Route exact path = "/admin/dashboard" element={<Dashboard/>}></Route>
+            <Route exact path = "/admin/dashboard/refund" element={<RefundSection/>}></Route>
           </Route>
 
         </Route>
@@ -93,6 +96,7 @@ function App() {
         <Route path="/*"element={<NotFound/>}/>
       </Routes>
       <Footer/>
+      <Chat/>
     </Router>
   );
 }

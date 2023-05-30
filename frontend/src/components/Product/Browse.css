@@ -23,7 +23,6 @@
 
 .filterHeading{
     display: flex;
-    border-bottom:1px solid white;
 }
 .filterHeading svg{
     color:white;
@@ -52,11 +51,25 @@
 .filterBox{
     display: flex;
     flex-direction: column;
-    background-color:#003566;
+    border-right:1px solid #003566;
     padding: 1rem;
-    border-radius:10px;
     gap: 1rem;
     width: 20%;
+}
+
+.filterBox .MuiAccordion-root{
+    background-color:transparent;
+    color:rgba(255, 255, 255, 0.87);
+    box-shadow:none;
+    border-bottom:1px solid white
+}
+
+.filterBox .MuiAccordion-root svg{
+    color:rgb(255, 255, 255);
+}
+
+.filterBox .MuiCollapse-root{
+    background-color:transparent;
 }
 
 .filterBox h1{
@@ -129,7 +142,7 @@
 
 .genreList{
   overflow-y: scroll;
-  position: absolute;
+  position: relative;
   height: 300px;
   background-color:#0f54948c;
   z-index: 1;
@@ -220,6 +233,7 @@
 
     .filterBox{
         width: 100%;
+        border:none;
     }
 
     .filterContent{
@@ -244,6 +258,7 @@
         z-index: 1;
         background-color:#001d3d;
         display: none;
+        position: absolute;
       }
 }
 

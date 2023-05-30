@@ -16,6 +16,8 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Browse = () => {
 
@@ -53,6 +55,11 @@ const Browse = () => {
         setPrice(sliderVal)
         setCurrentPage(1)
     }
+
+    const style = {
+        backgroundColor:"Aqua",
+        color:"white"
+      }
     
   return (
     <Fragment>
@@ -63,11 +70,21 @@ const Browse = () => {
                 <Header btnInfo="Browse"/>
                 <div className={scroll?"browseContent browseContent-active":"browseContent"}>
                     <div className="filterBox">
-                        <div className="filterHeading">
-                            <TuneIcon/>
-                            <h1>Filters</h1>
-                        </div>
-                        <div className="filterContent">
+                        <Accordion>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                                classes={style}
+                            >
+                                <Typography className='filterHeading'>
+                                    <TuneIcon/>
+                                    <h1>Filters</h1>
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Typography>
+                                <div className="filterContent">
                             <div>
                                 <h1>Price:</h1>
                                 <Slider
@@ -112,6 +129,58 @@ const Browse = () => {
                                 </div>
                             </div>
                         </div>
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                        {/* <div className="filterHeading">
+                            <TuneIcon/>
+                            <h1>Filters</h1>
+                        </div> */}
+                        {/* <div className="filterContent">
+                            <div>
+                                <h1>Price:</h1>
+                                <Slider
+                                value={sliderVal}
+                                onChange={(e)=>setSliderVal(e.target.value)}
+                                onChangeCommitted={priceHandler}
+                                valueLabelDisplay='auto'
+                                aria-labelledby='range-slider'
+                                min={0}
+                                max={10000}
+                                >
+                                </Slider>
+                            </div>
+                            <div>
+                                <div className="genreHeading">
+                                    <h1>Genre:</h1>
+                                    <div onClick={()=>{setCaret(!caret)}} className={caret?"genreCaret genreCaret-active":"genreCaret"}></div>
+                                </div>
+                                <div className="genreBox">
+                                    {genre && ( 
+                                        <div onClick={()=>{
+                                            setGenre("");
+                                            setCaret(false);
+                                            setCurrentPage(1);
+                                        }} className="genreBtn">
+                                            <p>
+                                                {genre}
+                                            </p>
+                                            
+                                            <CloseIcon/>
+                                        </div>
+                                    )}
+                                    <div className={caret?"genreList genreList-active":"genreList"}>    
+                                        {genres.map((genre)=>(
+                                            <p className='genreItem' key = {genre.id} onClick={()=>{
+                                                setGenre(genre.name);
+                                                setCaret(false);
+                                                setCurrentPage(1);
+                                            }}>{genre.name}</p>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div> */}
                     </div>
                     <div className='searchResultBox'>
                         <h1>Games :</h1>

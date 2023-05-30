@@ -29,7 +29,8 @@
 }
 
 .upperProfile img{
-    width: 5vmax;
+    width: 5rem;
+    height: 5rem;
     border-radius: 100%;
     transition: all 0.5s;
 }

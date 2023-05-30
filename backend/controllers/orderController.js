@@ -1,11 +1,16 @@
 const Order = require("../models/orderModel")
 const Product = require("../models/productModel");
+const User = require("../models/userModel");
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 
 //Creating new order
 
 exports.newOrder = catchAsyncErrors(async(req, res, next)=>{
+
+    
+    let recomList = new Map()
+
     const {
         billingInfo,
         orderItems, 
@@ -25,6 +30,55 @@ exports.newOrder = catchAsyncErrors(async(req, res, next)=>{
         paidAt:Date.now(),
         user: req.user._id,
     });
+
+    for (let index = 0; index < orderItems.length; index++) {
+        if(recomList.has(orderItems[index].genre)){
+            recomList.set(orderItems[index].genre, recomList.get(orderItems[index].genre) + 1)
+        }
+        else{
+            recomList.set(orderItems[index].genre, 1)
+        }
+    }
+
+    const user = await User.findById(req.user.id)
+    let newRecom = user.recommendations
+
+
+    if(newRecom.length === 0){
+        recomList.forEach (function(value, key) {
+            newRecom.push({
+                genre: key,
+                frequency: value
+            })
+        })
+    }
+    else{
+        newRecom.forEach((recom)=>{
+            if(recomList.has(recom.genre)){
+                recom.frequency += recomList.get(recom.genre)
+                recomList.set(recom.genre, -1)
+            }
+        })
+        recomList.forEach (function(value, key) {
+            if(value !== -1){
+                newRecom.push({
+                    genre: key,
+                    frequency: value
+                })
+            }
+        })
+    }
+
+    const userData={
+        recommendations: newRecom
+    }; 
+
+    await User.findByIdAndUpdate(req.user.id, userData, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+    });
+    
 
     res.status(200).json({
         success:true,

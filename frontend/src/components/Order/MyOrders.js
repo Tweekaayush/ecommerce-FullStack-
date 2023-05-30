@@ -2,9 +2,6 @@ import React, {Fragment, useEffect, useState } from 'react'
 import "./MyOrders.css"
 import {useDispatch, useSelector} from "react-redux"
 import {myOrders, clearErrors} from "../../actions/orderAction"
-import ReactPaginate from 'react-paginate';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import MyOrdersListItem from './MyOrdersListItem';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -27,6 +24,9 @@ const MyOrders = ({clsname}) => {
   orders&&orders.forEach((item,i)=>{
   items.push(item)
   })
+  items.sort(function(a,b){
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = items.slice(itemOffset, endOffset)
   const pageCount =  Math.ceil(items.length / itemsPerPage)
@@ -80,7 +80,7 @@ const MyOrders = ({clsname}) => {
             }
           </div>
           {
-            orders && (
+            orders && orders.length !==0 && (
               <div className="paginationBox">
                 <Pagination
                   activePage={currentPage}

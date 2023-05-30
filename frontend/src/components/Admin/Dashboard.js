@@ -2,9 +2,7 @@ import React, { Fragment, useEffect, useRef, useState } from 'react'
 import "./Dashboard.css"
 import Sidebar from "./Sidebar.js"
 import Metadata from "../layout/Metadata"
-import {Line} from "react-chartjs-2"
 import {useDispatch, useSelector} from "react-redux"
-import {Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Title, Tooltip, Legend, Scale} from "chart.js"
 import ProductList from "./ProductList.js"
 import ProductForm from "./ProductForm.js"
 import { clearErrors, getAdminProducts } from '../../actions/productAction'
@@ -14,13 +12,10 @@ import UserList from "./UserList.js"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getAllUsers } from '../../actions/userAction'
-
-ChartJS.register(
-    LineElement,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-)
+import Chart from "react-apexcharts";
+import Loader from "../layout/Loader/Loader"
+import { Typography } from '@mui/material'
+import CountUp from 'react-countup';
 
 const Dashboard = () => {
 
@@ -37,6 +32,9 @@ const Dashboard = () => {
     const switcherProductTab = useRef(null)
     const [productListComponent, setProductListComponent] = useState("")
     const [productFromComponent, setProductFromComponent] = useState("dashboardContent-inactive")
+
+    let del = 0
+    let proc = 0
     
     useEffect(()=>{
       dispatch(getAdminProducts())
@@ -48,31 +46,97 @@ const Dashboard = () => {
     let totalAmount = 0
     orders&& orders.forEach((order)=>{
         let mon = Number(String(order.createdAt).substring(5,7))
-        totalAmount += order.totalPrice
-        years[mon-1] += order.totalPrice 
+        totalAmount += order.totalPrice;
+        years[mon-1] += order.totalPrice;
+        (order.orderStatus === "Delivered")?del+=1:proc+=1;
     })
+    for (let index = 0; index < years.length; index++) {
+        years[index] = parseInt(years[index]);
+    }
     totalAmount = totalAmount.toFixed(2)
+    let date = new Date()
+    date = date.getFullYear()
 
-    const lineState = {
-        labels: ["Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep","Oct","Nov","Dec"],
-        datasets: [
-          {
-            label: "TOTAL AMOUNT",
-            backgroundColor: "#003566",
-            hoverBackgroundColor: "rgb(197, 72, 49)",
-            data: years,
-          },
-        ],
-      };
-      const options =({
-        responsive:true,
-        plugins:{
-            legend:true,
-            title:{
-                display: true,
+
+    const series =  [proc, del]
+
+    const donutOptions = {
+        chart: { 
+            type: "donut",
+        },
+        colors: ["#003566", "#A3D2FC"],
+        legend: { show: false },
+        dataLabels: { enabled: false },
+        plotOptions: {
+            pie:{
+                expandOnClick: false,
+                donut: {
+                    labels: {
+                        show: true,
+                        total:{
+                            show:true,
+                            fontSize:"1rem",
+                            color:"#003566"
+                        }
+                    }
+                }
+            }
+        },
+        labels: ['Processing', 'Delivered'],
+        series: [proc, del],
+        legend: {
+            position: "top",
+            horizontalAlign: "right",
+        },
+        fill: {
+            opacity: 1,
+        },
+    }    
+
+    const TotalRevenueSeries = [{
+        name: "This Year",
+        data: years,
+    }]
+    const options = {
+        chart: {
+            type: "bar",
+            toolbar: {
+                show: false,
             },
-        }
-      })
+        },
+        colors: ["#003566", "#A3D2FC"],
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: "55%",
+            },
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        grid: {
+            show: false,
+        },
+        stroke: {
+            colors: ["transparent"],
+            width: 4,
+        },
+        xaxis: {
+            categories: ["Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep","Oct","Nov","Dec"],
+        },
+        yaxis: {
+            // title: {
+            //     text: "₹Revenue (thousands)",
+            // },
+        },
+        fill: {
+            opacity: 1,
+        },
+        legend: {
+            position: "top",
+            horizontalAlign: "right",
+        },
+    }
 
 
     const switcherTab = (tab) =>{
@@ -120,7 +184,7 @@ const Dashboard = () => {
 
   return (
     <Fragment>
-        {loading === false && (
+        {loading?<Loader/>:(
             <Fragment>
                 <Metadata title="Dashboard" />
                 <div className="dashboardContainer">
@@ -135,24 +199,71 @@ const Dashboard = () => {
                                 <div className="dashboardDetails">
                                     <div className="dashboardSummaryBox">
                                         <div>
-                                            <p>Products:</p>
-                                            <p>{products && products.length}</p>
+                                            <Typography fontSize={15} fontWeight={400} color="#11142d" padding>
+                                                Products:
+                                            </Typography>
+                                            <p>
+                                                {products && (<CountUp end={products.length} duration={2} />)
+                                                }
+                                            </p>
                                         </div>
                                         <div>
-                                            <p>Orders:</p>
-                                            <p>{orders && orders.length}</p>
+                                            <Typography fontSize={15} fontWeight={400} color="#11142d" padding>
+                                                Orders:
+                                            </Typography>
+                                            <p>
+                                                {orders && (<CountUp end={orders.length} duration={2} />)}
+                                            </p>
                                         </div>
                                         <div>
-                                            <p>Users:</p>
-                                            <p>{users && users.length}</p>
+                                            <Typography fontSize={15} fontWeight={400} color="#11142d" padding>
+                                                Users:
+                                            </Typography>
+                                            <p>
+                                                {users && (<CountUp end={users.length} duration={2} />)}
+                                            </p>
                                         </div>
                                         <div>
-                                            <p>Total Earnings:</p>
-                                            <p>₹ {totalAmount}</p>
+                                            <Typography fontSize={15} fontWeight={400} color="#11142d" padding>
+                                                Total Revenue:
+                                            </Typography>
+                                            <p>₹ <CountUp end={totalAmount} duration={1} /></p>
                                         </div>
                                     </div>
-                                    <div className="lineChart">
-                                        <Line data={lineState} />
+                                    <div className="charts">
+                                        <div className="lineChart">
+                                            <Typography fontSize={15} fontWeight={400} color="#11142d" padding>
+                                                Total Revenue ({date})
+                                            </Typography>
+                                            <Chart
+                                                series={TotalRevenueSeries}
+                                                type="bar"
+                                                height={300}
+                                                options={options}
+                                            />
+                                        </div>
+                                        <div className="donutChart">   
+                                            <Typography fontSize={15} fontWeight={400} color="#11142d" padding>
+                                                Order's Status:
+                                            </Typography> 
+                                            <div> 
+                                                {orders && (
+                                                    <Chart
+                                                        series={series}
+                                                        type="donut"
+                                                        width="300px"
+                                                        options={donutOptions}
+                                                    />
+                                                )}   
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="refundRequestSection">
+                                        <a href="/admin/dashboard/refund">
+                                        <Typography fontSize={30} fontWeight={400} color="#11142d" padding>
+                                                Refund Requests
+                                        </Typography> 
+                                        </a>
                                     </div>
                                 </div>
                             </div>

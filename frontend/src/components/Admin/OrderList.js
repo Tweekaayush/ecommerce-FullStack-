@@ -37,6 +37,10 @@ const OrderList = () => {
     const currentItems = items.slice(itemOffset, endOffset)
     const pageCount =  Math.ceil(items.length / itemsPerPage)
 
+    orders&&orders.sort(function(a,b){
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
+
     const handlePageClick = (event) => {
       const newOffset = ((event-1) * itemsPerPage) % items.length;
       setItemOffset(newOffset);
