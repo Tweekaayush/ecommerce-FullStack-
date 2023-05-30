@@ -69,6 +69,8 @@ exports.newOrder = catchAsyncErrors(async(req, res, next)=>{
         })
     }
 
+    newRecom.sort((a,b)=> b.frequency - a.frequency)
+
     const userData={
         recommendations: newRecom
     }; 

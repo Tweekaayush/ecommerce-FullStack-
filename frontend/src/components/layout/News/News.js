@@ -18,6 +18,10 @@ const News = () => {
             setNews(response.data.articles.slice(0, 30))
         })
     },[url])
+    news.sort(function(a,b){
+        return new Date(b.publishedAt) - new Date(a.publishedAt);
+      });
+
 
     const [scroll, setScroll] = useState(false)
     window.addEventListener("scroll", ()=>{

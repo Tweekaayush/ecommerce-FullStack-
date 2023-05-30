@@ -19,6 +19,8 @@ const Recommendation = ({products}) => {
     const [genre, setGenre] = useState("")
     const [f, setF] = useState(0)
 
+    // user.recommendations && user.recommendation.length !==0 && user.recommendations.sort((a,b)=>b.frequency - a.frequency)
+
     useEffect(()=>{  
 
         if(isAuthenticated && user.recommendations && user.recommendations.length !==0 && f === 0){
@@ -64,8 +66,8 @@ const Recommendation = ({products}) => {
             breakpoint:5000,
             settings: {
               arrows:true,
-              slidesToShow:4,
-              slidesToScroll:4 
+              slidesToShow:3,
+              slidesToScroll:3 
             }
           },
           {

@@ -258,13 +258,13 @@ const Dashboard = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="refundRequestSection">
+                                    {/* <div className="refundRequestSection">
                                         <a href="/admin/dashboard/refund">
                                         <Typography fontSize={30} fontWeight={400} color="#11142d" padding>
                                                 Refund Requests
                                         </Typography> 
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                             <div ref={dashboardProductsTab} className="dashboardComponent dashboardContent-inactive">

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../../actions/userAction';
 import { Link } from 'react-router-dom';
 
+
 const Navbar = () =>{
 
     const [toggle, setToggle] = useState(false);
@@ -80,7 +81,9 @@ const Navbar = () =>{
                             <LeftLink href ="/about">About</LeftLink>
                             <LeftLink href ="/support">Support</LeftLink>
                             <LeftLink href ="/login">{isAuthenticated? "Profile" : "Sign In"}</LeftLink>
-                            {isAuthenticated && <LeftLink href="/" onClick={()=>{dispatch(logout())}}>Logout</LeftLink>}
+                            {isAuthenticated && <LeftLink href="/" onClick={()=>{
+                                dispatch(logout())}
+                            }>Logout</LeftLink>}
                         </ul>
                     </div> 
                     <div className={toggle?"right-nav nav-active":"right-nav"}>

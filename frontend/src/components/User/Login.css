@@ -4,7 +4,15 @@
     display: flex;
     justify-content: center;
     align-items:center;
+    background: linear-gradient(-45deg, #02417c, #072443, #02417c);
+    background-size: 400% 400%;
+
+    -webkit-animation: gradient 6s ease infinite;
+    -moz-animation: gradient 6s ease infinite;
+    -o-animation: gradient 6s ease infinite;
+    animation: gradient 6s ease infinite;
 }
+
 
 .loginSignUpContent{
     width: 55rem;
@@ -211,7 +219,6 @@
 
 .loginBtn,.signUpBtn{
     border: none;
-    background-color: #001d3d;
     color: white;
     font: 300 1.1rem Phudu;
     width: 100%;
@@ -221,6 +228,13 @@
     border-radius:4px;
     outline: none;
     box-shadow:0 2px 5px rgba(0,0,0,0.219);
+    background: linear-gradient(-45deg, #02417c, #072443, #02417c);
+    background-size: 400% 400%;
+
+    -webkit-animation: gradient 6s ease infinite;
+    -moz-animation: gradient 6s ease infinite;
+    -o-animation: gradient 6s ease infinite;
+    animation: gradient 6s ease infinite;
 }
 
 .loginBtn:hover, .signUpBtn:hover{
@@ -371,4 +385,25 @@
     .loginSignUpContent-2{
         width: 21rem;
     }
+}
+
+@-webkit-keyframes gradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes gradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-o-keyframes gradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes gradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
